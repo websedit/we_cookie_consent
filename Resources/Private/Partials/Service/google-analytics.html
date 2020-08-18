@@ -1,0 +1,13 @@
+<f:section name="Header">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script type="opt-in" data-type="text/javascript" data-name="{service.provider}-{service.uid}" data-src="https://www.googletagmanager.com/gtag/js?id={service.apiKey}"></script>
+    <script type="opt-in" data-type="text/javascript" data-name="{service.provider}-{service.uid}">
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', '{service.apiKey}', {anonymize_ip: true});
+    </script>
+</f:section>
+
+<f:section name="Footer" />

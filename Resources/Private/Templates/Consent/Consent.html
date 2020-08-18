@@ -1,0 +1,30 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" xmlns:we="http://typo3.org/ns/Websedit/WeCookieConsent/ViewHelpers" data-namespace-typo3-fluid="true">
+	<f:layout name="Default"/>
+
+	<f:section name="content" >
+		<f:if condition="{typo3Version} < 8000000">
+			<f:render section="HeaderAssets" arguments="{_all}"/>
+			<f:render section="FooterAssets" arguments="{_all}"/>
+		</f:if>
+	</f:section>
+
+	<f:section name="HeaderAssets">
+		<f:spaceless>
+			<f:for each="{services}" as="service">
+				<f:render partial="Service/{service.provider}" section="Header" arguments="{service:service}" optional="1"/>
+			</f:for>
+		</f:spaceless>
+	</f:section>
+
+	<f:section name="FooterAssets">
+		<f:spaceless>
+			<script type="text/javascript" src="{f:uri.resource(path: 'JavaScript/Controller/ConsentController.js')}"></script>
+			<script type="text/javascript">var klaroConfig = {f:format.htmlentitiesDecode(value: '{klaroConfig -> we:format.json()}')}</script>
+			<f:for each="{services}" as="service">
+				<f:render partial="Service/{service.provider}" section="Footer" arguments="{service:service}" optional="1"/>
+				<f:render partial="Klaro/App" arguments="{service:service}"/>
+			</f:for>
+			<script type="text/javascript" src="{f:uri.resource(path: 'Library/klaro/klaro.js')}" data-style-prefix="{settings.klaro.stylePrefix}"></script>
+		</f:spaceless>
+	</f:section>
+</html>

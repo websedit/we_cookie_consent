@@ -1,0 +1,7 @@
+//File renamed to .ts extension for TYPO3 7 support, if support is dropped change back to .typoscript file ending
+
+//TYPO3 9 Syntax
+//@import 'EXT:we_cookie_consent/Configuration/TypoScript/constants.ts'
+
+//TYPO3 8 Syntax
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:we_cookie_consent/Configuration/TypoScript/constants.ts">

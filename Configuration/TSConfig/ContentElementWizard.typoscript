@@ -1,0 +1,13 @@
+mod.wizards.newContentElement.wizardItems.plugins {
+	elements {
+		we_cookie_consent_pi1 {
+			iconIdentifier = we_cookie_consent-plugin-pi1
+			title = LLL:EXT:we_cookie_consent/Resources/Private/Language/locallang_db.xlf:tx_we_cookie_consent_pi1.name
+			description = LLL:EXT:we_cookie_consent/Resources/Private/Language/locallang_db.xlf:tx_we_cookie_consent_pi1.description
+			tt_content_defValues {
+				CType = list
+				list_type = wecookieconsent_pi1
+			}
+		}
+	}
+}

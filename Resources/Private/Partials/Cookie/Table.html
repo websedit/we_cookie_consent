@@ -1,0 +1,7 @@
+<f:for each="{cookies}" as="cookie">
+    <tr>
+        <td>{cookie.title}</td>
+        <td><f:format.html>{cookie.description}</f:format.html></td>
+        <td>{cookie.maxAge}</td>
+    </tr>
+</f:for>

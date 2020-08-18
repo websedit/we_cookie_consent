@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+    <file source-language="en" datatype="plaintext" original="messages" date="2019-10-29T16:04:12Z"
+          product-name="we_cookie_consent">
+        <header/>
+        <body>
+            <trans-unit id="tx_wecookieconsent_domain_model_service">
+                <target>Service</target>
+            </trans-unit>
+            <!-- Tabs -->
+            <trans-unit id="tx_wecookieconsent_domain_model_service.tab.identification.label">
+                <target>Authentifizierung</target>
+            </trans-unit>
+            <trans-unit id="tx_wecookieconsent_domain_model_service.tab.settings.label">
+                <target>Einstellungen</target>
+            </trans-unit>
+            <trans-unit id="tx_wecookieconsent_domain_model_service.tab.dev.label">
+                <target>Entwicklung</target>
+            </trans-unit>
+            <trans-unit id="tx_wecookieconsent_domain_model_service.tab.cookies.label">
+                <target>Cookies</target>
+            </trans-unit>
+            <trans-unit id="tx_wecookieconsent_domain_model_service.tab.gtm.label">
+                <target>Google Tag Manager</target>
+            </trans-unit>
+            <!-- Palettes -->
+            <trans-unit id="tx_wecookieconsent_domain_model_service.palette.service_provider.label">
+                <target>Service <![CDATA[&]]> Skript Auswahl</target>
+            </trans-unit>
+            <trans-unit id="tx_wecookieconsent_domain_model_service.palette.gtm_trigger.label">
+                <target>Trigger</target>
+            </trans-unit>
+            <trans-unit id="tx_wecookieconsent_domain_model_service.palette.gtm_variable.label">
+                <target>Variable</target>
+            </trans-unit>
+
+            <!-- Fields -->
+            <trans-unit id="tx_wecookieconsent_domain_model_service.provider.label">
+                <target>Anbieter</target>
+            </trans-unit>
+            <trans-unit id="tx_wecookieconsent_domain_model_service.provider.description">
+                <target>[Hilfestellung]</target>
+            </trans-unit>
+            <trans-unit id="tx_wecookieconsent_domain_model_service.provider.div.other">
+                <target>Weitere</target>
+            </trans-unit>
+            <trans-unit id="tx_wecookieconsent_domain_model_service.provider.other">
+                <target>Weiterer Service</target>
+            </trans-unit>
+            <trans-unit id="tx_wecookieconsent_domain_model_service.name.label">
+                <target>Name</target>
+            </trans-unit>
+            <trans-unit id="tx_wecookieconsent_domain_model_service.name.description">
+                <target>Name</target>
+            </trans-unit>
+            <trans-unit id="tx_wecookieconsent_domain_model_service.title.label">
+                <target>Titel des Services oder Skripts</target>
+            </trans-unit>
+            <trans-unit id="tx_wecookieconsent_domain_model_service.title.description">
+                <target>[Hilfestellung]</target>
+            </trans-unit>
+            <trans-unit id="tx_wecookieconsent_domain_model_service.description.label">
+                <target>Beschreibung</target>
+            </trans-unit>
+            <trans-unit id="tx_wecookieconsent_domain_model_service.description.description">
+                <target>Erklärung zur Verwendung des Services oder Skripts</target>
+            </trans-unit>
+            <trans-unit id="tx_wecookieconsent_domain_model_service.purpose.label">
+                <target>Purpose</target>
+            </trans-unit>
+            <trans-unit id="tx_wecookieconsent_domain_model_service.purpose.description">
+                <target>[Hilfestellung]</target>
+            </trans-unit>
+            <trans-unit id="tx_wecookieconsent_domain_model_service.state.label">
+                <target>Service oder Skript Zustand ohne Anpassung</target>
+            </trans-unit>
+            <trans-unit id="tx_wecookieconsent_domain_model_service.state.description">
+                <target>Bei Klick auf "Alles akzeptieren" ist dies Skript automatisch akzeptiert.</target>
+            </trans-unit>
+            <trans-unit id="tx_wecookieconsent_domain_model_service.preselected.label">
+                <target>Service oder Skript ist vorausgewählt</target>
+            </trans-unit>
+            <trans-unit id="tx_wecookieconsent_domain_model_service.preselected.description">
+                <target>Bei Betreten der Website, ist dieses Skript vorausgewählt, jedoch noch nicht aktiv. Es kann vom Besucher angepasst werden. Unter Umständen bei geltendem DS-GVO oder EuGH nicht erlaubt.</target>
+            </trans-unit>
+            <trans-unit id="tx_wecookieconsent_domain_model_service.required.label">
+                <target>Service oder Skript wird benötigt</target>
+            </trans-unit>
+            <trans-unit id="tx_wecookieconsent_domain_model_service.required.description">
+                <target>Bei Betreten der Website, ist dieses Skript vorausgewählt und ist bereits geladen. Es kann vom Besucher nicht angepasst werden. Dies wird in der Regel für funktional benötigte Skripte verwendet oder wenn ein berechtigtes Interesse besteht.</target>
+            </trans-unit>
+            <trans-unit id="tx_wecookieconsent_domain_model_service.opt_out.label">
+                <target>Service oder Skript benötigt aktive Abmeldung</target>
+            </trans-unit>
+            <trans-unit id="tx_wecookieconsent_domain_model_service.opt_out.description">
+                <target>Bei Betreten der Website, ist dieses Skript vorausgewählt und ist bereits geladen. Es kann vom Besucher angepasst werden.</target>
+            </trans-unit>
+            <trans-unit id="tx_wecookieconsent_domain_model_service.only_once.label">
+                <target>Service oder Skript nur einmal laden</target>
+            </trans-unit>
+            <trans-unit id="tx_wecookieconsent_domain_model_service.only_once.description">
+                <target>Gewährleistet die einmalige Ausführung des Skriptes bei mehrfacher Anpassung.</target>
+            </trans-unit>
+            <trans-unit id="tx_wecookieconsent_domain_model_service.snippet.label">
+                <target>Snippet</target>
+            </trans-unit>
+            <trans-unit id="tx_wecookieconsent_domain_model_service.snippet.description">
+                <target>[Hilfestellung]</target>
+            </trans-unit>
+            <trans-unit id="tx_wecookieconsent_domain_model_service.callback.label">
+                <target>Callback</target>
+            </trans-unit>
+            <trans-unit id="tx_wecookieconsent_domain_model_service.callback.description">
+                <target>Funktion, die bei Änderung der Zustimmung aufgerufen wird. Nur für Entwickler relevant!</target>
+            </trans-unit>
+            <trans-unit id="tx_wecookieconsent_domain_model_service.domain.label">
+                <target>Domain</target>
+            </trans-unit>
+            <trans-unit id="tx_wecookieconsent_domain_model_service.domain.description">
+                <target>Bspw. https://consent.websedit.de/statistics/</target>
+            </trans-unit>
+            <trans-unit id="tx_wecookieconsent_domain_model_service.api_key.label">
+                <target>API Key</target>
+            </trans-unit>
+            <trans-unit id="tx_wecookieconsent_domain_model_service.api_key.description">
+                <target>Bspw. Google UA-Code, Facebook-ID, Matomo SiteId, etc.</target>
+            </trans-unit>
+            <trans-unit id="tx_wecookieconsent_domain_model_service.gtm_tag_title.label">
+                <target>Tag Titel</target>
+            </trans-unit>
+            <trans-unit id="tx_wecookieconsent_domain_model_service.gtm_tag_title.description">
+                <target>[Hilfestellung]</target>
+            </trans-unit>
+            <trans-unit id="tx_wecookieconsent_domain_model_service.gtm_trigger_title.label">
+                <target>Trigger Titel</target>
+            </trans-unit>
+            <trans-unit id="tx_wecookieconsent_domain_model_service.gtm_trigger_title.description">
+                <target>[Hilfestellung]</target>
+            </trans-unit>
+            <trans-unit id="tx_wecookieconsent_domain_model_service.gtm_trigger_name.label">
+                <target>Trigger Name</target>
+            </trans-unit>
+            <trans-unit id="tx_wecookieconsent_domain_model_service.gtm_trigger_name.description">
+                <target>[Hilfestellung]</target>
+            </trans-unit>
+            <trans-unit id="tx_wecookieconsent_domain_model_service.gtm_variable_title.label">
+                <target>Variable Titel</target>
+            </trans-unit>
+            <trans-unit id="tx_wecookieconsent_domain_model_service.gtm_variable_title.description">
+                <target>[Hilfestellung]</target>
+            </trans-unit>
+            <trans-unit id="tx_wecookieconsent_domain_model_service.gtm_variable_name.label">
+                <target>Variable Name</target>
+            </trans-unit>
+            <trans-unit id="tx_wecookieconsent_domain_model_service.gtm_variable_name.description">
+                <target>[Hilfestellung]</target>
+            </trans-unit>
+            <trans-unit id="tx_wecookieconsent_domain_model_service.cookies.label">
+                <target>Cookies</target>
+            </trans-unit>
+            <trans-unit id="tx_wecookieconsent_domain_model_service.cookies.description">
+                <target>Ausgabe auf der Datenschutzseite mit Plugin "Cookie Liste"</target>
+            </trans-unit>
+            <trans-unit id="tx_wecookieconsent_domain_model_service.cookies.button">
+                <target>Weiteres Cookie hinzufügen</target>
+            </trans-unit>
+            <trans-unit id="tx_wecookieconsent_domain_model_service.category.label">
+                <target>Kategorien</target>
+            </trans-unit>
+            <trans-unit id="tx_wecookieconsent_domain_model_service.category.description">
+                <target>[Hilfestellung]</target>
+            </trans-unit>
+
+            <trans-unit id="tx_wecookieconsent_domain_model_cookie">
+                <target>Cookie</target>
+            </trans-unit>
+            <trans-unit id="tx_wecookieconsent_domain_model_cookie.tab.advanced.label">
+                <target>Fortgeschrittene</target>
+            </trans-unit>
+            <trans-unit id="tx_wecookieconsent_domain_model_cookie.description">
+                <target>[Hilfestellung]</target>
+            </trans-unit>
+            <trans-unit id="tx_wecookieconsent_domain_model_cookie.title.label">
+                <target>Cookie Name</target>
+            </trans-unit>
+            <trans-unit id="tx_wecookieconsent_domain_model_cookie.title.description">
+                <target>[Hilfestellung]</target>
+            </trans-unit>
+            <trans-unit id="tx_wecookieconsent_domain_model_cookie.regex.label">
+                <target>Regex</target>
+            </trans-unit>
+            <trans-unit id="tx_wecookieconsent_domain_model_cookie.regex.description">
+                <target>[Hilfestellung]</target>
+            </trans-unit>
+            <trans-unit id="tx_wecookieconsent_domain_model_cookie.description.label">
+                <target>Cookie Zweck</target>
+            </trans-unit>
+            <trans-unit id="tx_wecookieconsent_domain_model_cookie.description.description">
+                <target>Beschreibung des Cookies</target>
+            </trans-unit>
+            <trans-unit id="tx_wecookieconsent_domain_model_cookie.max_age.label">
+                <target>Cookie Lebenszeit</target>
+            </trans-unit>
+            <trans-unit id="tx_wecookieconsent_domain_model_cookie.max_age.description">
+                <target>Bspw.: 365 Tage, Session-Cookie, etc.</target>
+            </trans-unit>
+
+
+            <trans-unit id="tx_we_cookie_consent_pi1.name">
+                <target>Cookie Liste</target>
+            </trans-unit>
+            <trans-unit id="tx_we_cookie_consent_pi1.description">
+                <target>Ausgabe der angegebenen Cookies in einer Tabelle</target>
+            </trans-unit>
+            <trans-unit id="tx_we_cookie_consent_pi1.flexform.switchableControllerActions.label">
+                <target>Ansicht</target>
+            </trans-unit>
+            <trans-unit id="tx_we_cookie_consent_pi1.flexform.switchableControllerActions.0">
+                <target>Cookie Liste</target>
+            </trans-unit>
+            <trans-unit id="tx_we_cookie_consent_pi1.flexform.services.label">
+                <target>Services <![CDATA[&]]> Skripts</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

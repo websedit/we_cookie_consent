@@ -1,0 +1,26 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+	<f:layout name="Default"/>
+	<f:section name="content">
+		<f:for each="{services}" as="service">
+			<f:if condition="{service.cookies}">
+				<span class="service__headline">{service.title}</span>
+				<f:format.html>{service.description}</f:format.html>
+
+				<table class="table table-striped table-hover table-sm">
+					<caption>Cookies</caption>
+					<thead>
+						<tr>
+							<th scope="col"><f:translate key="list.table.title" /></th>
+							<th scope="col"><f:translate key="list.table.description" /></th>
+							<th scope="col"><f:translate key="list.table.maxAge" /></th>
+						</tr>
+					</thead>
+					<tbody>
+					<f:render partial="Cookie/Table" arguments="{cookies:service.cookies}"/>
+					</tbody>
+				</table>
+			</f:if>
+		</f:for>
+		<a href="#" class="btn btn-primary btn-lg js-showConsentModal"><f:translate key="list.button.openConsent" /></a>
+	</f:section>
+</html>

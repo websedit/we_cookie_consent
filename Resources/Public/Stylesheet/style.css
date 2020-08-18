@@ -1,0 +1,126 @@
+.klaro.we_cookie_consent .cookie-notice h1,.klaro.we_cookie_consent .cookie-notice h2,.klaro.we_cookie_consent .cookie-notice li,.klaro.we_cookie_consent .cookie-notice p,.klaro.we_cookie_consent .cookie-notice a,.klaro.we_cookie_consent .cookie-modal a,.klaro.we_cookie_consent .cookie-notice strong,.klaro.we_cookie_consent .cookie-notice ul,.klaro.we_cookie_consent .cookie-modal h1,.klaro.we_cookie_consent .cookie-modal h2,.klaro.we_cookie_consent .cookie-modal li,.klaro.we_cookie_consent .cookie-modal p,.klaro.we_cookie_consent .cookie-modal strong,.klaro.we_cookie_consent .cookie-modal ul {color: #161f57;}
+
+.klaro.we_cookie_consent button:focus {outline-style: none;outline-width: 0;-webkit-focus-ring-color: rgba(0,0,0,0);}
+.klaro.we_cookie_consent .cookie-notice,.klaro.we_cookie_consent .cookie-modal {z-index: 9999;box-shadow:1px 2px 5px rgba(0,0,0,0.2);}
+.klaro.we_cookie_consent .cookie-notice {background: #fff;border-radius: 0;bottom: 0;max-width: 100%;max-height:100vh;overflow-y:auto;padding:20px 30px;right: 0;}
+.klaro.we_cookie_consent .cookie-notice .cn-body {background:#fff;bottom: 0;left: 0;margin: auto;max-width: 100%;overflow: hidden;padding:0;position: relative;right: 0;top: auto;width: 100%;}
+.klaro.we_cookie_consent .cookie-notice .cn-body p {margin: .5em 0;}
+.klaro.we_cookie_consent .cookie-notice .cn-body p.cn-ok {position: relative;display:block;padding-top: .5em;width: 100%;}
+.klaro.we_cookie_consent .cookie-notice .cm-btn.cm-btn-sm {padding: .5em}
+
+.klaro.we_cookie_consent .cookie-notice a, .klaro.we_cookie_consent .cookie-modal a {font-weight: 700;text-decoration: underline;}
+.klaro.we_cookie_consent .cookie-modal a:hover, .klaro.we_cookie_consent .cookie-notice a:hover{opacity: 0.7;}
+.klaro.we_cookie_consent .cookie-notice .slider,.klaro.we_cookie_consent .cookie-modal .slider {box-shadow: none;}
+.klaro.we_cookie_consent .cookie-modal .cm-app-label .slider.round, .klaro.we_cookie_consent .cookie-notice .cm-app-label .slider.round {height: 10px;}
+.klaro.we_cookie_consent .cookie-modal .cm-app-label .slider, .klaro.we_cookie_consent .cookie-notice .cm-app-label .slider,
+.klaro.we_cookie_consent .cookie-modal .cm-app-input:checked + .cm-app-label .slider, 
+.klaro.we_cookie_consent .cookie-modal .cm-app-input.required:checked + .cm-app-label .slider, 
+.klaro.we_cookie_consent .cookie-notice .cm-app-input:checked + .cm-app-label .slider {background-color: #efefef;top: 8px;width: 42px;}
+.klaro.we_cookie_consent .cookie-modal .cm-app-label .slider::before, .klaro.we_cookie_consent .cookie-notice .cm-app-label .slider::before {background-color: rgb(177,214,232);bottom: -7px;height: 24px;left: -1px;width: 24px;}
+.klaro.we_cookie_consent .cookie-modal .cm-app-input:checked + .cm-app-label .slider::before, .klaro.we_cookie_consent .cookie-notice .cm-app-input:checked + .cm-app-label .slider::before {background-color: rgb(99,173,209);}
+.klaro.we_cookie_consent .cookie-modal .cm-app-input + .cm-app-label .disabled .slider::before,
+.klaro.we_cookie_consent .cookie-notice .cm-app-input + .cm-app-label .disabled .slider::before,
+.klaro.we_cookie_consent .cookie-modal .cm-app-input:checked + .cm-app-label .disabled .slider::before,
+.klaro.we_cookie_consent .cookie-notice .cm-app-input:checked + .cm-app-label .disabled .slider::before,
+.klaro.we_cookie_consent .cookie-modal .cm-app-input.required + .cm-app-label .slider::before,
+.klaro.we_cookie_consent .cookie-notice .cm-app-input.required + .cm-app-label .slider::before,
+.klaro.we_cookie_consent .cookie-modal .cm-app-input.required:checked + .cm-app-label .slider::before,
+.klaro.we_cookie_consent .cookie-notice .cm-app-input.required:checked + .cm-app-label .slider::before {background-color: #C9C9C9;}
+
+.klaro.we_cookie_consent .cookie-notice .cm-btn,.klaro.we_cookie_consent .cookie-modal .cm-btn {background: #EFEFEF;border-radius: 4px;box-shadow: none;color: #161f57;margin: .5em 0;opacity:1;padding: 1em 1.5em;text-align: center;width: 100%;}
+.klaro.we_cookie_consent .cookie-notice .cm-btn:hover,.klaro.we_cookie_consent .cookie-modal .cm-btn:hover {opacity:.7;}
+.klaro.we_cookie_consent .cookie-notice .cm-btn.cm-btn-success {background: #f7a925;color:#fff;} 
+.klaro.we_cookie_consent .cookie-modal .cm-btn.cm-btn-info.cm-btn-accept {background: #f7a925;color:#fff;margin:0; order:2;text-decoration:none;}
+.klaro.we_cookie_consent .cookie-notice .cm-btn.cm-btn-success:hover,
+.klaro.we_cookie_consent .cookie-modal .cm-btn.cm-btn-info.cm-btn-accept:hover {opacity: .7;}
+.klaro.we_cookie_consent .cookie-notice .cm-btn.cm-btn-info,.klaro.we_cookie_consent .cookie-notice .cm-link.cm-learn-more {color:#f7a925;display:block;font-weight:normal;background:transparent;order: 3; padding:1em 0; text-align:center; }
+.klaro.we_cookie_consent .cookie-modal .cm-btn-decline {display:none;}
+
+.klaro.we_cookie_consent .cookie-modal .cm-btn {margin-right: .5em;}
+.klaro.we_cookie_consent .cookie-modal .cm-modal {background: #fff;border-radius: 0;bottom: 110px;height: auto;max-height: calc(100vh - 110px);max-width:100%;overflow-x: hidden;padding: 0;position: absolute;top: auto;transform: inherit;transition: unset;width: 100%;}
+.klaro.we_cookie_consent .cookie-modal .cm-bg {background: rgba(0,0,0,.7);}
+.klaro.we_cookie_consent .cookie-modal .cm-modal .hide {background-color:#fff;color: #161f57;cursor: pointer; display: block !important;font-size: 2em;height: 60px;line-height: 20px;overflow: hidden;padding: 20px;top: 0;right: 0;}
+.klaro.we_cookie_consent .cookie-modal .cm-modal .hide svg {display:none;}
+.klaro.we_cookie_consent .cookie-modal .cm-modal .hide:after {content: '\00d7';}
+.klaro.we_cookie_consent .cookie-modal .cm-btn.cm-btn-info.cm-btn-accept {display:inline-block;height:50px;width:auto;}
+.klaro.we_cookie_consent .cookie-modal .cm-modal .cm-footer .cm-powered-by {float: right;height: 40px;line-height: 40px;margin: 0;padding: 0 20px;position: relative;right: unset;text-align: center;width: auto;}
+.klaro.we_cookie_consent .cookie-modal .cm-toggle-all .cm-app-description{display: none;}
+.klaro.we_cookie_consent .cookie-modal .cm-btn.cm-btn-sm {padding: .5em 1.5em;font-size: 1em;}
+.klaro.we_cookie_consent .cookie-modal .cm-modal .cm-header {border-bottom: none;margin: 20px;padding: 0;}
+.klaro.we_cookie_consent .cookie-modal .cm-modal .cm-header h1 {font-size: 1.5em;}
+.klaro.we_cookie_consent .cookie-modal .cm-modal .cm-body {padding:0;margin:20px;}
+.klaro.we_cookie_consent .cookie-modal .cm-modal .cm-body ul.cm-apps li.cm-app.cm-toggle-all {border:none;padding-left:0;}
+.klaro.we_cookie_consent .cookie-modal .cm-modal .cm-body ul.cm-apps li.cm-app.cm-toggle-all .cm-app-input {display:none;}
+.klaro.we_cookie_consent .cookie-modal .cm-modal .cm-body ul.cm-apps li.cm-app.cm-toggle-all .cm-app-label {display:none;}
+.klaro.we_cookie_consent .cookie-modal .cm-modal .cm-toggle-all .cm-app-description {display: block;}
+.klaro.we_cookie_consent .cookie-modal .cm-modal .cm-footer {background: #efefef;border: none;bottom: 0;height: 110px;left: 0;margin: 0;padding:20px 0;position: fixed;width: 100%;}
+.klaro.we_cookie_consent .cookie-modal .cm-modal .cm-footer > * {display: inline-block;margin: 0 20px; width:auto;}
+.klaro.we_cookie_consent.notice--top .cookie-notice {bottom:auto;top:0;}
+.klaro.we_cookie_consent.notice--center .cookie-modal .cm-modal,.klaro.we_cookie_consent.notice--center-floated .cookie-modal .cm-modal {}
+
+.tx-we-cookie-consent .service__headline {font-weight:bold;}
+.tx-we-cookie-consent h3,.tx-we-cookie-consent .h3 {color: #575757;font-size: 1.55rem;font-weight: 400;}
+.tx-we-cookie-consent caption{display: none;}
+.tx-we-cookie-consent .table {margin-bottom: 2rem;margin-top: 2rem;}
+.tx-we-cookie-consent .table thead th {border-bottom: 1px solid #ABABAB;font-size: 0.95rem;padding-bottom: 0;text-transform: uppercase;}
+.tx-we-cookie-consent .table th:last-of-type,.tx-we-cookie-consent .table td:last-of-type {text-align: right;}
+.tx-we-cookie-consent .table-striped tbody tr:nth-of-type(2n+1) {background-color: #efefef;}
+.tx-we-cookie-consent .table-hover tbody tr:hover {background-color: rgba(0,0,0,.05);}
+.tx-we-cookie-consent a.btn-primary {color: #161f57;background-color: #63ADD1;border-color: #63ADD1;}
+.tx-we-cookie-consent .btn-primary:focus,.tx-we-cookie-consent .btn-primary.focus,.tx-we-cookie-consent .btn-primary:not(:disabled):not(.disabled):active:focus, .tx-we-cookie-consent .btn-primary:not(:disabled):not(.disabled).active:focus,.tx-we-cookie-consent .show > .btn-primary.dropdown-toggle:focus {box-shadow: none;}
+.tx-we-cookie-consent .btn-primary:hover,.tx-we-cookie-consent .btn-primary:not(:disabled):not(.disabled):active,.tx-we-cookie-consent .btn-primary:not(:disabled):not(.disabled).active, .tx-we-cookie-consent .show > .btn-primary.dropdown-toggle {opacity:.7}
+.tx-we-cookie-consent .btn-lg,.btn-group-lg > .btn,.tx-we-cookie-consent .btn-group-lg > .cc-btn {border-radius: 4px;}
+.tx-we-cookie-consent .table th,.tx-we-cookie-consent .table td {border-top: none;padding: .5rem;}
+.tx-we-cookie-consent .table th p,.tx-we-cookie-consent .table td p {margin:0;}
+.tx-we-cookie-consent .table-hover tbody tr:hover {background-color:transparent;}
+.tx-we-cookie-consent .table-striped tbody tr:nth-of-type(2n+1) {}
+.tx-we-cookie-consent a.btn-primary {	border-radius: 0;	text-decoration: none;	display: inline-block;}
+
+@media screen and (min-width:576px) {
+	.klaro.we_cookie_consent .cookie-modal .cm-modal {max-height: calc(100vh - 90px);bottom: 90px;}
+	.klaro.we_cookie_consent .cookie-modal .cm-modal .cm-footer {height:90px;}
+	.klaro.we_cookie_consent .cookie-modal .cm-modal .cm-footer > * {display: inline-block;width:auto;}
+	.klaro.we_cookie_consent .cookie-modal .cm-modal .cm-footer .cm-powered-by{height:50px;line-height:50px}
+	.klaro.we_cookie_consent.notice--center .cookie-modal .cm-modal .cm-footer .cm-powered-by,
+	.klaro.we_cookie_consent.notice--center-floated .cookie-modal .cm-modal .cm-footer .cm-powered-by {height: 40px;line-height: 40px;}	
+}
+
+@media screen and (min-width:768px) {
+	.klaro.we_cookie_consent .cookie-notice .cn-body p.cn-ok {display: flex;flex-wrap:wrap;margin: 0;width: 100%;}
+	.klaro.we_cookie_consent .cookie-notice .cn-body p.cn-ok .cm-btn {background:transparent; margin: .5em 0; padding:1em 0; text-align:left; width:25%;}
+	.klaro.we_cookie_consent .cookie-notice .cn-body p.cn-ok .cm-btn.cm-btn-success {background: #63ADD1;text-align:center; width:50%;}
+	.klaro.we_cookie_consent .cookie-notice .cn-body p.cn-ok .cm-btn.cm-btn-success:hover {background: #00BDE3;}
+	.klaro.we_cookie_consent .cookie-notice .cn-body p.cn-ok .cm-btn.cm-btn-info {text-align:right;}
+	.klaro.we_cookie_consent .cookie-notice .cn-body p.cn-ok .cm-link.cm-learn-more {padding:1.5em 0; margin: 0 0 0 auto;}
+
+	.klaro.we_cookie_consent .cookie-modal .cm-modal {max-height: 100vh;bottom: 0;}
+	.klaro.we_cookie_consent .cookie-modal .cm-modal .hide {right: 10px;top: 5px;}
+	.klaro.we_cookie_consent .cookie-modal .cm-modal .cm-header h1 {font-size: 2em;}
+	.klaro.we_cookie_consent .cookie-modal .cm-modal .cm-footer {margin: 0;padding: 20px 0;position: relative;width: 100%;}
+	.klaro.we_cookie_consent.notice--center .cookie-modal .cm-modal,.klaro.we_cookie_consent.notice--center-floated .cookie-modal .cm-modal {max-height: calc(100vh - 90px);bottom: 90px;}
+	.klaro.we_cookie_consent.notice--center .cookie-modal .cm-modal .cm-footer,.klaro.we_cookie_consent.notice--center-floated .cookie-modal .cm-modal .cm-footer {margin: 0 -20px 0 -20px;width: calc(100% + 40px);	}
+	.klaro.we_cookie_consent.notice--center,.klaro.we_cookie_consent.notice--center-floated {height: 0;overflow: visible;position: fixed;top: 0;width: 100%;z-index: 10000;	}
+	.klaro.we_cookie_consent.notice--center .cookie-notice,.klaro.we_cookie_consent.notice--center-floated .cookie-notice {align-items: center;background: transparent;bottom: unset;box-shadow: none;display: flex;height: 0;margin: 0;max-height: unset;max-width: unset;overflow: visible;padding: unset;position: relative;right: unset;top: 50vh;width: 100%;}
+	.klaro.we_cookie_consent.notice--center .cookie-notice .cn-body,.klaro.we_cookie_consent.notice--center-floated .cookie-notice .cn-body {box-shadow: 1px 2px 5px rgba(0,0,0,0.2);display: block;margin: 0 auto;max-height: 100vh;max-width: 480px;overflow-y: auto;padding: 20px 30px;width:calc(100% - 40px);right: unset;}
+	.klaro.we_cookie_consent.notice--center .cookie-notice .cn-body p.cn-ok .cm-btn {background:#EFEFEF; display:inline-block;text-align:center;width:100%;}
+	.klaro.we_cookie_consent.notice--center-floated .cookie-notice .cn-body p.cn-ok .cm-btn {background:#EFEFEF; display:inline-block;text-align:center;width:50%;}
+	.klaro.we_cookie_consent.notice--center .cookie-notice .cn-body p.cn-ok .cm-btn.cm-btn-success,.klaro.we_cookie_consent.notice--center-floated .cookie-notice .cn-body p.cn-ok .cm-btn.cm-btn-success {background:#63ADD1; width:100%;}
+	.klaro.we_cookie_consent.notice--center .cookie-notice .cn-body p.cn-ok .cm-btn.cm-btn-success:hover,.klaro.we_cookie_consent.notice--center-floated .cookie-notice .cn-body p.cn-ok .cm-btn.cm-btn-success:hover {background:#00BDE3;}
+	.klaro.we_cookie_consent.notice--center .cookie-notice .cn-body p.cn-ok .cm-btn.cm-btn-info,
+	.klaro.we_cookie_consent.notice--center .cookie-notice .cn-body p.cn-ok .cm-link.cm-learn-more {background:transparent;}
+	.klaro.we_cookie_consent.notice--center-floated .cookie-notice .cn-body p.cn-ok .cm-btn.cm-btn-info,
+	.klaro.we_cookie_consent.notice--center-floated .cookie-notice .cn-body p.cn-ok .cm-link.cm-learn-more	{background:transparent; /*text-align:right; */}
+	.klaro.we_cookie_consent.notice--center .cookie-notice .cn-body p.cn-ok,.klaro.we_cookie_consent.notice--center-floated .cookie-notice .cn-body p.cn-ok {display: block;margin: 0;width: 100%;}
+	.klaro.we_cookie_consent.notice--center .cookie-modal,.klaro.we_cookie_consent.notice--center-floated .cookie-modal {align-items: center;background: unset;bottom: unset;display: flex;flex-direction: column;justify-content: center;max-height: unset;max-width: unset;padding: unset;right: unset;overflow: visible;top: 0;}
+	.klaro.we_cookie_consent.notice--center .cookie-modal .cm-modal,.klaro.we_cookie_consent.notice--center-floated .cookie-modal .cm-modal{bottom: auto;box-shadow: 1px 2px 5px rgba(0,0,0,0.2);height: auto;max-height: 100vh;max-width: 640px;overflow-y: auto;padding: 20px;position: relative;top:auto;width: calc(100% - 40px);}
+	.klaro.we_cookie_consent .cookie-modal .cm-modal .cm-header {margin: 20px 30px;}
+	.klaro.we_cookie_consent .cookie-modal .cm-modal .cm-body {margin: 20px 30px;}
+	.klaro.we_cookie_consent.notice--center .cookie-modal .cm-modal .cm-footer,.klaro.we_cookie_consent.notice--center-floated .cookie-modal .cm-modal .cm-footer 	{margin: 0 -20px -20px -20px;}
+}
+
+@media screen and  (min-width:1024px) {
+	.klaro.we_cookie_consent .cookie-modal .cm-modal .cm-footer {max-width: 100%;padding: 20px 10px;}
+	.klaro.we_cookie_consent.notice--center .cookie-modal .cm-modal .cm-footer,.klaro.we_cookie_consent.notice--center-floated .cookie-modal .cm-modal .cm-footer {height:auto;margin: 0 -20px -20px;max-width: calc(100% + 40px);padding-bottom:0;width: calc(100% + 40px);position: relative;}
+	.klaro.we_cookie_consent.notice--center .cookie-modal .cm-modal .cm-footer > *,.klaro.we_cookie_consent.notice--center-floated .cookie-modal .cm-modal .cm-footer > * {display: block;margin: 0 auto;width: auto;}
+	.klaro.we_cookie_consent.notice--center .cookie-modal .cm-modal .cm-footer .cm-powered-by,.klaro.we_cookie_consent.notice--center-floated .cookie-modal .cm-modal .cm-footer .cm-powered-by {float:unset;}
+}

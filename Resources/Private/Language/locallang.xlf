@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2019-10-29T00:00:00Z" product-name="we_cookie_consent">
+		<header/>
+		<body>
+			<trans-unit id="klaro.consentModal.title">
+				<source>Privacy settings</source>
+			</trans-unit>
+			<trans-unit id="klaro.consentModal.description">
+				<source>You can specify your privacy settings below.</source>
+			</trans-unit>
+			<trans-unit id="klaro.consentModal.privacyPolicy.name">
+				<source>Privacy policy</source>
+			</trans-unit>
+			<trans-unit id="klaro.consentModal.privacyPolicy.text">
+				<source>Detailed information and how you can withdraw your consent at any time can be found in our {privacyPolicy}.</source>
+			</trans-unit>
+			<trans-unit id="klaro.consentNotice.description">
+				<source>We use cookies to personalize content and ads, to provide social media features, and to analyze traffic to our website. We also share information about your use of our website with our social media, advertising and analytics partners. Our partners may combine this information with other information that you have provided to them or that they have collected as part of your use of the services.</source>
+			</trans-unit>
+			<trans-unit id="klaro.consentNotice.changeDescription">
+				<source>Since your last visit there have been changes to the privacy settings. Please update your settings.</source>
+			</trans-unit>
+			<trans-unit id="klaro.consentNotice.learnMore">
+				<source>Edit settings</source>
+			</trans-unit>
+			<trans-unit id="klaro.app.disableAll.title">
+				<source>Accept all</source>
+			</trans-unit>
+			<trans-unit id="klaro.app.disableAll.description">
+				<source>You have the right to revoke your consent at any time, either individually or in its entirety. If consents to data processing are revoked, the data that were legally collected up to the revocation can still be processed by the provider.</source>
+			</trans-unit>
+			<trans-unit id="klaro.app.optOut.title">
+				<source>(Opt-Out)1</source>
+			</trans-unit>
+			<trans-unit id="klaro.app.optOut.description">
+				<source>This application is loaded by default (but you can disable it)</source>
+			</trans-unit>
+			<trans-unit id="klaro.app.required.title">
+				<source>(always necessary)</source>
+			</trans-unit>
+			<trans-unit id="klaro.app.required.description">
+				<source>This application is always required</source>
+			</trans-unit>
+			<trans-unit id="klaro.app.purpose">
+				<source>Purpose</source>
+			</trans-unit>
+			<trans-unit id="klaro.app.purposes">
+				<source>Purposes</source>
+			</trans-unit>
+			<trans-unit id="klaro.purposes.analytics">
+				<source>Visitor statistics</source>
+			</trans-unit>
+			<trans-unit id="klaro.purposes.security">
+				<source>Security</source>
+			</trans-unit>
+			<trans-unit id="klaro.purposes.livechat">
+				<source>Live chat</source>
+			</trans-unit>
+			<trans-unit id="klaro.purposes.advertisting">
+				<source>Display of advertising</source>
+			</trans-unit>
+			<trans-unit id="klaro.purposes.unknown">
+				<source>Not assigned</source>
+			</trans-unit>
+			<trans-unit id="klaro.ok">
+				<source>Accept</source>
+			</trans-unit>
+			<trans-unit id="klaro.save">
+				<source>Save settings</source>
+			</trans-unit>
+			<trans-unit id="klaro.decline">
+				<source>Reject</source>
+			</trans-unit>
+			<trans-unit id="klaro.close">
+				<source>Close</source>
+			</trans-unit>
+			<trans-unit id="klaro.poweredBy">
+				<source>Provided by websedit</source>
+			</trans-unit>
+
+			<trans-unit id="list.button.openConsent">
+				<source>Customize privacy settings</source>
+			</trans-unit>
+			<trans-unit id="list.table.title">
+				<source>Name</source>
+			</trans-unit>
+			<trans-unit id="list.table.description">
+				<source>Description</source>
+			</trans-unit>
+			<trans-unit id="list.table.maxAge">
+				<source>Validity</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

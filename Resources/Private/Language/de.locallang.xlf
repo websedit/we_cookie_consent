@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2019-10-29T00:00:00Z" product-name="we_cookie_consent">
+		<header/>
+		<body>
+			<trans-unit id="klaro.consentModal.title">
+				<target>Datenschutzeinstellungen</target>
+			</trans-unit>
+			<trans-unit id="klaro.consentModal.description">
+				<target>Sie können nachfolgend Ihre Datenschutzeinstellungen festlegen.</target>
+			</trans-unit>
+			<trans-unit id="klaro.consentModal.privacyPolicy.name">
+				<target>Datenschutzerklärung</target>
+			</trans-unit>
+			<trans-unit id="klaro.consentModal.privacyPolicy.text">
+				<target>Detaillierte Informationen und wie Sie Ihre Einwilligung jederzeit widerrufen können, finden Sie in unserer {privacyPolicy}.</target>
+			</trans-unit>
+			<trans-unit id="klaro.consentNotice.description">
+				<target>Wir verwenden Cookies, um Inhalte und Anzeigen zu personalisieren, Funktionen für soziale Medien anbieten zu können und die Zugriffe auf unserer Website zu analysieren. Außerdem geben wir Informationen zu Ihrer Verwendung unserer Website an unsere Partner für soziale Medien, Werbung und Analysen weiter. Unsere Partner führen diese Informationen möglicherweise mit weiteren Daten zusammen, die Sie ihnen bereitgestellt haben oder die sie im Rahmen Ihrer Nutzung der Dienste gesammelt haben. [privacyPage]</target>
+			</trans-unit>
+			<trans-unit id="klaro.consentNotice.changeDescription">
+				<target>Seit Ihrem letzten Besuch gab es Änderungen an den Datenschutzeinstellungen. Bitte aktualisieren Sie Ihre Einstellungen.</target>
+			</trans-unit>
+			<trans-unit id="klaro.consentNotice.learnMore">
+				<target>Einstellungen bearbeiten</target>
+			</trans-unit>
+			<trans-unit id="klaro.app.disableAll.title">
+				<target>Alle akzeptieren</target>
+			</trans-unit>
+			<trans-unit id="klaro.app.disableAll.description">
+				<target>Sie haben jederzeit das Recht Ihre Einwilligungen einzeln oder in Gänze zu widerrufen. Werden Einwilligungen zur Datenverarbeitung widerrufen, sind die bis zum Widerruf rechtmäßig erhobenen Daten vom Anbieter weiterhin verarbeitbar.</target>
+			</trans-unit>
+			<trans-unit id="klaro.app.optOut.title">
+				<target>(Opt-Out)1</target>
+			</trans-unit>
+			<trans-unit id="klaro.app.optOut.description">
+				<target>Diese Anwendung wird standardmäßig geladen (aber Sie können sie deaktivieren)</target>
+			</trans-unit>
+			<trans-unit id="klaro.app.required.title">
+				<target>(immer notwendig)</target>
+			</trans-unit>
+			<trans-unit id="klaro.app.required.description">
+				<target>Diese Anwendung wird immer benötigt</target>
+			</trans-unit>
+			<trans-unit id="klaro.app.purpose">
+				<target>Zweck</target>
+			</trans-unit>
+			<trans-unit id="klaro.app.purposes">
+				<target>Zwecke</target>
+			</trans-unit>
+			<trans-unit id="klaro.purposes.analytics">
+				<target>Besucher-Statistiken</target>
+			</trans-unit>
+			<trans-unit id="klaro.purposes.security">
+				<target>Sicherheit</target>
+			</trans-unit>
+			<trans-unit id="klaro.purposes.livechat">
+				<target>Live-Chat</target>
+			</trans-unit>
+			<trans-unit id="klaro.purposes.advertisting">
+				<target>Anzeigen von Werbung</target>
+			</trans-unit>
+			<trans-unit id="klaro.purposes.unknown">
+				<target>Nicht zugeordnet</target>
+			</trans-unit>
+			<trans-unit id="klaro.ok">
+				<target>Akzeptieren</target>
+			</trans-unit>
+			<trans-unit id="klaro.save">
+				<target>Einstellungen speichern</target>
+			</trans-unit>
+			<trans-unit id="klaro.decline">
+				<target>Ablehnen</target>
+			</trans-unit>
+			<trans-unit id="klaro.close">
+				<target>Schließen</target>
+			</trans-unit>
+			<trans-unit id="klaro.poweredBy">
+				<target>Bereitgestellt von websedit</target>
+			</trans-unit>
+
+			<trans-unit id="list.button.openConsent">
+				<target>Datenschutzeinstellungen anpassen</target>
+			</trans-unit>
+			<trans-unit id="list.table.title">
+				<target>Name</target>
+			</trans-unit>
+			<trans-unit id="list.table.description">
+				<target>Beschreibung</target>
+			</trans-unit>
+			<trans-unit id="list.table.maxAge">
+				<target>Gültigkeit</target>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

@@ -1,0 +1,15 @@
+{namespace we=Websedit\WeCookieConsent\ViewHelpers}
+<f:section name="Header">
+    <f:if condition="{service.name}">
+        <f:render partial="Service/{service.name}" section="Header" arguments="{service:service}" optional="1"/>
+    </f:if>
+    <f:if condition="{service.snippet}">
+        <we:scriptTag snippet="{service.snippet}" name="{service.provider}-{service.uid}"/>
+    </f:if>
+</f:section>
+
+<f:section name="Footer">
+    <f:if condition="{service.name}">    
+        <f:render partial="Service/{service.name}" section="Footer" arguments="{service:service}" optional="1"/>
+    </f:if>
+</f:section>
