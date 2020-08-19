@@ -33,7 +33,6 @@
         }
     },
     "replace": {
-        "websedit/we-cookie-consent": "self.version",
         "typo3-ter/we-cookie-consent": "self.version"
     },
     "extra": {
