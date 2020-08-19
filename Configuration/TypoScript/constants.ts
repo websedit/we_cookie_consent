@@ -37,7 +37,7 @@ plugin.tx_wecookieconsent_pi1 {
             poweredBy = https://consent.websedit.de
             # cat=plugin.tx_wecookieconsent_pi1/03_WEOTHER/108; type=string; label=Language (obsolete):Language selection is based on the page languages. Will be removed in future versions. For language customizations see chapter 6.2 in documentation.
             lang = en
-            # cat=plugin.tx_wecookieconsent_pi1/02_WETEMPLATE/100; type=options[Bottom=klaro we_cookie_consent,Top=klaro we_cookie_consent notice--top,Center 1=klaro we_cookie_consent notice--center,Center 2= klaro we_cookie_consent notice--center-floated]; label=Style Prefix:For Custom CSS Styling
+            # cat=plugin.tx_wecookieconsent_pi1/02_WETEMPLATE/100; type=options[Bottom=klaro we_cookie_consent,Top=klaro we_cookie_consent notice--top,Center 1=klaro we_cookie_consent notice--center,Center 2=klaro we_cookie_consent notice--center-floated]; label=Style Prefix:For Custom CSS Styling
             stylePrefix = klaro we_cookie_consent
         }
     }
