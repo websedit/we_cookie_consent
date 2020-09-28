@@ -16,7 +16,7 @@
 				<source>Detailed information and how you can withdraw your consent at any time can be found in our {privacyPolicy}.</source>
 			</trans-unit>
 			<trans-unit id="klaro.consentNotice.description">
-				<source>We use cookies to personalize content and ads, to provide social media features, and to analyze traffic to our website. We also share information about your use of our website with our social media, advertising and analytics partners. Our partners may combine this information with other information that you have provided to them or that they have collected as part of your use of the services.</source>
+				<source>We use cookies to personalize content and ads, to provide social media features, and to analyze traffic to our website. We also share information about your use of our website with our social media, advertising and analytics partners. Our partners may combine this information with other information that you have provided to them or that they have collected as part of your use of the services. Further information in the [privacyPage].</source>
 			</trans-unit>
 			<trans-unit id="klaro.consentNotice.changeDescription">
 				<source>Since your last visit there have been changes to the privacy settings. Please update your settings.</source>
