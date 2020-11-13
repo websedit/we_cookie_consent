@@ -1,0 +1,19 @@
+{
+  "name": "websedit-we-cookie-consent",
+  "version": "1.3.3",
+  "description": "Cookie Consent for TYPO3 – GDPR Optin",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/websedit/we_cookie_consent.git"
+  },
+  "license": "MIT",
+  "author": "Daniel Haupt",
+  "browserslist": "defaults",
+  "devDependencies": {
+    "gulp": "^4.0.2",
+    "klaro": "0.5.32"
+  },
+  "scripts": {
+    "build": "./node_modules/.bin/gulp build"
+  }
+}
