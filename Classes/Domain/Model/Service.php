@@ -98,6 +98,13 @@ class Service extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $onlyOnce = false;
 
     /**
+     * Einholen der Benutzer Zustimmung auch wenn bereits über Consent bestätigt.
+     *
+     * @var bool
+     */
+    protected $contextualConsentOnly = false;
+
+    /**
      * JavaScript Snippet für unbekannte Dienste
      *
      * @var string
@@ -467,6 +474,37 @@ class Service extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function isOnlyOnce()
     {
         return $this->onlyOnce;
+    }
+
+    /**
+     * Returns the contextualConsentOnly
+     *
+     * @return bool contextualConsentOnly
+     */
+    public function getContextualConsentOnly()
+    {
+        return $this->contextualConsentOnly;
+    }
+
+    /**
+     * Sets the contextualConsentOnly
+     *
+     * @param bool $contextualConsentOnly
+     * @return void
+     */
+    public function setContextualConsentOnly($contextualConsentOnly)
+    {
+        $this->contextualConsentOnly = $contextualConsentOnly;
+    }
+
+    /**
+     * Returns the boolean state of contextualConsentOnly
+     *
+     * @return bool contextualConsentOnly
+     */
+    public function isContextualConsentOnly()
+    {
+        return $this->contextualConsentOnly;
     }
 
     /**

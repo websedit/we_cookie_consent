@@ -12,6 +12,7 @@ CREATE TABLE tx_wecookieconsent_domain_model_service (
 	required smallint(5) unsigned DEFAULT '0' NOT NULL,
 	opt_out smallint(5) unsigned DEFAULT '0' NOT NULL,
 	only_once smallint(5) unsigned DEFAULT '0' NOT NULL,
+	#contextual_consent_only smallint(5) unsigned DEFAULT '0' NOT NULL,
 	snippet text,
 	callback varchar(255) DEFAULT '' NOT NULL,
     domain varchar(255) DEFAULT '' NOT NULL,

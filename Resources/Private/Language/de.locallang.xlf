@@ -16,7 +16,7 @@
 				<target>Detaillierte Informationen und wie Sie Ihre Einwilligung jederzeit widerrufen können, finden Sie in unserer {privacyPolicy}.</target>
 			</trans-unit>
 			<trans-unit id="klaro.consentNotice.description">
-				<target>Wir verwenden Cookies, um Inhalte und Anzeigen zu personalisieren, Funktionen für soziale Medien anbieten zu können und die Zugriffe auf unserer Website zu analysieren. Außerdem geben wir Informationen zu Ihrer Verwendung unserer Website an unsere Partner für soziale Medien, Werbung und Analysen weiter. Unsere Partner führen diese Informationen möglicherweise mit weiteren Daten zusammen, die Sie ihnen bereitgestellt haben oder die sie im Rahmen Ihrer Nutzung der Dienste gesammelt haben. Weitere Informationen finden Sie in der [privacyPage].</target>
+				<target><![CDATA[Wir verwenden Cookies, um Inhalte und Anzeigen zu personalisieren, Funktionen für soziale Medien anbieten zu können und die Zugriffe auf unserer Website zu analysieren. Außerdem geben wir Informationen zu Ihrer Verwendung unserer Website an unsere Partner für soziale Medien, Werbung und Analysen weiter. Unsere Partner führen diese Informationen möglicherweise mit weiteren Daten zusammen, die Sie ihnen bereitgestellt haben oder die sie im Rahmen Ihrer Nutzung der Dienste gesammelt haben. Weitere Informationen finden Sie in der <a href="%s">Datenschutzerklärung</a>.]]></target>
 			</trans-unit>
 			<trans-unit id="klaro.consentNotice.changeDescription">
 				<target>Seit Ihrem letzten Besuch gab es Änderungen an den Datenschutzeinstellungen. Bitte aktualisieren Sie Ihre Einstellungen.</target>
@@ -24,28 +24,28 @@
 			<trans-unit id="klaro.consentNotice.learnMore">
 				<target>Einstellungen bearbeiten</target>
 			</trans-unit>
-			<trans-unit id="klaro.app.disableAll.title">
+			<trans-unit id="klaro.service.disableAll.title">
 				<target>Alle akzeptieren</target>
 			</trans-unit>
-			<trans-unit id="klaro.app.disableAll.description">
+			<trans-unit id="klaro.service.disableAll.description">
 				<target>Sie haben jederzeit das Recht Ihre Einwilligungen einzeln oder in Gänze zu widerrufen. Werden Einwilligungen zur Datenverarbeitung widerrufen, sind die bis zum Widerruf rechtmäßig erhobenen Daten vom Anbieter weiterhin verarbeitbar.</target>
 			</trans-unit>
-			<trans-unit id="klaro.app.optOut.title">
-				<target>(Opt-Out)1</target>
+			<trans-unit id="klaro.service.optOut.title">
+				<target>(Opt-Out)</target>
 			</trans-unit>
-			<trans-unit id="klaro.app.optOut.description">
+			<trans-unit id="klaro.service.optOut.description">
 				<target>Diese Anwendung wird standardmäßig geladen (aber Sie können sie deaktivieren)</target>
 			</trans-unit>
-			<trans-unit id="klaro.app.required.title">
+			<trans-unit id="klaro.service.required.title">
 				<target>(immer notwendig)</target>
 			</trans-unit>
-			<trans-unit id="klaro.app.required.description">
+			<trans-unit id="klaro.service.required.description">
 				<target>Diese Anwendung wird immer benötigt</target>
 			</trans-unit>
-			<trans-unit id="klaro.app.purpose">
+			<trans-unit id="klaro.service.purpose">
 				<target>Zweck</target>
 			</trans-unit>
-			<trans-unit id="klaro.app.purposes">
+			<trans-unit id="klaro.service.purposes">
 				<target>Zwecke</target>
 			</trans-unit>
 			<trans-unit id="klaro.purposes.analytics">
@@ -69,6 +69,12 @@
 			<trans-unit id="klaro.save">
 				<target>Einstellungen speichern</target>
 			</trans-unit>
+			<trans-unit id="klaro.acceptAll">
+				<target>Alle akzeptieren</target>
+			</trans-unit>
+			<trans-unit id="klaro.acceptSelected">
+				<target>Einstellungen speichern</target>
+			</trans-unit>
 			<trans-unit id="klaro.decline">
 				<target>Ablehnen</target>
 			</trans-unit>
@@ -77,6 +83,16 @@
 			</trans-unit>
 			<trans-unit id="klaro.poweredBy">
 				<target>Bereitgestellt von websedit</target>
+			</trans-unit>
+
+			<trans-unit id="klaro.contextualConsent.acceptOnce">
+				<target>Ja</target>
+			</trans-unit>
+			<trans-unit id="klaro.contextualConsent.acceptAlways">
+				<target>Immer</target>
+			</trans-unit>
+			<trans-unit id="klaro.contextualConsent.description">
+				<target>Möchten Sie von {title} bereitgestellte externe Inhalte laden?</target>
 			</trans-unit>
 
 			<trans-unit id="list.button.openConsent">

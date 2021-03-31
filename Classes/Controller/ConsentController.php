@@ -20,6 +20,8 @@ use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
  */
 class ConsentController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 {
+    const EXTKEY = 'we_cookie_consent';
+
     /**
      * serviceRepository
      *
@@ -47,7 +49,7 @@ class ConsentController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
     {
         $services = $this->serviceRepository->findAll();
 
-        //These two lines are only required for TYPO3 7 backwards compatibility. in TYPO3 >=8 renderAssetsForRequest is used
+        // These two lines are only required for TYPO3 7 backwards compatibility. in TYPO3 >=8 renderAssetsForRequest is used
         $klaroConfig = $this->klaroConfigBuild($services);
         $typo3Version = \TYPO3\CMS\Core\Utility\VersionNumberUtility::convertVersionNumberToInteger(TYPO3_version);
 
@@ -70,7 +72,7 @@ class ConsentController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
 
         $services = [];
         foreach ($servicesUids as $uid) {
-            //No custom findByUids function to keep the sorting
+            // No custom findByUids function to keep the sorting
             $services[] = $this->serviceRepository->findByUid($uid);
         }
 
@@ -87,8 +89,8 @@ class ConsentController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
         if (!$this->view instanceof \TYPO3Fluid\Fluid\View\TemplateView) {
             return;
         }
-		
-		$services = $this->serviceRepository->findAll();
+
+        $services = $this->serviceRepository->findAll();
         $klaroConfig = $this->klaroConfigBuild($services);
 
         $pageRenderer = $this->objectManager->get(\TYPO3\CMS\Core\Page\PageRenderer::class);
@@ -121,17 +123,17 @@ class ConsentController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
         if (is_numeric($this->settings['klaro']['privacyPolicy'])) {
             $privacyPage = $this->uriBuilder
                 ->reset()
-                ->setTargetPageUid((int) $this->settings['klaro']['privacyPolicy'])
+                ->setTargetPageUid((int)$this->settings['klaro']['privacyPolicy'])
                 ->setCreateAbsoluteUri(true)
                 ->build();
         } else {
             $privacyPage = $this->settings['klaro']['privacyPolicy'];
         }
-        
+
         if (is_numeric($this->settings['klaro']['poweredBy'])) {
             $poweredByPage = $this->uriBuilder
                 ->reset()
-                ->setTargetPageUid((int) $this->settings['klaro']['poweredBy'])
+                ->setTargetPageUid((int)$this->settings['klaro']['poweredBy'])
                 ->setCreateAbsoluteUri(true)
                 ->build();
         } else {
@@ -139,67 +141,162 @@ class ConsentController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
         }
 
         $klaroConfig = [
-            'elementID' => $this->settings['klaro']['elementID'],
-            'storageMethod' => $this->settings['klaro']['storageMethod'],
-            'cookieName' => $this->settings['klaro']['cookieName'],
+            'acceptAll' => $this->settings['klaro']['acceptAll'] === '1',
+            'additionalClass' => $this->settings['klaro']['additionalClass'],
+            'cookieDomain' => trim($this->settings['klaro']['cookieDomain']),
             'cookieExpiresAfterDays' => $this->settings['klaro']['cookieExpiresAfterDays'],
-            'privacyPolicy' => $privacyPage,
             'default' => $this->settings['klaro']['default'] === '1',
-            'mustConsent' => $this->settings['klaro']['mustConsent'] === '1',
+            'elementID' => $this->settings['klaro']['elementID'],
+            'groupByPurpose' => $this->settings['klaro']['groupByPurpose'] === '1',
             'hideDeclineAll' => $this->settings['klaro']['hideDeclineAll'] === '1',
             'hideLearnMore' => $this->settings['klaro']['hideLearnMore'] === '1',
-            'lang' => $this->settings['klaro']['lang'],
+            'htmlTexts' => true,
+            'lang' => 'en', //Don't change this, else locallang translation didn't work
+            'mustConsent' => $this->settings['klaro']['mustConsent'] === '1',
             'poweredBy' => $poweredByPage,
+            'privacyPolicy' => $privacyPage,
+            'storageMethod' => $this->settings['klaro']['storageMethod'],
+            'storageName' => $this->settings['klaro']['storageName'],
+            'stylePrefix' => $this->settings['klaro']['stylePrefix'],
+            'testing' => $this->settings['klaro']['testing'] === '1',
             'translations' => [
                 'en' => [
                     'consentModal' => [
-                        'title' => LocalizationUtility::translate('klaro.consentModal.title', 'we_cookie_consent'),
-                        'description' => LocalizationUtility::translate('klaro.consentModal.description', 'we_cookie_consent'),
-                        'privacyPolicy' => [
-                            'text' => LocalizationUtility::translate('klaro.consentModal.privacyPolicy.text', 'we_cookie_consent'),
-                            'name' => LocalizationUtility::translate('klaro.consentModal.privacyPolicy.name', 'we_cookie_consent')
-                        ]
+                        'title' => LocalizationUtility::translate('klaro.consentModal.title', self::EXTKEY),
+                        'description' => LocalizationUtility::translate('klaro.consentModal.description', self::EXTKEY)
+                    ],
+                    'privacyPolicy' => [
+                        'text' => LocalizationUtility::translate('klaro.consentModal.privacyPolicy.text', self::EXTKEY),
+                        'name' => LocalizationUtility::translate('klaro.consentModal.privacyPolicy.name', self::EXTKEY)
                     ],
                     'consentNotice' => [
-                        'description' => LocalizationUtility::translate('klaro.consentNotice.description', 'we_cookie_consent'),
-                        'changeDescription' => LocalizationUtility::translate('klaro.consentNotice.changeDescription', 'we_cookie_consent'),
-                        'learnMore' => LocalizationUtility::translate('klaro.consentNotice.learnMore', 'we_cookie_consent')
+                        'description' => LocalizationUtility::translate('klaro.consentNotice.description', self::EXTKEY, [$privacyPage]),
+                        'changeDescription' => LocalizationUtility::translate('klaro.consentNotice.changeDescription', self::EXTKEY),
+                        'learnMore' => LocalizationUtility::translate('klaro.consentNotice.learnMore', self::EXTKEY)
                     ],
-                    'app' => [
+                    'contextualConsent' => [
+                        'acceptOnce' => LocalizationUtility::translate('klaro.contextualConsent.acceptOnce', self::EXTKEY),
+                        'acceptAlways' => LocalizationUtility::translate('klaro.contextualConsent.acceptAlways', self::EXTKEY),
+                        'description' => LocalizationUtility::translate('klaro.contextualConsent.description', self::EXTKEY),
+                    ],
+                    'service' => [
                         'disableAll' => [
-                            'title' => LocalizationUtility::translate('klaro.app.disableAll.title', 'we_cookie_consent'),
-                            'description' => LocalizationUtility::translate('klaro.app.disableAll.description', 'we_cookie_consent')
+                            'title' => LocalizationUtility::translate('klaro.service.disableAll.title', self::EXTKEY),
+                            'description' => LocalizationUtility::translate('klaro.service.disableAll.description', self::EXTKEY)
                         ],
                         'optOut' => [
-                            'title' => LocalizationUtility::translate('klaro.app.optOut.title', 'we_cookie_consent'),
-                            'description' => LocalizationUtility::translate('klaro.app.optOut.description', 'we_cookie_consent')
+                            'title' => LocalizationUtility::translate('klaro.service.optOut.title', self::EXTKEY),
+                            'description' => LocalizationUtility::translate('klaro.service.optOut.description', self::EXTKEY)
                         ],
                         'required' => [
-                            'title' => LocalizationUtility::translate('klaro.app.required.title', 'we_cookie_consent'),
-                            'description' => LocalizationUtility::translate('klaro.app.required.description', 'we_cookie_consent')
+                            'title' => LocalizationUtility::translate('klaro.service.required.title', self::EXTKEY),
+                            'description' => LocalizationUtility::translate('klaro.service.required.description', self::EXTKEY)
                         ],
-                        'purpose' => LocalizationUtility::translate('klaro.app.purpose', 'we_cookie_consent'),
-                        'purposes' => LocalizationUtility::translate('klaro.app.purposes', 'we_cookie_consent')
+                        'purpose' => LocalizationUtility::translate('klaro.service.purpose', self::EXTKEY),
+                        'purposes' => LocalizationUtility::translate('klaro.service.purposes', self::EXTKEY)
                     ],
                     'purposes' => [
-                        'unknown' => LocalizationUtility::translate('klaro.purposes.unknown', 'we_cookie_consent')
+                        'unknown' => LocalizationUtility::translate('klaro.purposes.unknown', self::EXTKEY)
                     ],
-                    'ok' => LocalizationUtility::translate('klaro.ok', 'we_cookie_consent'),
-                    'save' => LocalizationUtility::translate('klaro.save', 'we_cookie_consent'),
-                    'acceptSelected' => LocalizationUtility::translate('klaro.save', 'we_cookie_consent'),
-                    'decline' => LocalizationUtility::translate('klaro.decline', 'we_cookie_consent'),
-                    'close' => LocalizationUtility::translate('klaro.close', 'we_cookie_consent'),
-                    'poweredBy' => LocalizationUtility::translate('klaro.poweredBy', 'we_cookie_consent')
+                    'ok' => LocalizationUtility::translate('klaro.ok', self::EXTKEY),
+                    'save' => LocalizationUtility::translate('klaro.save', self::EXTKEY),
+                    'acceptAll' => LocalizationUtility::translate('klaro.acceptAll', self::EXTKEY),
+                    'acceptSelected' => LocalizationUtility::translate('klaro.acceptSelected', self::EXTKEY),
+                    'decline' => LocalizationUtility::translate('klaro.decline', self::EXTKEY),
+                    'close' => LocalizationUtility::translate('klaro.close', self::EXTKEY),
+                    'poweredBy' => LocalizationUtility::translate('klaro.poweredBy', self::EXTKEY) ?: ' '
                 ]
             ],
-            'apps' => []
+            'services' => []
+            /* Prepared for later use
+            'embedded' => $this->settings['klaro']['embedded'] === '1',,
+            'hideToggleAll' => $this->settings['klaro']['hideToggleAll'] === '1',
+            'noAutoLoad' => $this->settings['klaro']['noAutoLoad'] === '1',,
+            'noticeAsModal' => $this->settings['klaro']['noticeAsModal'] === '1',
+            'styling' => ['theme' => ['light', 'bottom', 'wide']],
+            */
         ];
 
         foreach ($services as $service) {
             foreach ($service->getCategories() as $category) {
-                $klaroConfig['translations']['en']['purposes'][strtolower($category->getTitle())] = $category->getTitle();
+                $klaroConfig['translations']['en']['purposes'][strtolower($category->getTitle())]['title'] = $category->getTitle();
+                $klaroConfig['translations']['en']['purposes'][strtolower($category->getTitle())]['description'] = $category->getDescription();
+
+                // Sorting the sys_categories
+                $klaroConfig['purposeOrder'][$category->getUid()] = strtolower($category->getTitle());
             }
         }
+
+        // Sort the sys_categories alphabetically and add a last category 'unknown' for uncategorized services.
+        // Only relevant if option 'groupByPurpose' is set to true.
+        $klaroConfig['purposeOrder'][] = 'unknown';
+        sort($klaroConfig['purposeOrder']);
+
+        // Backwards compatibility
+        $klaroConfig = $this->backwardsCompatibility($klaroConfig);
+
+        return $klaroConfig;
+    }
+
+    /**
+     * Do some backwards compatiblity tasks to avoid as much breaking changes as possible.
+     *
+     * @todo Maybe we should make this optional via extension configuration or TypoScript to save some performance.
+     *
+     * @param array $klaroConfig
+     * @return array
+     */
+    private function backwardsCompatibility($klaroConfig)
+    {
+        // Fallback if cookieName TypoScript-Constant is still in use (this option was renamed to storageName)
+        $klaroConfig['storageName'] = $this->settings['cookieName'] ?: $klaroConfig['storageName'];
+
+        /*
+         * Reduces JavaScript (Workaround-) Code  which was neccessery for this Bug: https://github.com/KIProtect/klaro/issues/116.
+         * We switched that label to sprintf function, but to stay compatible with old locallangs wich where alredy
+         * overwritten via TypoScript we leave these here for now. Will be removed it in some later versions.
+         */
+        if (strpos($klaroConfig['translations']['en']['consentNotice']['description'], '[privacyPage]') !== false) {
+            $privacyPageATag = "<a href=" . $klaroConfig['privacyPolicy'] . " title=" . $klaroConfig['translations']['en']['privacyPolicy']['name'] . ">" .
+                $klaroConfig['translations']['en']['privacyPolicy']['name'] .
+                "</a>";
+
+            $klaroConfig['translations']['en']['consentNotice']['description'] =
+                str_replace('[privacyPage]', $privacyPageATag, $klaroConfig['translations']['en']['consentNotice']['description']);
+        }
+
+        // Fallback for old Labels used in version < 2.0.0 (klaro changed the object key from 'app' to 'service')
+        $klaroConfig['translations']['en']['service']['disableAll']['title'] =
+            LocalizationUtility::translate('klaro.app.disableAll.title', self::EXTKEY) ?:
+                $klaroConfig['translations']['en']['service']['disableAll']['title'];
+
+        $klaroConfig['translations']['en']['service']['disableAll']['description'] =
+            LocalizationUtility::translate('klaro.app.disableAll.title', self::EXTKEY) ?:
+                $klaroConfig['translations']['en']['service']['disableAll']['description'];
+
+        $klaroConfig['translations']['en']['service']['optOut']['title'] =
+            LocalizationUtility::translate('klaro.app.optOut.title', self::EXTKEY) ?:
+                $klaroConfig['translations']['en']['service']['optOut']['title'];
+
+        $klaroConfig['translations']['en']['service']['optOut']['description'] =
+            LocalizationUtility::translate('klaro.app.optOut.title', self::EXTKEY) ?:
+                $klaroConfig['translations']['en']['service']['optOut']['description'];
+
+        $klaroConfig['translations']['en']['service']['required']['title'] =
+            LocalizationUtility::translate('klaro.app.required.title', self::EXTKEY) ?:
+                $klaroConfig['translations']['en']['service']['required']['title'];
+
+        $klaroConfig['translations']['en']['service']['required']['description'] =
+            LocalizationUtility::translate('klaro.app.required.title', self::EXTKEY) ?:
+                $klaroConfig['translations']['en']['service']['required']['description'];
+
+        $klaroConfig['translations']['en']['service']['purpose'] =
+            LocalizationUtility::translate('klaro.app.purpose', self::EXTKEY) ?:
+                $klaroConfig['translations']['en']['service']['purpose'];
+
+        $klaroConfig['translations']['en']['service']['purposes'] =
+            LocalizationUtility::translate('klaro.app.purposes', self::EXTKEY) ?:
+                $klaroConfig['translations']['en']['service']['purposes'];
 
         return $klaroConfig;
     }

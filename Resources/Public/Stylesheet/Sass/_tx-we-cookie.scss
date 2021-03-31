@@ -1,0 +1,74 @@
+.tx-we-cookie-consent {
+
+	.service__headline {
+		font-weight:bold;
+	}
+	h3,
+	.h3 {
+		color: #575757;
+		font-size: 1.55rem;
+		font-weight: 400;
+	}
+	caption{
+		display: none;
+	}
+	.table {
+		margin-bottom: 2rem;
+		margin-top: 2rem;
+	}
+	.table thead th {
+		border-bottom: 1px solid #ABABAB;
+		font-size: 0.95rem;
+		padding-bottom: 0;
+		text-transform: uppercase;
+	}
+	.table th:last-of-type,
+	.table td:last-of-type {
+		text-align: right;
+	}
+	.table-striped tbody tr:nth-of-type(2n+1) {
+		background-color: #efefef;
+	}
+	.table-hover tbody tr:hover {
+		background-color: rgba(0,0,0,.05);
+	}
+	a.btn-primary {
+		color: $color-default;
+		background-color: #63ADD1;
+		border-color: #63ADD1;
+	}
+	.btn-primary:focus,
+	.btn-primary.focus,
+	.btn-primary:not(:disabled):not(.disabled):active:focus, 
+	.btn-primary:not(:disabled):not(.disabled).active:focus,
+	.show > .btn-primary.dropdown-toggle:focus {
+		box-shadow: none;
+	}
+	.btn-primary:hover,
+	.btn-primary:not(:disabled):not(.disabled):active,
+	.btn-primary:not(:disabled):not(.disabled).active, 
+	.show > .btn-primary.dropdown-toggle {
+		opacity:.7
+	}
+	.btn-lg,.btn-group-lg > .btn,
+	.btn-group-lg > .cc-btn {
+		border-radius: 4px;
+	}
+	.table th,	.table td {
+		border-top: none;
+		padding: .5rem;
+	}
+	.table th p,	.table td p {
+		margin:0;
+	}
+	.table-hover tbody tr:hover {
+		background-color:transparent;
+	}
+	a.btn-primary {
+		border-radius: 0;
+		text-decoration: none;
+		display: inline-block;
+	}
+
+}
+

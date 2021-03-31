@@ -2,18 +2,20 @@
 <f:if condition="{service.cookies}">
     <we:variable name="cookies"><f:for each="{service.cookies}" as="cookie" iteration="iterator">['{cookie.title}', '/', '']<f:if condition="{iterator.isLast} != 1">, </f:if></f:for></we:variable>
 </f:if>
+<we:variable name="purposes">'unknown'</we:variable>
 <f:if condition="{service.categories}">
     <we:variable name="purposes"><f:for each="{service.categories}" as="category" iteration="iterator">'{category.title -> f:format.case(mode: 'lower')}'<f:if condition="{iterator.isLast} != 1">, </f:if></f:for></we:variable>
 </f:if>
 <script type="text/javascript">
-    klaroConfig.apps.push({
+    klaroConfig.services.push({
         name: '<f:format.raw>{service.provider}-{service.uid}</f:format.raw>',
-        title: '<f:format.raw>{service.title}</f:format.raw>',
-        description: '<f:format.stripTags>{service.description}</f:format.stripTags>',
+        title: '<f:format.raw><we:format.escape>{service.title}</we:format.escape></f:format.raw>',
+        description: '<f:spaceless><f:format.stripTags><we:format.escape>{service.description}</we:format.escape></f:format.stripTags></f:spaceless>',
         default: {f:if(condition: '{service.required}', then: 'true', else: '{f:if(condition: \'{service.preselected}\', then: \'true\', else: \'false\')}')},
         defaultIfNoConsent: {f:if(condition: '{service.state}', then: 'true', else: 'false')},
         required: {f:if(condition: '{service.required}', then: 'true', else: 'false')},
         optOut: {f:if(condition: '{service.optOut}', then: 'true', else: 'false')},
+        translations: {'en':{'title':'<f:format.raw><we:format.escape>{service.title}</we:format.escape></f:format.raw>'}}, <f:comment>// Required for Bug https://github.com/kiprotect/klaro/issues/330</f:comment>
         purposes: [<f:format.raw>{purposes}</f:format.raw>],
         cookies: [<f:format.raw>{cookies}</f:format.raw>],
         callback: ConsentApp.consentChanged,
@@ -21,4 +23,8 @@
         gtm:{trigger:'<f:format.raw>{service.gtmTriggerName}</f:format.raw>',variable:'<f:format.raw>{service.gtmVariableName}</f:format.raw>'}
     });
 </script>
+<f:comment>
+    //Prepared for later use.
+    //contextualConsentOnly: {f:if(condition: '{service.contextualConsentOnly}', then: 'true', else: 'false')},
+</f:comment>
 </html>

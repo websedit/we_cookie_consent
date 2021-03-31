@@ -101,6 +101,12 @@
             <trans-unit id="tx_wecookieconsent_domain_model_service.only_once.description">
                 <source>Ensures that the script is executed once for multiple adjustments.</source>
             </trans-unit>
+            <trans-unit id="tx_wecookieconsent_domain_model_service.contextual_consent_only.label">
+                <source>Contextual Consent</source>
+            </trans-unit>
+            <trans-unit id="tx_wecookieconsent_domain_model_service.contextual_consent_only.description">
+                <source>Enables you to ask for the users consent before showing e.g. embedded Youtube videos or other content.</source>
+            </trans-unit>
             <trans-unit id="tx_wecookieconsent_domain_model_service.snippet.label">
                 <source>Snippet</source>
             </trans-unit>

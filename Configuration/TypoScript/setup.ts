@@ -35,18 +35,31 @@ plugin.tx_wecookieconsent_pi1 {
 
     settings {
         klaro {
-            elementID = {$plugin.tx_wecookieconsent_pi1.settings.klaro.elementID}
-            storageMethod = {$plugin.tx_wecookieconsent_pi1.settings.klaro.storageMethod}
-            cookieName = {$plugin.tx_wecookieconsent_pi1.settings.klaro.cookieName}
+            acceptAll = {$plugin.tx_wecookieconsent_pi1.settings.klaro.acceptAll}
+            additionalClass = {$plugin.tx_wecookieconsent_pi1.settings.klaro.additionalClass}
+            cookieDomain = {$plugin.tx_wecookieconsent_pi1.settings.klaro.cookieDomain}
             cookieExpiresAfterDays = {$plugin.tx_wecookieconsent_pi1.settings.klaro.cookieExpiresAfterDays}
-            privacyPolicy = {$plugin.tx_wecookieconsent_pi1.settings.klaro.privacyPolicy}
             default = {$plugin.tx_wecookieconsent_pi1.settings.klaro.default}
-            mustConsent = {$plugin.tx_wecookieconsent_pi1.settings.klaro.mustConsent}
+            elementID = {$plugin.tx_wecookieconsent_pi1.settings.klaro.elementID}
+            groupByPurpose = {$plugin.tx_wecookieconsent_pi1.settings.klaro.groupByPurpose}
             hideDeclineAll = {$plugin.tx_wecookieconsent_pi1.settings.klaro.hideDeclineAll}
             hideLearnMore = {$plugin.tx_wecookieconsent_pi1.settings.klaro.hideLearnMore}
-            poweredBy = {$plugin.tx_wecookieconsent_pi1.settings.klaro.poweredBy}
             lang = {$plugin.tx_wecookieconsent_pi1.settings.klaro.lang}
+            mustConsent = {$plugin.tx_wecookieconsent_pi1.settings.klaro.mustConsent}
+            noticeAsModal = {$plugin.tx_wecookieconsent_pi1.settings.klaro.noticeAsModal}
+            poweredBy = {$plugin.tx_wecookieconsent_pi1.settings.klaro.poweredBy}
+            privacyPolicy = {$plugin.tx_wecookieconsent_pi1.settings.klaro.privacyPolicy}
+            storageMethod = {$plugin.tx_wecookieconsent_pi1.settings.klaro.storageMethod}
+            storageName = {$plugin.tx_wecookieconsent_pi1.settings.klaro.storageName}
             stylePrefix = {$plugin.tx_wecookieconsent_pi1.settings.klaro.stylePrefix}
+            testing = {$plugin.tx_wecookieconsent_pi1.settings.klaro.testing}
+
+            /* Prepared for later use
+            embedded = {$plugin.tx_wecookieconsent_pi1.settings.klaro.embedded}
+            hideToggleAll = {$plugin.tx_wecookieconsent_pi1.settings.klaro.hideToggleAll}
+            noAutoLoad = {$plugin.tx_wecookieconsent_pi1.settings.klaro.noAutoLoad}
+            mustConsent = {$plugin.tx_wecookieconsent_pi1.settings.klaro.mustConsent}
+            */
         }
     }
 }
@@ -94,13 +107,13 @@ page {
 #Disable mustConsent feature on the privacy page, else the privacy policy can't be read.
 //[page["uid"] == {$plugin.tx_wecookieconsent_pi1.settings.klaro.privacyPolicy}] //TYPO3 9 Condition Syntax
 [page|uid = {$plugin.tx_wecookieconsent_pi1.settings.klaro.privacyPolicy}]
-	plugin.tx_wecookieconsent_pi1 {
-		settings {
-			klaro {
-				mustConsent = 0
-			}
-		}
-	}
+plugin.tx_wecookieconsent_pi1 {
+    settings {
+        klaro {
+            mustConsent = 0
+        }
+    }
+}
 [GLOBAL]
 
 #Override locallang.xlf Labels

@@ -1,0 +1,50 @@
+@charset "UTF-8";
+@import 'base';
+
+.klaro {
+	font-family: inherit;
+	font-size: $base-font-size;
+}
+.klaro.we_cookie_consent {
+//	box-shadow:1px 2px 5px rgba(0,0,0,0.2);
+	button:focus {
+		outline-style: none;
+		outline-width: 0;
+	}
+	&.notice--center,
+	&.notice--center-floated {
+		height: 0;
+		overflow: visible;
+		position: fixed;
+		top: 0;
+		width: 100%;
+		z-index: 10000;
+	}
+}
+
+
+@import 'cookie-notice';
+@import 'cookie-modal';
+
+
+.klaro.we_cookie_consent .cookie-notice,
+.klaro.we_cookie_consent .cookie-modal {
+	h1,
+	h2,
+	li, 
+	p,
+	a, 
+	strong, 
+	ul {
+		color: $color-default;
+		font-size: 1em;
+	}
+	a {
+		font-weight: 700;
+		text-decoration: underline;
+	}
+}
+
+@import 'context-notice';
+@import 'tx-we-cookie';
+

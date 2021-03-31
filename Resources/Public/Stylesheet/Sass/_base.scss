@@ -1,0 +1,46 @@
+$base-font-size:14px;
+
+$color-default: #161f57;
+$color-black: #000;
+$color-white: #FFF;
+
+$color-grey:#EFEFEF;
+$color-slider:#EFEFEF;
+$color-slider-half-active:#DADADA;
+$color-slider-active:#C9C9C9;
+$color-slider-knop:#B1D6E8; //rgb(177,214,232);
+$color-slider-knop-half-active: #63ADD1; //rgb(99,173,209);
+$color-slider-knop-active: #008000; // #63ADD1; //rgb(99,173,209);
+
+$cm-btn-color: $color-default;
+$cm-btn-color-bg: $color-grey;
+$cm-btn-color-border: transparent;
+$cm-btn-border: 1px solid $cm-btn-color-border;
+
+$cm-btn-color-success: $color-white;
+$cm-btn-color-bg-success: #00AFCB; //#F7A925;
+$cm-btn-color-bg-success-var: #00AFCB;  //#F7A92580;
+
+$border-top-purpose: 1px solid rgba(0,0,0,.1);
+
+$color-cm-link: #00AFCB; //#F7A925;
+
+
+
+/*
+
+To do:
+
+
+- Alle success-Buttons blau (d.h. bei video BEIDE gelb!)
+
+- Regler im ZUstimmen-Zustand GRÜN
+
+- Ablehnen-Button hellgrau ohne Rahmen!
+
+- Hintergrund bei video WEISS
+
+- Anordnung der Buttons bei center-floated wie bisher!  D.h. Center 2 bleibt bestehen!!
+
+
+*/

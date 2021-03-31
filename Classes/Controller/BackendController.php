@@ -74,8 +74,14 @@ class BackendController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
      */
     public function jsonDownloadAction($blocks)
     {
-        $this->response->setHeader('Content-type', 'application/json');
-        $this->response->setHeader('Content-Disposition', 'attachment; filename=import-this-to-gtm.json');
+        if($this->response){
+            $this->response->setHeader('Content-type', 'application/json');
+            $this->response->setHeader('Content-Disposition', 'attachment; filename=import-this-to-gtm.json');
+        } else {
+            //$this->response is empty in TYPO3 11.1. Maybe a change? Can't find further infos about it at the moment.
+            header('Content-type: application/json');
+            header('Content-Disposition: attachment; filename=import-this-to-gtm.json');
+        }
 
         $services = $this->serviceRepository->findByProvider('google-tagmanager-service');
         $this->view->assignMultiple([

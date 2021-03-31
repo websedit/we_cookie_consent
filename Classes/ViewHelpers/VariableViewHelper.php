@@ -3,7 +3,7 @@
 namespace Websedit\WeCookieConsent\ViewHelpers;
 
 /**
- * This is a backport of the TYPO3 9 Varaible Viewhelper for TYPO3 7 compatibility. Can be removed is support is dropped
+ * This is a backport of the TYPO3 9 Variable Viewhelper for TYPO3 7 compatibility. Can be removed if support is dropped
  */
 class VariableViewHelper extends AbstractViewHelper
 {

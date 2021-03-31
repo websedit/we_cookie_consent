@@ -16,7 +16,7 @@
 				<source>Detailed information and how you can withdraw your consent at any time can be found in our {privacyPolicy}.</source>
 			</trans-unit>
 			<trans-unit id="klaro.consentNotice.description">
-				<source>We use cookies to personalize content and ads, to provide social media features, and to analyze traffic to our website. We also share information about your use of our website with our social media, advertising and analytics partners. Our partners may combine this information with other information that you have provided to them or that they have collected as part of your use of the services. Further information in the [privacyPage].</source>
+				<source><![CDATA[We use cookies to personalize content and ads, to provide social media features, and to analyze traffic to our website. We also share information about your use of our website with our social media, advertising and analytics partners. Our partners may combine this information with other information that you have provided to them or that they have collected as part of your use of the services. Further information in the <a href="%s">Privacy policy</a>.]]></source>
 			</trans-unit>
 			<trans-unit id="klaro.consentNotice.changeDescription">
 				<source>Since your last visit there have been changes to the privacy settings. Please update your settings.</source>
@@ -24,28 +24,28 @@
 			<trans-unit id="klaro.consentNotice.learnMore">
 				<source>Edit settings</source>
 			</trans-unit>
-			<trans-unit id="klaro.app.disableAll.title">
+			<trans-unit id="klaro.service.disableAll.title">
 				<source>Accept all</source>
 			</trans-unit>
-			<trans-unit id="klaro.app.disableAll.description">
+			<trans-unit id="klaro.service.disableAll.description">
 				<source>You have the right to revoke your consent at any time, either individually or in its entirety. If consents to data processing are revoked, the data that were legally collected up to the revocation can still be processed by the provider.</source>
 			</trans-unit>
-			<trans-unit id="klaro.app.optOut.title">
-				<source>(Opt-Out)1</source>
+			<trans-unit id="klaro.service.optOut.title">
+				<source>(Opt-Out)</source>
 			</trans-unit>
-			<trans-unit id="klaro.app.optOut.description">
+			<trans-unit id="klaro.service.optOut.description">
 				<source>This application is loaded by default (but you can disable it)</source>
 			</trans-unit>
-			<trans-unit id="klaro.app.required.title">
+			<trans-unit id="klaro.service.required.title">
 				<source>(always necessary)</source>
 			</trans-unit>
-			<trans-unit id="klaro.app.required.description">
+			<trans-unit id="klaro.service.required.description">
 				<source>This application is always required</source>
 			</trans-unit>
-			<trans-unit id="klaro.app.purpose">
+			<trans-unit id="klaro.service.purpose">
 				<source>Purpose</source>
 			</trans-unit>
-			<trans-unit id="klaro.app.purposes">
+			<trans-unit id="klaro.service.purposes">
 				<source>Purposes</source>
 			</trans-unit>
 			<trans-unit id="klaro.purposes.analytics">
@@ -69,6 +69,12 @@
 			<trans-unit id="klaro.save">
 				<source>Save settings</source>
 			</trans-unit>
+			<trans-unit id="klaro.acceptAll">
+				<source>Accept all</source>
+			</trans-unit>
+			<trans-unit id="klaro.acceptSelected">
+				<source>Accept selected</source>
+			</trans-unit>
 			<trans-unit id="klaro.decline">
 				<source>Reject</source>
 			</trans-unit>
@@ -77,6 +83,16 @@
 			</trans-unit>
 			<trans-unit id="klaro.poweredBy">
 				<source>Provided by websedit</source>
+			</trans-unit>
+
+			<trans-unit id="klaro.contextualConsent.acceptOnce">
+				<source>Yes</source>
+			</trans-unit>
+			<trans-unit id="klaro.contextualConsent.acceptAlways">
+				<source>Always</source>
+			</trans-unit>
+			<trans-unit id="klaro.contextualConsent.description">
+				<source>Do you want to load external content supplied by {title}?</source>
 			</trans-unit>
 
 			<trans-unit id="list.button.openConsent">

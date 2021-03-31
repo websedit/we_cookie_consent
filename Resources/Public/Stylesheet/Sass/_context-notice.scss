@@ -1,0 +1,36 @@
+.klaro.cm-as-context-notice{
+	padding:1em;
+	.context-notice {
+		border: 0;
+		border-radius: 0;
+		background: $color-white;
+		p {
+			color:$color-default;
+		}
+		.cm-buttons {
+			display: flex;
+			flex-wrap: wrap;
+			margin-top: 2em;
+			width: 100%;
+			.cm-btn {
+				border-radius: 0;
+				display: block;
+				-webkit-box-flex: 0;
+				flex: 0 0 50%;
+				max-width: calc(50% - 20px);
+				margin: 0 auto;
+				padding: 1em 1.5em;
+				&.cm-btn-success {
+					background-color: $cm-btn-color-bg-success;
+					&-var {
+						background-color: $cm-btn-color-bg-success-var;
+							
+					}
+				}
+				&:hover {
+					opacity:.7;
+				}
+			}
+		}
+	}
+}

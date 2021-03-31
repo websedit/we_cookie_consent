@@ -23,12 +23,12 @@ return [
         'iconfile' => 'EXT:we_cookie_consent/Resources/Public/Icons/tx_wecookieconsent_domain_model_service.svg'
     ],
     'interface' => [
-        'showRecordFieldList' => 'provider, name, title, description, purpose, state, required, preselected, opt_out, only_once, snippet, callback, domain, api_key, gtm_tag_title, gtm_trigger_title, gtm_trigger_name, gtm_variable_title, gtm_variable_name, cookies, sys_language_uid, l10n_parent, l10n_diffsource, hidden',
+        'showRecordFieldList' => 'provider, name, title, description, purpose, state, required, preselected, opt_out, only_once, contextual_consent_only, snippet, callback, domain, api_key, gtm_tag_title, gtm_trigger_title, gtm_trigger_name, gtm_variable_title, gtm_variable_name, cookies, sys_language_uid, l10n_parent, l10n_diffsource, hidden',
     ],
     'types' => [
         '1' => ['showitem' => '--palette--;;service_provider, title, description,
                 --div--;LLL:EXT:we_cookie_consent/Resources/Private/Language/locallang_db.xlf:tx_wecookieconsent_domain_model_service.tab.cookies.label, cookies, 
-                --div--;LLL:EXT:we_cookie_consent/Resources/Private/Language/locallang_db.xlf:tx_wecookieconsent_domain_model_service.tab.settings.label, state, required, preselected, opt_out, only_once, 
+                --div--;LLL:EXT:we_cookie_consent/Resources/Private/Language/locallang_db.xlf:tx_wecookieconsent_domain_model_service.tab.settings.label, state, required, preselected, opt_out, only_once, contextual_consent_only, 
                 --div--;LLL:EXT:we_cookie_consent/Resources/Private/Language/locallang_db.xlf:tx_wecookieconsent_domain_model_service.tab.identification.label, domain, api_key, 
                 --div--;LLL:EXT:we_cookie_consent/Resources/Private/Language/locallang_db.xlf:tx_wecookieconsent_domain_model_service.tab.dev.label, snippet, callback, 
                 --div--;LLL:EXT:we_cookie_consent/Resources/Private/Language/locallang_db.xlf:tx_wecookieconsent_domain_model_service.tab.gtm.label, gtm_tag_title, --palette--;;gtm_trigger, --palette--;;gtm_variable,  
@@ -281,6 +281,25 @@ return [
                 ]
             ]
         ],
+        /* We prepared this, since klaro offers the option. But for now, we don't see a usecase for it.
+        'contextual_consent_only' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:we_cookie_consent/Resources/Private/Language/locallang_db.xlf:tx_wecookieconsent_domain_model_service.contextual_consent_only.label',
+            'description' => 'LLL:EXT:we_cookie_consent/Resources/Private/Language/locallang_db.xlf:tx_wecookieconsent_domain_model_service.contextual_consent_only.description',
+            'config' => [
+                'type' => 'check',
+                'items' => [
+                    '1' => [
+                        '0' => 'LLL:EXT:lang/locallang_core.xlf:labels.enabled'
+                    ]
+                ],
+                'default' => 0,
+                'behaviour' => [
+                    'allowLanguageSynchronization' => true
+                ]
+            ]
+        ],
+        */
         'snippet' => [
             'exclude' => true,
             'label' => 'LLL:EXT:we_cookie_consent/Resources/Private/Language/locallang_db.xlf:tx_wecookieconsent_domain_model_service.snippet.label',

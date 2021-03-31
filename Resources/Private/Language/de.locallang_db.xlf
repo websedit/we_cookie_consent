@@ -101,6 +101,12 @@
             <trans-unit id="tx_wecookieconsent_domain_model_service.only_once.description">
                 <target>Gewährleistet die einmalige Ausführung des Skriptes bei mehrfacher Anpassung.</target>
             </trans-unit>
+            <trans-unit id="tx_wecookieconsent_domain_model_service.contextual_consent_only.label">
+                <target>Kontextuelle Zustimmung</target>
+            </trans-unit>
+            <trans-unit id="tx_wecookieconsent_domain_model_service.contextual_consent_only.description">
+                <target>Ermöglicht das Einholen der Zustimmung des Benutzers, bevor Sie z.B. eingebettete Youtube-Videos oder andere Inhalte zeigen.</target>
+            </trans-unit>
             <trans-unit id="tx_wecookieconsent_domain_model_service.snippet.label">
                 <target>Snippet</target>
             </trans-unit>

@@ -3,16 +3,31 @@ defined('TYPO3_MODE') || die('Access denied.');
 
 call_user_func(
     function () {
-        \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
-            'Websedit.WeCookieConsent',
-            'Pi1',
-            [
-                'Consent' => 'consent, list',
-            ],
-            [
-                'Consent' => '',
-            ]
-        );
+        $typo3Version = \TYPO3\CMS\Core\Utility\VersionNumberUtility::convertVersionNumberToInteger(TYPO3_version);
+        
+        if($typo3Version < 10000000) {
+            \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
+                'Websedit.WeCookieConsent',
+                'Pi1',
+                [
+                    'Consent' => 'consent, list',
+                ],
+                [
+                    'Consent' => '',
+                ]
+            );
+        } else {
+            \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
+                'WeCookieConsent',
+                'Pi1',
+                [
+                    \Websedit\WeCookieConsent\Controller\ConsentController::class => 'consent, list',
+                ],
+                [
+                    \Websedit\WeCookieConsent\Controller\ConsentController::class => '',
+                ]
+            );
+        }
 
         if (TYPO3_MODE === 'BE') {
             /**
@@ -54,9 +69,13 @@ call_user_func(
         // Workaround to define custom subcategories in constants editor. Doesn't work in constants.ts
         \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTypoScriptConstants('
             # customcategory=plugin.tx_wecookieconsent_pi1=Websedit Cookie Consent
-            # customsubcategory=01_WEID=IDs
-            # customsubcategory=02_WETEMPLATE=Template
-            # customsubcategory=03_WEOTHER=Other
+            # customsubcategory=10_WETEST=Testing
+            # customsubcategory=20_WEID=IDs
+            # customsubcategory=30_WETEMPLATE=Template
+            # customsubcategory=40_BEHAVIOUR=Behaviour
+            # customsubcategory=50_TOGGLE=Toggles
+            # customsubcategory=60_STORAGE=Storage
+            # customsubcategory=70_WEOTHER=Other
         ');
     }
 );

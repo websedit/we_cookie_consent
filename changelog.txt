@@ -2,6 +2,27 @@
 All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
+## [2.0.0] - 2021-02-10 - ES
+### Added
+- Contextual Consent
+- Use HTML in text
+- Support for TYPO3 11. Issue: #9
+- 'No Style' Template. Issue: #11
+- SCSS files. Issue: #13
+- Fallback function for backwards compatibility < 1.3.3
+- Escape Viewhelper for special characters. Thank's to cwiesenekker. Issue: #14
+### Changed
+- Update the klaro library from 0.4.28 to 0.7.16. Issue: #11
+- Locallang labeles to sprintf syntax
+- Renamed App.html partial to Service.html
+### Fixed
+- Added trim around service description. Issue: #5
+- Optimized the CSS
+- Some typos in comments
+### Removed
+- Workarounds in JS
+- Language parameter in TypoScript
+
 ## [1.3.3] - 2020-09-28 - ES
 ### Added
 - .htaccess for the Resources/Private/ Folder
