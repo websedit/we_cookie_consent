@@ -2,6 +2,14 @@
 All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
+## [2.0.1] - 2021-09-21 - AS, GF
+### Added
+- Icons for Buttons
+- SCSS: Implement icons on most buttons (in both layers). Some redesign (visible borders with round corners). Most buttons (but one) are now transparent). Postioning the new styles at the end of SCSS Source.
+### Fixed
+- Some typos/redundant spaces/lines in SCSS
+
+
 ## [2.0.0] - 2021-02-10 - ES
 ### Added
 - Contextual Consent

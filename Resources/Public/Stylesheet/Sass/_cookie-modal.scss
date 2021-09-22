@@ -17,8 +17,6 @@
 			font-size:1em;
 			line-height:32px;
 		}
-
-		
 		.cm-modal {
 			.cm-body ul {
 				&.cm-services,
@@ -33,11 +31,9 @@
 							.cm-list-label {
 								display:none;
 							}
-							
 						}
 					}
 				}
-				
 				&.cm-services li.cm-purpose .cm-services .cm-content, 
 				&.cm-purposes li.cm-purpose .cm-services .cm-content {
 					margin-left: -72px;
@@ -58,7 +54,6 @@
 					top: 2px;
 					width: 72px;
 				}
-
 				.cm-list-label .slider::before {
 					background-color: rgb(177,214,232);
 					bottom: 2px;
@@ -67,7 +62,6 @@
 					width: 24px;
 					transition:.2s ease 0s;
 				}
-				
 				.cm-list-input.half-checked:checked + .cm-list-label .slider,
 				.cm-list-input.only-required + .cm-list-label .slider {
 					background-color: $color-slider;
@@ -87,7 +81,6 @@
 				.cm-list-input.required:checked + .cm-list-label .slider::before {
 					background-color: $color-slider-active;
 					display:none;
-					
 				}
 				.cm-list-input:not(.only-required) + .cm-list-label > .cm-list-title + .cm-switch::before {
 					content: url(../Icons/icon-no.svg);	// Slider-Symbol "off"
@@ -108,7 +101,6 @@
 				.cm-list-input:not(.half-checked):checked + .cm-list-label > .cm-list-title + .cm-switch::before {
 					content: url(../Icons/icon-yes.svg);	// Slider-Symbol "no"
 				}
-
 				.cm-list-label .cm-required ~ .cm-cswitch .slider, 
 				.cm-list-input:checked + .cm-list-label .cm-required ~ .cm-switch .slider {
 					background: url(../Icons/icon-schloss.svg) no-repeat transparent; // Icon "active + not changable"
@@ -128,9 +120,7 @@
 		}
 		
 	
-
 		// NO grouping of services by category - just listing: 
-
 		.cm-service > div > {
 		// .cm-service.cm-toggle-all > div > {
 			.cm-list-label .slider, 
@@ -159,10 +149,6 @@
 			.cm-list-input.only-required + .cm-list-label .slider::before	{
 				transform: translateX(50%);
 			}
-			
-			
-			
-			
 			.cm-list-input:checked + .cm-list-label .slider::before {
 				background-color: $color-slider-knop-active;
 				// background-color: $color-slider-knop-active;
@@ -203,7 +189,6 @@
 		.cm-body > .cm-service > .cm-service > div > .cm-list-input:not(.only-required) + .cm-list-label > .cm-list-title + .cm-switch::before {
 				padding-top:10px;
 		}
-
 
 		.cm-modal.cm-klaro {
 			background: #fff;
@@ -340,7 +325,6 @@
 				font-size: 1em;
 			}
 		}
-				
 		.cm-toggle-all .cm-purpose-description {
 			display: none;
 		}
@@ -447,7 +431,6 @@
 			z-index: 10000;
 		}
 		.cookie-modal {
-
 			@media screen and (min-width:576px) {}
 			@media screen and (min-width:768px) {
 				align-items: center;
@@ -527,4 +510,53 @@
 	 80% {opacity:0;}
 	100% {opacity:1;}
 }
-		
+
+
+/* ********************** */
+/* Ver 2.0.1 - gf20210921 */
+
+#klaro .klaro.we_cookie_consent {
+	.cookie-modal {
+		a {
+			font-weight:500;
+		}
+		// Buttons
+		.cm-btn {
+			background: $color-none;
+			border-radius: 4px;
+			border: $cm-btn-border;
+			color: $color-default;
+			font-weight:500;
+			&-decline {
+				background: $color-none;
+				&::before {
+					contain: content;
+					content: url(../Icons/icon-close.svg);
+					height: 20px;
+					margin-left: -28px;
+					position: absolute;
+					width: 20px;
+				}
+			}
+			&.cm-btn-accept {
+				background: $cm-btn-color-bg-success;
+				color: $color-white;
+			}
+			&.cm-btn-accept-all {
+				background: $color-none;
+				&::before {
+					contain: content;
+					content: url(../Icons/icon-check-dark.svg);
+					height: 20px;
+					margin-left: -28px;
+					position: absolute;
+					width: 20px;
+				}
+			}
+		}
+	}
+}
+
+/* Ver 2.0.1 -gf20210921 END. */
+/* ************************** */
+

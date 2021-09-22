@@ -51,7 +51,7 @@
 			}
 			.cm-btn,
 			.cm-btn-sm {
-				padding: .5em
+				padding: .5em;
 			}
 
 			.cm-link {
@@ -61,7 +61,7 @@
 				text-align:center;
 				text-decoration:none;
 				&:hover {
-				color:$color-default;
+					color:$color-default;
 				}
 			}
 			
@@ -84,7 +84,7 @@
 					background: $cm-btn-color-bg-success;
 					color:$color-white;
 					order:-1;
-				} 
+				}
 				&.cm-btn-info {
 					color: $color-cm-link;
 					display:block;
@@ -128,7 +128,6 @@
 					background:$cm-btn-color-bg;
 					margin: .5em 0;
 					padding:1em 0;
-	//				text-align:left;
 					width:25%;
 					&.cm-btn-success {
 						background: $cm-btn-color-bg-success;
@@ -185,6 +184,8 @@
 		}
 	}
 	
+
+/* Center 1 und Center 2: */
 	
 	&.notice--center,
 	&.notice--center-floated {
@@ -264,28 +265,28 @@
 						padding: 20px 30px;
 						right: unset;
 						width:calc(100% - 40px);
-					.cn-ok {
-						.cm-link {  // neu seit V2.0.0 (gilt jetzt für center und center-floated gleichermaßen)
-							width:100%;
-						}
-						.cm-btn {
-							background:$cm-btn-color-bg;
-							display:inline-block;
-							text-align:center;
-							width:100%;
-							&.cm-btn-success {
-								background:$cm-btn-color-bg-success;
-								border-color:$cm-btn-color-border;
-								margin:.5em 0;
-								order:-1;
+						.cn-ok {
+							.cm-link {  // neu seit V2.0.0 (gilt jetzt für center und center-floated gleichermaßen)
 								width:100%;
-								&:hover {
+							}
+							.cm-btn {
+								background:$cm-btn-color-bg;
+								display:inline-block;
+								text-align:center;
+								width:100%;
+								&.cm-btn-success {
 									background:$cm-btn-color-bg-success;
-									opacity:.7;
+									border-color:$cm-btn-color-border;
+									margin:.5em 0;
+									order:-1;
+									width:100%;
+									&:hover {
+										background:$cm-btn-color-bg-success;
+										opacity:.7;
+									}
 								}
 							}
 						}
-					}
 					}
 				}
 			}
@@ -324,3 +325,259 @@
 }
 
 
+/* ********************* */
+/* Ver 2.0.1 -gf20210921 */
+
+#klaro .klaro.we_cookie_consent {
+	// "Notice":
+	.cookie-notice {
+		&:not(.cookie-modal-notice) {
+			@media screen and (max-width:767px) {
+				.cn-body .cn-ok > * {
+					max-width:100%;
+					margin-right:0;
+				}
+			}
+			.cm-btn,
+			.cm-btn-sm {
+				border:2px solid $cm-btn-color-border;
+				border-radius:4px;
+			}
+			.cm-link {
+				border:$cm-btn-border-width solid $cm-btn-color-border;
+				border-radius:4px;
+				z-index:100;
+				&:hover {
+				opacity:.7;
+				}
+				&::before {
+					content: url(../Icons/icon-pen.svg);
+					contain: content;
+					height: 20px;
+					width: 20px;
+					position: absolute;
+					margin-left: -32px;
+				}
+			}
+			.cm-btn {
+				background: $color-none;
+				border-radius: 4px;
+				font-weight:500;
+				margin: calc(.5em - $cm-btn-border-width) 0;
+				&.cm-btn-danger,
+				&.cn-decline {
+					&::before {
+						content: url(../Icons/icon-close.svg);
+						contain: content;
+						height: 20px;
+						width: 20px;
+						position: absolute;
+						margin-left: -32px;
+					}
+				}
+				&.cm-btn-success {
+					background:$cm-btn-color-bg-success;
+					&::before {
+						content: url(../Icons/icon-check.svg);
+						contain: content;
+						height: 20px;
+						width: 20px;
+						position: absolute;
+						margin-left: -32px;
+					}
+				}
+				&.cm-btn-info {
+					color: $color-default;
+					font-weight:500;
+					background:$color-none;
+					&::before {
+						content:"";
+					}
+				}
+			}
+			.cm-link,
+			.cm-learn-more {
+				color: $color-default;
+				display:block;
+				font-weight:500;
+				background:$color-none;
+				order:3;
+				padding:.5em 0;
+				text-align:center;
+				width:100%;
+				max-width:calc(100% - .5rem);
+				@media screen and (min-width:768px) {
+					padding:1em 0;
+				}
+			}
+
+			@media screen and (min-width:768px) {
+				.cn-body {
+					.cn-ok {
+					display:block;
+						> * {
+							flex:0 0 auto;
+							min-width:auto;
+							max-width:33.333333%;
+						}
+						> .cm-link {
+							width: 100%;
+						}
+						.cn-buttons {
+							display: flex;
+							margin: 0 -10px;
+							max-width:66.666666%;
+							width: 100%;
+						}
+					}
+				}
+				.cm-btn {
+					margin: .5em 10px;
+					&.cm-btn-success {
+						background: $cm-btn-color-bg-success;
+						margin: 0.5em 0 0.5em 10px;
+						text-align:center;
+						order:2;
+						margin-right: 0;
+						max-width: calc(33.33333% - 20px);
+						position: absolute;
+						right: 0;
+						&:hover {
+						}
+					}
+					&.cm-btn-info {
+						text-align:right;
+					}
+				}
+				.cn-decline {
+					background:$color-none;
+					border-color:$cm-btn-border;
+					text-align:center;
+				}
+				.cm-link,
+				.cm-learn-more {
+					padding:1em 0;
+					position: absolute;
+					margin: 0.5em 33.333333%;
+				}
+			}
+		}
+		.cm-btn {
+			&.cm-btn-info {
+				background:$color-none;
+			}
+			@media screen and (min-width:768px) {
+				width:calc(50% - 20px);
+			}
+		}
+	}
+
+	//Center 2
+	&.notice--center-floated {
+		.cookie-notice:not(.cookie-modal-notice) .cn-body .cn-ok {
+			@media screen and (min-width:576px) {
+			.cn-buttons {
+				justify-content:space-between;
+			}
+				.cm-btn {
+					height:50px;
+					max-width: calc(50% - 10px);
+				}
+				.cm-link {
+					border-color:transparent;
+					height:50px;
+					line-height: 1.5em;
+					osition: relative;
+					margin: 10px auto 0;
+					max-width: calc(50% - 10px);
+					position:relative;
+				}
+				.cm-btn-success {
+					order:1;
+				}
+			}
+			@media screen and (min-width:768px) {
+				.cm-link {
+					margin-top: 70px;
+				}
+			}
+		}
+	}
+	
+	
+	@media screen and (min-width:768px) {
+		&.notice--center,
+		&.notice--center-floated	{
+			.cookie-notice {
+				&:not(.cookie-modal-notice) {
+					.cn-body {
+						.cn-ok {
+							.cm-link {  // neu seit V2.0.0 (gilt jetzt für center und center-floated gleichermaßen)
+								margin: 70px 0 0; 
+								max-width: 100%;
+							}
+							.cn-buttons {
+								margin:0;
+								max-width: 100%;
+							}
+							.cm-btn {
+								// background:$color-none;
+								margin:130px 0 10px;
+								width:calc(50% - 20px);
+								&.cm-btn-success{
+									margin:10px 0;
+									max-width:100%;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		&.notice--center {
+			.cookie-notice .cn-body .cn-ok .cm-btn.cm-btn-info,
+			.cookie-notice .cn-body .cn-ok .cm-link.cm-learn-more {
+				background:transparent;
+			}
+			.cookie-notice {
+				&:not(.cookie-modal-notice) {
+					.cn-body .cn-ok .cm-btn {
+						width:100%;
+					}
+				}
+			}
+		}
+		&.notice--center-floated {
+			.cookie-notice:not(.cookie-modal-notice) .cn-body .cn-ok {
+				height:130px;
+				.cn-buttons {
+					position:absolute;
+					top:10px;
+				}
+				.cm-btn {
+					border-color:$cm-btn-color-border;
+					max-width:calc(50% - 10px);
+					margin: 10px 0;
+					&.cn-decline {
+						width:calc(50% - 20px);
+					}
+					&.cm-btn-success {
+						max-width:calc(50% - 10px);
+						order:1;
+						position:relative;
+					}
+				}
+				.cm-btn.cm-btn-info,
+				.cm-link	{
+					background:transparent;
+					position:relative;
+					margin: 70px 0 0;
+				}
+			}
+
+		}
+	} // > 768px END.
+}
+
+/* Ver 2.0.1 -gf20210921 END. */
+/* ************************** */

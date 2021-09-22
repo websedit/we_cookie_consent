@@ -22,7 +22,7 @@
 				<target>Seit Ihrem letzten Besuch gab es Änderungen an den Datenschutzeinstellungen. Bitte aktualisieren Sie Ihre Einstellungen.</target>
 			</trans-unit>
 			<trans-unit id="klaro.consentNotice.learnMore">
-				<target>Einstellungen bearbeiten</target>
+				<target>Anpassen</target>
 			</trans-unit>
 			<trans-unit id="klaro.service.disableAll.title">
 				<target>Alle akzeptieren</target>
@@ -64,7 +64,7 @@
 				<target>Nicht zugeordnet</target>
 			</trans-unit>
 			<trans-unit id="klaro.ok">
-				<target>Akzeptieren</target>
+				<target>Alle zulassen</target>
 			</trans-unit>
 			<trans-unit id="klaro.save">
 				<target>Einstellungen speichern</target>

@@ -4,27 +4,28 @@ $color-default: #161f57;
 $color-black: #000;
 $color-white: #FFF;
 
+$color-none:transparent;
 $color-grey:#EFEFEF;
 $color-slider:#EFEFEF;
 $color-slider-half-active:#DADADA;
 $color-slider-active:#C9C9C9;
-$color-slider-knop:#B1D6E8; //rgb(177,214,232);
-$color-slider-knop-half-active: #63ADD1; //rgb(99,173,209);
-$color-slider-knop-active: #008000; // #63ADD1; //rgb(99,173,209);
+$color-slider-knop:#B1D6E8; // rgb(177,214,232)
+$color-slider-knop-half-active: #63ADD1; // rgb(99,173,209)
+$color-slider-knop-active: #008000; // rgb(0,128,0);  [#63ADD1; // rgb(99,173,209)]
 
 $cm-btn-color: $color-default;
 $cm-btn-color-bg: $color-grey;
-$cm-btn-color-border: transparent;
-$cm-btn-border: 1px solid $cm-btn-color-border;
+$cm-btn-color-border: #00AFCB;
+$cm-btn-border: 2px solid $cm-btn-color-border;
 
 $cm-btn-color-success: $color-white;
 $cm-btn-color-bg-success: #00AFCB; //#F7A925;
 $cm-btn-color-bg-success-var: #00AFCB;  //#F7A92580;
 
-$border-top-purpose: 1px solid rgba(0,0,0,.1);
+$cm-btn-border-width: 2px;
+$border-top-purpose: 2px solid rgba(0,0,0,.1);
 
 $color-cm-link: #00AFCB; //#F7A925;
-
 
 
 /*
