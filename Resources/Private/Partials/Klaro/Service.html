@@ -6,7 +6,7 @@
 <f:if condition="{service.categories}">
     <we:variable name="purposes"><f:for each="{service.categories}" as="category" iteration="iterator">'{category.title -> f:format.case(mode: 'lower')}'<f:if condition="{iterator.isLast} != 1">, </f:if></f:for></we:variable>
 </f:if>
-<script type="text/javascript">
+<script type="module">
     klaroConfig.services.push({
         name: '<f:format.raw>{service.provider}-{service.uid}</f:format.raw>',
         title: '<f:format.raw><we:format.escape>{service.title}</we:format.escape></f:format.raw>',

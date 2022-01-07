@@ -18,20 +18,20 @@
 
 	<f:section name="FooterAssets">
 		<f:spaceless>
-			<script type="text/javascript" src="{f:uri.resource(path: 'JavaScript/Controller/ConsentController.js')}"></script>
-			<script type="text/javascript">var klaroConfig = {f:format.htmlentitiesDecode(value: '{klaroConfig -> we:format.json()}')}</script>
+			<f:if condition="{settings.klaro.stylePrefix}">
+				<f:then>
+					<script defer src="{f:uri.resource(path: 'Library/klaro/klaro.js')}"></script>
+				</f:then>
+				<f:else>
+					<script defer src="{f:uri.resource(path: 'Library/klaro/klaro-no-css.js')}"></script>
+				</f:else>
+			</f:if>
+			<script defer src="{f:uri.resource(path: 'JavaScript/Controller/ConsentController.js')}"></script>
+			<script>var klaroConfig = {f:format.htmlentitiesDecode(value: '{klaroConfig -> we:format.json()}')}</script>
 			<f:for each="{services}" as="service">
 				<f:render partial="Service/{service.provider}" section="Footer" arguments="{service:service}" optional="1"/>
 				<f:render partial="Klaro/Service" arguments="{service:service}"/>
 			</f:for>
-			<f:if condition="{settings.klaro.stylePrefix}">
-				<f:then>
-					<script type="text/javascript" src="{f:uri.resource(path: 'Library/klaro/klaro.js')}"></script>
-				</f:then>
-				<f:else>
-					<script type="text/javascript" src="{f:uri.resource(path: 'Library/klaro/klaro-no-css.js')}"></script>
-				</f:else>
-			</f:if>
 		</f:spaceless>
 	</f:section>
 </html>

@@ -10,40 +10,27 @@ let ConsentApp = new function ConsentController() {
      * @param object service
      */
     this.consentChanged = function (state, service) {
-        if (state === true) {
-            if (service.name.indexOf('google-tagmanager-service') !== -1) {
-                let tempObj = {
-                    event: service.gtm.trigger
-                };
-                tempObj[service.gtm.variable] = true;
-                window.dataLayer.push(tempObj);
+        if (state === true && service.name.indexOf('google-tagmanager-service') !== -1) {
+            let tempObj = {
+                event: service.gtm.trigger
+            };
+            tempObj[service.gtm.variable] = true;
+            window.dataLayer.push(tempObj);
 
-                /*
-                //ES6 - https://stackoverflow.com/questions/11508463/javascript-set-object-key-by-variable
-                window.dataLayer.push({
-                    event: service.name,
-                    [service.name]: true
-                });
-                */
-            }
+            /*
+            //ES6 - https://stackoverflow.com/questions/11508463/javascript-set-object-key-by-variable
+            window.dataLayer.push({
+                event: service.name,
+                [service.name]: true
+            });
+            */
         }
 
         //Check if the own callback function is allready defined
-        if (typeof window[service.ownCallback] === "function") {
+        if (typeof window[service.ownCallback] === 'function') {
             window[service.ownCallback](state, service);
         } else if (service.ownCallback !== '') {
             console.error('The Callback function ' + service.ownCallback + ' is not yet defined. Please create it first.');
         }
     };
-
-    //--- constructor ---
-    (function contruct() {
-        $(document).ready(function () {
-            //Listener for the button on the privacy page, to edit the consent
-            $(document).on('click', '.js-showConsentModal', function (event) {
-                event.preventDefault();
-                klaro.show();
-            });
-        });
-    })();
 };

@@ -20,7 +20,7 @@ class EscapeViewHelper extends \Websedit\WeCookieConsent\ViewHelpers\AbstractVie
         }
 
         // Remove Linebreaks from RTE fields
-        $value = preg_replace("/\r|\n/", " ", $value);
+        $value = preg_replace('/\R+/', ' ', $value);
 
         // Escape ', ", \
         $value = addslashes($value);
