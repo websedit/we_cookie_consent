@@ -35,15 +35,4 @@ let ConsentApp = new function ConsentController() {
             console.error('The Callback function ' + service.ownCallback + ' is not yet defined. Please create it first.');
         }
     };
-
-    //--- constructor ---
-    (function contruct() {
-        $(document).ready(function () {
-            //Listener for the button on the privacy page, to edit the consent
-            $(document).on('click', '.js-showConsentModal', function (event) {
-                event.preventDefault();
-                klaro.show();
-            });
-        });
-    })();
 };
