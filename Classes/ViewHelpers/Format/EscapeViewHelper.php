@@ -15,7 +15,7 @@ class EscapeViewHelper extends \Websedit\WeCookieConsent\ViewHelpers\AbstractVie
     {
         $value = $renderChildrenClosure();
 
-        if (!is_string($value) && !(is_object($value) && method_exists($value, '__toString'))) {
+        if (!\is_string($value) && !(\is_object($value) && method_exists($value, '__toString'))) {
             return $value;
         }
 

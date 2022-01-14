@@ -45,7 +45,7 @@ class BackendController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
         $pageId = (int)\TYPO3\CMS\Core\Utility\GeneralUtility::_GP('id');
         $frameworkConfiguration = $this->configurationManager->getConfiguration(\TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface::CONFIGURATION_TYPE_FRAMEWORK);
         $persistenceConfiguration = array('persistence' => array('storagePid' => $pageId));
-        $this->configurationManager->setConfiguration(array_merge($frameworkConfiguration, $persistenceConfiguration));
+        $this->configurationManager->setConfiguration(\array_merge($frameworkConfiguration, $persistenceConfiguration));
     }
 
     /**
