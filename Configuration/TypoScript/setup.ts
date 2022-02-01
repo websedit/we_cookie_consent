@@ -53,6 +53,7 @@ plugin.tx_wecookieconsent_pi1 {
             storageName = {$plugin.tx_wecookieconsent_pi1.settings.klaro.storageName}
             stylePrefix = {$plugin.tx_wecookieconsent_pi1.settings.klaro.stylePrefix}
             testing = {$plugin.tx_wecookieconsent_pi1.settings.klaro.testing}
+			consentMode = {$plugin.tx_wecookieconsent_pi1.settings.klaro.consentMode}
 
             /* Prepared for later use
             embedded = {$plugin.tx_wecookieconsent_pi1.settings.klaro.embedded}

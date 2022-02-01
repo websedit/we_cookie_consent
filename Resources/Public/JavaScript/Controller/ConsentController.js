@@ -46,4 +46,42 @@ let ConsentApp = new function ConsentController() {
             });
         });
     })();
+		
+		
 };
+
+
+//--- Functions after window.load(): ---
+$(function() {
+
+		if($('iframe').length>0) {
+				var counterOfIframe = 0;
+				var attrDataSrc;
+				$('iframe').each(function() {
+						attrDataSrc=$(this).attr('src'); 
+						if (!attrDataSrc) {
+								attrDataSrc=$(this).attr('data-src'); 
+						}
+						if (attrDataSrc && ( attrDataSrc.indexOf("youtu") > -1 || attrDataSrc.indexOf("vimeo") > -1 )) {
+								/* Adjust measures for videoOverlay similar to iframe: */
+								$(this).parent().find('.klaro.cm-as-context-notice').css({'width':$(this).width()});
+								// $(this).parent().find('.klaro.cm-as-context-notice').css({'height':'100%'});  // Activate if height isn't set to 100% by css.
+								if ($(this).height() < $(this).parent().find('.klaro.cm-as-context-notice').height()) {
+										$(this).parent().find('.klaro.cm-as-context-notice .cm-buttons').css('margin-top','1em');
+								}
+						}
+						counterOfIframe++;
+				});
+				// console.log(counterOfIframe);
+		}
+
+
+
+/**   Add class for small context-notice box  gf20211115 **/
+		$('.klaro.we_cookie_consent.cm-as-context-notice').each(function() {
+				if ($(this).width() <= 300) {
+						$(this).addClass('notice--minified');
+						// console.log("class")
+				}
+		});
+});

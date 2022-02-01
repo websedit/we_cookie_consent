@@ -11,9 +11,9 @@ class EscapeViewHelper extends \Websedit\WeCookieConsent\ViewHelpers\AbstractVie
      */
     protected $escapeChildren = false;
 
-    public static function renderStatic(array $arguments, \Closure $renderChildrenClosure, RenderingContextInterface $renderingContext)
+    public function render()
     {
-        $value = $renderChildrenClosure();
+        $value = $this->renderChildren();
 
         if (!is_string($value) && !(is_object($value) && method_exists($value, '__toString'))) {
             return $value;

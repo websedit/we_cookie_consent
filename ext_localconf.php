@@ -3,8 +3,12 @@ defined('TYPO3_MODE') || die('Access denied.');
 
 call_user_func(
     function () {
+		$rendererRegistry = \TYPO3\CMS\Core\Resource\Rendering\RendererRegistry::getInstance();
+		$rendererRegistry->registerRendererClass(\Websedit\WeCookieConsent\Resource\Rendering\YouTubeRenderer::class);
+		$rendererRegistry->registerRendererClass(\Websedit\WeCookieConsent\Resource\Rendering\VimeoRenderer::class);
+		
         $typo3Version = \TYPO3\CMS\Core\Utility\VersionNumberUtility::convertVersionNumberToInteger(TYPO3_version);
-        
+
         if($typo3Version < 10000000) {
             \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
                 'Websedit.WeCookieConsent',
@@ -28,7 +32,7 @@ call_user_func(
                 ]
             );
         }
-
+		
         if (TYPO3_MODE === 'BE') {
             /**
              * Hooks
@@ -76,6 +80,7 @@ call_user_func(
             # customsubcategory=50_TOGGLE=Toggles
             # customsubcategory=60_STORAGE=Storage
             # customsubcategory=70_WEOTHER=Other
+			# customsubcategory=80_WECONSENTMODE=ConsentMode
         ');
     }
 );

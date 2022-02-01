@@ -3,13 +3,17 @@
     <we:variable name="cookies"><f:for each="{service.cookies}" as="cookie" iteration="iterator">['{cookie.title}', '/', '']<f:if condition="{iterator.isLast} != 1">, </f:if></f:for></we:variable>
 </f:if>
 <we:variable name="purposes">'unknown'</we:variable>
+
 <f:if condition="{service.categories}">
     <we:variable name="purposes"><f:for each="{service.categories}" as="category" iteration="iterator">'{category.title -> f:format.case(mode: 'lower')}'<f:if condition="{iterator.isLast} != 1">, </f:if></f:for></we:variable>
 </f:if>
 <script type="text/javascript">
     klaroConfig.services.push({
-        name: '<f:format.raw>{service.provider}-{service.uid}</f:format.raw>',
-        title: '<f:format.raw><we:format.escape>{service.title}</we:format.escape></f:format.raw>',
+<f:if condition="{service.provider} == youtube">
+<f:then>		name: '<f:format.raw>{service.provider}</f:format.raw>',</f:then><f:else><f:if condition="{service.provider} == vimeo"><f:then>		name: '<f:format.raw>{service.provider}</f:format.raw>',</f:then><f:else>		name: '<f:format.raw>{service.provider}-{service.uid}</f:format.raw>',</f:else>
+</f:if></f:else>
+</f:if>
+		title: '<f:format.raw><we:format.escape>{service.title}</we:format.escape></f:format.raw>',
         description: '<f:spaceless><f:format.stripTags><we:format.escape>{service.description}</we:format.escape></f:format.stripTags></f:spaceless>',
         default: {f:if(condition: '{service.required}', then: 'true', else: '{f:if(condition: \'{service.preselected}\', then: \'true\', else: \'false\')}')},
         defaultIfNoConsent: {f:if(condition: '{service.state}', then: 'true', else: 'false')},

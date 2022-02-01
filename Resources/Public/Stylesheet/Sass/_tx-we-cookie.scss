@@ -5,7 +5,7 @@
 	}
 	h3,
 	.h3 {
-		color: #575757;
+		color: $table-headline-color;
 		font-size: 1.55rem;
 		font-weight: 400;
 	}
@@ -17,7 +17,7 @@
 		margin-top: 2rem;
 	}
 	.table thead th {
-		border-bottom: 1px solid #ABABAB;
+		border-bottom: 1px solid $table-border-color;
 		font-size: 0.95rem;
 		padding-bottom: 0;
 		text-transform: uppercase;
@@ -33,9 +33,9 @@
 		background-color: rgba(0,0,0,.05);
 	}
 	a.btn-primary {
-		color: $color-default;
-		background-color: #63ADD1;
-		border-color: #63ADD1;
+		color: $color-font-edit;
+		background-color: $color-bg-edit;
+		border-color: $color-bg-edit;
 	}
 	.btn-primary:focus,
 	.btn-primary.focus,
@@ -48,11 +48,11 @@
 	.btn-primary:not(:disabled):not(.disabled):active,
 	.btn-primary:not(:disabled):not(.disabled).active, 
 	.show > .btn-primary.dropdown-toggle {
-		opacity:.7
+		opacity: $opacity-hover;
 	}
 	.btn-lg,.btn-group-lg > .btn,
 	.btn-group-lg > .cc-btn {
-		border-radius: 4px;
+		border-radius: $border-radius;
 	}
 	.table th,	.table td {
 		border-top: none;

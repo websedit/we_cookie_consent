@@ -2,6 +2,38 @@
 All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
+## [2.1.0] - 2021-01-12 - GF, AS, RL
+### Added - 2022-01-12 - AS
+- EscapeViewHelper: Adjustments for TYPO3 v7 compatibility
+- we_cookie_consent/Resources/Private/Partials/Klaro/Service.html: Adjustments for TYPO3 v7 compatibility
+### Added - 2021-09-22
+- Added max. width of Buttons in Settings Layer.
+### Changed - 2021-11-10 - RL, AS
+- Added YouTube and Vimeo Service
+### Added - 2021-11-12 - GF
+- Additional CSS for video via iframe
+### Added - 2021-11-15 - GF
+- Additional CSS/JS for videos via small iframe < 300px width
+### Added - 2021-11-16 - GF
+- _base.scss: Additional color definitions for Icons in Layer 2 (.cookie-modal) and update _cookie-notice.scss/_cookie-modal.scss
+### Removed
+- Removed debug output in JavaScript
+### Changed - 2021-10-13 - GF, RL
+- Optimizing SCSS-Code: removing redundant vars, moving static values into new vars and replacing old vars
+### Changed - 2021-11-17 - GF
+- Moved basics SCSS definitions from styles.scss to _base.scss,
+- Simplifying implementation and adjustment of variables for individual project
+### Changed - 2021-11-20 - RL
+- Added Google Consent Mode (Alpha)
+### Added - 2021-11-25 - GF
+- SCSS: Additional property for icon:hover; add in cookie-modal/-notice.
+- SCSS: Additional variables in _base.scss; transfer new variables in all affected scss files.
+### Added - 2021-12-16 - GF
+- Correct ineffective display:none for .cm-toggle-all checkbox.
+- Delete redundant/double display:none for cm-toggle-all checkbox.
+### Added - 2022-01-13 - GF
+- Align width of videoOverlay with iframe of external Videos (Youtube/Vimeo) in Controller.js
+
 ## [2.0.1] - 2021-09-21 - AS, GF
 ### Added
 - Icons for Buttons
@@ -86,7 +118,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - Replaced h3 with a span in cookie list (for better SEO)
 ### Fixed
 - Typo in constants.ts and setup.ts
-- CSS optimizations for the center--floated view 
+- CSS optimizations for the center--floated view
 
 ## [1.0.2] - 2020-01-28 - ES
 ### Changed

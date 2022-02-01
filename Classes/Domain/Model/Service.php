@@ -15,7 +15,7 @@ namespace Websedit\WeCookieConsent\Domain\Model;
  ***/
 
 /**
- * Service like Google Analytics, Facebook, Matomo, ...
+ * Service like Google Analytics, Facebook, Matomo, Youtube, ...
  */
 class Service extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 {

@@ -1,11 +1,74 @@
+// ******************* //
+// Variables:
+
+// Relative path to original EXT:we_cookie_consent - Ver 2.1.0  -gf20211124
+$path-to-wcc : "../../../../";  
+$path-to-ext : "../";
+$path-to-wcc-images : $path-to-wcc + "we_cookie_consent/Resources/Public/Images/";
+$path-to-wcc-icons : $path-to-wcc + "we_cookie_consent/Resources/Public/Icons/";
+// Relative path to current EXT
+$path-to-ext-images : $path-to-ext + "Images/";
+$path-to-ext-icons : $path-to-ext + "Icons/";
+
 $base-font-size:14px;
 
-$color-default: #161f57;
-$color-black: #000;
-$color-white: #FFF;
+$color-default : #161f57;
+$color-black : #000;
+$color-white : #FFF;
+$color-none : transparent;
+$color-grey : #EFEFEF;
+$color-white-90-percent : #FFFFFFE0;
 
-$color-none:transparent;
-$color-grey:#EFEFEF;
+$opacity-hover : .7;  // Ver 2.1.0  -gf20211125
+
+// Icons Buttons
+$icon-edit: url( $path-to-ext-icons + "icon-pen.svg");
+$icon-accept: url( $path-to-ext-icons + "icon-check-dark.svg");
+$icon-success: url( $path-to-ext-icons + "icon-check-dark.svg");
+$icon-decline: url( $path-to-ext-icons + "icon-close.svg");
+// Icons Buttons bei Hover:
+$icon-hover-edit: url( $path-to-ext-icons + "icon-pen.svg");
+$icon-hover-accept: url( $path-to-ext-icons + "icon-check-dark.svg");
+$icon-hover-success: url( $path-to-ext-icons + "icon-check-dark.svg");
+$icon-hover-decline: url( $path-to-ext-icons + "icon-close.svg");
+
+// Icons Settings
+$icon-slider-yes: url( $path-to-ext-icons + "icon-yes.svg");
+$icon-slider-no: url( $path-to-ext-icons + "icon-no.svg");
+$icon-slider-locked: url( $path-to-ext-icons + "icon-locked.svg");
+$icon-settings-close: '\00d7';
+$icon-settings-close-size: 4em;
+$icon-settings-close-color: #FFF;
+
+// Backgroud colors:
+// Background Popup:
+$color-bg: #FFF;
+// Background colours Buttons
+$color-bg-edit: #FFF;
+$color-bg-accept: #FFF;
+$color-bg-accept-all: transparent;
+$color-bg-success: #FFF;
+$color-bg-decline: #FFF;
+$color-bg-link: transparent;
+$color-bg-primary: #F7A925;
+// Font colours buttons
+$color-font-edit: #00AFCB;
+$color-font-accept: #161f57;
+$color-font-success: #161f57;
+$color-font-decline: #161f57;
+$color-font-primary: #FFF;
+
+// Border Colors
+$color-border: #00AFCB;
+$color-hover-border: #00AFCB;
+
+// Border properties:
+$border-width: 2px;
+$border-radius: 4px;
+$border-style: $border-width solid $color-border;
+$border-hover-style: $border-width solid rgba(0,0,0,.1);
+
+// Sliders and Locker icon
 $color-slider:#EFEFEF;
 $color-slider-half-active:#DADADA;
 $color-slider-active:#C9C9C9;
@@ -13,20 +76,34 @@ $color-slider-knop:#B1D6E8; // rgb(177,214,232)
 $color-slider-knop-half-active: #63ADD1; // rgb(99,173,209)
 $color-slider-knop-active: #008000; // rgb(0,128,0);  [#63ADD1; // rgb(99,173,209)]
 
+
+// Assignment colours/properties to buttons:
 $cm-btn-color: $color-default;
 $cm-btn-color-bg: $color-grey;
-$cm-btn-color-border: #00AFCB;
-$cm-btn-border: 2px solid $cm-btn-color-border;
+$cm-btn-color-border: $color-border;
+$cm-btn-border: $border-style;
 
-$cm-btn-color-success: $color-white;
-$cm-btn-color-bg-success: #00AFCB; //#F7A925;
-$cm-btn-color-bg-success-var: #00AFCB;  //#F7A92580;
+$cm-link-bg : $color-bg-link;
+$cm-link-border : none;
 
-$cm-btn-border-width: 2px;
-$border-top-purpose: 2px solid rgba(0,0,0,.1);
+$cm-btn-color-success: $color-font-success;
+$cm-btn-color-bg-success: $color-bg-success;
+$cm-btn-color-bg-decline: $color-bg-decline;
+$cm-btn-color-bg-primary: $color-bg-primary;
 
-$color-cm-link: #00AFCB; //#F7A925;
+$border-top-purpose: $border-hover-style;
 
+$video-overlay-bg : $color-white-90-percent;
+
+// Table colours (privacy page)
+$table-headline-color : $color-default;
+$table-bg-color : $color-none;
+$table-row-bg-color : $color-slider;
+$table-border-color : #ABABAB;
+
+// Paddings und Margins
+$spacing-top-bottom : 20px;
+$spacing-left-right : 30px;
 
 /*
 
@@ -34,8 +111,6 @@ To do:
 
 
 - Alle success-Buttons blau (d.h. bei video BEIDE gelb!)
-
-- Regler im ZUstimmen-Zustand GRÜN
 
 - Ablehnen-Button hellgrau ohne Rahmen!
 
@@ -45,3 +120,47 @@ To do:
 
 
 */
+
+/* Basics: */
+
+.klaro {
+	font-family: inherit;
+	font-size: $base-font-size;
+}
+.klaro.we_cookie_consent {
+//	box-shadow:1px 2px 5px rgba(0,0,0,0.2);
+	button:focus {
+		outline-style: none;
+		outline-width: 0;
+	}
+}
+
+#klaro .klaro.we_cookie_consent {
+	&.notice--center,
+	&.notice--center-floated {
+		height: 0;
+		overflow: visible;
+		position: fixed;
+		top: 0;
+		width: 100%;
+		z-index: 10000;
+	}
+}
+
+.klaro.we_cookie_consent .cookie-notice,
+.klaro.we_cookie_consent .cookie-modal {
+	h1,
+	h2,
+	li, 
+	p,
+	a, 
+	strong, 
+	ul {
+		color: $color-default;
+		font-size: 1em;
+	}
+	a {
+		font-weight: 700;
+		text-decoration: underline;
+	}
+}

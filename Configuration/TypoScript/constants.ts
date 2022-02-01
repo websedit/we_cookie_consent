@@ -47,6 +47,8 @@ plugin.tx_wecookieconsent_pi1 {
             stylePrefix = klaro we_cookie_consent
             # cat=plugin.tx_wecookieconsent_pi1/10_WETEST/100; type=boolean; label=Testing mode:Enable klaro only with #klaro-testing e.g. 'https://www.domain.tld/#klaro-testing'. @See:https://kiprotect.com/docs/klaro/integration-testing
             testing = 0
+			# cat=plugin.tx_wecookieconsent_pi1/80_WECONSENTMODE/800; type=boolean; label=Consent Mode:Enable Google Consent Mode
+			consentMode = 0
 
             /* Prepared for later use
             # cat=plugin.tx_wecookieconsent_pi1/40_BEHAVIOUR/420; type=boolean; label=Embedded:Will render the Klaro modal and notice without the modal background.

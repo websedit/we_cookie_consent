@@ -7,7 +7,7 @@ Documentation: [https://consent.websedit.de/dokumentation](https://consent.webse
 TYPO3 Extension Repository: [https://extensions.typo3.org/extension/we_cookie_consent/](https://extensions.typo3.org/extension/we_cookie_consent/)\
 Packagist: [https://packagist.org/packages/websedit/we-cookie-consent](https://packagist.org/packages/websedit/we-cookie-consent)\
 
-## Note on v2.0.0
+## Note on v2.1.0
 Due to the update of the klaro library to version 0.7.x there have been some changes. Klaro has revised the generation of the HTML DOM and some CSS classes. We have implemented a fallback function that makes an update from the old 1.3 to the new 2.0 as smooth as possible. Please note that we cannot guarantee that everything will look exactly the same as before, especially with existing customisations to the output in CSS. Therefore, please check the output after an update. 
 
 ## Support

@@ -154,6 +154,8 @@ return [
                     ['Facebook Tracking Pixel', 'facebook'],
                     ['Matomo', 'matomo'],
                     ['LLL:EXT:we_cookie_consent/Resources/Private/Language/locallang_db.xlf:tx_wecookieconsent_domain_model_service.provider.other', 'other'],
+					['Youtube', 'youtube'],
+					['Vimeo', 'vimeo'],
                 ],
                 'behaviour' => [
                     'allowLanguageSynchronization' => true

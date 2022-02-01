@@ -4,13 +4,13 @@
 		box-shadow:1px 2px 5px rgba(0,0,0,0.2);
 		z-index: 9999;
 		a:hover{
-			opacity: 0.7;
+			opacity: $opacity-hover;
 		}
 		.slider {
 			box-shadow: none;
 		}
 		.cm-bg {
-			background: rgba(0,0,0,.7);
+			background: rgba(0,0,0,$opacity-hover);
 		}
 		.cm-list-label {margin:0;}
 		.cm-list-title {
@@ -55,7 +55,7 @@
 					width: 72px;
 				}
 				.cm-list-label .slider::before {
-					background-color: rgb(177,214,232);
+					background-color: $color-slider-knop;
 					bottom: 2px;
 					height: 24px;
 					left: 2px;
@@ -83,7 +83,7 @@
 					display:none;
 				}
 				.cm-list-input:not(.only-required) + .cm-list-label > .cm-list-title + .cm-switch::before {
-					content: url(../Icons/icon-no.svg);	// Slider-Symbol "off"
+					content: $icon-slider-no;	// Slider-Symbol "off"
 					height: 16px;
 					left: 50px;
 					line-height: 32px;
@@ -99,11 +99,11 @@
 					width: 16px;
 				}
 				.cm-list-input:not(.half-checked):checked + .cm-list-label > .cm-list-title + .cm-switch::before {
-					content: url(../Icons/icon-yes.svg);	// Slider-Symbol "no"
+					content: $icon-slider-yes;	// Slider-Symbol "no"
 				}
 				.cm-list-label .cm-required ~ .cm-cswitch .slider, 
 				.cm-list-input:checked + .cm-list-label .cm-required ~ .cm-switch .slider {
-					background: url(../Icons/icon-schloss.svg) no-repeat transparent; // Icon "active + not changable"
+					background: $icon-slider-locked no-repeat transparent; // Icon "active + not changable"
 					border-radius: unset;
 					left: 12px;
 					width: 24px;
@@ -130,8 +130,12 @@
 				top: 2px;
 				width: 52px;
 			}
+			.cm-list-label .cm-required {
+				margin-left:.5em;
+			}
+			
 			.cm-list-label .slider::before {
-				background-color: rgb(177,214,232);
+				background-color: $color-slider-knop;
 				bottom: 2px;
 				height: 24px;
 				left: 2px;
@@ -162,7 +166,7 @@
 				display:none;
 			}
 			.cm-list-input:not(.only-required) + .cm-list-label > .cm-list-title + .cm-switch::before {
-				content: url(../Icons/icon-no.svg);	// Slider-Symbol "off"
+				content: $icon-slider-no;	// Slider-Symbol "off"
 				line-height: 32px;
 				padding: 2px;
 				position: absolute;
@@ -172,14 +176,14 @@
 				height: 16px;
 			}
 			.cm-list-input:checked + .cm-list-label > .cm-list-title + .cm-switch::before {
-				content: url(../Icons/icon-yes.svg);	// Slider-Symbol "on"
+				content: $icon-slider-yes;	// Slider-Symbol "on"
 				left: 8px;
 				padding: 2px;
 				width: 16px;
 			}
 			.cm-list-label .cm-required ~ .cm-cswitch .slider, 
 			.cm-list-input:checked + .cm-list-label .cm-required ~ .cm-switch .slider {
-				background: url(../Icons/icon-schloss.svg) no-repeat transparent;	// Icon "active + not changable"
+				background: $icon-slider-locked no-repeat transparent;	// Icon "active + not changable"
 				border-radius: unset;
 				left: 18px;
 				width: 20px;
@@ -191,8 +195,8 @@
 		}
 
 		.cm-modal.cm-klaro {
-			background: #fff;
-			border-radius: 0;
+			background:$color-bg;
+			border-radius: $border-radius;
 			bottom: 220px;
 			height: auto;
 			max-height: calc(100vh - 220px);
@@ -205,11 +209,11 @@
 			transition: unset;
 			width: 100%;
 			.hide {
-				background-color:#fff;
-				color: $color-default;
-				cursor: pointer;
+				background-color:$color-bg;
+				color: $icon-settings-close-color;
+				cursor: default;
 				display: block !important;
-				font-size: 2em;
+				font-size: $icon-settings-close-size;
 				height: 60px;
 				line-height: 20px;
 				overflow: hidden;
@@ -221,44 +225,50 @@
 				display:none;
 			}
 			.hide:after {
-			content: '\00d7';
+				content: $icon-settings-close;
 			}
 			.cm-header {
 				border-bottom: none;
-				margin: 20px;
-				padding: 0;
+				margin: 0;
+				padding: $spacing-top-bottom $spacing-left-right;
 			}
 			.cm-header h1 {
 				font-size: 2em;
 			}
 			.cm-body {
-				padding:0;
-				margin:20px;
+				margin:0;
+				padding:$spacing-top-bottom $spacing-left-right;
 				ul.cm-purposes li.cm-purpose {
 					padding-left:92px;
 					&.cm-toggle-all {
 						border-top: $border-top-purpose;
 						padding-left:0;
-						.cm-list-input,
-						.cm-list-label {
-							display:none;
-						}
+						// .cm-list-input,
+						// .cm-list-label {
+							// display:none;
+						// }
 					}
 				}
 			}
-			.cm-toggle-all .cm-purpose-description {
-				display: block;
+			.cm-toggle-all { 
+				.cm-purpose-description {
+					display: block;
+				}
+				.cm-list-input {
+					display: none;
+				}
 			}
 			.cm-footer {
-				background: $color-white;
+				background: $color-bg;
 				border: none;
 				bottom: 0;
 				height: 220px;
 				left: 0;
 				margin: 0;
-				padding:20px;
+				padding:$spacing-top-bottom $spacing-left-right;
 				position: fixed;
 				width: 100%;
+				z-index:10;
 				> * {
 					align-content:flex-end;					
 					display: flex;
@@ -287,7 +297,7 @@
 		// Buttons
 		.cm-btn {
 			background: $cm-btn-color-bg;
-			border-radius: 0;
+			border-radius: $border-radius;
 			border: $cm-btn-border;
 			box-shadow: none;
 			color: $color-default;
@@ -299,14 +309,14 @@
 			text-align: center;
 			width: 100%;
 			&:hover {
-				opacity:.7;
+				opacity:$opacity-hover;
 			}
-			&-decline {
+			&-danger {
 				order:2;
 			}
 			&.cm-btn-info.cm-btn-accept {
-				background: $cm-btn-color-bg-success;
-				color:$color-white;
+				background: $color-bg-accept;
+				color:$color-font-accept;
 				display:block;
 //				margin:.5em auto;
 				order:1;
@@ -314,7 +324,7 @@
 				width:100%;
 			}
 			&.cm-btn-info.cm-btn-accept:hover {
-				opacity: .7;
+				opacity: $opacity-hover;
 			}
 			&.cm-btn-accept-all {
 				background: $cm-btn-color-bg;
@@ -374,10 +384,10 @@
 					}
 				}
 				.cm-header {
-					margin: 20px 30px;
+					padding: $spacing-top-bottom $spacing-left-right;
 				}
 				.cm-body {
-					margin: 20px 30px;
+					padding: $spacing-top-bottom $spacing-left-right;
 				}
 				.cm-btn {
 					padding: 1em 1.5em;
@@ -410,7 +420,7 @@
 						min-width:240px;
 					}
 					.cm-powered-by{
-						margin: 15px 10px;
+						padding: 15px 10px;
 						position:absolute;
 						right:10px;
 					}
@@ -514,7 +524,6 @@
 
 /* ********************** */
 /* Ver 2.0.1 - gf20210921 */
-
 #klaro .klaro.we_cookie_consent {
 	.cookie-modal {
 		a {
@@ -523,40 +532,61 @@
 		// Buttons
 		.cm-btn {
 			background: $color-none;
-			border-radius: 4px;
+			border-radius: $border-radius;
 			border: $cm-btn-border;
 			color: $color-default;
 			font-weight:500;
-			&-decline {
-				background: $color-none;
+			&-danger {
+				background: $color-bg-decline;
 				&::before {
 					contain: content;
-					content: url(../Icons/icon-close.svg);
+					content: $icon-decline;
 					height: 20px;
 					margin-left: -28px;
 					position: absolute;
 					width: 20px;
+				}
+				&:hover { // Ver 2.1.0 -gf20211125
+					&::before {
+						content: $icon-hover-decline;
+					}
 				}
 			}
 			&.cm-btn-accept {
-				background: $cm-btn-color-bg-success;
-				color: $color-white;
+				background: $color-bg-accept;
+				color: $color-font-accept;
 			}
 			&.cm-btn-accept-all {
-				background: $color-none;
+				background: $color-bg-accept-all;
 				&::before {
 					contain: content;
-					content: url(../Icons/icon-check-dark.svg);
+					content: $icon-accept;
 					height: 20px;
 					margin-left: -28px;
 					position: absolute;
 					width: 20px;
 				}
+				&:hover { // Ver 2.1.0 -gf20211125
+					&::before {
+						content: $icon-hover-accept;
+					}
+				}
 			}
 		}
+
+// Ver 2.0.2 - gf20210922
+		@media screen and (min-width:1024px) {
+			.cm-modal {
+				.cm-footer {
+					.cm-btn {
+						max-width:calc(33.3333% - 20px)
+					}
+				}
+			}
+		}
+// Ver 2.0.2 - gf20210922 END.
 	}
 }
-
 /* Ver 2.0.1 -gf20210921 END. */
 /* ************************** */
 
