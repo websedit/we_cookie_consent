@@ -106,8 +106,7 @@ page {
 }
 
 #Disable mustConsent feature on the privacy page, else the privacy policy can't be read.
-//[page["uid"] == {$plugin.tx_wecookieconsent_pi1.settings.klaro.privacyPolicy}] //TYPO3 9 Condition Syntax
-[page|uid = {$plugin.tx_wecookieconsent_pi1.settings.klaro.privacyPolicy}]
+[page["uid"] == {$plugin.tx_wecookieconsent_pi1.settings.klaro.privacyPolicy}] //TYPO3 9 Condition Syntax
 plugin.tx_wecookieconsent_pi1 {
     settings {
         klaro {
