@@ -86,7 +86,7 @@ class ConsentController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
      */
     protected function renderAssetsForRequest($request)
     {
-        if (!$this->view instanceof \TYPO3Fluid\Fluid\View\TemplateView) {
+        if (!$this->view instanceof \TYPO3Fluid\Fluid\View\AbstractTemplateView) {
             return;
         }
 
