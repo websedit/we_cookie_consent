@@ -1,74 +1,57 @@
 <?php
-defined('TYPO3_MODE') || die('Access denied.');
+defined('TYPO3') || die('Access denied.');
 
 call_user_func(
     function () {
-		$rendererRegistry = \TYPO3\CMS\Core\Resource\Rendering\RendererRegistry::getInstance();
+		$rendererRegistry = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Core\Resource\Rendering\RendererRegistry::class);
 		$rendererRegistry->registerRendererClass(\Websedit\WeCookieConsent\Resource\Rendering\YouTubeRenderer::class);
 		$rendererRegistry->registerRendererClass(\Websedit\WeCookieConsent\Resource\Rendering\VimeoRenderer::class);
-		
-        $typo3Version = \TYPO3\CMS\Core\Utility\VersionNumberUtility::convertVersionNumberToInteger(TYPO3_version);
 
-        if($typo3Version < 10000000) {
-            \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
-                'Websedit.WeCookieConsent',
-                'Pi1',
-                [
-                    'Consent' => 'consent, list',
-                ],
-                [
-                    'Consent' => '',
-                ]
-            );
-        } else {
-            \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
-                'WeCookieConsent',
-                'Pi1',
-                [
-                    \Websedit\WeCookieConsent\Controller\ConsentController::class => 'consent, list',
-                ],
-                [
-                    \Websedit\WeCookieConsent\Controller\ConsentController::class => '',
-                ]
-            );
-        }
-		
-        if (TYPO3_MODE === 'BE') {
-            /**
-             * Hooks
-             */
-            $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['t3lib/class.t3lib_tcemain.php']['processDatamapClass'][] = \Websedit\WeCookieConsent\Hook\AfterSaveHook::class;
+	    \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
+	         'WeCookieConsent',
+	         'Pi1',
+	         [
+	             \Websedit\WeCookieConsent\Controller\ConsentController::class => 'consent, list',
+	         ],
+	         [
+	             \Websedit\WeCookieConsent\Controller\ConsentController::class => '',
+	         ]
+	     );
 
-            /**
-             * Icons
-             */
-            $iconRegistry = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Core\Imaging\IconRegistry::class);
+        /**
+         * Hooks
+         */
+        $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['t3lib/class.t3lib_tcemain.php']['processDatamapClass'][] = \Websedit\WeCookieConsent\Hook\AfterSaveHook::class;
 
-            //New Content Element Wizard Icon
-            $iconRegistry->registerIcon(
-                'we_cookie_consent-plugin-pi1',
-                $iconRegistry->detectIconProvider('user_plugin_pi1.svg'),
-                [
-                    'source' => 'EXT:we_cookie_consent/Resources/Public/Icons/user_plugin_pi1.svg'
-                ]
-            );
+        /**
+         * Icons
+         */
+        $iconRegistry = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Core\Imaging\IconRegistry::class);
 
-            //SysFolder Icon
-            $iconRegistry->registerIcon(
-                'pagetree-folder-contains-cookies',
-                $iconRegistry->detectIconProvider('sysfolder.png'),
-                [
-                    'source' => 'EXT:we_cookie_consent/Resources/Public/Icons/sysfolder.png'
-                ]
-            );
+        //New Content Element Wizard Icon
+        $iconRegistry->registerIcon(
+            'we_cookie_consent-plugin-pi1',
+            $iconRegistry->detectIconProvider('user_plugin_pi1.svg'),
+            [
+                'source' => 'EXT:we_cookie_consent/Resources/Public/Icons/user_plugin_pi1.svg'
+            ]
+        );
 
-            /**
-             * ContentElementWizard for Pi1
-             */
-            \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPageTSConfig(
-                '<INCLUDE_TYPOSCRIPT: source="FILE:EXT:we_cookie_consent/Configuration/TSConfig/ContentElementWizard.typoscript">'
-            );
-        }
+        //SysFolder Icon
+        $iconRegistry->registerIcon(
+            'pagetree-folder-contains-cookies',
+            $iconRegistry->detectIconProvider('sysfolder.png'),
+            [
+                'source' => 'EXT:we_cookie_consent/Resources/Public/Icons/sysfolder.png'
+            ]
+        );
+
+        /**
+         * ContentElementWizard for Pi1
+         */
+        \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPageTSConfig(
+            '<INCLUDE_TYPOSCRIPT: source="FILE:EXT:we_cookie_consent/Configuration/TSConfig/ContentElementWizard.typoscript">'
+        );
 
         // Workaround to define custom subcategories in constants editor. Doesn't work in constants.ts
         \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTypoScriptConstants('

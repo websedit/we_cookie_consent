@@ -81,7 +81,7 @@ return [
             'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.visible',
             'config' => [
                 'type' => 'check',
-                //'renderType' => 'checkboxToggle', //NOT TYPO3 8 compatible
+                'renderType' => 'checkboxToggle',
                 'items' => [
                     [
                         0 => '',

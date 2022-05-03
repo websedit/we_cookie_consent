@@ -26,6 +26,14 @@ let ConsentApp = new function ConsentController() {
                 });
                 */
             }
+        } else if (state === false) {
+            if (service.name.indexOf('google-tagmanager-service') !== -1) {
+                let tempObj = {
+                    event: service.gtm.trigger
+                };
+                tempObj[service.gtm.variable] = false;
+                window.dataLayer.push(tempObj);
+				    }
         }
 
         //Check if the own callback function is allready defined
@@ -46,14 +54,11 @@ let ConsentApp = new function ConsentController() {
             });
         });
     })();
-		
-		
 };
 
 
 //--- Functions after window.load(): ---
 $(function() {
-
 		if($('iframe').length>0) {
 				var counterOfIframe = 0;
 				var attrDataSrc;
@@ -72,16 +77,12 @@ $(function() {
 						}
 						counterOfIframe++;
 				});
-				// console.log(counterOfIframe);
 		}
 
-
-
-/**   Add class for small context-notice box  gf20211115 **/
+    /**   Add class for small context-notice box  gf20211115 **/
 		$('.klaro.we_cookie_consent.cm-as-context-notice').each(function() {
 				if ($(this).width() <= 300) {
 						$(this).addClass('notice--minified');
-						// console.log("class")
 				}
 		});
 });

@@ -1,5 +1,5 @@
 <?php
-defined('TYPO3_MODE') or die();
+defined('TYPO3') or die();
 
 //Custom Sysfolder Icon
 $GLOBALS['TCA']['pages']['ctrl']['typeicon_classes']['contains-wecookieconsent'] = 'pagetree-folder-contains-cookies';

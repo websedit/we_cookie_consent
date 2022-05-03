@@ -47,17 +47,17 @@ class ConsentController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
      */
     public function consentAction()
     {
-        $services = $this->serviceRepository->findAll();
-
-        // These two lines are only required for TYPO3 7 backwards compatibility. in TYPO3 >=8 renderAssetsForRequest is used
-        $klaroConfig = $this->klaroConfigBuild($services);
-        $typo3Version = \TYPO3\CMS\Core\Utility\VersionNumberUtility::convertVersionNumberToInteger(TYPO3_version);
-
-        $this->view->assignMultiple([
-            'services' => $services,
-            'klaroConfig' => $klaroConfig,
-            'typo3Version' => $typo3Version
-        ]);
+//        $services = $this->serviceRepository->findAll();
+//
+//        // These two lines are only required for TYPO3 7 backwards compatibility. in TYPO3 >=8 renderAssetsForRequest is used
+//        $klaroConfig = $this->klaroConfigBuild($services);
+//        $typo3Version = \TYPO3\CMS\Core\Utility\VersionNumberUtility::convertVersionNumberToInteger(\TYPO3\CMS\Core\Information\Typo3Version::getVersion());
+//
+//        $this->view->assignMultiple([
+//            'services' => $services,
+//            'klaroConfig' => $klaroConfig,
+//            'typo3Version' => $typo3Version
+//        ]);
     }
 
     /**
@@ -86,7 +86,7 @@ class ConsentController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
      */
     protected function renderAssetsForRequest($request)
     {
-        if (!$this->view instanceof \TYPO3Fluid\Fluid\View\TemplateView) {
+        if (!$this->view instanceof \TYPO3\CMS\Fluid\View\TemplateView) {
             return;
         }
 

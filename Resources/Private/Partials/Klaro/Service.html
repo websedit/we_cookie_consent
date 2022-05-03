@@ -1,11 +1,11 @@
 <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" xmlns:we="http://typo3.org/ns/Websedit/WeCookieConsent/ViewHelpers" data-namespace-typo3-fluid="true">
 <f:if condition="{service.cookies}">
-    <we:variable name="cookies"><f:for each="{service.cookies}" as="cookie" iteration="iterator">['{cookie.title}', '/', '']<f:if condition="{iterator.isLast} != 1">, </f:if></f:for></we:variable>
+    <f:variable name="cookies"><f:for each="{service.cookies}" as="cookie" iteration="iterator">['{cookie.title}', '/', '']<f:if condition="{iterator.isLast} != 1">, </f:if></f:for></f:variable>
 </f:if>
-<we:variable name="purposes">'unknown'</we:variable>
+<f:variable name="purposes">'unknown'</f:variable>
 
 <f:if condition="{service.categories}">
-    <we:variable name="purposes"><f:for each="{service.categories}" as="category" iteration="iterator">'{category.title -> f:format.case(mode: 'lower')}'<f:if condition="{iterator.isLast} != 1">, </f:if></f:for></we:variable>
+    <f:variable name="purposes"><f:for each="{service.categories}" as="category" iteration="iterator">'{category.title -> f:format.case(mode: 'lower')}'<f:if condition="{iterator.isLast} != 1">, </f:if></f:for></f:variable>
 </f:if>
 <script type="text/javascript">
     klaroConfig.services.push({

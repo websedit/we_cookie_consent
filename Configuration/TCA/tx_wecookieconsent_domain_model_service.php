@@ -100,7 +100,7 @@ return [
             'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.visible',
             'config' => [
                 'type' => 'check',
-                //'renderType' => 'checkboxToggle', //NOT TYPO3 8 compatible
+                'renderType' => 'checkboxToggle',
                 'items' => [
                     [
                         0 => '',
@@ -204,11 +204,7 @@ return [
             'description' => 'LLL:EXT:we_cookie_consent/Resources/Private/Language/locallang_db.xlf:tx_wecookieconsent_domain_model_service.state.description',
             'config' => [
                 'type' => 'check',
-                'items' => [
-                    '1' => [
-                        '0' => 'LLL:EXT:lang/locallang_core.xlf:labels.enabled'
-                    ]
-                ],
+                'items' => [[ 'LLL:EXT:lang/locallang_core.xlf:labels.disabled', 'LLL:EXT:lang/locallang_core.xlf:labels.enabled' ]],
                 'default' => 1,
                 'behaviour' => [
                     'allowLanguageSynchronization' => true
@@ -221,11 +217,7 @@ return [
             'description' => 'LLL:EXT:we_cookie_consent/Resources/Private/Language/locallang_db.xlf:tx_wecookieconsent_domain_model_service.preselected.description',
             'config' => [
                 'type' => 'check',
-                'items' => [
-                    '1' => [
-                        '0' => 'LLL:EXT:lang/locallang_core.xlf:labels.enabled'
-                    ]
-                ],
+                'items' => [[ 'LLL:EXT:lang/locallang_core.xlf:labels.disabled', 'LLL:EXT:lang/locallang_core.xlf:labels.enabled' ]],
                 'default' => 0,
                 'behaviour' => [
                     'allowLanguageSynchronization' => true
@@ -238,11 +230,7 @@ return [
             'description' => 'LLL:EXT:we_cookie_consent/Resources/Private/Language/locallang_db.xlf:tx_wecookieconsent_domain_model_service.required.description',
             'config' => [
                 'type' => 'check',
-                'items' => [
-                    '1' => [
-                        '0' => 'LLL:EXT:lang/locallang_core.xlf:labels.enabled'
-                    ]
-                ],
+                'items' => [[ 'LLL:EXT:lang/locallang_core.xlf:labels.disabled', 'LLL:EXT:lang/locallang_core.xlf:labels.enabled' ]],
                 'default' => 0,
                 'behaviour' => [
                     'allowLanguageSynchronization' => true
@@ -255,11 +243,7 @@ return [
             'description' => 'LLL:EXT:we_cookie_consent/Resources/Private/Language/locallang_db.xlf:tx_wecookieconsent_domain_model_service.opt_out.description',
             'config' => [
                 'type' => 'check',
-                'items' => [
-                    '1' => [
-                        '0' => 'LLL:EXT:lang/locallang_core.xlf:labels.enabled'
-                    ]
-                ],
+                'items' => [[ 'LLL:EXT:lang/locallang_core.xlf:labels.disabled', 'LLL:EXT:lang/locallang_core.xlf:labels.enabled' ]],
                 'default' => 0,
                 'behaviour' => [
                     'allowLanguageSynchronization' => true
@@ -272,11 +256,7 @@ return [
             'description' => 'LLL:EXT:we_cookie_consent/Resources/Private/Language/locallang_db.xlf:tx_wecookieconsent_domain_model_service.only_once.description',
             'config' => [
                 'type' => 'check',
-                'items' => [
-                    '1' => [
-                        '0' => 'LLL:EXT:lang/locallang_core.xlf:labels.enabled'
-                    ]
-                ],
+                'items' => [[ 'LLL:EXT:lang/locallang_core.xlf:labels.disabled', 'LLL:EXT:lang/locallang_core.xlf:labels.enabled' ]],
                 'default' => 0,
                 'behaviour' => [
                     'allowLanguageSynchronization' => true
