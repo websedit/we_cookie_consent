@@ -96,25 +96,30 @@
 		}
 	}
 	
-	.textmedia-gallery .video {
-		position:relative;
-		.klaro.we_cookie_consent {
-			background-color: $video-overlay-bg;
-			position: absolute;
-			top: 0; 
-			z-index:10;
-			@media (max-width:575px) {
-				&.cm-as-context-notice {
-					.context-notice {
-						flex-direction:unset;
-						.cm-buttons {
-							margin-top:1vw;
-							.cm-btn {
-								flex: 0 0 100%;
-								margin: 5px auto;
-								max-width: 100%;							}
+	// &.frame-type-media,
+	// &.frame-type-textmedia,    /* Aktivieren wenn bestätigt  -gf20220225 */
+	.textmedia-gallery {
+		.video {
+			position:relative;
+			.klaro.we_cookie_consent {
+				background-color: $video-overlay-bg;
+				position: absolute;
+				top: 0; 
+				z-index:10;
+				@media (max-width:575px) {
+					&.cm-as-context-notice {
+						.context-notice {
+							flex-direction:unset;
+							.cm-buttons {
+								margin-top:1vw;
+								.cm-btn {
+									flex: 0 0 100%;
+									margin: 5px auto;
+									max-width: 100%;
+								}
 								padding:.5em;
 								width: 100%;
+							}
 						}
 					}
 				}

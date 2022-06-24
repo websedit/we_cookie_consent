@@ -26,8 +26,17 @@ let ConsentApp = new function ConsentController() {
                 });
                 */
             }
+        } else if (state === false) {
+            if (service.name.indexOf('google-tagmanager-service') !== -1) {
+                let tempObj = {
+                    //event: service.gtm.trigger
+                    event: service.gtm.trigger
+                };
+                tempObj[service.gtm.variable] = false;
+                window.dataLayer.push(tempObj);
+            }
         }
-
+    
         //Check if the own callback function is allready defined
         if (typeof window[service.ownCallback] === "function") {
             window[service.ownCallback](state, service);
@@ -46,14 +55,31 @@ let ConsentApp = new function ConsentController() {
             });
         });
     })();
-		
-		
-};
 
+    // v2.2.1 - safari -gf20220517
+    const isSafari = navigator.vendor && 
+           navigator.vendor.indexOf('Apple') > -1 &&
+           navigator.userAgent &&
+           navigator.userAgent.indexOf('CriOS') == -1 &&
+           navigator.userAgent.indexOf('FxiOS') == -1;
+
+    $(function() {
+      setTimeout(function() {
+        // console.log("isSafari? ("+isSafari+")");
+        if (isSafari!=true) {
+          $('#klaro').removeClass('safari');
+          // $('#klaro').addClass('no-safari');
+        } else { 
+          $('#klaro').addClass('safari'); 
+          // $('#klaro').removeClass('no-safari');
+        }
+      })
+    });
+    // v2.2.1 - safari -gf20220517 END.
+};
 
 //--- Functions after window.load(): ---
 $(function() {
-
 		if($('iframe').length>0) {
 				var counterOfIframe = 0;
 				var attrDataSrc;
@@ -72,16 +98,17 @@ $(function() {
 						}
 						counterOfIframe++;
 				});
-				// console.log(counterOfIframe);
 		}
 
-
-
-/**   Add class for small context-notice box  gf20211115 **/
+    /**   Add class for small context-notice box  gf20211115 **/
 		$('.klaro.we_cookie_consent.cm-as-context-notice').each(function() {
 				if ($(this).width() <= 300) {
 						$(this).addClass('notice--minified');
-						// console.log("class")
 				}
 		});
+    
+    /** Add class to avoid Google to crawl consent info text  gf20220623 **/
+    $('.klaro.we_cookie_consent .cn-body').each(function() {
+      $(this).attr('data-nosnippet','data-nosnippet');
+    });
 });

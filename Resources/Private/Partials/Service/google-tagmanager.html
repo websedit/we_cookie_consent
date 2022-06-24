@@ -4,8 +4,8 @@
 		// Define dataLayer and the gtag function.
 		window.dataLayer = window.dataLayer || [];
 		function gtag(){dataLayer.push(arguments);}
-		
-		// Default ad_storage to 'denied'.
+
+		// Set consent defaults gtag.js
 		gtag('consent', 'default', {
 			'ad_storage': 'denied',
 			'analytics_storage': 'denied',
@@ -14,6 +14,7 @@
 			'wait_for_update': 500
 		});
 		gtag('set', 'ads_data_redaction', true);
+		
 	</script>
 	</f:if>
     <script type="opt-in" data-type="text/javascript" data-name="{service.provider}-{service.uid}">

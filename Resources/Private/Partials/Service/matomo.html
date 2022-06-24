@@ -1,6 +1,7 @@
 <f:section name="Header">
     <script type="opt-in" data-type="text/javascript" data-name="{service.provider}-{service.uid}">
-        var _paq = window._paq || [];
+        var _paq = window._paq = window._paq || [];
+		_paq.push(["disableCookies"]);
         _paq.push(['trackPageView']);
         _paq.push(['enableLinkTracking']);
         (function() {
@@ -8,7 +9,7 @@
             _paq.push(['setTrackerUrl', u+'matomo.php']);
             _paq.push(['setSiteId', {service.apiKey}]);
             var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
-            g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+            g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
         })();
     </script>
 </f:section>
