@@ -54,6 +54,28 @@ let ConsentApp = new function ConsentController() {
             });
         });
     })();
+
+    // v3.0.2 - safari -gf20220517
+    const isSafari = navigator.vendor && 
+           navigator.vendor.indexOf('Apple') > -1 &&
+           navigator.userAgent &&
+           navigator.userAgent.indexOf('CriOS') == -1 &&
+           navigator.userAgent.indexOf('FxiOS') == -1;
+
+    $(function() {
+      setTimeout(function() {
+        // console.log("isSafari? ("+isSafari+")");
+        if (isSafari!=true) {
+          $('#klaro').removeClass('safari');
+          // $('#klaro').addClass('no-safari');
+        } else { 
+          $('#klaro').addClass('safari'); 
+          // $('#klaro').removeClass('no-safari');
+        }
+      })
+    });
+    // v3.0.2 - safari -gf20220517 END.
+
 };
 
 
@@ -85,4 +107,9 @@ $(function() {
 						$(this).addClass('notice--minified');
 				}
 		});
+
+    /** Add class to avoid Google to crawl consent info text  gf20220623 **/
+    $('.klaro.we_cookie_consent .cn-body').each(function() {
+      $(this).attr('data-nosnippet','data-nosnippet');
+    });
 });

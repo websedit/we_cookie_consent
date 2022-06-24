@@ -3,7 +3,7 @@
 /***************************************************************
  * Extension Manager/Repository config file for ext "we_cookie_consent".
  *
- * Auto generated 03-05-2022 13:30
+ * Auto generated 24-06-2022 07:39
  *
  * Manual updates:
  * Only the data in the array - everything else is removed by next
@@ -21,7 +21,7 @@ $EM_CONF[$_EXTKEY] = array (
   'uploadfolder' => false,
   'clearcacheonload' => false,
   'clearCacheOnLoad' => 0,
-  'version' => '3.0.1',
+  'version' => '3.0.2',
   'constraints' => 
   array (
     'depends' => 

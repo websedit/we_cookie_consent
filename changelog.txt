@@ -2,7 +2,14 @@
 All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
-## [3.0.1] - 2022-05-03 - GF, AS, RL
+## [3.0.2] - 2022-06-23 - GF
+### Added - 2022-06-23
+- Attribute data-nosnippet="data-nosnippet" to .cn-body (Avoids Google bot to crawl cookie-consent text)
+### Added - 2022-05-17
+- Detection Safari browser (function.js) - GF
+- Adjust positioning button group in Safari (_cookie-modal.scss) - GF
+
+## [3.0.1] - 2022-05-17 - GF, AS, RL
 ### Added - 2022-05-03
 - Added event for deny consent state - RL
 - Update matomo JS-Code - RL
