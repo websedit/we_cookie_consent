@@ -105,7 +105,7 @@ page {
 }
 
 #Disable mustConsent feature on the privacy page, else the privacy policy can't be read.
-[page["uid"] == {$plugin.tx_wecookieconsent_pi1.settings.klaro.privacyPolicy}]
+[traverse(page, "uid") == {$plugin.tx_wecookieconsent_pi1.settings.klaro.privacyPolicy}]
 plugin.tx_wecookieconsent_pi1 {
     settings {
         klaro {
