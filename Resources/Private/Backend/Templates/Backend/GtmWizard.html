@@ -8,11 +8,11 @@
                 <thead>
                 <tr>
                     <th class="col-responsive nowrap">&nbsp;</th>
-                    <th class="col-responsive nowrap"><f:translate key="LLL:EXT:we_cookie_consent/Resources/Private/Language/locallang_mod1.xlf:tx_wecookieconsent_domain_model_service.gtm_tag_title.label" /></th>
-                    <th class="col-responsive nowrap"><f:translate key="LLL:EXT:we_cookie_consent/Resources/Private/Language/locallang_mod1.xlf:tx_wecookieconsent_domain_model_service.gtm_trigger_title.label" /></th>
-                    <th class="col-responsive nowrap"><f:translate key="LLL:EXT:we_cookie_consent/Resources/Private/Language/locallang_mod1.xlf:tx_wecookieconsent_domain_model_service.gtm_trigger_name.label" /></th>
-                    <th class="col-responsive nowrap"><f:translate key="LLL:EXT:we_cookie_consent/Resources/Private/Language/locallang_mod1.xlf:tx_wecookieconsent_domain_model_service.gtm_variable_title.label" /></th>
-                    <th class="col-responsive nowrap"><f:translate key="LLL:EXT:we_cookie_consent/Resources/Private/Language/locallang_mod1.xlf:tx_wecookieconsent_domain_model_service.gtm_variable_name.label" /></th>
+                    <th class="col-responsive nowrap"><f:translate key="LLL:EXT:we_cookie_consent/Resources/Private/Language/locallang_mod1.xlf:tx_wecookieconsent_domain_model_service.gtm_tag_title.label"/></th>
+                    <th class="col-responsive nowrap"><f:translate key="LLL:EXT:we_cookie_consent/Resources/Private/Language/locallang_mod1.xlf:tx_wecookieconsent_domain_model_service.gtm_trigger_title.label"/></th>
+                    <th class="col-responsive nowrap"><f:translate key="LLL:EXT:we_cookie_consent/Resources/Private/Language/locallang_mod1.xlf:tx_wecookieconsent_domain_model_service.gtm_trigger_name.label"/></th>
+                    <th class="col-responsive nowrap"><f:translate key="LLL:EXT:we_cookie_consent/Resources/Private/Language/locallang_mod1.xlf:tx_wecookieconsent_domain_model_service.gtm_variable_title.label"/></th>
+                    <th class="col-responsive nowrap"><f:translate key="LLL:EXT:we_cookie_consent/Resources/Private/Language/locallang_mod1.xlf:tx_wecookieconsent_domain_model_service.gtm_variable_name.label"/></th>
                 </tr>
                 </thead>
                 <tbody>
@@ -26,11 +26,11 @@
 
             <br/>
             <h2>Download JSON File</h2>
-            <f:link.action action="jsonDownload" arguments="{blocks:'{tags:1, triggers:1, variables:1}'}" class="btn btn-success"><f:translate key="LLL:EXT:we_cookie_consent/Resources/Private/Language/locallang_mod1.xlf:download_json_all" /></f:link.action>
-            <f:link.action action="jsonDownload" arguments="{blocks:'{triggers:1, variables:1}'}" class="btn btn-success"><f:translate key="LLL:EXT:we_cookie_consent/Resources/Private/Language/locallang_mod1.xlf:download_json_triggerAndVariables" /></f:link.action>
+            <f:link.action action="jsonDownload" arguments="{blocks:'{tags:1, triggers:1, variables:1}'}" class="btn btn-success"><f:translate key="LLL:EXT:we_cookie_consent/Resources/Private/Language/locallang_mod1.xlf:download_json_all"/></f:link.action>
+            <f:link.action action="jsonDownload" arguments="{blocks:'{triggers:1, variables:1}'}" class="btn btn-success"><f:translate key="LLL:EXT:we_cookie_consent/Resources/Private/Language/locallang_mod1.xlf:download_json_triggerAndVariables"/></f:link.action>
         </f:then>
         <f:else>
-            <f:translate key="LLL:EXT:we_cookie_consent/Resources/Private/Language/locallang_mod1.xlf:no_google_tag_manager_services" />
+            <f:translate key="LLL:EXT:we_cookie_consent/Resources/Private/Language/locallang_mod1.xlf:no_google_tag_manager_services"/>
         </f:else>
     </f:if>
 </f:section>

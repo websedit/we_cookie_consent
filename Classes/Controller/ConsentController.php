@@ -120,7 +120,7 @@ class ConsentController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
      */
     private function klaroConfigBuild(\TYPO3\CMS\Extbase\Persistence\Generic\QueryResult $services)
     {
-        if (is_numeric($this->settings['klaro']['privacyPolicy'])) {
+        if (\is_numeric($this->settings['klaro']['privacyPolicy'])) {
             $privacyPage = $this->uriBuilder
                 ->reset()
                 ->setTargetPageUid((int)$this->settings['klaro']['privacyPolicy'])
@@ -130,7 +130,7 @@ class ConsentController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
             $privacyPage = $this->settings['klaro']['privacyPolicy'];
         }
 
-        if (is_numeric($this->settings['klaro']['poweredBy'])) {
+        if (\is_numeric($this->settings['klaro']['poweredBy'])) {
             $poweredByPage = $this->uriBuilder
                 ->reset()
                 ->setTargetPageUid((int)$this->settings['klaro']['poweredBy'])
