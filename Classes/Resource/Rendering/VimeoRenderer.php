@@ -34,14 +34,13 @@ class VimeoRenderer extends \TYPO3\CMS\Core\Resource\Rendering\VimeoRenderer
      */
     public function render(FileInterface $file, $width, $height, array $options = [], $usedPathsRelativeToCurrentScript = false)
     {
-        $objectManager = GeneralUtility::makeInstance(\TYPO3\CMS\Extbase\Object\ObjectManager::class);
-        $configurationManager = $objectManager->get(\TYPO3\CMS\Extbase\Configuration\ConfigurationManager::class);
+        $configurationManager = GeneralUtility::makeInstance(\TYPO3\CMS\Extbase\Configuration\ConfigurationManager::class);
         $extbaseFrameworkConfiguration = $configurationManager->getConfiguration(ConfigurationManagerInterface::CONFIGURATION_TYPE_FULL_TYPOSCRIPT);
         $testing = $extbaseFrameworkConfiguration['plugin.']['tx_wecookieconsent_pi1.']['settings.']['klaro.']['testing'];
 
         if(!$testing) {
             $options = $this->collectOptions($options, $file);
-            $iframe = str_replace(' src="', ' data-name="youtube" data-src="', parent::render($file, $width, $height, $options, $usedPathsRelativeToCurrentScript));
+            $iframe = str_replace(' src="', ' data-name="vimeo" data-src="', parent::render($file, $width, $height, $options, $usedPathsRelativeToCurrentScript));
         } else {
             $iframe = parent::render($file, $width, $height, $options, $usedPathsRelativeToCurrentScript);
         }

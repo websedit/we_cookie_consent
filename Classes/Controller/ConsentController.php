@@ -3,6 +3,8 @@
 namespace Websedit\WeCookieConsent\Controller;
 
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Core\Page\PageRenderer;
 
 /***
  *
@@ -47,17 +49,17 @@ class ConsentController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
      */
     public function consentAction()
     {
-//        $services = $this->serviceRepository->findAll();
+       $services = $this->serviceRepository->findAll();
 //
 //        // These two lines are only required for TYPO3 7 backwards compatibility. in TYPO3 >=8 renderAssetsForRequest is used
-//        $klaroConfig = $this->klaroConfigBuild($services);
+ //      $klaroConfig = $this->klaroConfigBuild($services);
 //        $typo3Version = \TYPO3\CMS\Core\Utility\VersionNumberUtility::convertVersionNumberToInteger(\TYPO3\CMS\Core\Information\Typo3Version::getVersion());
 //
 //        $this->view->assignMultiple([
 //            'services' => $services,
-//            'klaroConfig' => $klaroConfig,
-//            'typo3Version' => $typo3Version
+//            'klaroConfig' => $klaroConfig
 //        ]);
+        return $this->htmlResponse();
     }
 
     /**
@@ -79,12 +81,13 @@ class ConsentController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
         $this->view->assignMultiple([
             'services' => $services
         ]);
+        return $this->htmlResponse();
     }
 
     /**
      * @param \TYPO3\CMS\Extbase\Mvc\RequestInterface $request
      */
-    protected function renderAssetsForRequest($request)
+    protected function renderAssetsForRequest($request):void
     {
         if (!$this->view instanceof \TYPO3\CMS\Fluid\View\TemplateView) {
             return;
@@ -93,7 +96,7 @@ class ConsentController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
         $services = $this->serviceRepository->findAll();
         $klaroConfig = $this->klaroConfigBuild($services);
 
-        $pageRenderer = $this->objectManager->get(\TYPO3\CMS\Core\Page\PageRenderer::class);
+        $pageRenderer = GeneralUtility::makeInstance(PageRenderer::class);
         $variables = [
             'request' => $request,
             'arguments' => $this->arguments,

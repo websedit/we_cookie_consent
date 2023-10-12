@@ -63,6 +63,7 @@ class BackendController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
             'services' => $services,
             'gtmArray' => $this->createGtmArray($services, $blocks)
         ]);
+        return $this->htmlResponse();
     }
 
     /**
@@ -87,6 +88,7 @@ class BackendController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
         $this->view->assignMultiple([
             'gtmArray' => $this->createGtmArray($services, $blocks)
         ]);
+        return $this->htmlResponse();
     }
 
     /**
