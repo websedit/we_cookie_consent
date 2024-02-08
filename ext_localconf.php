@@ -3,20 +3,20 @@ defined('TYPO3') || die('Access denied.');
 
 call_user_func(
     function () {
-		$rendererRegistry = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Core\Resource\Rendering\RendererRegistry::class);
-		$rendererRegistry->registerRendererClass(\Websedit\WeCookieConsent\Resource\Rendering\YouTubeRenderer::class);
-		$rendererRegistry->registerRendererClass(\Websedit\WeCookieConsent\Resource\Rendering\VimeoRenderer::class);
+        $rendererRegistry = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Core\Resource\Rendering\RendererRegistry::class);
+        $rendererRegistry->registerRendererClass(\Websedit\WeCookieConsent\Resource\Rendering\YouTubeRenderer::class);
+        $rendererRegistry->registerRendererClass(\Websedit\WeCookieConsent\Resource\Rendering\VimeoRenderer::class);
 
-	    \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
-	         'WeCookieConsent',
-	         'Pi1',
-	         [
-	             \Websedit\WeCookieConsent\Controller\ConsentController::class => 'consent, list',
-	         ],
-	         [
-	             \Websedit\WeCookieConsent\Controller\ConsentController::class => '',
-	         ]
-	     );
+        \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
+            'WeCookieConsent',
+            'Pi1',
+            [
+                \Websedit\WeCookieConsent\Controller\ConsentController::class => 'consent, list',
+            ],
+            [
+                \Websedit\WeCookieConsent\Controller\ConsentController::class => '',
+            ]
+        );
 
         /**
          * Hooks
@@ -34,6 +34,15 @@ call_user_func(
             $iconRegistry->detectIconProvider('user_plugin_pi1.svg'),
             [
                 'source' => 'EXT:we_cookie_consent/Resources/Public/Icons/user_plugin_pi1.svg'
+            ]
+        );
+
+        //Backendmodul Icon
+        $iconRegistry->registerIcon(
+            'we_cookie_consent-mod-mod1',
+            $iconRegistry->detectIconProvider('user_mod_mod1.svg'),
+            [
+                'source' => 'EXT:we_cookie_consent/Resources/Public/Icons/user_mod_mod1.svg'
             ]
         );
 

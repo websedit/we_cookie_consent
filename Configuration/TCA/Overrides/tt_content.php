@@ -2,7 +2,7 @@
 defined('TYPO3') or die();
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
-    'Websedit.WeCookieConsent',
+    'WeCookieConsent',
     'Pi1',
     'Cookie List'
 );

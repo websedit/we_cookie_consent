@@ -38,8 +38,12 @@
 //  Ver 2.1.0  - gf20211112
 // consent style  within page content area  gf2021-11-12:
 // i.e. overlay boxes for external videos
+.frame-type-list,
+.frame-type-textpic,
+.frame-type-textmedia {
+	position: static;
+}
 .frame {
-	position: relative;
 	.frame-inner iframe,
 	.frame-inner iframe:last-child {
 		padding:0;

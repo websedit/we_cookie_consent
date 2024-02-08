@@ -79,7 +79,17 @@ let ConsentApp = new function ConsentController() {
 };
 
 
-//--- Functions after window.load(): ---
+var optOutLink = document.getElementById("ga-opt-out");
+
+if(optOutLink) {
+    optOutLink.onclick = function() {
+        document.cookie = 'ga-opt-out=true; expires=Thu, 31 Dec 2099 23:59:59 UTC; path=/';
+        this.innerHTML = "Google Analytics opt-out successful";
+        return false;
+    }
+}
+
+//--- Functions after window.load(): ---ant stio
 $(function() {
 		if($('iframe').length>0) {
 				var counterOfIframe = 0;

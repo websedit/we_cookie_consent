@@ -2,6 +2,11 @@
 
 namespace Websedit\WeCookieConsent\Controller;
 
+use TYPO3\CMS\Backend\Attribute\Controller;
+use TYPO3\CMS\Backend\Template\ModuleTemplateFactory;
+use TYPO3\CMS\Core\Information\Typo3Version;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+
 /***
  *
  * This file is part of the "we_cookie_consent" Extension for TYPO3 CMS.
@@ -35,6 +40,9 @@ class BackendController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
         $this->serviceRepository = $serviceRepository;
     }
 
+    // Prepared for TYPO3 12 compatibility
+    #public function __construct(protected readonly ModuleTemplateFactory $moduleTemplateFactory){}
+
     /**
      * Action initializer
      *
@@ -42,7 +50,10 @@ class BackendController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
      */
     protected function initializeAction()
     {
+        // @extensionScannerIgnoreLine
         $pageId = (int)\TYPO3\CMS\Core\Utility\GeneralUtility::_GP('id');
+        // Use this, when support for V10 is dropped
+        # $pageUid = (int)($this->request->getQueryParams()['id'] ?? $this->request->getParsedBody()['id'] ?? 0);
         $frameworkConfiguration = $this->configurationManager->getConfiguration(\TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface::CONFIGURATION_TYPE_FRAMEWORK);
         $persistenceConfiguration = array('persistence' => array('storagePid' => $pageId));
         $this->configurationManager->setConfiguration(array_merge($frameworkConfiguration, $persistenceConfiguration));
@@ -51,7 +62,7 @@ class BackendController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
     /**
      * Preview the config
      *
-     * @return void
+     * @return \Psr\Http\Message\ResponseInterface
      */
     public function gtmWizardAction()
     {
@@ -63,6 +74,13 @@ class BackendController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
             'services' => $services,
             'gtmArray' => $this->createGtmArray($services, $blocks)
         ]);
+
+        if (GeneralUtility::makeInstance(Typo3Version::class)->getMajorVersion() > 10) {
+            $moduleTemplateFactory = GeneralUtility::makeInstance(ModuleTemplateFactory::class);
+            $moduleTemplate = $moduleTemplateFactory->create($this->request);
+            $moduleTemplate->setContent($this->view->render());
+            return $this->htmlResponse($moduleTemplate->renderContent());
+        }
     }
 
     /**
@@ -70,11 +88,11 @@ class BackendController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
      *
      * @param array $blocks
      *
-     * @return void
+     * @return \Psr\Http\Message\ResponseInterface
      */
     public function jsonDownloadAction($blocks)
     {
-        if($this->response){
+        if ($this->response) {
             $this->response->setHeader('Content-type', 'application/json');
             $this->response->setHeader('Content-Disposition', 'attachment; filename=import-this-to-gtm.json');
         } else {
@@ -87,6 +105,11 @@ class BackendController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
         $this->view->assignMultiple([
             'gtmArray' => $this->createGtmArray($services, $blocks)
         ]);
+
+        // Backwards compatibility for TYPO3 V10
+        if (GeneralUtility::makeInstance(Typo3Version::class)->getMajorVersion() > 10) {
+            return $this->htmlResponse();
+        }
     }
 
     /**

@@ -11,6 +11,23 @@ use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
 class YouTubeRenderer extends \TYPO3\CMS\Core\Resource\Rendering\YouTubeRenderer
 {
     /**
+     * @var \TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface
+     */
+    protected $configurationManager;
+
+    /**
+     * Injects the Configuration Manager and loads the settings
+     *
+     * @param \TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface $configurationManager An instance of the Configuration Manager
+     */
+    public function injectConfigurationManager(
+        ConfigurationManagerInterface $configurationManager
+    ): void
+    {
+        $this->configurationManager = $configurationManager;
+    }
+
+    /**
      * Returns the priority of the renderer
      * This way it is possible to define/overrule a renderer
      * for a specific file type/context.
@@ -34,12 +51,10 @@ class YouTubeRenderer extends \TYPO3\CMS\Core\Resource\Rendering\YouTubeRenderer
      */
     public function render(FileInterface $file, $width, $height, array $options = [], $usedPathsRelativeToCurrentScript = false)
     {
-        $objectManager = GeneralUtility::makeInstance(\TYPO3\CMS\Extbase\Object\ObjectManager::class);
-        $configurationManager = $objectManager->get(\TYPO3\CMS\Extbase\Configuration\ConfigurationManager::class);
-        $extbaseFrameworkConfiguration = $configurationManager->getConfiguration(ConfigurationManagerInterface::CONFIGURATION_TYPE_FULL_TYPOSCRIPT);
+        $extbaseFrameworkConfiguration = $this->configurationManager->getConfiguration(ConfigurationManagerInterface::CONFIGURATION_TYPE_FULL_TYPOSCRIPT);
         $testing = $extbaseFrameworkConfiguration['plugin.']['tx_wecookieconsent_pi1.']['settings.']['klaro.']['testing'];
 
-        if(!$testing) {
+        if (!$testing) {
             $options = $this->collectOptions($options, $file);
             $iframe = str_replace(' src="', ' data-name="youtube" data-src="', parent::render($file, $width, $height, $options, $usedPathsRelativeToCurrentScript));
         } else {

@@ -294,13 +294,15 @@
 		
 
 		&.notice--center {
-			.cookie-notice .cn-body .cn-ok .cm-btn.cm-btn-info,
-			.cookie-notice .cn-body .cn-ok .cm-link.cm-learn-more {
-				background:transparent;
-			}
-			// .cookie-notice .cn-body .cn-ok .cm-link {  // now like ..-floated since V2.0.0 due to new-cn-buttons
-				// width:100%;
-			// }
+			.cookie-notice {
+				.cn-body .cn-ok .cm-btn.cm-btn-info,
+				.cn-body .cn-ok .cm-link.cm-learn-more {
+					background:transparent;
+				}
+			 	.cn-body .cn-ok .cm-link {  // now like ..-floated since V2.0.0 due to new-cn-buttons
+					width:100%;
+			 	}
+			 }
 		}
 
 		&.notice--center-floated {
@@ -594,3 +596,43 @@
 }
 /* Ver 2.0.1 -gf20210921 END. */
 /* ************************** */
+
+
+/* ********************* */
+/* Ver 3.1.1 -gf20231121 */
+@media screen and (min-width:1520px) {
+	#klaro .klaro.we_cookie_consent {
+		.cm-link,
+		.cm-btn {
+			&::before {
+				margin-top: .25em;
+			}
+		}
+
+		&.notice--center {
+			.cookie-notice {
+				&:not(.cookie-modal-notice) .cn-body .cn-ok {
+					.cm-link {
+						margin-top: calc(70px + .5em);
+					}
+					 .cm-btn {
+						margin: calc(130px + 1em) 0 10px;
+					}
+				}
+			}
+			&-floated {
+				.cookie-notice {
+					&:not(.cookie-modal-notice) .cn-body .cn-ok {
+						height: calc(130px + .5em);
+						.cm-link {
+							margin-top: calc(70px + .5em);
+						}
+						.cm-btn {
+							height: 100%;
+						}
+					}
+				}
+			}
+		}
+	}
+}

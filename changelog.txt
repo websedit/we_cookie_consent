@@ -2,6 +2,18 @@
 All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
+## [4.0.0] - 2023-11-11 - ES, 2023-11-21/2023-12-05/2023-12-18 - GF
+### Changed
+- Update the Extension to TYPO3 V12 compatibility
+- Update the klaro library from 0.7.16 to 0.7.18.
+### Correct
+- css vertical position of default icons in buttons for > 1520px
+- css positioning:static for .frame privacy policy (table list etc.)
+### Add
+- add evaluation/confirmation output for GoogleAnalytics optOutLink
+### Fixed
+- Correction to the TCA due to backwards compatibility issues in V10 and V11
+
 ## [3.0.3] - 2022-08-08 - AS - Bugreport von Web-Style Thurnwalder KG
 ### Added - 2022-08-08
 - Classes/Controller/ConsentController.php: Removed backwards compatibility code < TYPO3 v10

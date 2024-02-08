@@ -6,8 +6,6 @@ return [
         'label_alt' => 'title',
         'label_alt_force' => true,
         'tstamp' => 'tstamp',
-        'crdate' => 'crdate',
-        'cruser_id' => 'cruser_id',
         'sortby' => 'sorting',
         'versioningWS' => true,
         'languageField' => 'sys_language_uid',
@@ -20,10 +18,10 @@ return [
             'endtime' => 'endtime',
         ],
         'searchFields' => 'provider,name,title,description,purpose,snippet,callback,domain,api_key,gtm_tag_title,gtm_trigger_title,gtm_trigger_name,gtm_variable_title,gtm_variable_name',
-        'iconfile' => 'EXT:we_cookie_consent/Resources/Public/Icons/tx_wecookieconsent_domain_model_service.svg'
-    ],
-    'interface' => [
-        'showRecordFieldList' => 'provider, name, title, description, purpose, state, required, preselected, opt_out, only_once, contextual_consent_only, snippet, callback, domain, api_key, gtm_tag_title, gtm_trigger_title, gtm_trigger_name, gtm_variable_title, gtm_variable_name, cookies, sys_language_uid, l10n_parent, l10n_diffsource, hidden',
+        'iconfile' => 'EXT:we_cookie_consent/Resources/Public/Icons/tx_wecookieconsent_domain_model_service.svg',
+        'security' => [
+            'ignorePageTypeRestriction' => true,
+        ],
     ],
     'types' => [
         '1' => ['showitem' => '--palette--;;service_provider, title, description,
@@ -32,7 +30,8 @@ return [
                 --div--;LLL:EXT:we_cookie_consent/Resources/Private/Language/locallang_db.xlf:tx_wecookieconsent_domain_model_service.tab.identification.label, domain, api_key, 
                 --div--;LLL:EXT:we_cookie_consent/Resources/Private/Language/locallang_db.xlf:tx_wecookieconsent_domain_model_service.tab.dev.label, snippet, callback, 
                 --div--;LLL:EXT:we_cookie_consent/Resources/Private/Language/locallang_db.xlf:tx_wecookieconsent_domain_model_service.tab.gtm.label, gtm_tag_title, --palette--;;gtm_trigger, --palette--;;gtm_variable,  
-                --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access, hidden, sys_language_uid, l10n_parent, l10n_diffsource, starttime, endtime
+                --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access, hidden, sys_language_uid, l10n_parent, l10n_diffsource, starttime, endtime, 
+                --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:categories, categories,
             '],
     ],
     'palettes' => [
@@ -54,29 +53,18 @@ return [
             'exclude' => true,
             'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.language',
             'config' => [
-                'type' => 'select',
-                'renderType' => 'selectSingle',
-                'special' => 'languages',
-                'items' => [
-                    [
-                        'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.allLanguages',
-                        -1,
-                        'flags-multiple'
-                    ]
-                ],
-                'default' => 0,
+                'type' => 'language',
             ],
         ],
         'l10n_parent' => [
             'displayCond' => 'FIELD:sys_language_uid:>:0',
-            'exclude' => true,
             'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.l18n_parent',
             'config' => [
                 'type' => 'select',
                 'renderType' => 'selectSingle',
                 'default' => 0,
                 'items' => [
-                    ['', 0],
+                    ['label' => '', 'value' => 0],
                 ],
                 'foreign_table' => 'tx_wecookieconsent_domain_model_service',
                 'foreign_table_where' => 'AND {#tx_wecookieconsent_domain_model_service}.{#pid}=###CURRENT_PID### AND {#tx_wecookieconsent_domain_model_service}.{#sys_language_uid} IN (-1,0)',
@@ -103,10 +91,9 @@ return [
                 'renderType' => 'checkboxToggle',
                 'items' => [
                     [
-                        0 => '',
-                        1 => '',
-                        'invertStateDisplay' => true
-                    ]
+                        'label' => '',
+                        'invertStateDisplay' => true,
+                    ],
                 ],
             ],
         ],
@@ -114,9 +101,8 @@ return [
             'exclude' => true,
             'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.starttime',
             'config' => [
-                'type' => 'input',
-                'renderType' => 'inputDateTime',
-                'eval' => 'datetime,int',
+                'type' => 'datetime',
+                'format' => 'datetime',
                 'default' => 0,
                 'behaviour' => [
                     'allowLanguageSynchronization' => true
@@ -127,10 +113,12 @@ return [
             'exclude' => true,
             'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.endtime',
             'config' => [
-                'type' => 'input',
-                'renderType' => 'inputDateTime',
-                'eval' => 'datetime,int',
+                'type' => 'datetime',
+                'format' => 'datetime',
                 'default' => 0,
+                'range' => [
+                    'upper' => mktime(0, 0, 0, 1, 1, 2038)
+                ],
                 'behaviour' => [
                     'allowLanguageSynchronization' => true
                 ]
@@ -144,18 +132,18 @@ return [
                 'type' => 'select',
                 'renderType' => 'selectSingle',
                 'items' => [
-                    ['Google Analytics', '--div--'],
-                    ['Google Analytics', 'google-analytics'],
-                    ['Google Analytics Universal', 'google-analytics-universal'],
-                    ['Google Tag Manager', '--div--'],
-                    ['Google Tag Manager', 'google-tagmanager'],
-                    ['Google Tag Manager - Service', 'google-tagmanager-service'],
-                    ['LLL:EXT:we_cookie_consent/Resources/Private/Language/locallang_db.xlf:tx_wecookieconsent_domain_model_service.provider.div.other', '--div--'],
-                    ['Facebook Tracking Pixel', 'facebook'],
-                    ['Matomo', 'matomo'],
-                    ['LLL:EXT:we_cookie_consent/Resources/Private/Language/locallang_db.xlf:tx_wecookieconsent_domain_model_service.provider.other', 'other'],
-					['Youtube', 'youtube'],
-					['Vimeo', 'vimeo'],
+                    ['label' => 'Google Analytics', 'value' => '--div--'],
+                    ['label' => 'Google Analytics', 'value' => 'google-analytics'],
+                    ['label' => 'Google Analytics Universal', 'value' => 'google-analytics-universal'],
+                    ['label' => 'Google Tag Manager', 'value' => '--div--'],
+                    ['label' => 'Google Tag Manager', 'value' => 'google-tagmanager'],
+                    ['label' => 'Google Tag Manager - Service', 'value' => 'google-tagmanager-service'],
+                    ['label' => 'LLL:EXT:we_cookie_consent/Resources/Private/Language/locallang_db.xlf:tx_wecookieconsent_domain_model_service.provider.div.other', 'value' => '--div--'],
+                    ['label' => 'Facebook Tracking Pixel', 'value' => 'facebook'],
+                    ['label' => 'Matomo', 'value' => 'matomo'],
+                    ['label' => 'LLL:EXT:we_cookie_consent/Resources/Private/Language/locallang_db.xlf:tx_wecookieconsent_domain_model_service.provider.other', 'value' => 'other'],
+                    ['label' => 'Youtube', 'value' => 'youtube'],
+                    ['label' => 'Vimeo', 'value' => 'vimeo'],
                 ],
                 'behaviour' => [
                     'allowLanguageSynchronization' => true
@@ -183,7 +171,8 @@ return [
             'config' => [
                 'type' => 'input',
                 'size' => 30,
-                'eval' => 'trim,required'
+                'eval' => 'trim',
+                'required' => true
             ],
         ],
         'description' => [
@@ -195,7 +184,8 @@ return [
                 'enableRichtext' => true,
                 'cols' => 40,
                 'rows' => 15,
-                'eval' => 'trim,required',
+                'eval' => 'trim',
+                'required' => true
             ],
         ],
         'state' => [
@@ -204,7 +194,12 @@ return [
             'description' => 'LLL:EXT:we_cookie_consent/Resources/Private/Language/locallang_db.xlf:tx_wecookieconsent_domain_model_service.state.description',
             'config' => [
                 'type' => 'check',
-                'items' => [[ 'LLL:EXT:lang/locallang_core.xlf:labels.disabled', 'LLL:EXT:lang/locallang_core.xlf:labels.enabled' ]],
+                'renderType' => 'checkboxToggle',
+                'items' => [
+                    [
+                        'label' => '',
+                    ],
+                ],
                 'default' => 1,
                 'behaviour' => [
                     'allowLanguageSynchronization' => true
@@ -217,7 +212,12 @@ return [
             'description' => 'LLL:EXT:we_cookie_consent/Resources/Private/Language/locallang_db.xlf:tx_wecookieconsent_domain_model_service.preselected.description',
             'config' => [
                 'type' => 'check',
-                'items' => [[ 'LLL:EXT:lang/locallang_core.xlf:labels.disabled', 'LLL:EXT:lang/locallang_core.xlf:labels.enabled' ]],
+                'renderType' => 'checkboxToggle',
+                'items' => [
+                    [
+                        'label' => '',
+                    ],
+                ],
                 'default' => 0,
                 'behaviour' => [
                     'allowLanguageSynchronization' => true
@@ -230,7 +230,12 @@ return [
             'description' => 'LLL:EXT:we_cookie_consent/Resources/Private/Language/locallang_db.xlf:tx_wecookieconsent_domain_model_service.required.description',
             'config' => [
                 'type' => 'check',
-                'items' => [[ 'LLL:EXT:lang/locallang_core.xlf:labels.disabled', 'LLL:EXT:lang/locallang_core.xlf:labels.enabled' ]],
+                'renderType' => 'checkboxToggle',
+                'items' => [
+                    [
+                        'label' => '',
+                    ],
+                ],
                 'default' => 0,
                 'behaviour' => [
                     'allowLanguageSynchronization' => true
@@ -243,7 +248,12 @@ return [
             'description' => 'LLL:EXT:we_cookie_consent/Resources/Private/Language/locallang_db.xlf:tx_wecookieconsent_domain_model_service.opt_out.description',
             'config' => [
                 'type' => 'check',
-                'items' => [[ 'LLL:EXT:lang/locallang_core.xlf:labels.disabled', 'LLL:EXT:lang/locallang_core.xlf:labels.enabled' ]],
+                'renderType' => 'checkboxToggle',
+                'items' => [
+                    [
+                        'label' => '',
+                    ],
+                ],
                 'default' => 0,
                 'behaviour' => [
                     'allowLanguageSynchronization' => true
@@ -256,12 +266,18 @@ return [
             'description' => 'LLL:EXT:we_cookie_consent/Resources/Private/Language/locallang_db.xlf:tx_wecookieconsent_domain_model_service.only_once.description',
             'config' => [
                 'type' => 'check',
-                'items' => [[ 'LLL:EXT:lang/locallang_core.xlf:labels.disabled', 'LLL:EXT:lang/locallang_core.xlf:labels.enabled' ]],
+                'renderType' => 'checkboxToggle',
+                'items' => [
+                    [
+                        'label' => '',
+                    ],
+                ],
                 'default' => 0,
                 'behaviour' => [
                     'allowLanguageSynchronization' => true
                 ]
-            ]
+            ],
+
         ],
         /* We prepared this, since klaro offers the option. But for now, we don't see a usecase for it.
         'contextual_consent_only' => [
@@ -436,6 +452,11 @@ return [
                     ]
                 ],
             ],
+        ],
+        'categories' => [
+            'config' => [
+                'type' => 'category'
+            ]
         ],
     ],
 ];

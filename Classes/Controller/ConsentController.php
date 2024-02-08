@@ -2,6 +2,8 @@
 
 namespace Websedit\WeCookieConsent\Controller;
 
+use TYPO3\CMS\Core\Information\Typo3Version;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 
 /***
@@ -43,7 +45,7 @@ class ConsentController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
      * Generate JSON data for the consent Modal
      *
      * @param Websedit\WeCookieConsent\Domain\Model\Service
-     * @return void
+     * @return \Psr\Http\Message\ResponseInterface
      */
     public function consentAction()
     {
@@ -58,13 +60,17 @@ class ConsentController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
 //            'klaroConfig' => $klaroConfig,
 //            'typo3Version' => $typo3Version
 //        ]);
+        // Backwards compatibility for TYPO3 V10
+        if (GeneralUtility::makeInstance(Typo3Version::class)->getMajorVersion() > 10) {
+            return $this->htmlResponse();
+        }
     }
 
     /**
      * Show used cookies at the data privacy page
      *
      * @param Websedit\WeCookieConsent\Domain\Model\Service
-     * @return void
+     * @return \Psr\Http\Message\ResponseInterface
      */
     public function listAction()
     {
@@ -79,12 +85,17 @@ class ConsentController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
         $this->view->assignMultiple([
             'services' => $services
         ]);
+
+        // Backwards compatibility for TYPO3 V10
+        if (GeneralUtility::makeInstance(Typo3Version::class)->getMajorVersion() > 10) {
+            return $this->htmlResponse();
+        }
     }
 
     /**
      * @param \TYPO3\CMS\Extbase\Mvc\RequestInterface $request
      */
-    protected function renderAssetsForRequest($request)
+    protected function renderAssetsForRequest($request): void
     {
         if (!$this->view instanceof \TYPO3\CMS\Fluid\View\TemplateView) {
             return;
@@ -93,7 +104,7 @@ class ConsentController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
         $services = $this->serviceRepository->findAll();
         $klaroConfig = $this->klaroConfigBuild($services);
 
-        $pageRenderer = $this->objectManager->get(\TYPO3\CMS\Core\Page\PageRenderer::class);
+        $pageRenderer = GeneralUtility::makeInstance(\TYPO3\CMS\Core\Page\PageRenderer::class);
         $variables = [
             'request' => $request,
             'arguments' => $this->arguments,
@@ -159,7 +170,7 @@ class ConsentController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
             'storageName' => $this->settings['klaro']['storageName'],
             'stylePrefix' => $this->settings['klaro']['stylePrefix'],
             'testing' => $this->settings['klaro']['testing'] === '1',
-			'consentMode' => $this->settings['klaro']['consentMode'] === '1',
+            'consentMode' => $this->settings['klaro']['consentMode'] === '1',
             'translations' => [
                 'en' => [
                     'consentModal' => [
@@ -219,12 +230,14 @@ class ConsentController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
         ];
 
         foreach ($services as $service) {
-            foreach ($service->getCategories() as $category) {
-                $klaroConfig['translations']['en']['purposes'][strtolower($category->getTitle())]['title'] = $category->getTitle();
-                $klaroConfig['translations']['en']['purposes'][strtolower($category->getTitle())]['description'] = $category->getDescription();
+            if ($service->getCategories()->count()) {
+                foreach ($service->getCategories() as $category) {
+                    $klaroConfig['translations']['en']['purposes'][strtolower($category->getTitle())]['title'] = $category->getTitle();
+                    $klaroConfig['translations']['en']['purposes'][strtolower($category->getTitle())]['description'] = $category->getDescription();
 
-                // Sorting the sys_categories
-                $klaroConfig['purposeOrder'][$category->getUid()] = strtolower($category->getTitle());
+                    // Sorting the sys_categories
+                    $klaroConfig['purposeOrder'][$category->getUid()] = strtolower($category->getTitle());
+                }
             }
         }
 
