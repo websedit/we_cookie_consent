@@ -64,8 +64,8 @@
 					color:$color-default;
 				}
 			}
-			
-			
+
+
 			.cm-btn  {
 				background: $cm-btn-color-bg;
 				border-radius: $border-radius;
@@ -107,7 +107,7 @@
 				text-align:center;
 				width:100%;
 			}
-			
+
 			@media screen and (min-width:768px) {
 				.cn-body {
 					.cn-ok {
@@ -120,7 +120,7 @@
 							display: contents;
 							max-width: 75%;
 							width: 100%;
-						
+
 						}
 					}
 				}
@@ -160,7 +160,7 @@
 				background: $color-bg-success;
 				color:$color-font-success;
 				order:-1;
-			} 
+			}
 			&.cm-btn-info {
 				color: $color-font-edit;
 				display:block;
@@ -173,7 +173,7 @@
 			}
 		}
 	}
-	
+
 	&.notice--top {
 		.cookie-notice:not(.cookie-modal-notice) {
 			bottom:auto;
@@ -183,10 +183,10 @@
 			}
 		}
 	}
-	
+
 
 /* Center 1 und Center 2: */
-	
+
 	&.notice--center,
 	&.notice--center-floated {
 		.cookie-notice:not(.cookie-modal-notice) .cn-body .cn-ok {
@@ -207,7 +207,7 @@
 					max-width: calc(50% - 10px);
 					position:absolute;
 					right:0;
-					z-index: 100;	
+					z-index: 100;
 				}
 				.cm-btn-danger {
 					max-width: calc(50% - 10px);
@@ -218,7 +218,7 @@
 	}
 
   // we_cookie_consent:
-  // Due to new button group "cn-buttons" the former arrangement isn't possible any longer. 
+  // Due to new button group "cn-buttons" the former arrangement isn't possible any longer.
 	// Nevertheless, if you like to initiate another order try this:
 	// @media screen and (min-width:576px) {
 		// &.notice--center-floated {
@@ -291,7 +291,7 @@
 				}
 			}
 		}
-		
+
 
 		&.notice--center {
 			.cookie-notice {
@@ -319,7 +319,7 @@
 				}
 			}
 		}
-		
+
 		&.notice--top .cookie-notice .cm-btn.cm-btn-success {
 			order:2;
 		}
@@ -368,7 +368,7 @@
 				background: $color-none;
 				border-radius: $border-radius;
 				font-weight:500;
-				margin: calc(.5em - $border-width) 0;
+				margin: calc(.5em - #{$border-width}) 0;
 				&.cm-btn-danger {
 					background: $cm-btn-color-bg-decline;
 					&::before {
@@ -476,7 +476,7 @@
 					margin: 0.5em 33.333333%;
 				}
 			}
-			
+
 		}
 		.cm-btn {
 			&.cm-btn-info {
@@ -528,7 +528,7 @@
 					.cn-body {
 						.cn-ok {
 							.cm-link {  // neu seit V2.0.0 (gilt jetzt für center und center-floated gleichermaßen)
-								margin: 70px 0 0; 
+								margin: 70px 0 0;
 								max-width: 100%;
 							}
 							.cn-buttons {
