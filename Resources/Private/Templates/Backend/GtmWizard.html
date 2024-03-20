@@ -22,12 +22,14 @@
                 </tbody>
             </table>
 
-            <pre><we:format.json forceObject="true">{gtmArray}</we:format.json></pre>
-
-            <br/>
             <h2>Download JSON File</h2>
             <f:link.action action="jsonDownload" arguments="{blocks:'{tags:1, triggers:1, variables:1}'}" class="btn btn-success"><f:translate key="LLL:EXT:we_cookie_consent/Resources/Private/Language/locallang_mod1.xlf:download_json_all" /></f:link.action>
             <f:link.action action="jsonDownload" arguments="{blocks:'{triggers:1, variables:1}'}" class="btn btn-success"><f:translate key="LLL:EXT:we_cookie_consent/Resources/Private/Language/locallang_mod1.xlf:download_json_triggerAndVariables" /></f:link.action>
+
+            <br/>
+            <br/>
+
+            <pre><we:format.json forceObject="true" pretty="true">{gtmArray}</we:format.json></pre>
         </f:then>
         <f:else>
             <f:translate key="LLL:EXT:we_cookie_consent/Resources/Private/Language/locallang_mod1.xlf:no_google_tag_manager_services" />

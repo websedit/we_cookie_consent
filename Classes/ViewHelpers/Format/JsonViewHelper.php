@@ -19,6 +19,7 @@ class JsonViewHelper extends \Websedit\WeCookieConsent\ViewHelpers\AbstractViewH
     {
         $this->registerArgument('value', 'mixed', 'The incoming data to convert, or null if VH children should be used');
         $this->registerArgument('forceObject', 'bool', 'Outputs an JSON object rather than an array', false, false);
+        $this->registerArgument('pretty', 'bool', 'Pretty print', false, false);
     }
 
     public function render() {
@@ -26,6 +27,9 @@ class JsonViewHelper extends \Websedit\WeCookieConsent\ViewHelpers\AbstractViewH
         $options = JSON_HEX_TAG;
         if ($this->arguments['forceObject'] !== false) {
             $options = $options | JSON_FORCE_OBJECT;
+        }
+        if ($this->arguments['pretty'] !== false) {
+            $options = $options | JSON_PRETTY_PRINT;
         }
         return json_encode($value, $options);
     }
