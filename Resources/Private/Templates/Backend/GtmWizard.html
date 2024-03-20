@@ -1,5 +1,5 @@
 <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" xmlns:we="http://typo3.org/ns/Websedit/WeCookieConsent/ViewHelpers" data-namespace-typo3-fluid="true">
-<f:layout name="Default"/>
+<f:layout name="Module"/>
 <f:section name="Content">
     <h1>Google Tag Manager Export Wizard</h1>
     <f:if condition="{services}">
@@ -17,17 +17,19 @@
                 </thead>
                 <tbody>
                 <f:for each="{services}" as="service">
-                    <f:render partial="Service/Table" arguments="{service:service}"/>
+                    <f:render partial="Backend/Table" arguments="{service:service}"/>
                 </f:for>
                 </tbody>
             </table>
 
-            <pre><we:format.json forceObject="true">{gtmArray}</we:format.json></pre>
-
-            <br/>
             <h2>Download JSON File</h2>
             <f:link.action action="jsonDownload" arguments="{blocks:'{tags:1, triggers:1, variables:1}'}" class="btn btn-success"><f:translate key="LLL:EXT:we_cookie_consent/Resources/Private/Language/locallang_mod1.xlf:download_json_all" /></f:link.action>
             <f:link.action action="jsonDownload" arguments="{blocks:'{triggers:1, variables:1}'}" class="btn btn-success"><f:translate key="LLL:EXT:we_cookie_consent/Resources/Private/Language/locallang_mod1.xlf:download_json_triggerAndVariables" /></f:link.action>
+
+            <br/>
+            <br/>
+
+            <pre><we:format.json forceObject="true" pretty="true">{gtmArray}</we:format.json></pre>
         </f:then>
         <f:else>
             <f:translate key="LLL:EXT:we_cookie_consent/Resources/Private/Language/locallang_mod1.xlf:no_google_tag_manager_services" />
