@@ -1,13 +1,130 @@
 <f:section name="Header">
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script type="opt-in" data-type="text/javascript" data-name="{service.provider}-{service.uid}" data-src="https://www.googletagmanager.com/gtag/js?id={service.apiKey}"></script>
-    <script type="opt-in" data-type="text/javascript" data-name="{service.provider}-{service.uid}">
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
+    <f:if condition="{settings.klaro.consentMode} || {settings.klaro.consentModev2}">
+		<f:then>
+			<script>
+				// Define dataLayer and the gtag function.
+				window.dataLayer = window.dataLayer || [];
+				function gtag(){dataLayer.push(arguments);}
 
-        gtag('config', '{service.apiKey}', {anonymize_ip: true});
-    </script>
+				// Set default consent to 'denied' as a placeholder
+				// Determine actual values based on your own requirements
+				gtag('consent', 'default', {
+					'ad_storage': 'denied',
+					'analytics_storage': 'denied',
+					'ad_user_data': 'denied',
+					'ad_personalization': 'denied',
+					'functionality_storage': 'denied',
+					'personalization_storage': 'denied',
+					'security_storage': 'granted',
+					'wait_for_update': 2000
+				});
+			</script>
+
+			<f:if condition="{settings.klaro.consentModev2}">
+				<!-- Google tag (gtag.js) -->
+				<script async src="https://www.googletagmanager.com/gtag/js?id=<f:format.raw>{service.apiKey}</f:format.raw>">
+				</script>
+				<script>
+					window.dataLayer = window.dataLayer || [];
+					function gtag(){dataLayer.push(arguments);}
+	
+					gtag('js', new Date());
+					gtag('config', '<f:format.raw>{service.apiKey}</f:format.raw>');
+					//Enable ads_data_redaction by default
+					gtag('set', 'ads_data_redaction', true);
+				</script>
+
+				<script type="opt-in" data-type="text/javascript" data-name="{service.provider}-{service.uid}">
+					let consenTypeObj = {};
+
+					if({service.adStorage} != 0) {
+						consenTypeObj.ad_storage = "{f:if(condition:'{service.adStorage}==1', then:'granted', else:'{f:if(condition:\'{service.adStorage}==2\', then:\'denied\')}')}";
+					}
+					if({service.analyticsStorage} != 0) {
+						consenTypeObj.analytics_storage = "{f:if(condition:'{service.analyticsStorage}==1', then:'granted', else:'{f:if(condition:\'{service.analyticsStorage}==2\', then:\'denied\')}')}";
+					}
+					if({service.adUserData} != 0) {
+						consenTypeObj.ad_user_data = "{f:if(condition:'{service.adUserData}==1', then:'granted', else:'{f:if(condition:\'{service.adUserData}==2\', then:\'denied\')}')}";
+					}
+					if({service.adPersonalization} != 0) {
+						consenTypeObj.ad_personalization = "{f:if(condition:'{service.adPersonalization}==1', then:'granted', else:'{f:if(condition:\'{service.adPersonalization}==2\', then:\'denied\')}')}";
+					}
+					if({service.functionalityStorage} != 0) {
+						consenTypeObj.functionality_storage = "{f:if(condition:'{service.functionalityStorage}==1', then:'granted', else:'{f:if(condition:\'{service.functionalityStorage}==2\', then:\'denied\')}')}";
+					}
+					if({service.personalizationStorage} != 0) {
+						consenTypeObj.personalization_storage = "{f:if(condition:'{service.personalizationStorage}==1', then:'granted', else:'{f:if(condition:\'{service.personalizationStorage}==2\', then:\'denied\')}')}";
+					}
+					if({service.securityStorage} != 0) {
+						consenTypeObj.security_storage = "{f:if(condition:'{service.securityStorage}==1', then:'granted', else:'{f:if(condition:\'{service.securityStorage}==2\', then:\'denied\')}')}";
+					}
+
+					consenTypeObj.wait_for_update: 2000;
+
+					gtag('consent', 'update', consenTypeObj);
+				</script>
+			</f:if>
+			<f:if condition="{settings.klaro.consentMode}">
+				<script>
+					gtag('js', new Date());
+					gtag('config', '<f:format.raw>{service.apiKey}</f:format.raw>');
+					//Enable ads_data_redaction by default
+					gtag('set', 'ads_data_redaction', true);
+				</script>
+				<script type="opt-in" data-type="text/javascript" data-name="{service.provider}-{service.uid}">
+					function gtag() { dataLayer.push(arguments); }
+
+				  	let consenTypeObj = {};
+
+					if({service.adStorage} != 0) {
+						consenTypeObj.ad_storage = "{f:if(condition:'{service.adStorage}==1', then:'granted', else:'{f:if(condition:\'{service.adStorage}==2\', then:\'denied\')}')}";
+					}
+					if({service.analyticsStorage} != 0) {
+						consenTypeObj.analytics_storage = "{f:if(condition:'{service.analyticsStorage}==1', then:'granted', else:'{f:if(condition:\'{service.analyticsStorage}==2\', then:\'denied\')}')}";
+					}
+					if({service.adUserData} != 0) {
+						consenTypeObj.ad_user_data = "{f:if(condition:'{service.adUserData}==1', then:'granted', else:'{f:if(condition:\'{service.adUserData}==2\', then:\'denied\')}')}";
+					}
+					if({service.adPersonalization} != 0) {
+						consenTypeObj.ad_personalization = "{f:if(condition:'{service.adPersonalization}==1', then:'granted', else:'{f:if(condition:\'{service.adPersonalization}==2\', then:\'denied\')}')}";
+					}
+					if({service.functionalityStorage} != 0) {
+						consenTypeObj.functionality_storage = "{f:if(condition:'{service.functionalityStorage}==1', then:'granted', else:'{f:if(condition:\'{service.functionalityStorage}==2\', then:\'denied\')}')}";
+					}
+					if({service.personalizationStorage} != 0) {
+						consenTypeObj.personalization_storage = "{f:if(condition:'{service.personalizationStorage}==1', then:'granted', else:'{f:if(condition:\'{service.personalizationStorage}==2\', then:\'denied\')}')}";
+					}
+					if({service.securityStorage} != 0) {
+						consenTypeObj.security_storage = "{f:if(condition:'{service.securityStorage}==1', then:'granted', else:'{f:if(condition:\'{service.securityStorage}==2\', then:\'denied\')}')}";
+					}
+
+					consenTypeObj.wait_for_update: 2000;
+
+					gtag('consent', 'update', consenTypeObj);
+
+					// Load gtag.js script.
+					var gtagScript = document.createElement('script');
+					gtagScript.async = true;
+					gtagScript.src = 'https://www.googletagmanager.com/gtag/js?id=<f:format.raw>{service.apiKey}</f:format.raw>';
+
+					var firstScript = document.getElementsByTagName('script')[0];
+					firstScript.parentNode.insertBefore(gtagScript,firstScript);
+				</script>
+			</f:if>
+		</f:then>
+		<f:else>
+			<!-- Global site tag (gtag.js) - Google Analytics -->
+			<script type="opt-in" data-type="text/javascript" data-name="{service.provider}-{service.uid}" data-src="https://www.googletagmanager.com/gtag/js?id={service.apiKey}"></script>
+			<script type="opt-in" data-type="text/javascript" data-name="{service.provider}-{service.uid}">
+				window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+
+                gtag('config', '<f:format.raw>{service.apiKey}</f:format.raw>');
+				//Enable ads_data_redaction by default
+				gtag('set', 'ads_data_redaction', true);
+			</script>
+		</f:else>
+	</f:if>
 </f:section>
-
 <f:section name="Footer" />

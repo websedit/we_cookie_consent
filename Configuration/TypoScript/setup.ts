@@ -54,6 +54,7 @@ plugin.tx_wecookieconsent_pi1 {
             stylePrefix = {$plugin.tx_wecookieconsent_pi1.settings.klaro.stylePrefix}
             testing = {$plugin.tx_wecookieconsent_pi1.settings.klaro.testing}
 			consentMode = {$plugin.tx_wecookieconsent_pi1.settings.klaro.consentMode}
+			consentModev2 = {$plugin.tx_wecookieconsent_pi1.settings.klaro.consentModev2}
 
             /* Prepared for later use
             embedded = {$plugin.tx_wecookieconsent_pi1.settings.klaro.embedded}

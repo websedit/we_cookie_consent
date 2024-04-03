@@ -23,6 +23,10 @@
             <trans-unit id="tx_wecookieconsent_domain_model_service.tab.gtm.label">
                 <target>Google Tag Manager</target>
             </trans-unit>
+            <trans-unit id="tx_wecookieconsent_domain_model_service.tab.google_consent_mode.label">
+                <target>Google Consent Mode</target>
+            </trans-unit>
+            
             <!-- Palettes -->
             <trans-unit id="tx_wecookieconsent_domain_model_service.palette.service_provider.label">
                 <target>Service <![CDATA[&]]> Skript Auswahl</target>
@@ -32,6 +36,9 @@
             </trans-unit>
             <trans-unit id="tx_wecookieconsent_domain_model_service.palette.gtm_variable.label">
                 <target>Variable</target>
+            </trans-unit>
+            <trans-unit id="tx_wecookieconsent_domain_model_service.palette.consent_mode_update.label">
+                <target>Consent Mode Update</target>
             </trans-unit>
 
             <!-- Fields -->
@@ -211,7 +218,6 @@
                 <target>Bspw.: 365 Tage, Session-Cookie, etc.</target>
             </trans-unit>
 
-
             <trans-unit id="tx_we_cookie_consent_pi1.name">
                 <target>Cookie Liste</target>
             </trans-unit>
@@ -226,6 +232,60 @@
             </trans-unit>
             <trans-unit id="tx_we_cookie_consent_pi1.flexform.services.label">
                 <target>Services <![CDATA[&]]> Skripts</target>
+            </trans-unit>
+
+            <trans-unit id="tx_wecookieconsent_domain_model_service.google_consent_mode.not_relevant">
+                <target>Nicht relevant</target>
+            </trans-unit>
+            <trans-unit id="tx_wecookieconsent_domain_model_service.google_consent_mode.granted">
+                <target>Granted</target>
+            </trans-unit>
+            <trans-unit id="tx_wecookieconsent_domain_model_service.google_consent_mode.denied">
+                <target>Denied</target>
+            </trans-unit>
+
+            <trans-unit id="tx_wecookieconsent_domain_model_service.google_consent_mode.ad_storage">
+                <target>ad_storage</target>
+            </trans-unit>
+            <trans-unit id="tx_wecookieconsent_domain_model_service.google_consent_mode.analytics_storage">
+                <target>analytics_storage</target>
+            </trans-unit>
+            <trans-unit id="tx_wecookieconsent_domain_model_service.google_consent_mode.ad_user_data">
+                <target>ad_user_data</target>
+            </trans-unit>
+            <trans-unit id="tx_wecookieconsent_domain_model_service.google_consent_mode.ad_personalization">
+                <target>ad_personalization</target>
+            </trans-unit>
+            <trans-unit id="tx_wecookieconsent_domain_model_service.google_consent_mode.functionality_storage">
+                <target>functionality_storage</target>
+            </trans-unit>
+            <trans-unit id="tx_wecookieconsent_domain_model_service.google_consent_mode.personalization_storage">
+                <target>personalization_storage</target>
+            </trans-unit>
+            <trans-unit id="tx_wecookieconsent_domain_model_service.google_consent_mode.security_storage">
+                <target>security_storage</target>
+            </trans-unit>
+
+            <trans-unit id="tx_wecookieconsent_domain_model_service.google_consent_mode.description.ad_storage">
+                <target>Ermöglicht die Speicherung im Browser (z. B. Cookies) im Zusammenhang mit der Werbung.</target>
+            </trans-unit>
+            <trans-unit id="tx_wecookieconsent_domain_model_service.google_consent_mode.description.analytics_storage">
+                <target>Ermöglicht die Speicherung durch den Browser (z. B. Cookies) im Zusammenhang mit derAnalyse, z. B. der Besuchsdauer.</target>
+            </trans-unit>
+            <trans-unit id="tx_wecookieconsent_domain_model_service.google_consent_mode.description.ad_user_data">
+                <target>Erlaubt die Erhebung personenbezogener Daten zu Werbezwecken.</target>
+            </trans-unit>
+            <trans-unit id="tx_wecookieconsent_domain_model_service.google_consent_mode.description.ad_personalization">
+                <target>Ermöglicht die Nutzung personenbezogener Daten für Werbezwecke wie Remarketing oder interessenbasiertes Targeting.</target>
+            </trans-unit>
+            <trans-unit id="tx_wecookieconsent_domain_model_service.google_consent_mode.description.functionality_storage">
+                <target>Ermöglicht die Speicherung im Browser, die die Funktionalität der Website oder App unterstützt, z. B. Spracheinstellungen.</target>
+            </trans-unit>
+            <trans-unit id="tx_wecookieconsent_domain_model_service.google_consent_mode.description.personalization_storage">
+                <target>Ermöglicht die Browser-Speicherung im Zusammenhang mit der Personalisierung, z. B. Videoempfehlungen.</target>
+            </trans-unit>
+            <trans-unit id="tx_wecookieconsent_domain_model_service.google_consent_mode.description.security_storage">
+                <target>Ermöglicht die Speicherung von sicherheitsrelevanten Daten im Browser, wie z. B. Authentifizierungsfunktionen, Betrugsprävention und sonstiger Nutzerschutz. Die Nutzer werden in der Cookie-Erklärung über die spezifischen Speicherzwecke informiert, aber für diese Art der Speicherung ist keine Zustimmung des Endnutzers erforderlich.</target>
             </trans-unit>
         </body>
     </file>

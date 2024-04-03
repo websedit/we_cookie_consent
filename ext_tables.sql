@@ -24,6 +24,14 @@ CREATE TABLE tx_wecookieconsent_domain_model_service (
 	gtm_variable_name varchar(255) DEFAULT '' NOT NULL,
 	cookies int(11) unsigned DEFAULT '0' NOT NULL,
 
+    ad_storage smallint(5) unsigned DEFAULT '0' NOT NULL,
+    analytics_storage smallint(5) unsigned DEFAULT '0' NOT NULL,
+    ad_user_data smallint(5) unsigned DEFAULT '0' NOT NULL,
+    ad_personalization smallint(5) unsigned DEFAULT '0' NOT NULL,
+    functionality_storage smallint(5) unsigned DEFAULT '0' NOT NULL,
+    personalization_storage smallint(5) unsigned DEFAULT '0' NOT NULL,
+    security_storage smallint(5) unsigned DEFAULT '0' NOT NULL,
+
 	categories int(11) unsigned DEFAULT '0' NOT NULL,
 	
 	#### TYPO3 7/8LTS compatibility ###

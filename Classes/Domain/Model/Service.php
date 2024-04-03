@@ -178,6 +178,41 @@ class Service extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $cookies = null;
 
     /**
+     * @var int
+     */
+    protected $adStorage;
+
+    /**
+     * @var int
+     */
+    protected $analyticsStorage;
+
+    /**
+     * @var int
+     */
+    protected $adUserData;
+
+    /**
+     * @var int
+     */
+    protected $adPersonalization;
+
+    /**
+     * @var int
+     */
+    protected $functionalityStorage;
+
+    /**
+     * @var int
+     */
+    protected $personalizationStorage;
+
+    /**
+     * @var int
+     */
+    protected $securityStorage;
+
+    /**
      * __construct
      */
     public function __construct()
@@ -737,5 +772,82 @@ class Service extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function setGtmVariableName($gtmVariableName)
     {
         $this->gtmVariableName = $gtmVariableName;
+    }
+
+    // Setter and getter methods for adStorage
+    public function setAdStorage($adStorage)
+    {
+        $this->adStorage = $adStorage;
+    }
+
+    public function getAdStorage()
+    {
+        return $this->adStorage;
+    }
+
+    // Setter and getter methods for analyticsStorage
+    public function setAnalyticsStorage($analyticsStorage)
+    {
+        $this->analyticsStorage = $analyticsStorage;
+    }
+
+    public function getAnalyticsStorage()
+    {
+        return $this->analyticsStorage;
+    }
+
+    // Setter and getter methods for adUserData
+    public function setAdUserData($adUserData)
+    {
+        $this->adUserData = $adUserData;
+    }
+
+    public function getAdUserData()
+    {
+        return $this->adUserData;
+    }
+
+    // Setter and getter methods for adPersonalization
+    public function setAdPersonalization($adPersonalization)
+    {
+        $this->adPersonalization = $adPersonalization;
+    }
+
+    public function getAdPersonalization()
+    {
+        return $this->adPersonalization;
+    }
+
+    // Setter and getter methods for functionalityStorage
+    public function setFunctionalityStorage($functionalityStorage)
+    {
+        $this->functionalityStorage = $functionalityStorage;
+    }
+
+    public function getFunctionalityStorage()
+    {
+        return $this->functionalityStorage;
+    }
+
+    // Setter and getter methods for personalizationStorage
+    public function setPersonalizationStorage($personalizationStorage)
+    {
+        $this->personalizationStorage = $personalizationStorage;
+    }
+
+    public function getPersonalizationStorage()
+    {
+        return $this->personalizationStorage;
+    }
+
+    // Setter and getter methods for securityStorage
+    public function setSecurityStorage($securityStorage)
+    {
+        $this->securityStorage = $securityStorage;
+    }
+
+    public function getSecurityStorage()
+    {
+        return $this->securityStorage;
     }
 }

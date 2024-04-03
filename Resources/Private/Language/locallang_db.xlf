@@ -23,6 +23,10 @@
             <trans-unit id="tx_wecookieconsent_domain_model_service.tab.gtm.label">
                 <source>Google Tag Manager</source>
             </trans-unit>
+            <trans-unit id="tx_wecookieconsent_domain_model_service.tab.google_consent_mode.label">
+                <source>Google Consent Mode</source>
+            </trans-unit>
+
             <!-- Palettes -->
             <trans-unit id="tx_wecookieconsent_domain_model_service.palette.service_provider.label">
                 <source>Service <![CDATA[&]]> Script selection</source>
@@ -32,6 +36,9 @@
             </trans-unit>
             <trans-unit id="tx_wecookieconsent_domain_model_service.palette.gtm_variable.label">
                 <source>Variable</source>
+            </trans-unit>
+            <trans-unit id="tx_wecookieconsent_domain_model_service.palette.consent_mode_update.label">
+                <source>Consent Mode Update</source>
             </trans-unit>
 
             <!-- Fields -->
@@ -211,7 +218,6 @@
                 <source>For example: 365 days, session cookie, etc.</source>
             </trans-unit>
 
-
             <trans-unit id="tx_we_cookie_consent_pi1.name">
                 <source>Cookie list</source>
             </trans-unit>
@@ -226,6 +232,60 @@
             </trans-unit>
             <trans-unit id="tx_we_cookie_consent_pi1.flexform.services.label">
                 <source>Services <![CDATA[&]]> Scripts</source>
+            </trans-unit>
+
+            <trans-unit id="tx_wecookieconsent_domain_model_service.google_consent_mode.not_relevant">
+                <source>Not relevant</source>
+            </trans-unit>
+            <trans-unit id="tx_wecookieconsent_domain_model_service.google_consent_mode.granted">
+                <source>Granted</source>
+            </trans-unit>
+            <trans-unit id="tx_wecookieconsent_domain_model_service.google_consent_mode.denied">
+                <source>Denied</source>
+            </trans-unit>
+
+            <trans-unit id="tx_wecookieconsent_domain_model_service.google_consent_mode.ad_storage">
+                <source>ad_storage</source>
+            </trans-unit>
+            <trans-unit id="tx_wecookieconsent_domain_model_service.google_consent_mode.analytics_storage">
+                <source>analytics_storage</source>
+            </trans-unit>
+            <trans-unit id="tx_wecookieconsent_domain_model_service.google_consent_mode.ad_user_data">
+                <source>Ad user data</source>
+            </trans-unit>
+            <trans-unit id="tx_wecookieconsent_domain_model_service.google_consent_mode.ad_personalization">
+                <source>ad_user_data</source>
+            </trans-unit>
+            <trans-unit id="tx_wecookieconsent_domain_model_service.google_consent_mode.functionality_storage">
+                <source>functionality_storage</source>
+            </trans-unit>
+            <trans-unit id="tx_wecookieconsent_domain_model_service.google_consent_mode.personalization_storage">
+                <source>personalization_storage</source>
+            </trans-unit>
+            <trans-unit id="tx_wecookieconsent_domain_model_service.google_consent_mode.security_storage">
+                <source>security_storage</source>
+            </trans-unit>
+
+            <trans-unit id="tx_wecookieconsent_domain_model_service.google_consent_mode.description.ad_storage">
+                <source>Enables browser storage (such as cookies) related to advertising.</source>
+            </trans-unit>
+            <trans-unit id="tx_wecookieconsent_domain_model_service.google_consent_mode.description.analytics_storage">
+                <source>Enables browser storage (such as cookies) related to analytics e.g. visit duration.</source>
+            </trans-unit>
+            <trans-unit id="tx_wecookieconsent_domain_model_service.google_consent_mode.description.ad_user_data">
+                <source>Allows the collection of personal data for advertising purposes.</source>
+            </trans-unit>
+            <trans-unit id="tx_wecookieconsent_domain_model_service.google_consent_mode.description.ad_personalization">
+                <source>Enables the use of personal data for advertising purposes such as remarketing or interest-based targeting.</source>
+            </trans-unit>
+            <trans-unit id="tx_wecookieconsent_domain_model_service.google_consent_mode.description.functionality_storage">
+                <source>Enables browser storage that supports the functionality of the website or app e.g. language settings.</source>
+            </trans-unit>
+            <trans-unit id="tx_wecookieconsent_domain_model_service.google_consent_mode.description.personalization_storage">
+                <source>Enables browser storage related to personalization e.g. video recommendations.</source>
+            </trans-unit>
+            <trans-unit id="tx_wecookieconsent_domain_model_service.google_consent_mode.description.security_storage">
+                <source>Enables browser storage related to security such as authentication functionality, fraud prevention, and other user protection. Users will be informed about the specific storage purposes in the cookie declaration, but this type does not require consent from the end user.</source>
             </trans-unit>
         </body>
     </file>

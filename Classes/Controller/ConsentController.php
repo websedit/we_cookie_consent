@@ -160,6 +160,7 @@ class ConsentController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
             'stylePrefix' => $this->settings['klaro']['stylePrefix'],
             'testing' => $this->settings['klaro']['testing'] === '1',
 			'consentMode' => $this->settings['klaro']['consentMode'] === '1',
+			'consentModev2' => $this->settings['klaro']['consentModev2'] === '1',
             'translations' => [
                 'en' => [
                     'consentModal' => [

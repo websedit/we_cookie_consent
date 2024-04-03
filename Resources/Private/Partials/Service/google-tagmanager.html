@@ -1,29 +1,66 @@
 <f:section name="Header">
-	<f:if condition="{settings.klaro.consentMode}">
-	<script data-type="text/javascript">
-		// Define dataLayer and the gtag function.
-		window.dataLayer = window.dataLayer || [];
-		function gtag(){dataLayer.push(arguments);}
+	<f:if condition="{settings.klaro.consentMode} || {settings.klaro.consentModev2}">
+		<f:then>
+			<script>
+				// Define dataLayer and the gtag function.
+					window.dataLayer = window.dataLayer || [];
+					function gtag(){dataLayer.push(arguments);}
 
-		// Set consent defaults gtag.js
-		gtag('consent', 'default', {
-			'ad_storage': 'denied',
-			'analytics_storage': 'denied',
-			'custom_ad': 'denied',
-			'custom_analytics': 'denied',
-			'wait_for_update': 500
-		});
-		gtag('set', 'ads_data_redaction', true);
+					// Set default consent to 'denied' as a placeholder
+					// Determine actual values based on your own requirements
+
+					gtag('consent', 'default', {
+						'ad_storage': 'denied',
+						'analytics_storage': 'denied',
+						'ad_user_data': 'denied',
+						'ad_personalization': 'denied',
+						'functionality_storage': 'denied',
+						'personalization_storage': 'denied',
+						'security_storage': 'granted',
+						'wait_for_update': 500
+					});
+					//Enable ads_data_redaction by default
+					gtag('set', 'ads_data_redaction', true);
+			</script>
 		
-	</script>
+			<f:if condition="{settings.klaro.consentModev2}">
+				<!-- Google Tag Manager -->
+				<script>
+				//alert('consentModev2');
+				(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+				new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+				j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+				'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+				})(window,document,'script','dataLayer','<f:format.raw>{service.apiKey}</f:format.raw>');
+				</script>
+				<!-- End Google Tag Manager -->
+			</f:if>
+			<f:if condition="{settings.klaro.consentMode}">
+				<script>
+					//alert('consentMode');
+					dataLayer.push({'gtm.start': new Date().getTime(), 'event': 'gtm.js'});
+				</script>
+				<script type="opt-in" data-type="text/javascript" data-name="{service.provider}-{service.uid}">
+					// Load Tag Manager script.
+					var gtmScript = document.createElement('script');
+					gtmScript.async = true;
+					gtmScript.src = 'https://www.googletagmanager.com/gtm.js?id=<f:format.raw>{service.apiKey}</f:format.raw>';
+					
+					var firstScript = document.getElementsByTagName('script')[0];
+					firstScript.parentNode.insertBefore(gtmScript,firstScript);
+				</script>
+			</f:if>
+		</f:then>
+		<f:else>
+			<script type="opt-in" data-type="text/javascript" data-name="{service.provider}-{service.uid}">
+			(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+			new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+			j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+			'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+			})(window,document,'script','dataLayer','<f:format.raw>{service.apiKey}</f:format.raw>');
+			</script>
+		</f:else>
 	</f:if>
-    <script type="opt-in" data-type="text/javascript" data-name="{service.provider}-{service.uid}">
-        (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-        })(window,document,'script','dataLayer','<f:format.raw>{service.apiKey}</f:format.raw>');
-    </script>
 </f:section>
 
 <f:section name="Footer" />

@@ -32,7 +32,8 @@ return [
                 --div--;LLL:EXT:we_cookie_consent/Resources/Private/Language/locallang_db.xlf:tx_wecookieconsent_domain_model_service.tab.identification.label, domain, api_key, 
                 --div--;LLL:EXT:we_cookie_consent/Resources/Private/Language/locallang_db.xlf:tx_wecookieconsent_domain_model_service.tab.dev.label, snippet, callback, 
                 --div--;LLL:EXT:we_cookie_consent/Resources/Private/Language/locallang_db.xlf:tx_wecookieconsent_domain_model_service.tab.gtm.label, gtm_tag_title, --palette--;;gtm_trigger, --palette--;;gtm_variable,  
-                --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access, hidden, sys_language_uid, l10n_parent, l10n_diffsource, starttime, endtime
+                --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access, hidden, sys_language_uid, l10n_parent, l10n_diffsource, starttime, endtime,
+                --div--;LLL:EXT:we_cookie_consent/Resources/Private/Language/locallang_db.xlf:tx_wecookieconsent_domain_model_service.tab.google_consent_mode.label, --palette--;;consent_mode, --palette--;;ad_storage, analytics_storage, ad_user_data, ad_personalization, functionality_storage, personalization_storage, security_storage
             '],
     ],
     'palettes' => [
@@ -47,6 +48,10 @@ return [
         'gtm_variable' => [
             'label' => 'LLL:EXT:we_cookie_consent/Resources/Private/Language/locallang_db.xlf:tx_wecookieconsent_domain_model_service.palette.gtm_variable.label',
             'showitem' => 'gtm_variable_title, gtm_variable_name',
+        ],
+        'consent_mode' => [
+            'label' => 'LLL:EXT:we_cookie_consent/Resources/Private/Language/locallang_db.xlf:tx_wecookieconsent_domain_model_service.palette.consent_mode_update.label',
+            'showitem' => 'ad_storage',
         ],
     ],
     'columns' => [
@@ -455,6 +460,160 @@ return [
                         'localize' => true,
                     ]
                 ],
+            ],
+        ],
+        'ad_storage' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:we_cookie_consent/Resources/Private/Language/locallang_db.xlf:tx_wecookieconsent_domain_model_service.google_consent_mode.ad_storage',
+            'description' => 'LLL:EXT:we_cookie_consent/Resources/Private/Language/locallang_db.xlf:tx_wecookieconsent_domain_model_service.google_consent_mode.description.ad_storage',
+            'config' => [
+                'type' => 'select',
+                'renderType' => 'selectSingle',
+                'items' => [
+                    ['LLL:EXT:we_cookie_consent/Resources/Private/Language/locallang_db.xlf:tx_wecookieconsent_domain_model_service.google_consent_mode.not_relevant', 0],
+                    ['LLL:EXT:we_cookie_consent/Resources/Private/Language/locallang_db.xlf:tx_wecookieconsent_domain_model_service.google_consent_mode.granted', 1],
+                    ['LLL:EXT:we_cookie_consent/Resources/Private/Language/locallang_db.xlf:tx_wecookieconsent_domain_model_service.google_consent_mode.denied', 2],
+                ],
+                'default' => 0,
+            ],
+            'displayCond' => [
+                'OR' => [
+                    'FIELD:provider:=:google-analytics',
+                    'FIELD:provider:=:google-analytics-universal',
+                    'FIELD:provider:=:google-tagmanager-service',
+                ]
+            ],
+        ],
+        'analytics_storage' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:we_cookie_consent/Resources/Private/Language/locallang_db.xlf:tx_wecookieconsent_domain_model_service.google_consent_mode.analytics_storage',
+            'description' => 'LLL:EXT:we_cookie_consent/Resources/Private/Language/locallang_db.xlf:tx_wecookieconsent_domain_model_service.google_consent_mode.description.analytics_storage',
+            'config' => [
+                'type' => 'select',
+                'renderType' => 'selectSingle',
+                'items' => [
+                    ['LLL:EXT:we_cookie_consent/Resources/Private/Language/locallang_db.xlf:tx_wecookieconsent_domain_model_service.google_consent_mode.not_relevant', 0],
+                    ['LLL:EXT:we_cookie_consent/Resources/Private/Language/locallang_db.xlf:tx_wecookieconsent_domain_model_service.google_consent_mode.granted', 1],
+                    ['LLL:EXT:we_cookie_consent/Resources/Private/Language/locallang_db.xlf:tx_wecookieconsent_domain_model_service.google_consent_mode.denied', 2],
+                ],
+                'default' => 0,
+            ],
+            'displayCond' => [
+                'OR' => [
+                    'FIELD:provider:=:google-analytics',
+                    'FIELD:provider:=:google-analytics-universal',
+                    'FIELD:provider:=:google-tagmanager-service',
+                ]
+            ],
+        ],
+        'ad_user_data' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:we_cookie_consent/Resources/Private/Language/locallang_db.xlf:tx_wecookieconsent_domain_model_service.google_consent_mode.ad_user_data',
+            'description' => 'LLL:EXT:we_cookie_consent/Resources/Private/Language/locallang_db.xlf:tx_wecookieconsent_domain_model_service.google_consent_mode.description.ad_user_data',
+            'config' => [
+                'type' => 'select',
+                'renderType' => 'selectSingle',
+                'items' => [
+                    ['LLL:EXT:we_cookie_consent/Resources/Private/Language/locallang_db.xlf:tx_wecookieconsent_domain_model_service.google_consent_mode.not_relevant', 0],
+                    ['LLL:EXT:we_cookie_consent/Resources/Private/Language/locallang_db.xlf:tx_wecookieconsent_domain_model_service.google_consent_mode.granted', 1],
+                    ['LLL:EXT:we_cookie_consent/Resources/Private/Language/locallang_db.xlf:tx_wecookieconsent_domain_model_service.google_consent_mode.denied', 2],
+                ],
+                'default' => 0,
+            ],
+            'displayCond' => [
+                'OR' => [
+                    'FIELD:provider:=:google-analytics',
+                    'FIELD:provider:=:google-analytics-universal',
+                    'FIELD:provider:=:google-tagmanager-service',
+                ]
+            ],
+        ],
+        'ad_personalization' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:we_cookie_consent/Resources/Private/Language/locallang_db.xlf:tx_wecookieconsent_domain_model_service.google_consent_mode.ad_personalization',
+            'description' => 'LLL:EXT:we_cookie_consent/Resources/Private/Language/locallang_db.xlf:tx_wecookieconsent_domain_model_service.google_consent_mode.description.ad_personalization',
+            'config' => [
+                'type' => 'select',
+                'renderType' => 'selectSingle',
+                'items' => [
+                    ['LLL:EXT:we_cookie_consent/Resources/Private/Language/locallang_db.xlf:tx_wecookieconsent_domain_model_service.google_consent_mode.not_relevant', 0],
+                    ['LLL:EXT:we_cookie_consent/Resources/Private/Language/locallang_db.xlf:tx_wecookieconsent_domain_model_service.google_consent_mode.granted', 1],
+                    ['LLL:EXT:we_cookie_consent/Resources/Private/Language/locallang_db.xlf:tx_wecookieconsent_domain_model_service.google_consent_mode.denied', 2],
+                ],
+                'default' => 0,
+            ],
+            'displayCond' => [
+                'OR' => [
+                    'FIELD:provider:=:google-analytics',
+                    'FIELD:provider:=:google-analytics-universal',
+                    'FIELD:provider:=:google-tagmanager-service',
+                ]
+            ],
+        ],
+        'functionality_storage' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:we_cookie_consent/Resources/Private/Language/locallang_db.xlf:tx_wecookieconsent_domain_model_service.google_consent_mode.functionality_storage',
+            'description' => 'LLL:EXT:we_cookie_consent/Resources/Private/Language/locallang_db.xlf:tx_wecookieconsent_domain_model_service.google_consent_mode.description.functionality_storage',
+            'config' => [
+                'type' => 'select',
+                'renderType' => 'selectSingle',
+                'items' => [
+                    ['LLL:EXT:we_cookie_consent/Resources/Private/Language/locallang_db.xlf:tx_wecookieconsent_domain_model_service.google_consent_mode.not_relevant', 0],
+                    ['LLL:EXT:we_cookie_consent/Resources/Private/Language/locallang_db.xlf:tx_wecookieconsent_domain_model_service.google_consent_mode.granted', 1],
+                    ['LLL:EXT:we_cookie_consent/Resources/Private/Language/locallang_db.xlf:tx_wecookieconsent_domain_model_service.google_consent_mode.denied', 2],
+                ],
+                'default' => 0,
+            ],
+            'displayCond' => [
+                'OR' => [
+                    'FIELD:provider:=:google-analytics',
+                    'FIELD:provider:=:google-analytics-universal',
+                    'FIELD:provider:=:google-tagmanager-service',
+                ]
+            ],
+        ],
+        'personalization_storage' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:we_cookie_consent/Resources/Private/Language/locallang_db.xlf:tx_wecookieconsent_domain_model_service.google_consent_mode.personalization_storage',
+            'description' => 'LLL:EXT:we_cookie_consent/Resources/Private/Language/locallang_db.xlf:tx_wecookieconsent_domain_model_service.google_consent_mode.description.personalization_storage',
+            'config' => [
+                'type' => 'select',
+                'renderType' => 'selectSingle',
+                'items' => [
+                    ['LLL:EXT:we_cookie_consent/Resources/Private/Language/locallang_db.xlf:tx_wecookieconsent_domain_model_service.google_consent_mode.not_relevant', 0],
+                    ['LLL:EXT:we_cookie_consent/Resources/Private/Language/locallang_db.xlf:tx_wecookieconsent_domain_model_service.google_consent_mode.granted', 1],
+                    ['LLL:EXT:we_cookie_consent/Resources/Private/Language/locallang_db.xlf:tx_wecookieconsent_domain_model_service.google_consent_mode.denied', 2],
+                ],
+                'default' => 0,
+            ],
+            'displayCond' => [
+                'OR' => [
+                    'FIELD:provider:=:google-analytics',
+                    'FIELD:provider:=:google-analytics-universal',
+                    'FIELD:provider:=:google-tagmanager-service',
+                ]
+            ],
+        ],
+        'security_storage' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:we_cookie_consent/Resources/Private/Language/locallang_db.xlf:tx_wecookieconsent_domain_model_service.google_consent_mode.security_storage',
+            'description' => 'LLL:EXT:we_cookie_consent/Resources/Private/Language/locallang_db.xlf:tx_wecookieconsent_domain_model_service.google_consent_mode.description.security_storage',
+            'config' => [
+                'type' => 'select',
+                'renderType' => 'selectSingle',
+                'items' => [
+                    ['LLL:EXT:we_cookie_consent/Resources/Private/Language/locallang_db.xlf:tx_wecookieconsent_domain_model_service.google_consent_mode.not_relevant', 0],
+                    ['LLL:EXT:we_cookie_consent/Resources/Private/Language/locallang_db.xlf:tx_wecookieconsent_domain_model_service.google_consent_mode.granted', 1],
+                    ['LLL:EXT:we_cookie_consent/Resources/Private/Language/locallang_db.xlf:tx_wecookieconsent_domain_model_service.google_consent_mode.denied', 2],
+                ],
+                'default' => 1,
+            ],
+            'displayCond' => [
+                'OR' => [
+                    'FIELD:provider:=:google-analytics',
+                    'FIELD:provider:=:google-analytics-universal',
+                    'FIELD:provider:=:google-tagmanager-service',
+                ]
             ],
         ],
     ],

@@ -2,6 +2,12 @@
 All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
+## [2.2.2] - 2022-04-03 - RL
+### Added - 2024-04-03 - RL
+- Added Google Consent Mode basic and advanced - to set default consent types(Beta)
+- Added Google Consent Mode defaults-tab to Google Analytics services
+- Added Google Consent Mode defaults-tab to Google Tag Manager services
+
 ## [2.2.1] - 2022-06-23 - GF
 ### Added - 2022-06-23
 - Attribute data-nosnippet="data-nosnippet" to .cn-body (Avoids Google bot to crawl cookie-consent text)
