@@ -2,7 +2,9 @@
 All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
-## [4.0.1] - 2024-04-03 - RL
+## [4.0.1] - 2024-04-04 - RL, AS
+### Bugfix v12 - 2024-04-04 - AS
+- Separated switchable controller actions in separated plugins
 ### Added - 2024-04-03 - RL
 - Added Google Consent Mode basic and advanced - to set default consent types (Beta)
 - Added Google Consent Mode defaults-tab to Google Analytics services
