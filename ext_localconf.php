@@ -11,7 +11,18 @@ call_user_func(
             'WeCookieConsent',
             'Pi1',
             [
-                \Websedit\WeCookieConsent\Controller\ConsentController::class => 'consent, list',
+                \Websedit\WeCookieConsent\Controller\ConsentController::class => 'consent',
+            ],
+            [
+                \Websedit\WeCookieConsent\Controller\ConsentController::class => '',
+            ]
+        );
+
+        \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
+            'WeCookieConsent',
+            'Pi2',
+            [
+                \Websedit\WeCookieConsent\Controller\ConsentController::class => 'list',
             ],
             [
                 \Websedit\WeCookieConsent\Controller\ConsentController::class => '',
@@ -73,7 +84,6 @@ call_user_func(
             # customsubcategory=60_STORAGE=Storage
             # customsubcategory=70_WEOTHER=Other
 			# customsubcategory=80_WECONSENTMODE=ConsentMode
-			# customsubcategory=90_WECONSENTMODE=ConsentModev2
         ');
     }
 );
