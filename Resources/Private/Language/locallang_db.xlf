@@ -23,10 +23,10 @@
             <trans-unit id="tx_wecookieconsent_domain_model_service.tab.gtm.label">
                 <source>Google Tag Manager</source>
             </trans-unit>
-            <trans-unit id="tx_wecookieconsent_domain_model_service.tab.google_consent_mode.label">
+			<trans-unit id="tx_wecookieconsent_domain_model_service.tab.google_consent_mode.label">
                 <source>Google Consent Mode</source>
             </trans-unit>
-
+			
             <!-- Palettes -->
             <trans-unit id="tx_wecookieconsent_domain_model_service.palette.service_provider.label">
                 <source>Service <![CDATA[&]]> Script selection</source>
@@ -37,7 +37,7 @@
             <trans-unit id="tx_wecookieconsent_domain_model_service.palette.gtm_variable.label">
                 <source>Variable</source>
             </trans-unit>
-            <trans-unit id="tx_wecookieconsent_domain_model_service.palette.consent_mode_update.label">
+			<trans-unit id="tx_wecookieconsent_domain_model_service.palette.consent_mode_update.label">
                 <source>Consent Mode Update</source>
             </trans-unit>
 
@@ -217,7 +217,7 @@
             <trans-unit id="tx_wecookieconsent_domain_model_cookie.max_age.description">
                 <source>For example: 365 days, session cookie, etc.</source>
             </trans-unit>
-
+			
             <trans-unit id="tx_we_cookie_consent_pi1.name">
                 <source>Cookie list</source>
             </trans-unit>
@@ -276,7 +276,7 @@
                 <source>Allows the collection of personal data for advertising purposes.</source>
             </trans-unit>
             <trans-unit id="tx_wecookieconsent_domain_model_service.google_consent_mode.description.ad_personalization">
-                <source>Enables the use of personal data for advertising purposes such as remarketing or interest-based targeting.</source>
+                <source>Enables the use of personal data for advertising purposes such as remarketing or interest-based targeting.</source>
             </trans-unit>
             <trans-unit id="tx_wecookieconsent_domain_model_service.google_consent_mode.description.functionality_storage">
                 <source>Enables browser storage that supports the functionality of the website or app e.g. language settings.</source>

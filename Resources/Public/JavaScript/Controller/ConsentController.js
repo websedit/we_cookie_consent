@@ -48,8 +48,6 @@ function updateCookieWithFinalConsent(name, daysToExpire, allServiceSettings) {
     obj.ad_personalization = evaluateFinalValue(allServiceSettings, 'ad_personalization');
     obj.personalization_storage = evaluateFinalValue(allServiceSettings, 'personalization_storage');
     obj.functionality_storage = evaluateFinalValue(allServiceSettings, 'functionality_storage');
-	//console.log('Cookie after:');
-	//console.log(obj);
     var updatedValue = JSON.stringify(obj);
     var encodedValue = encodeURIComponent(updatedValue);
     setCookie(name, encodedValue, daysToExpire);
@@ -79,29 +77,31 @@ let ConsentApp = new function ConsentController() {
      * @param object service
      */
     this.consentChanged = function (state, service) {
-		let tempSettings = JSON.parse(JSON.stringify(allServiceSettings)); // Erstelle eine tiefe Kopie der Service-Einstellungen.
-		
-		// Bearbeite die tempSettings basierend auf dem Zustand und den Service-Einstellungen.
-		tempSettings.forEach(tempSetting => {
-			// Wenn der aktuelle Service (basierend auf der serviceId) zustimmt, behalte seine Werte.
-			// Für alle anderen Services, die serviceConsent = true haben, aber nicht die aktuelle serviceId, setze ihre Werte temporär auf 'denied', wenn state = false.
-			if (tempSetting.serviceId !== service.serviceId && tempSetting.serviceConsent === true) {
-				if (!state) { // Wenn dem aktuellen Service nicht zugestimmt wurde.
-					Object.keys(tempSetting).forEach(key => {
-						if (key !== 'serviceId' && key !== 'serviceConsent' && tempSetting[key] !== 'not set') {
-							tempSetting[key] = 'denied';
-						}
-					});
-				}
-			}
-		});
-		
-		// Filtere die tempSettings, um nur die Services mit serviceConsent = true zu erhalten.
-		let relevantSettings = tempSettings.filter(setting => setting.serviceConsent === true);
-		
-		// Verwende evaluateFinalValue und updateCookieWithFinalConsent mit den relevanten Einstellungen.
-		updateCookieWithFinalConsent(storageName, cookieExpiresAfterDays, relevantSettings);
+		if (allServiceSettings.length > 0) {
+			let tempSettings = JSON.parse(JSON.stringify(allServiceSettings)); // Erstelle eine tiefe Kopie der Service-Einstellungen.
 
+			// Bearbeite die tempSettings basierend auf dem Zustand und den Service-Einstellungen.
+			tempSettings.forEach(tempSetting => {
+				// Wenn der aktuelle Service (basierend auf der serviceId) zustimmt, behalte seine Werte.
+				// Für alle anderen Services, die serviceConsent = true haben, aber nicht die aktuelle serviceId, setze ihre Werte temporär auf 'denied', wenn state = false.
+				if (tempSetting.serviceId !== service.serviceId && tempSetting.serviceConsent === true) {
+					if (!state) { // Wenn dem aktuellen Service nicht zugestimmt wurde.
+						Object.keys(tempSetting).forEach(key => {
+							if (key !== 'serviceId' && key !== 'serviceConsent' && tempSetting[key] !== 'not set') {
+								tempSetting[key] = 'denied';
+							}
+						});
+					}
+				}
+			});
+			
+			// Filtere die tempSettings, um nur die Services mit serviceConsent = true zu erhalten.
+			let relevantSettings = tempSettings.filter(setting => setting.serviceConsent === true);
+			// Verwende evaluateFinalValue und updateCookieWithFinalConsent mit den relevanten Einstellungen.
+			if (relevantSettings.length > 0) {
+				updateCookieWithFinalConsent(storageName, cookieExpiresAfterDays, relevantSettings);
+			}
+		}
 		// Aktualisiere window.dataLayer basierend auf dem Zustand
 		if (service.name.indexOf('google-tagmanager-service') !== -1) {
 			let tempObj = {
@@ -131,7 +131,6 @@ let ConsentApp = new function ConsentController() {
         });
     })();
 
-    // v2.2.1 - safari -gf20220517
     const isSafari = navigator.vendor && 
            navigator.vendor.indexOf('Apple') > -1 &&
            navigator.userAgent &&
@@ -140,17 +139,13 @@ let ConsentApp = new function ConsentController() {
 
     $(function() {
       setTimeout(function() {
-        // console.log("isSafari? ("+isSafari+")");
         if (isSafari!=true) {
           $('#klaro').removeClass('safari');
-          // $('#klaro').addClass('no-safari');
         } else { 
           $('#klaro').addClass('safari'); 
-          // $('#klaro').removeClass('no-safari');
         }
       })
     });
-    // v2.2.1 - safari -gf20220517 END.
 };
 
 //--- Functions after window.load(): ---

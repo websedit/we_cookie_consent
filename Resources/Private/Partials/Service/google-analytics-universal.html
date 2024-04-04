@@ -16,7 +16,7 @@
                     'functionality_storage': 'denied',
                     'personalization_storage': 'denied',
                     'security_storage': 'granted',
-                    'wait_for_update': 2000
+                    'wait_for_update': 500
                 });
             </script>
 
@@ -35,8 +35,6 @@
                 </script>
 
                 <script type="opt-in" data-type="text/javascript" data-name="{service.provider}-{service.uid}">
-                    let consenTypeObj = {};
-
                     if({service.adStorage} != 0) {
                         consenTypeObj.ad_storage = "{f:if(condition:'{service.adStorage}==1', then:'granted', else:'{f:if(condition:\'{service.adStorage}==2\', then:\'denied\')}')}";
                     }
@@ -58,8 +56,6 @@
                     if({service.securityStorage} != 0) {
                         consenTypeObj.security_storage = "{f:if(condition:'{service.securityStorage}==1', then:'granted', else:'{f:if(condition:\'{service.securityStorage}==2\', then:\'denied\')}')}";
                     }
-
-                    consenTypeObj.wait_for_update: 2000;
 
                     gtag('consent', 'update', consenTypeObj);
                 </script>
@@ -74,8 +70,6 @@
                 <script type="opt-in" data-type="text/javascript" data-name="{service.provider}-{service.uid}">
                     function gtag() { dataLayer.push(arguments); }
 
-                    let consenTypeObj = {};
-
                     if({service.adStorage} != 0) {
                         consenTypeObj.ad_storage = "{f:if(condition:'{service.adStorage}==1', then:'granted', else:'{f:if(condition:\'{service.adStorage}==2\', then:\'denied\')}')}";
                     }
@@ -97,8 +91,6 @@
                     if({service.securityStorage} != 0) {
                         consenTypeObj.security_storage = "{f:if(condition:'{service.securityStorage}==1', then:'granted', else:'{f:if(condition:\'{service.securityStorage}==2\', then:\'denied\')}')}";
                     }
-
-                    consenTypeObj.wait_for_update: 2000;
 
                     gtag('consent', 'update', consenTypeObj);
 
