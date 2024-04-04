@@ -13,7 +13,7 @@ use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
  * For the full copyright and license information, please read the
  * LICENSE.txt file that was distributed with this source code.
  *
- *  (c) 2019 Erwin Steinbinder <extensions@websedit.de>, websedit AG
+ *  (c) 2024 websedit AG <extensions@websedit.de>
  *
  ***/
 
@@ -170,7 +170,8 @@ class ConsentController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
             'storageName' => $this->settings['klaro']['storageName'],
             'stylePrefix' => $this->settings['klaro']['stylePrefix'],
             'testing' => $this->settings['klaro']['testing'] === '1',
-            'consentMode' => $this->settings['klaro']['consentMode'] === '1',
+			'consentMode' => $this->settings['klaro']['consentMode'] === '1',
+			'consentModev2' => $this->settings['klaro']['consentModev2'] === '1',
             'translations' => [
                 'en' => [
                     'consentModal' => [

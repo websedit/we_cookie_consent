@@ -2,6 +2,12 @@
 All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
+## [4.0.1] - 2024-04-03 - RL
+### Added - 2024-04-03 - RL
+- Added Google Consent Mode basic and advanced - to set default consent types (Beta)
+- Added Google Consent Mode defaults-tab to Google Analytics services
+- Added Google Consent Mode defaults-tab to Google Tag Manager services
+
 ## [4.0.0] - 2023-11-11 - ES, 2023-11-21/2023-12-05/2023-12-18 - GF
 ### Changed
 - Update the Extension to TYPO3 V12 compatibility

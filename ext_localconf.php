@@ -73,6 +73,7 @@ call_user_func(
             # customsubcategory=60_STORAGE=Storage
             # customsubcategory=70_WEOTHER=Other
 			# customsubcategory=80_WECONSENTMODE=ConsentMode
+			# customsubcategory=90_WECONSENTMODE=ConsentModev2
         ');
     }
 );
