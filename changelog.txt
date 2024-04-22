@@ -2,6 +2,10 @@
 All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
+## [4.0.3] - 2024-04-22 - AS
+### Bugfix
+- Changed Version number in ext_emconf
+
 ## [4.0.2] - 2024-04-22 - AS
 ### Bugfix
 - Added missing comma in TCA. Fixes the problem where categories are shon in the wrong tab in the service data record.
