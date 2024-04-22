@@ -2,6 +2,10 @@
 All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
+## [2.3.3] - 2024-04-22 - AS
+### Bugfix
+- Added missing comma in TCA. Fixes the problem where categories are shon in the wrong tab in the service data record.
+
 ## [2.3.2] - 2024-04-03 - RL
 ### Fixed
 - Change consentcontroller.js to write consent settings to the cookie only for Google-relevant services
