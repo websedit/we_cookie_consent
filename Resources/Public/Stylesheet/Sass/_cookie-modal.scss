@@ -22,7 +22,7 @@
 				&.cm-services,
 				&.cm-purposes {
 					li {
-						&.cm-service, 
+						&.cm-service,
 						&.cm-purpose {
 							padding-left: 72px;
 						}
@@ -34,21 +34,21 @@
 						}
 					}
 				}
-				&.cm-services li.cm-purpose .cm-services .cm-content, 
+				&.cm-services li.cm-purpose .cm-services .cm-content,
 				&.cm-purposes li.cm-purpose .cm-services .cm-content {
 					margin-left: -72px;
-				}		
+				}
 			}
 		}
 
-		// ACTIVATE grouping of services by category: 
+		// ACTIVATE grouping of services by category:
 		.cm-purpose {
 			padding-left: 92px;
 			border-top: $border-top-purpose;
 			padding-top: .5em;
 			> {
-				.cm-list-label .slider, 
-				.cm-list-input:checked + .cm-list-label .slider, 
+				.cm-list-label .slider,
+				.cm-list-input:checked + .cm-list-label .slider,
 				.cm-list-input.required:checked + .cm-list-label .slider{
 					background-color: $color-slider;
 					top: 2px;
@@ -101,7 +101,7 @@
 				.cm-list-input:not(.half-checked):checked + .cm-list-label > .cm-list-title + .cm-switch::before {
 					content: $icon-slider-yes;	// Slider-Symbol "no"
 				}
-				.cm-list-label .cm-required ~ .cm-cswitch .slider, 
+				.cm-list-label .cm-required ~ .cm-cswitch .slider,
 				.cm-list-input:checked + .cm-list-label .cm-required ~ .cm-switch .slider {
 					background: $icon-slider-locked no-repeat transparent; // Icon "active + not changable"
 					border-radius: unset;
@@ -118,13 +118,13 @@
 				}
 			}
 		}
-		
-	
-		// NO grouping of services by category - just listing: 
+
+
+		// NO grouping of services by category - just listing:
 		.cm-service > div > {
 		// .cm-service.cm-toggle-all > div > {
-			.cm-list-label .slider, 
-			.cm-list-input:checked + .cm-list-label .slider, 
+			.cm-list-label .slider,
+			.cm-list-input:checked + .cm-list-label .slider,
 			.cm-list-input.required:checked + .cm-list-label .slider{
 				background-color: $color-slider;
 				top: 2px;
@@ -133,7 +133,7 @@
 			.cm-list-label .cm-required {
 				margin-left:.5em;
 			}
-			
+
 			.cm-list-label .slider::before {
 				background-color: $color-slider-knop;
 				bottom: 2px;
@@ -181,7 +181,7 @@
 				padding: 2px;
 				width: 16px;
 			}
-			.cm-list-label .cm-required ~ .cm-cswitch .slider, 
+			.cm-list-label .cm-required ~ .cm-cswitch .slider,
 			.cm-list-input:checked + .cm-list-label .cm-required ~ .cm-switch .slider {
 				background: $icon-slider-locked no-repeat transparent;	// Icon "active + not changable"
 				border-radius: unset;
@@ -250,7 +250,7 @@
 					}
 				}
 			}
-			.cm-toggle-all { 
+			.cm-toggle-all {
 				.cm-purpose-description {
 					display: block;
 				}
@@ -270,11 +270,11 @@
 				width: 100%;
 				z-index:10;
 				> * {
-					align-content:flex-end;					
+					align-content:flex-end;
 					display: flex;
 					flex-wrap:wrap;
 					height:calc(100% - 2em);
-					justify-content:end;
+					justify-content:flex-end;
 					margin: 0;
 					width:100%;
 					max-width:100%;
@@ -380,7 +380,7 @@
 					position: relative;
 					width: 100%;
 					> * {
-						justify-content:end;
+						justify-content:flex-end;
 					}
 				}
 				.cm-header {
@@ -427,7 +427,7 @@
 				}
 			}
 		}
-			
+
 	}
 
 	&.notice--center,
@@ -507,7 +507,7 @@
 						// float:unset;
 						// height: 40px;
 						// line-height: 40px;
-					// }	
+					// }
 				}
 			}
 		}
@@ -587,11 +587,11 @@
 // Ver 2.0.2 - gf20210922 END.
 	}
 }
-// Ver 2.0.1 -gf20210921 END. 
-// ************************** 
+// Ver 2.0.1 -gf20210921 END.
+// **************************
 
-// Ver 3.0.2 - gf20220517 
-// Anpassungen spez. für Safari 
+// Ver 3.0.2 - gf20220517
+// Anpassungen spez. für Safari
 .safari {
   .klaro.we_cookie_consent .cookie-modal .cm-modal.cm-klaro {
     bottom: 0;
