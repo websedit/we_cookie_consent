@@ -56,7 +56,7 @@ class VimeoRenderer extends \TYPO3\CMS\Core\Resource\Rendering\VimeoRenderer
 
         if(!$testing) {
             $options = $this->collectOptions($options, $file);
-            $iframe = str_replace(' src="', ' data-name="youtube" data-src="', parent::render($file, $width, $height, $options, $usedPathsRelativeToCurrentScript));
+            $iframe = str_replace(' src="', ' data-name="vimeo" data-src="', parent::render($file, $width, $height, $options, $usedPathsRelativeToCurrentScript));
         } else {
             $iframe = parent::render($file, $width, $height, $options, $usedPathsRelativeToCurrentScript);
         }
