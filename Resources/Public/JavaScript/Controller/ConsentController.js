@@ -77,33 +77,33 @@ let ConsentApp = new function ConsentController() {
      * @param object service
      */
     this.consentChanged = function (state, service) {
-		if (allServiceSettings.length > 0) {
-			let tempSettings = JSON.parse(JSON.stringify(allServiceSettings)); // Erstelle eine tiefe Kopie der Service-Einstellungen.
-
-			// Bearbeite die tempSettings basierend auf dem Zustand und den Service-Einstellungen.
-			tempSettings.forEach(tempSetting => {
-				// Wenn der aktuelle Service (basierend auf der serviceId) zustimmt, behalte seine Werte.
-				// Für alle anderen Services, die serviceConsent = true haben, aber nicht die aktuelle serviceId, setze ihre Werte temporär auf 'denied', wenn state = false.
-				if (tempSetting.serviceId !== service.serviceId && tempSetting.serviceConsent === true) {
-					if (!state) { // Wenn dem aktuellen Service nicht zugestimmt wurde.
-						Object.keys(tempSetting).forEach(key => {
-							if (key !== 'serviceId' && key !== 'serviceConsent' && tempSetting[key] !== 'not set') {
-								tempSetting[key] = 'denied';
-							}
-						});
-					}
-				}
-			});
-			
-			// Filtere die tempSettings, um nur die Services mit serviceConsent = true zu erhalten.
-			let relevantSettings = tempSettings.filter(setting => setting.serviceConsent === true);
-			// Verwende evaluateFinalValue und updateCookieWithFinalConsent mit den relevanten Einstellungen.
-			if (relevantSettings.length > 0) {
-				updateCookieWithFinalConsent(storageName, cookieExpiresAfterDays, relevantSettings);
-			}
-		}
-		// Aktualisiere window.dataLayer basierend auf dem Zustand
 		if (service.name.indexOf('google-tagmanager-service') !== -1) {
+			if (allServiceSettings.length > 0) {
+				let tempSettings = JSON.parse(JSON.stringify(allServiceSettings)); // Erstelle eine tiefe Kopie der Service-Einstellungen.
+
+				// Bearbeite die tempSettings basierend auf dem Zustand und den Service-Einstellungen.
+				tempSettings.forEach(tempSetting => {
+					// Wenn der aktuelle Service (basierend auf der serviceId) zustimmt, behalte seine Werte.
+					// Für alle anderen Services, die serviceConsent = true haben, aber nicht die aktuelle serviceId, setze ihre Werte temporär auf 'denied', wenn state = false.
+					if (tempSetting.serviceId !== service.serviceId && tempSetting.serviceConsent === true) {
+						if (!state) { // Wenn dem aktuellen Service nicht zugestimmt wurde.
+							Object.keys(tempSetting).forEach(key => {
+								if (key !== 'serviceId' && key !== 'serviceConsent' && tempSetting[key] !== 'not set') {
+									tempSetting[key] = 'denied';
+								}
+							});
+						}
+					}
+				});
+				
+				// Filtere die tempSettings, um nur die Services mit serviceConsent = true zu erhalten.
+				let relevantSettings = tempSettings.filter(setting => setting.serviceConsent === true);
+				// Verwende evaluateFinalValue und updateCookieWithFinalConsent mit den relevanten Einstellungen.
+				if (relevantSettings.length > 0) {
+					updateCookieWithFinalConsent(storageName, cookieExpiresAfterDays, relevantSettings);
+				}
+			}
+			// Aktualisiere window.dataLayer basierend auf dem Zustand
 			let tempObj = {
 				event: service.gtm.trigger,
 				[service.gtm.variable]: state
