@@ -24,7 +24,7 @@
 					background-color: $color-bg-success;
 					&-var {
 						background-color: $color-bg-primary;
-							
+
 					}
 				}
 				&:hover {
@@ -46,24 +46,24 @@
 .frame {
 	.frame-inner iframe,
 	.frame-inner iframe:last-child {
-		padding:0;
-		margin-bottom:-6px;
+		padding: 0;
+		margin-bottom: -6px;
 	}
 	.klaro.we_cookie_consent {
 		border: $border-width solid rgba(0,0,0,0.1);
-		position:static;
-		height:100%;
+		position: static;
+		height: 100%;
 		.context-notice {
-			background-color:transparent;
+			background-color: transparent;
 			.cm-buttons {
 				.cm-btn.cm-btn-success,
 				.cm-btn.cm-btn-success-var,
 				{
 					background: $color-bg-success;
-					border:$border-style;
+					border: $border-style;
 					border-radius: $border-radius;
-					color:$color-font-success;
-					font-weight:500;
+					color: $color-font-success;
+					font-weight: 500;
 					// &::before {  /* use if icon before button text is to be shown */
 						// content: $icon-success;  /* change as wished */
 						// contain: content;
@@ -83,15 +83,15 @@
 		// if video integration within small iframes (width < 300px)  -gf20211115
 		&.notice--minified {
 			.context-notice {
-				display:grid;
-				padding:0;
+				display: grid;
+				padding: 0;
 			}
 			.cm-buttons {
 				margin-top: .5em;
-				display:block;
+				display: block;
 			}
 			.cm-btn {
-				display:block;
+				display: block;
 				width: 100%;
 				margin: .5em auto;
 				max-width: calc(100% - 20px);
@@ -99,7 +99,7 @@
 			}
 		}
 	}
-	
+
 	&.frame-type-media,
 	&.frame-type-textmedia,    /* extend valid areas to more contents of type media -gf20220225 */
 	.textmedia-gallery {
@@ -108,7 +108,7 @@
 			.klaro.we_cookie_consent {
 				background-color: $video-overlay-bg;
 				position: absolute;
-				top: 0; 
+				top: 0;
 				z-index:10;
 				@media (max-width:575px) {
 					&.cm-as-context-notice {

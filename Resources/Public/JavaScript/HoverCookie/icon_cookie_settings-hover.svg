@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="98" height="98" viewBox="0 0 98 98">
+  <defs>
+    <filter id="Pfad_12" x="0" y="0" width="98" height="98" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feFlood flood-opacity="0.161"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="Icon_cookie" data-name="Icon cookie" transform="translate(9 6)">
+    <g transform="matrix(1, 0, 0, 1, -9, -6)" filter="url(#Pfad_12)">
+      <path id="Pfad_12-2" data-name="Pfad 12" d="M40,0A40,40,0,1,1,0,40,40,40,0,0,1,40,0Z" transform="translate(9 6)" fill="#167F95"/>
+    </g>
+    <g id="Gruppe_75" data-name="Gruppe 75" transform="translate(30.296 68.566)">
+      <rect id="Rechteck_2" data-name="Rechteck 2" width="3" height="3" transform="translate(-0.296 0.434)" fill="#fff"/>
+      <rect id="Rechteck_5" data-name="Rechteck 5" width="3" height="3" transform="translate(7.704 0.434)" fill="#fff"/>
+      <rect id="Rechteck_6" data-name="Rechteck 6" width="3" height="3" transform="translate(15.704 0.434)" fill="#fff"/>
+    </g>
+    <g id="Gruppe_76" data-name="Gruppe 76" transform="translate(15.945 15.945)">
+      <path id="Differenzmenge_2" data-name="Differenzmenge 2" d="M24,48A24,24,0,0,1,6.9,7.161,23.856,23.856,0,0,1,23.592,0a5.142,5.142,0,0,0,3.837,8.568,5.188,5.188,0,0,0,.972-.091,6.858,6.858,0,0,0,11.371,7.636,5.143,5.143,0,0,0,6.728-.485A24.007,24.007,0,0,1,24,48Z" transform="translate(0.055 0.055)" fill="#fff"/>
+      <circle id="Ellipse_46" data-name="Ellipse 46" cx="7" cy="7" r="7" transform="translate(8.055 11.055)" fill="#167F95"/>
+      <circle id="Ellipse_44" data-name="Ellipse 44" cx="5" cy="5" r="5" transform="translate(22.055 24.055)" fill="#167F95"/>
+      <circle id="Ellipse_43" data-name="Ellipse 43" cx="2" cy="2" r="2" transform="translate(37.055 25.055)" fill="#167F95"/>
+      <circle id="Ellipse_47" data-name="Ellipse 47" cx="3" cy="3" r="3" transform="translate(10.055 30.055)" fill="#167F95"/>
+      <circle id="Ellipse_45" data-name="Ellipse 45" cx="3" cy="3" r="3" transform="translate(24.055 38.055)" fill="#167F95"/>
+    </g>
+  </g>
+</svg>

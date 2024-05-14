@@ -131,20 +131,23 @@ let ConsentApp = new function ConsentController() {
         });
     })();
 
-    const isSafari = navigator.vendor && 
-           navigator.vendor.indexOf('Apple') > -1 &&
-           navigator.userAgent &&
-           navigator.userAgent.indexOf('CriOS') == -1 &&
-           navigator.userAgent.indexOf('FxiOS') == -1;
+    // v3.0.2 -check safari- gf20220517|v4.0.1 -vanilla js- gf20240223
+    const isSafari = navigator.vendor &&
+        navigator.vendor.indexOf('Apple') > -1 &&
+        navigator.userAgent &&
+        navigator.userAgent.indexOf('CriOS') == -1 &&
+        navigator.userAgent.indexOf('FxiOS') == -1;
 
-    $(function() {
-      setTimeout(function() {
-        if (isSafari!=true) {
-          $('#klaro').removeClass('safari');
-        } else { 
-          $('#klaro').addClass('safari'); 
-        }
-      })
+    document.addEventListener('DOMContentLoaded', function() {
+        setTimeout(function() {
+            if (isSafari!==true) {
+                document.getElementById('klaro').classList.remove('safari');
+                // document.getElementById('klaro').classList.add('no-safari');
+            } else {
+                document.getElementById('klaro').classList.add('safari');
+                // document.getElementById('klaro').classList.remove('no-safari');
+            }
+        })
     });
 };
 

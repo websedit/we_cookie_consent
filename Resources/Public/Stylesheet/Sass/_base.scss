@@ -1,12 +1,8 @@
 // ******************* //
 // Variables:
 
-// Relative path to original EXT:we_cookie_consent - Ver 2.1.0  -gf20211124
-$path-to-wcc : "../../../../" !default;  
-$path-to-ext : "../" !default;
-$path-to-wcc-images : $path-to-wcc + "we_cookie_consent/Resources/Public/Images/" !default;
-$path-to-wcc-icons : $path-to-wcc + "we_cookie_consent/Resources/Public/Icons/" !default;
 // Relative path to current EXT
+$path-to-ext : "../" !default;
 $path-to-ext-images : $path-to-ext + "Images/" !default;
 $path-to-ext-icons : $path-to-ext + "Icons/" !default;
 

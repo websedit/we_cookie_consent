@@ -118,6 +118,7 @@ page {
 
     includeJSFooter {
         we_cookie_consent_controller = EXT:we_cookie_consent/Resources/Public/JavaScript/Controller/ConsentController.js
+        we_cookie_consent_hovercookie = EXT:we_cookie_consent/Resources/Public/JavaScript/HoverCookie/consent-cookie.js
     }
 }
 

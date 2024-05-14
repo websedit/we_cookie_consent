@@ -2,6 +2,20 @@
 All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
+## [4.0.5] - 2024-05-14 - GF
+### Update
+- Change safari check to vanilla js
+### Remove
+- Remove vars $path-to-wcc... - never needed & way of use not possible in Typo3 12 anymore
+- Remove some redundant css definitions
+### Correct
+- Syntax error .cm-link - definition was ignored
+### Add
+- Added consent-cookie.js
+- Add conditional visibility of it's cookie SVG (only if cookie setting are active)
+- Add translations (EN/DE/NL) in JS script
+- Outsource it's default css definitions in scss
+
 ## [4.0.4] - 2024-04-24 - RL
 ### Bugfix
 - Added if-loop in ConsentController.js for the evaluation of Google Tag Manager Services

@@ -1,638 +1,700 @@
 .klaro.we_cookie_consent {
-	// "Notice":
-	.cookie-notice {
-		&:not(.cookie-modal-notice) {
-			background: $color-bg;
-			border-radius: $border-radius;
-			bottom: 0;
-			box-shadow:0 4px 6px 0 rgba(0,0,0,0.2),5px 5px 10px 0 rgba(0,0,0,0.19);
-			max-height:100vh;
-			max-width: 100%;
-			overflow-y:auto;
-			padding: $spacing-top-bottom $spacing-left-right;
-			right: 0;
-			z-index: 9999;
-			.cn-body {
-				background:$color-bg;
-				bottom: 0;
-				left: 0;
-				margin: auto;
-				max-width: 100%;
-				overflow: hidden;
-				padding:0;
-				position: relative;
-				right: 0;
-				top: auto;
-				width: 100%;
-				p {
-					margin: .5em 0;
-				}
-				.cn-ok {
-					position: relative;
-					display:flex;
-					flex-wrap:wrap;
-					padding-top: .5em;
-					width: 100%;
-					> * {
-						flex:0 0 100%;
-					}
-				}
-				.cn-buttons {
-					order:1;
-					width:100%;
-					display:flex;
-					flex-wrap:wrap;
-					@media screen and (max-width:384px) {
-						button.cm-btn {
-							width:inherit;
-						}
-					}
-				}
-			}
-			.cm-btn,
-			.cm-btn-sm {
-				padding: .5em;
-			}
+  // "Notice":
+  .cookie-notice {
+    &:not(.cookie-modal-notice) {
+      background: $color-bg;
+      border-radius: $border-radius;
+      bottom: 0;
+      box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.2), 5px 5px 10px 0 rgba(0, 0, 0, 0.19);
+      max-height: 100vh;
+      max-width: 100%;
+      overflow-y: auto;
+      padding: $spacing-top-bottom $spacing-left-right;
+      right: 0;
+      z-index: 9999;
 
-			.cm-link {
-				order:2;
-				color:$cm-btn-color;
-				font-weight:normal;
-				text-align:center;
-				text-decoration:none;
-				&:hover {
-					color:$color-default;
-				}
-			}
-			
-			
-			.cm-btn  {
-				background: $cm-btn-color-bg;
-				border-radius: $border-radius;
-				box-shadow: none;
-				color: $color-default;
-				margin: .5em 0;
-				min-height:40px;
-				opacity:1;
-				padding: .5rem;
-				text-align: center;
-				width: 100%;
-				&:hover {
-					opacity:$opacity-hover;
-				}
-				&.cm-btn-success {
-					background: $color-bg-success;
-					color:$color-font-success;
-					order:-1;
-				}
-				&.cm-btn-info {
-					color: $color-font-edit;
-					display:block;
-					font-weight:normal;
-					background:transparent;
-					order:3;
-					padding:1em 0;
-					text-align:center;
-					width:100%;
-				}
-			}
-			.cm-link,
-			.cm-learn-more {
-				color: $color-font-edit;
-				display:block;
-				font-weight:normal;
-				background:transparent;
-				order:3;
-				padding:1em 0;
-				text-align:center;
-				width:100%;
-			}
-			
-			@media screen and (min-width:768px) {
-				.cn-body {
-					.cn-ok {
-						> * {
-							flex:0 0 auto;
-							width: auto;
-							min-width:auto;
-						}
-						.cn-buttons {
-							display: contents;
-							max-width: 75%;
-							width: 100%;
-						
-						}
-					}
-				}
-				.cm-btn {
-					background:$cm-btn-color-bg;
-					margin: .5em 0;
-					padding:1em 0;
-					width:25%;
-					&.cm-btn-success {
-						background: $cm-btn-color-bg-success;
-						margin:.5em 20px;
-						text-align:center;
-						width:calc(50% - 40px);
-						order:2;
-						&:hover {
-						}
-					}
-					&.cm-btn-info {
-						text-align:right;
-					}
-				}
-				.cm-btn-danger {
-					border-color:$color-none;
-					background:$color-none;
-					text-align:left;
-				}
-				.cm-link,
-				.cm-learn-more {
-					padding:1.5em 0;
-					margin: 0 0 0 auto;
-					width:auto;
-				}
-			}
-		}
-		.cm-btn {
-			&.cm-btn-success {
-				background: $color-bg-success;
-				color:$color-font-success;
-				order:-1;
-			} 
-			&.cm-btn-info {
-				color: $color-font-edit;
-				display:block;
-				font-weight:normal;
-				background:transparent;
-				order:3;
-				padding:1em 0;
-				text-align:center;
-				width:100%;
-			}
-		}
-	}
-	
-	&.notice--top {
-		.cookie-notice:not(.cookie-modal-notice) {
-			bottom:auto;
-			top:0;
-			.cm-btn.cm-btn-success {
-//				order:1;
-			}
-		}
-	}
-	
+      .cn-body {
+        background: $color-bg;
+        bottom: 0;
+        left: 0;
+        margin: auto;
+        max-width: 100%;
+        overflow: hidden;
+        padding: 0;
+        position: relative;
+        right: 0;
+        top: auto;
+        width: 100%;
 
-/* Center 1 und Center 2: */
-	
-	&.notice--center,
-	&.notice--center-floated {
-		.cookie-notice:not(.cookie-modal-notice) .cn-body .cn-ok {
-			@media screen and (min-width:576px) {
-				.cm-btn-danger {
-					border:$cm-btn-border;
-				}
-			}
-		}
-	}
-	&.notice--center-floated {
-		.cookie-notice:not(.cookie-modal-notice) .cn-body .cn-ok {
-			@media screen and (min-width:576px) {
-				.cm-link {
-					line-height: 1.5em;
-					margin-left: 10px;
-					margin-top: 4rem;
-					max-width: calc(50% - 10px);
-					position:absolute;
-					right:0;
-					z-index: 100;	
-				}
-				.cm-btn-danger {
-					max-width: calc(50% - 10px);
-					margin-right: 10px;
-				}
-			}
-		}
-	}
+        p {
+          margin: .5em 0;
+        }
+
+        .cn-ok {
+          position: relative;
+          display: flex;
+          flex-wrap: wrap;
+          padding-top: .5em;
+          width: 100%;
+
+          > * {
+            flex: 0 0 100%;
+          }
+        }
+
+        .cn-buttons {
+          order: 1;
+          width: 100%;
+          display: flex;
+          flex-wrap: wrap;
+          @media screen and (max-width: 384px) {
+            button.cm-btn {
+              width: inherit;
+            }
+          }
+        }
+      }
+
+      .cm-btn,
+      .cm-btn-sm {
+        padding: .5em;
+      }
+
+      .cm-link {
+        order: 2;
+        color: $cm-btn-color;
+        font-weight: normal;
+        text-align: center;
+        text-decoration: none;
+
+        &:hover {
+          color: $color-default;
+        }
+      }
+
+
+      .cm-btn {
+        background: $cm-btn-color-bg;
+        border-radius: $border-radius;
+        box-shadow: none;
+        color: $color-default;
+        margin: .5em 0;
+        min-height: 40px;
+        opacity: 1;
+        padding: .5rem;
+        text-align: center;
+        width: 100%;
+
+        &:hover {
+          opacity: $opacity-hover;
+        }
+
+        &.cm-btn-success {
+          background: $color-bg-success;
+          color: $color-font-success;
+          order: -1;
+        }
+
+        &.cm-btn-info {
+          color: $color-font-edit;
+          display: block;
+          font-weight: normal;
+          background: transparent;
+          order: 3;
+          padding: 1em 0;
+          text-align: center;
+          width: 100%;
+        }
+      }
+
+      .cm-link,
+      .cm-learn-more {
+        color: $color-font-edit;
+        display: block;
+        font-weight: normal;
+        background: transparent;
+        order: 3;
+        padding: 1em 0;
+        text-align: center;
+        width: 100%;
+      }
+
+      @media screen and (min-width: 768px) {
+        .cn-body {
+          .cn-ok {
+            > * {
+              flex: 0 0 auto;
+              width: auto;
+              min-width: auto;
+            }
+
+            .cn-buttons {
+              display: contents;
+              max-width: 75%;
+              width: 100%;
+
+            }
+          }
+        }
+        .cm-btn {
+          background: $cm-btn-color-bg;
+          margin: .5em 0;
+          padding: 1em 0;
+          width: 25%;
+
+          &.cm-btn-success {
+            background: $cm-btn-color-bg-success;
+            margin: .5em 20px;
+            text-align: center;
+            width: calc(50% - 40px);
+            order: 2;
+
+            &:hover {
+            }
+          }
+
+          &.cm-btn-info {
+            text-align: right;
+          }
+        }
+        .cm-btn-danger {
+          border-color: $color-none;
+          background: $color-none;
+          text-align: left;
+        }
+        .cm-link,
+        .cm-learn-more {
+          padding: 1.5em 0;
+          margin: 0 0 0 auto;
+          width: auto;
+        }
+      }
+    }
+
+    .cm-btn {
+      &.cm-btn-success {
+        background: $color-bg-success;
+        color: $color-font-success;
+        order: -1;
+      }
+
+      &.cm-btn-info {
+        color: $color-font-edit;
+        display: block;
+        font-weight: normal;
+        background: transparent;
+        order: 3;
+        padding: 1em 0;
+        text-align: center;
+        width: 100%;
+      }
+    }
+  }
+
+  &.notice--top {
+    .cookie-notice:not(.cookie-modal-notice) {
+      bottom: auto;
+      top: 0;
+
+      .cm-btn.cm-btn-success {
+        //				order:1;
+      }
+    }
+  }
+
+
+  /* Center 1 und Center 2: */
+
+  &.notice--center,
+  &.notice--center-floated {
+    .cookie-notice:not(.cookie-modal-notice) .cn-body .cn-ok {
+      @media screen and (min-width: 576px) {
+        .cm-btn-danger {
+          border: $cm-btn-border;
+        }
+      }
+    }
+  }
+
+  &.notice--center-floated {
+    .cookie-notice:not(.cookie-modal-notice) .cn-body .cn-ok {
+      @media screen and (min-width: 576px) {
+        .cm-link {
+          line-height: 1.5em;
+          margin-left: 10px;
+          margin-top: 4rem;
+          max-width: calc(50% - 10px);
+          position: absolute;
+          right: 0;
+          z-index: 100;
+        }
+        .cm-btn-danger {
+          max-width: calc(50% - 10px);
+          margin-right: 10px;
+        }
+      }
+    }
+  }
 
   // we_cookie_consent:
-  // Due to new button group "cn-buttons" the former arrangement isn't possible any longer. 
-	// Nevertheless, if you like to initiate another order try this:
-	// @media screen and (min-width:576px) {
-		// &.notice--center-floated {
-			// .cn-buttons {
-				// display: flex;
-				// max-width: calc(100% + 10px);
-				// width: calc(100% + 10px);
-				// .cm-btn {
-					// flex: 0 0 calc(50% - 10px);
-					// margin: 0 5px;
-				// }
-			// }
-		// }
-	// }
+  // Due to new button group "cn-buttons" the former arrangement isn't possible any longer.
+  // Nevertheless, if you like to initiate another order try this:
+  // @media screen and (min-width:576px) {
+  // &.notice--center-floated {
+  // .cn-buttons {
+  // display: flex;
+  // max-width: calc(100% + 10px);
+  // width: calc(100% + 10px);
+  // .cm-btn {
+  // flex: 0 0 calc(50% - 10px);
+  // margin: 0 5px;
+  // }
+  // }
+  // }
+  // }
 
-	@media screen and (min-width:768px) {
+  @media screen and (min-width: 768px) {
 
-		&.notice--center,
-		&.notice--center-floated	{
-			.cookie-notice {
-				&:not(.cookie-modal-notice) {
-					align-items: center;
-					background: transparent;
-					bottom: unset;
-					box-shadow: none;
-					display: flex;
-					height: 0;
-					margin: 0;
-					max-height: unset;
-					max-width: unset;
-					overflow: visible;
-					padding: unset;
-					position: relative;
-					right: unset;
-					top: 50vh;
-					width: 100%;
-					.cn-body {
-						box-shadow: 1px 2px 5px rgba(0,0,0,0.2);
-						display: block;
-						margin: 0 auto;
-						max-height: 100vh;
-						max-width: 480px;
-						overflow-y: auto;
-						padding: $spacing-top-bottom $spacing-left-right;
-						right: unset;
-						width:calc(100% - 40px);
-						.cn-ok {
-							.cm-link {  // neu seit V2.0.0 (gilt jetzt für center und center-floated gleichermaßen)
-								width:100%;
-							}
-							.cm-btn {
-								background:$cm-btn-color-bg;
-								display:inline-block;
-								text-align:center;
-								width:100%;
-								&.cm-btn-success {
-									background:$cm-btn-color-bg-success;
-									border-color:$cm-btn-color-border;
-									margin:.5em 0;
-									order:-1;
-									width:100%;
-									&:hover {
-										background:$cm-btn-color-bg-success;
-										opacity:$opacity-hover;
-									}
-								}
-							}
-						}
-					}
-				}
-			}
-		}
-		
+    &.notice--center,
+    &.notice--center-floated {
+      .cookie-notice {
+        &:not(.cookie-modal-notice) {
+          align-items: center;
+          background: transparent;
+          bottom: unset;
+          box-shadow: none;
+          display: flex;
+          height: 0;
+          margin: 0;
+          max-height: unset;
+          max-width: unset;
+          overflow: visible;
+          padding: unset;
+          position: relative;
+          right: unset;
+          top: 50vh;
+          width: 100%;
 
-		&.notice--center {
-			.cookie-notice {
-				.cn-body .cn-ok .cm-btn.cm-btn-info,
-				.cn-body .cn-ok .cm-link.cm-learn-more {
-					background:transparent;
-				}
-			 	.cn-body .cn-ok .cm-link {  // now like ..-floated since V2.0.0 due to new-cn-buttons
-					width:100%;
-			 	}
-			 }
-		}
+          .cn-body {
+            box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.2);
+            display: block;
+            margin: 0 auto;
+            max-height: 100vh;
+            max-width: 480px;
+            overflow-y: auto;
+            padding: $spacing-top-bottom $spacing-left-right;
+            right: unset;
+            width: calc(100% - 40px);
 
-		&.notice--center-floated {
-			.cookie-notice .cn-body .cn-ok {
-				.cm-btn {
-					border-color:$color-default;
-					width:50%;
-				}
-				.cm-btn.cm-btn-info,
-				.cm-link.cm-learn-more	{
-					background:transparent;
-//					width:50%;
-					//text-align:right;
-				}
-			}
-		}
-		
-		&.notice--top .cookie-notice .cm-btn.cm-btn-success {
-			order:2;
-		}
-	}
+            .cn-ok {
+              .cm-link { // neu seit V2.0.0 (gilt jetzt für center und center-floated gleichermaßen)
+                width: 100%;
+              }
+
+              .cm-btn {
+                background: $cm-btn-color-bg;
+                display: inline-block;
+                text-align: center;
+                width: 100%;
+
+                &.cm-btn-success {
+                  background: $cm-btn-color-bg-success;
+                  border-color: $cm-btn-color-border;
+                  margin: .5em 0;
+                  order: -1;
+                  width: 100%;
+
+                  &:hover {
+                    background: $cm-btn-color-bg-success;
+                    opacity: $opacity-hover;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+
+    &.notice--center {
+      .cookie-notice {
+        .cn-body .cn-ok .cm-btn.cm-btn-info,
+        .cn-body .cn-ok .cm-link.cm-learn-more {
+          background: transparent;
+        }
+
+        .cn-body .cn-ok .cm-link { // now like ..-floated since V2.0.0 due to new-cn-buttons
+          width: 100%;
+        }
+      }
+    }
+
+    &.notice--center-floated {
+      .cookie-notice .cn-body .cn-ok {
+        .cm-btn {
+          border-color: $color-default;
+          width: 50%;
+        }
+
+        .cm-btn.cm-btn-info,
+        .cm-link.cm-learn-more {
+          background: transparent;
+          //					width:50%;
+          //text-align:right;
+        }
+      }
+    }
+
+    &.notice--top .cookie-notice .cm-btn.cm-btn-success {
+      order: 2;
+    }
+  }
 }
 
 
 /* ********************* */
 /* Ver 2.0.1 -gf20210921 */
 #klaro .klaro.we_cookie_consent {
-	.cookie-notice {
-		&:not(.cookie-modal-notice) {
-			@media screen and (max-width:767px) {
-				.cn-body .cn-ok > * {
-					max-width:100%;
-					margin-right:0;
-				}
-			}
-			.cm-btn,
-			.cm-btn-sm {
-				border:$border-style;
-				border-radius: $border-radius;
-			}
-			.cm-link {
-				border:$border-style;
-				border-radius:$border-radius;
-				z-index:100;
-				&:hover {
-				opacity:$opacity-hover;
-				}
-				&::before {
-					content: $icon-edit;
-					contain: content;
-					height: 20px;
-					width: 20px;
-					position: absolute;
-					margin-left: -32px;
-				}
-				&:hover {		//Ver 2.1.0  -gf20211125
-					&::before {
-						content: $icon-hover-edit;
-					}
-				}
-			}
-			.cm-btn {
-				background: $color-none;
-				border-radius: $border-radius;
-				font-weight:500;
-				margin: calc(.5em - $border-width) 0;
-				&.cm-btn-danger {
-					background: $cm-btn-color-bg-decline;
-					&::before {
-						content: $icon-decline;
-						contain: content;
-						height: 20px;
-						width: 20px;
-						position: absolute;
-						margin-left: -32px;
-					}
-					&:hover {		//Ver 2.1.0  -gf20211125
-						&::before {
-							content: $icon-hover-decline;
-						}
-					}
-				}
-				&.cm-btn-success {
-					background:$cm-btn-color-bg-success;
-					&::before {
-						content: $icon-success;
-						contain: content;
-						height: 20px;
-						width: 20px;
-						position: absolute;
-						margin-left: -32px;
-					}
-					&:hover {		//Ver 2.1.0  -gf20211125
-						&::before {
-							content: $icon-hover-success;
-						}
-					}
-				}
-				&.cm-btn-info {
-					color: $color-default;
-					font-weight:500;
-					background:$color-none;
-					&::before {
-						content:"";
-					}
-				}
-			}
-			.cm-link,
-			.cm-learn-more {
-				color: $color-default;
-				display:block;
-				font-weight:500;
-				background:$cm-link-bg;
-				order:3;
-				padding:.5em 0;
-				text-align:center;
-				width:100%;
-				max-width:calc(100% - .5rem);
-				@media screen and (min-width:768px) {
-					padding:1em 0;
-				}
-			}
+  .cookie-notice {
+    &:not(.cookie-modal-notice) {
+      @media screen and (max-width: 767px) {
+        .cn-body .cn-ok > * {
+          max-width: 100%;
+          margin-right: 0;
+        }
+      }
 
-			@media screen and (min-width:768px) {
-				.cn-body {
-					.cn-ok {
-					display:block;
-						> * {
-							flex:0 0 auto;
-							min-width:auto;
-							max-width:33.333333%;
-						}
-						> .cm-link {
-							width: 100%;
-						}
-						.cn-buttons {
-							display: flex;
-							margin: 0 -10px;
-							max-width:66.666666%;
-							width: 100%;
-						}
-					}
-				}
-				.cm-btn {
-					margin: .5em 10px;
-					&.cm-btn-success {
-						background: $cm-btn-color-bg-success;
-						margin: 0.5em 0 0.5em 10px;
-						text-align:center;
-						order:2;
-						margin-right: 0;
-						max-width: calc(33.33333% - 20px);
-						position: absolute;
-						right: 0;
-						&:hover {
-						}
-					}
-					&.cm-btn-info {
-						text-align:right;
-					}
-				}
-				.cm-btn-danger {
-					background:$color-none;
-					border-color:$cm-btn-border;
-					text-align:center;
-				}
-				.cm-link,
-				.cm-learn-more {
-					padding:1em 0;
-					position: absolute;
-					margin: 0.5em 33.333333%;
-				}
-			}
-			
-		}
-		.cm-btn {
-			&.cm-btn-info {
-				background:$color-bg-link;
-			}
-			@media screen and (min-width:768px) {
-				width:calc(50% - 20px);
-			}
-		}
-	}
+      .cm-btn,
+      .cm-btn-sm {
+        border: $border-style;
+        border-radius: $border-radius;
+      }
 
-	//Center 2
-	&.notice--center-floated {
-		.cookie-notice:not(.cookie-modal-notice) .cn-body .cn-ok {
-			@media screen and (min-width:576px) {
-			.cn-buttons {
-				justify-content:space-between;
-			}
-				.cm-btn {
-					height:50px;
-					max-width: calc(50% - 10px);
-				}
-				.cm-link {
-					border-color:$color-bg-link;
-					height:50px;
-					line-height: 1.5em;
-					osition: relative;
-					margin: 10px auto 0;
-					max-width: calc(50% - 10px);
-					position:relative;
-				}
-				.cm-btn-success {
-					order:1;
-				}
-			}
-			@media screen and (min-width:768px) {
-				.cm-link {
-					margin-top: 70px;
-				}
-			}
-		}
-	}
+      .cm-link {
+        border: $border-style;
+        border-radius: $border-radius;
+        z-index: 100;
 
-	@media screen and (min-width:768px) {
-		&.notice--center,
-		&.notice--center-floated	{
-			.cookie-notice {
-				&:not(.cookie-modal-notice) {
-					.cn-body {
-						.cn-ok {
-							.cm-link {  // neu seit V2.0.0 (gilt jetzt für center und center-floated gleichermaßen)
-								margin: 70px 0 0; 
-								max-width: 100%;
-							}
-							.cn-buttons {
-								margin:0;
-								max-width: 100%;
-							}
-							.cm-btn {
-								// background:$color-none;
-								margin:130px 0 10px;
-								width:calc(50% - 20px);
-								&.cm-btn-success{
-									margin:10px 0;
-									max-width:100%;
-								}
-							}
-						}
-					}
-				}
-			}
-		}
-		&.notice--center {
-			.cookie-notice .cn-body .cn-ok .cm-btn.cm-btn-info,
-			.cookie-notice .cn-body .cn-ok .cm-link.cm-learn-more {
-				background:$cm-link-bg;
-				border:$cm-link-border;
-			}
-			.cookie-notice {
-				&:not(.cookie-modal-notice) {
-					.cn-body .cn-ok .cm-btn {
-						width:100%;
-					}
-				}
-			}
-		}
-		&.notice--center-floated {
-			.cookie-notice:not(.cookie-modal-notice) .cn-body .cn-ok {
-				height:130px;
-				.cn-buttons {
-					position:absolute;
-					top:10px;
-				}
-				.cm-btn {
-					border-color:$cm-btn-color-border;
-					max-width:calc(50% - 10px);
-					margin: 10px 0;
-					&.cm-btn-danger {
-						width:calc(50% - 20px);
-					}
-					&.cm-btn-success {
-						max-width:calc(50% - 10px);
-						order:1;
-						position:relative;
-					}
-				}
-				.cm-btn.cm-btn-info,
-				.cm-link	{
-					background:transparent;
-					position:relative;
-					margin: 70px 0 0;
-				}
-			}
+        &:hover {
+          opacity: $opacity-hover;
+        }
 
-		}
-	} // > 768px END.
+        &::before {
+          content: $icon-edit;
+          contain: content;
+          height: 20px;
+          width: 20px;
+          position: absolute;
+          margin-left: -32px;
+        }
+
+        &:hover { //Ver 2.1.0  -gf20211125
+          &::before {
+            content: $icon-hover-edit;
+          }
+        }
+      }
+
+      .cm-btn {
+        background: $color-none;
+        border-radius: $border-radius;
+        font-weight: 500;
+        margin: calc(.5em - $border-width) 0;
+
+        &.cm-btn-danger {
+          background: $cm-btn-color-bg-decline;
+
+          &::before {
+            content: $icon-decline;
+            contain: content;
+            height: 22px;
+            width: 20px;
+            position: absolute;
+            margin-left: -32px;
+          }
+
+          &:hover { //Ver 2.1.0  -gf20211125
+            &::before {
+              content: $icon-hover-decline;
+            }
+          }
+        }
+
+        &.cm-btn-success {
+          background: $cm-btn-color-bg-success;
+
+          &::before {
+            content: $icon-success;
+            contain: content;
+            height: 22px;
+            width: 20px;
+            position: absolute;
+            margin-left: -32px;
+          }
+
+          &:hover { //Ver 2.1.0  -gf20211125
+            &::before {
+              content: $icon-hover-success;
+            }
+          }
+        }
+
+        &.cm-btn-info {
+          color: $color-default;
+          font-weight: 500;
+          background: $color-none;
+
+          &::before {
+            content: "";
+          }
+        }
+      }
+
+      .cm-link,
+      .cm-learn-more {
+        color: $color-default;
+        display: block;
+        font-weight: 500;
+        background: $cm-link-bg;
+        order: 3;
+        padding: .5em 0;
+        text-align: center;
+        width: 100%;
+        max-width: calc(100% - .5rem);
+        @media screen and (min-width: 768px) {
+          padding: 1em 0;
+        }
+      }
+
+      @media screen and (min-width: 768px) {
+        .cn-body {
+          .cn-ok {
+            display: block;
+
+            > * {
+              flex: 0 0 auto;
+              min-width: auto;
+              max-width: 33.333333%;
+            }
+
+            > .cm-link {
+              width: 100%;
+            }
+
+            .cn-buttons {
+              display: flex;
+              margin: 0 -10px;
+              max-width: 66.666666%;
+              width: 100%;
+            }
+          }
+        }
+        .cm-btn {
+          margin: .5em 10px;
+
+          &.cm-btn-success {
+            background: $cm-btn-color-bg-success;
+            margin: 0.5em 0 0.5em 10px;
+            text-align: center;
+            order: 2;
+            max-width: calc(33.33333% - 20px);
+            position: absolute;
+            right: 0;
+
+            &:hover {
+            }
+          }
+
+          &.cm-btn-info {
+            text-align: right;
+          }
+        }
+        .cm-btn-danger {
+          background: $color-none;
+          border-color: $cm-btn-border;
+          text-align: center;
+        }
+        .cm-link,
+        .cm-learn-more {
+          padding: 1em 0;
+          position: absolute;
+          margin: 0.5em 33.333333%;
+        }
+      }
+
+    }
+
+    .cm-btn {
+      &.cm-btn-info {
+        background: $color-bg-link;
+      }
+
+      @media screen and (min-width: 768px) {
+        width: calc(50% - 20px);
+      }
+    }
+  }
+
+  //Center 2
+  &.notice--center-floated {
+    .cookie-notice:not(.cookie-modal-notice) .cn-body .cn-ok {
+      @media screen and (min-width: 576px) {
+        .cn-buttons {
+          justify-content: space-between;
+        }
+        .cm-btn {
+          height: 50px;
+          max-width: calc(50% - 10px);
+        }
+        .cm-link {
+          border-color: $color-bg-link;
+          height: 50px;
+          line-height: 1.5em;
+          margin: 10px auto 0;
+          max-width: calc(50% - 10px);
+          position: relative;
+        }
+        .cm-btn-success {
+          order: 1;
+        }
+      }
+      @media screen and (min-width: 768px) {
+        .cm-link {
+          margin-top: 70px;
+        }
+      }
+    }
+  }
+
+  @media screen and (min-width: 768px) {
+    &.notice--center,
+    &.notice--center-floated {
+      .cookie-notice {
+        &:not(.cookie-modal-notice) {
+          .cn-body {
+            .cn-ok {
+              .cm-link { // neu seit V2.0.0 (gilt jetzt für center und center-floated gleichermaßen)
+                margin: 70px 0 0;
+                max-width: 100%;
+              }
+
+              .cn-buttons {
+                margin: 0;
+                max-width: 100%;
+              }
+
+              .cm-btn {
+                // background:$color-none;
+                margin: 130px 0 10px;
+                width: calc(50% - 20px);
+
+                &.cm-btn-success {
+                  margin: 10px 0;
+                  max-width: 100%;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    &.notice--center {
+      .cookie-notice .cn-body .cn-ok .cm-btn.cm-btn-info,
+      .cookie-notice .cn-body .cn-ok .cm-link.cm-learn-more {
+        background: $cm-link-bg;
+        border: $cm-link-border;
+      }
+
+      .cookie-notice {
+        &:not(.cookie-modal-notice) {
+          .cn-body .cn-ok .cm-btn {
+            width: 100%;
+          }
+        }
+      }
+    }
+    &.notice--center-floated {
+      .cookie-notice:not(.cookie-modal-notice) .cn-body .cn-ok {
+        height: 130px;
+
+        .cn-buttons {
+          position: absolute;
+          top: 10px;
+        }
+
+        .cm-btn {
+          border-color: $cm-btn-color-border;
+          max-width: calc(50% - 10px);
+          margin: 10px 0;
+
+          &.cm-btn-danger {
+            width: calc(50% - 20px);
+          }
+
+          &.cm-btn-success {
+            max-width: calc(50% - 10px);
+            order: 1;
+            position: relative;
+          }
+        }
+
+        .cm-btn.cm-btn-info,
+        .cm-link {
+          background: transparent;
+          position: relative;
+          margin: 70px 0 0;
+        }
+      }
+
+    }
+  }
+  // > 768px END.
 }
+
 /* Ver 2.0.1 -gf20210921 END. */
 /* ************************** */
 
 
 /* ********************* */
 /* Ver 3.1.1 -gf20231121 */
-@media screen and (min-width:1520px) {
-	#klaro .klaro.we_cookie_consent {
-		.cm-link,
-		.cm-btn {
-			&::before {
-				margin-top: .25em;
-			}
-		}
+@media screen and (min-width: 1520px) {
+  #klaro .klaro.we_cookie_consent {
+    .cm-link,
+    .cm-btn {
+      &::before {
+        margin-top: .25em;
+      }
+    }
 
-		&.notice--center {
-			.cookie-notice {
-				&:not(.cookie-modal-notice) .cn-body .cn-ok {
-					.cm-link {
-						margin-top: calc(70px + .5em);
-					}
-					 .cm-btn {
-						margin: calc(130px + 1em) 0 10px;
-					}
-				}
-			}
-			&-floated {
-				.cookie-notice {
-					&:not(.cookie-modal-notice) .cn-body .cn-ok {
-						height: calc(130px + .5em);
-						.cm-link {
-							margin-top: calc(70px + .5em);
-						}
-						.cm-btn {
-							height: 100%;
-						}
-					}
-				}
-			}
-		}
-	}
+    &.notice--center {
+      .cookie-notice {
+        &:not(.cookie-modal-notice) .cn-body .cn-ok {
+          .cm-link {
+            margin-top: calc(70px + .5em);
+          }
+
+          .cm-btn {
+            margin: calc(130px + 1em) 0 10px;
+          }
+        }
+      }
+
+      &-floated {
+        .cookie-notice {
+          &:not(.cookie-modal-notice) .cn-body .cn-ok {
+            height: calc(130px + .5em);
+
+            .cm-link {
+              margin-top: calc(70px + .5em);
+            }
+
+            .cm-btn {
+              height: 100%;
+            }
+          }
+        }
+      }
+    }
+  }
 }
