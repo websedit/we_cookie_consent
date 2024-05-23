@@ -2,7 +2,7 @@
 All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
-## [4.0.5] - 2024-05-14 - GF
+## [4.0.5] - 2024-05-23 - GF, AS
 ### Update
 - Change safari check to vanilla js
 ### Remove
@@ -11,10 +11,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 ### Correct
 - Syntax error .cm-link - definition was ignored
 ### Add
-- Added consent-cookie.js
-- Add conditional visibility of it's cookie SVG (only if cookie setting are active)
-- Add translations (EN/DE/NL) in JS script
-- Outsource it's default css definitions in scss
+- Added ConsentCookieSettings.js
+- Add conditional visibility of cookie SVG (only if cookie setting are active)
+- Outsource default css definitions in scss
+- Adjustable path for the icon default and icon hover
 
 ## [4.0.4] - 2024-04-24 - RL
 ### Bugfix

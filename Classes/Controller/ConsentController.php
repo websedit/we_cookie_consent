@@ -105,6 +105,7 @@ class ConsentController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
         $klaroConfig = $this->klaroConfigBuild($services);
 
         $pageRenderer = GeneralUtility::makeInstance(\TYPO3\CMS\Core\Page\PageRenderer::class);
+
         $variables = [
             'request' => $request,
             'arguments' => $this->arguments,
@@ -217,6 +218,7 @@ class ConsentController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
                     'acceptSelected' => LocalizationUtility::translate('klaro.acceptSelected', self::EXTKEY),
                     'decline' => LocalizationUtility::translate('klaro.decline', self::EXTKEY),
                     'close' => LocalizationUtility::translate('klaro.close', self::EXTKEY),
+                    'openConsent' => LocalizationUtility::translate('list.button.openConsent', self::EXTKEY),
                     'poweredBy' => LocalizationUtility::translate('klaro.poweredBy', self::EXTKEY) ?: ' '
                 ]
             ],
