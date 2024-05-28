@@ -1,14 +1,27 @@
 document.addEventListener('DOMContentLoaded', function () {
-    if(cookieIconPermanentlyAvailable === '1') {
+    if((cookieIconPermanentlyAvailable === '1') && (checkCookieExists('klaro'))) {
         createTooltip();
+    }
+
+    if(cookieIconPermanentlyAvailable === '1') {
+        setTimeout(function() {
+            const klaroDiv = document.getElementById('klaro');
+            const buttons = klaroDiv.querySelectorAll('button');
+
+            function handleClick(event) {
+                createTooltip();
+            }
+
+            buttons.forEach(button => {
+                button.addEventListener('click', handleClick);
+            });
+        });
     }
 });
 
 function checkCookieExists(cookieName) {
-    // Split document.cookie by semicolons into an array
     let cookies = document.cookie.split(';');
 
-    // Iterate through the cookies array
     for (let i = 0; i < cookies.length; i++) {
         let cookie = cookies[i];
         // Remove leading spaces (if any)
@@ -17,11 +30,9 @@ function checkCookieExists(cookieName) {
         }
         // Check if the cookie name matches
         if (cookie.indexOf(cookieName + '=') == 0) {
-            // Cookie with the given name found
             return true;
         }
     }
-    // Cookie with the given name not found
     return false;
 }
 
@@ -48,12 +59,7 @@ function createTooltip() {
 
     iconContainer.classList.add('consent-cookie')
     iconContainer.style.cssText = 'display:block;';
-
-    //@todo GF Fragen warum????
-    let cookieExists = checkCookieExists('klaro');
-    if (cookieExists === true) {
-        iconContainer.style.display = 'flex';
-    }
+    iconContainer.style.display = 'flex';
 
     // Add the image and the tooltip to the container
     iconContainer.appendChild(imgTag);
