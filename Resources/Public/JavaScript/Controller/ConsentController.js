@@ -108,6 +108,11 @@ let ConsentApp = new function ConsentController() {
                 event: service.gtm.trigger,
                 [service.gtm.variable]: state
             };
+			(function() {
+				if (!window.dataLayer) {
+					window.dataLayer = [];
+				}
+			})();
             window.dataLayer.push(tempObj);
         }
 

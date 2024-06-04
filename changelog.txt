@@ -2,37 +2,38 @@
 All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
-## [4.0.5] - 2024-05-23 - GF, AS
-### Update
+## [4.0.5] - 2024-06-04 - GF, AS, RL
+### Changed - 2024-05-23 - GF
 - Change safari check to vanilla js
-### Remove
-- Remove vars $path-to-wcc... - never needed & way of use not possible in Typo3 12 anymore
-- Remove some redundant css definitions
-### Correct
-- Syntax error .cm-link - definition was ignored
-### Add
-- Added ConsentCookieSettings.js
-- Add conditional visibility of cookie SVG (only if cookie setting are active)
-- Outsource default css definitions in scss
-- Adjustable path for the icon default and icon hover
-- Event listener for button click (klaro cookie set)
+### Removed - 2024-05-23 - GF
+- Removed vars $path-to-wcc... - never needed & way of use not possible in Typo3 12 anymore
+- Removed some redundant css definitions
+### Fixed - 2024-06-04 - GF, RL
+- Syntax error .cm-link - definition was ignored - GF
+- Added if-condition in ConsentController.js line 111 for checking if dataLayer is initialised. Issue: #42 - RL
+### Added - 2024-05-31 - AS, GF, RL
+- Added ConsentCookieSettings.js - RL, GF
+- Add conditional visibility of cookie SVG (only if cookie setting are active) - AS
+- Outsource default css definitions in scss  - GF
+- Adjustable path for the icon default and icon hover - AS
+- Event listener for button click (klaro cookie set) - GF
 
 ## [4.0.4] - 2024-04-24 - RL
-### Bugfix
+### Fixed
 - Added if-loop in ConsentController.js for the evaluation of Google Tag Manager Services
 ### Added
 - Added !default to scss variables to override them. Thank's to RazielleS and dmitryd. Issue: #36 and #40
 
 ## [4.0.3] - 2024-04-22 - AS
-### Bugfix
+### Fixed
 - Changed Version number in ext_emconf
 
 ## [4.0.2] - 2024-04-22 - AS
-### Bugfix
-- Added missing comma in TCA. Fixes the problem where categories are shon in the wrong tab in the service data record.
+### Fixed
+- Added missing comma in TCA. Fixes the problem where categories are shown in the wrong tab in the service data record.
 
 ## [4.0.1] - 2024-04-04 - RL, AS
-### Bugfix v12 - 2024-04-04 - AS
+### Fixed v12 - 2024-04-04 - AS
 - Separated switchable controller actions in separated plugins
 ### Added - 2024-04-03 - RL
 - Added Google Consent Mode basic and advanced - to set default consent types (Beta)
@@ -57,6 +58,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - Classes/Hook/AfterSaveHook.php: Check if array key exists with function isset()
 - Configuration/TypoScript/setup.typoscript: Changed TypoScript condition (traverse)
 - Changed prepros config
+
 ## [3.0.2] - 2022-06-23 - GF
 ### Added - 2022-06-23
 - Attribute data-nosnippet="data-nosnippet" to .cn-body (Avoids Google bot to crawl cookie-consent text)
