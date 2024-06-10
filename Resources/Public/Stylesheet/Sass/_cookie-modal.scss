@@ -209,17 +209,18 @@
 			transition: unset;
 			width: 100%;
 			.hide {
-				background-color:$color-bg;
-				color: $icon-settings-close-color;
-				cursor: default;
-				display: block !important;
-				font-size: $icon-settings-close-size;
-				height: 60px;
-				line-height: 20px;
-				overflow: hidden;
-				padding: 20px;
-				top: 0;
-				right: 0;
+				//background-color:$color-bg;
+				//color: $icon-settings-close-color;
+				//cursor: default;
+				//display: block !important;
+				//font-size: $icon-settings-close-size;
+				//height: 60px;
+				//line-height: 20px;
+				//overflow: hidden;
+				//padding: 20px;
+				//top: 0;
+				//right: 0;
+				display: none;
 			}
 			.hide svg {
 				display:none;

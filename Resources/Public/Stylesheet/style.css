@@ -797,17 +797,7 @@
   width: 100%;
 }
 .klaro.we_cookie_consent .cookie-modal .cm-modal.cm-klaro .hide {
-  background-color: #FFF;
-  color: #FFF;
-  cursor: default;
-  display: block !important;
-  font-size: 4em;
-  height: 60px;
-  line-height: 20px;
-  overflow: hidden;
-  padding: 20px;
-  top: 0;
-  right: 0;
+  display: none;
 }
 .klaro.we_cookie_consent .cookie-modal .cm-modal.cm-klaro .hide svg {
   display: none;

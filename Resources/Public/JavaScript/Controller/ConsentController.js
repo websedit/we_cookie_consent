@@ -196,4 +196,11 @@ $(function () {
     $('.klaro.we_cookie_consent .cn-body').each(function () {
         $(this).attr('data-nosnippet', 'data-nosnippet');
     });
+
+
+
+
 });
+
+
+

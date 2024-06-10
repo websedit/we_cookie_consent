@@ -1,22 +1,52 @@
 document.addEventListener('DOMContentLoaded', function () {
-    if((cookieIconPermanentlyAvailable === '1') && (checkCookieExists('klaro'))) {
+
+    if ((cookieIconPermanentlyAvailable === '1') && (checkCookieExists('klaro'))) {
         createTooltip();
     }
 
-    if(cookieIconPermanentlyAvailable === '1') {
-        setTimeout(function() {
+    if (cookieIconPermanentlyAvailable === '1') {
+        setTimeout(function () {
             const klaroDiv = document.getElementById('klaro');
             const buttons = klaroDiv.querySelectorAll('button');
 
             function handleClick(event) {
                 createTooltip();
+                if (document.querySelector('#klaro .cookie-notice') == null && document.querySelector('#klaro .cookie-modal') == null) {
+                }
             }
 
             buttons.forEach(button => {
                 button.addEventListener('click', handleClick);
             });
+
+
         });
+
     }
+
+    setTimeout(function () {
+        if (document.querySelector('.cm-link')) {
+            document.querySelector('.cm-link').addEventListener('click', function () {
+                if (document.querySelector('.cm-btn-success')) {
+                    document.querySelector('.cm-btn-success').addEventListener('click', function () {
+                        createTooltip();
+                    });
+                }
+
+                if (document.querySelector('.cn-decline')) {
+                    document.querySelector('.cn-decline').addEventListener('click', function () {
+                        createTooltip();
+                    });
+                }
+
+                if (document.querySelector('.cm-btn-accept-all')) {
+                    document.querySelector('.cm-btn-accept-all').addEventListener('click', function () {
+                        createTooltip();
+                    });
+                }
+            });
+        }
+    }, 1000);
 });
 
 function checkCookieExists(cookieName) {
