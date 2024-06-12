@@ -4,7 +4,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [2.3.6] - 2024-06-04 - RL
 ### Fixed
-- Added if-loop in ConsentController.js line 111 for checking if dataLayer is initialised. Issue: #42
+- Added if-condition in ConsentController.js line 111 for checking if dataLayer is initialised. Issue: #42
 
 ## [2.3.5] - 2024-04-24 - RL
 ### Fixed
