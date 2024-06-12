@@ -3,20 +3,21 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [4.0.5] - 2024-06-04 - GF, AS, RL
+### Fixed - 2024-06-04 - GF, RL
+- Syntax error .cm-link - definition was ignored - GF
+- Added if-condition in ConsentController.js line 111 for checking if dataLayer is initialised. Issue: #42 - RL
+### Added - 2024-05-31 - AS, GF, RL
+- Implementation of the display of a permanently available cookie icon. - AS, GF, RL
+- Added ConsentCookieSettings.js - RL, GF
+- Added conditional visibility of cookie SVG (only if cookie setting are active) - AS
+- Outsource default css definitions in scss  - GF
+- Adjustable path for the icon default and icon hover - AS
+- Event listener for button click (klaro cookie set) - GF
 ### Changed - 2024-05-23 - GF
 - Change safari check to vanilla js
 ### Removed - 2024-05-23 - GF
 - Removed vars $path-to-wcc... - never needed & way of use not possible in Typo3 12 anymore
 - Removed some redundant css definitions
-### Fixed - 2024-06-04 - GF, RL
-- Syntax error .cm-link - definition was ignored - GF
-- Added if-condition in ConsentController.js line 111 for checking if dataLayer is initialised. Issue: #42 - RL
-### Added - 2024-05-31 - AS, GF, RL
-- Added ConsentCookieSettings.js - RL, GF
-- Add conditional visibility of cookie SVG (only if cookie setting are active) - AS
-- Outsource default css definitions in scss  - GF
-- Adjustable path for the icon default and icon hover - AS
-- Event listener for button click (klaro cookie set) - GF
 
 ## [4.0.4] - 2024-04-24 - RL
 ### Fixed
