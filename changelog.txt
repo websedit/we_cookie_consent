@@ -2,19 +2,23 @@
 All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
+## [2.3.6] - 2024-06-04 - RL
+### Fixed
+- Added if-loop in ConsentController.js line 111 for checking if dataLayer is initialised. Issue: #42
+
 ## [2.3.5] - 2024-04-24 - RL
-### Bugfix
+### Fixed
 - Added if-loop in ConsentController.js for the evaluation of Google Tag Manager Services
 ### Added
 - Added !default to scss variables to override them. Thank's to RazielleS and dmitryd. Issue: #36 and #40
 
 ## [2.3.4] - 2024-04-22 - AS
-### Bugfix
+### Fixed
 - Changed Version number in ext_emconf
 
 ## [2.3.3] - 2024-04-22 - AS
-### Bugfix
-- Added missing comma in TCA. Fixes the problem where categories are shon in the wrong tab in the service data record.
+### Fixed
+- Added missing comma in TCA. Fixes the problem where categories are shown in the wrong tab in the service data record.
 
 ## [2.3.2] - 2024-04-03 - RL
 ### Fixed
