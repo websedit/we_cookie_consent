@@ -12,3 +12,9 @@ $GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist']['wecookiecons
     'wecookieconsent_pi1',
     'FILE:EXT:we_cookie_consent/Configuration/FlexForms/flexform_pi1.xml'
 );
+
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
+    'WeCookieConsent',
+    'Pi2',
+    'Cookie Consent'
+);

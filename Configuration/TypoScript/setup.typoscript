@@ -65,6 +65,8 @@ plugin.tx_wecookieconsent_pi1 {
     }
 }
 
+plugin.tx_wecookieconsent_pi2 < plugin.tx_wecookieconsent_pi1
+
 module.tx_wecookieconsent_web_wecookieconsentmod1 {
     persistence {
         storagePid = {$module.tx_wecookieconsent_mod1.persistence.storagePid}
@@ -93,7 +95,11 @@ module.tx_wecookieconsent_web_wecookieconsentmod1 {
 
 page {
     #Include Cookie Consent on every page
-    525304800 < tt_content.list.20.wecookieconsent_pi1
+    525304800 = EXTBASEPLUGIN
+    525304800 {
+        extensionName = WeCookieConsent
+        pluginName = Pi2
+    }
 
     includeCSS {
         we_cookie_consent_style = EXT:we_cookie_consent/Resources/Public/Stylesheet/style.css

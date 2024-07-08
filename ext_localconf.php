@@ -11,12 +11,23 @@ call_user_func(
 	         'WeCookieConsent',
 	         'Pi1',
 	         [
-	             \Websedit\WeCookieConsent\Controller\ConsentController::class => 'consent, list',
+	             \Websedit\WeCookieConsent\Controller\ConsentController::class => 'list',
 	         ],
 	         [
 	             \Websedit\WeCookieConsent\Controller\ConsentController::class => '',
 	         ]
 	     );
+
+        \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
+            'WeCookieConsent',
+            'Pi2',
+            [
+                \Websedit\WeCookieConsent\Controller\ConsentController::class => 'consent',
+            ],
+            [
+                \Websedit\WeCookieConsent\Controller\ConsentController::class => '',
+            ]
+        );
 
         /**
          * Hooks

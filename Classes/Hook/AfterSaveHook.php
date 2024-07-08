@@ -9,7 +9,11 @@ class AfterSaveHook
 {
     public function processDatamap_preProcessFieldArray(&$fieldArray, $table, $id, \TYPO3\CMS\Core\DataHandling\DataHandler &$dataHandler)
     {
-        if ($table === 'tx_wecookieconsent_domain_model_service' && $fieldArray['provider'] === 'google-tagmanager-service') {
+        if (
+            $table === 'tx_wecookieconsent_domain_model_service'
+            && isset($fieldArray['provider'])
+            && $fieldArray['provider'] === 'google-tagmanager-service'
+        ) {
             if (isset($fieldArray['title'])) {
                 $title = $fieldArray['title'];
             } else {
