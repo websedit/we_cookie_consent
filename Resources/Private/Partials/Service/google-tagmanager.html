@@ -6,9 +6,7 @@
 					window.dataLayer = window.dataLayer || [];
 					function gtag(){dataLayer.push(arguments);}
 
-					// Set default consent to 'denied' as a placeholder
-					// Determine actual values based on your own requirements
-
+					// Set default consent to 'denied'
 					gtag('consent', 'default', {
 						'ad_storage': 'denied',
 						'analytics_storage': 'denied',
@@ -26,7 +24,6 @@
 			<f:if condition="{settings.klaro.consentModev2}">
 				<!-- Google Tag Manager -->
 				<script>
-				//alert('consentModev2');
 				(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 				new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 				j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
@@ -37,7 +34,6 @@
 			</f:if>
 			<f:if condition="{settings.klaro.consentMode}">
 				<script>
-					//alert('consentMode');
 					dataLayer.push({'gtm.start': new Date().getTime(), 'event': 'gtm.js'});
 				</script>
 				<script type="opt-in" data-type="text/javascript" data-name="{service.provider}-{service.uid}">
@@ -53,11 +49,11 @@
 		</f:then>
 		<f:else>
 			<script type="opt-in" data-type="text/javascript" data-name="{service.provider}-{service.uid}">
-			(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-			new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-			j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-			'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-			})(window,document,'script','dataLayer','<f:format.raw>{service.apiKey}</f:format.raw>');
+				(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+				new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+				j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+				'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+				})(window,document,'script','dataLayer','<f:format.raw>{service.apiKey}</f:format.raw>');
 			</script>
 		</f:else>
 	</f:if>

@@ -2,54 +2,49 @@
 	<f:if condition="{settings.klaro.consentMode} || {settings.klaro.consentModev2}">
 		<f:then>
 			<script>
-				if({service.adStorage} != 0) {
-						consenTypeObj.ad_storage = "{f:if(condition:'{service.adStorage}==1', then:'granted', else:'{f:if(condition:\'{service.adStorage}==2\', then:\'denied\')}')}";
-				}
-				if({service.analyticsStorage} != 0) {
-					consenTypeObj.analytics_storage = "{f:if(condition:'{service.analyticsStorage}==1', then:'granted', else:'{f:if(condition:\'{service.analyticsStorage}==2\', then:\'denied\')}')}";
-				}
-				if({service.adUserData} != 0) {
-					consenTypeObj.ad_user_data = "{f:if(condition:'{service.adUserData}==1', then:'granted', else:'{f:if(condition:\'{service.adUserData}==2\', then:\'denied\')}')}";
-				}
-				if({service.adPersonalization} != 0) {
-					consenTypeObj.ad_personalization = "{f:if(condition:'{service.adPersonalization}==1', then:'granted', else:'{f:if(condition:\'{service.adPersonalization}==2\', then:\'denied\')}')}";
-				}
-				if({service.functionalityStorage} != 0) {
-					consenTypeObj.functionality_storage = "{f:if(condition:'{service.functionalityStorage}==1', then:'granted', else:'{f:if(condition:\'{service.functionalityStorage}==2\', then:\'denied\')}')}";
-				}
-				if({service.personalizationStorage} != 0) {
-					consenTypeObj.personalization_storage = "{f:if(condition:'{service.personalizationStorage}==1', then:'granted', else:'{f:if(condition:\'{service.personalizationStorage}==2\', then:\'denied\')}')}";
-				}
-				if({service.securityStorage} != 0) {
-					consenTypeObj.security_storage = "{f:if(condition:'{service.securityStorage}==1', then:'granted', else:'{f:if(condition:\'{service.securityStorage}==2\', then:\'denied\')}')}";
-				}
 				serviceName = '{service.provider}-{service.uid}';
-			
-				if({service.adStorage} != 0 || {service.analyticsStorage} != 0 || {service.adUserData} != 0 || {service.adPersonalization} != 0 || {service.functionalityStorage} != 0 || {service.personalizationStorage} != 0 || {service.securityStorage} != 0) {
-					serviceIsTypeOfConsentMode = true;
-				} else {
-					serviceIsTypeOfConsentMode = false;
-				}
+
+				// Define the service settings and dynamically assign values for each service
+				consenTypeObj = {
+					ad_storage: {service.adStorage} != 0 ? "{f:if(condition: '{service.adStorage} == 1', then: 'granted', else: 'denied')}" : "not set",
+					analytics_storage: {service.analyticsStorage} != 0 ? "{f:if(condition: '{service.analyticsStorage} == 1', then: 'granted', else: 'denied')}" : "not set",
+					ad_user_data: {service.adUserData} != 0 ? "{f:if(condition: '{service.adUserData} == 1', then: 'granted', else: 'denied')}" : "not set",
+					ad_personalization: {service.adPersonalization} != 0 ? "{f:if(condition: '{service.adPersonalization} == 1', then: 'granted', else: 'denied')}" : "not set",
+					functionality_storage: {service.functionalityStorage} != 0 ? "{f:if(condition: '{service.functionalityStorage} == 1', then: 'granted', else: 'denied')}" : "not set",
+					personalization_storage: {service.personalizationStorage} != 0 ? "{f:if(condition: '{service.personalizationStorage} == 1', then: 'granted', else: 'denied')}" : "not set",
+					security_storage: {service.securityStorage} != 0 ? "{f:if(condition: '{service.securityStorage} == 1', then: 'granted', else: 'denied')}" : "granted"
+				};
+				
+				// Check if any of the services are active
+				serviceIsTypeOfConsentMode = (
+					consenTypeObj.ad_storage != "not set" ||
+					consenTypeObj.analytics_storage != "not set" ||
+					consenTypeObj.ad_user_data != "not set" ||
+					consenTypeObj.ad_personalization != "not set" ||
+					consenTypeObj.functionality_storage != "not set" ||
+					consenTypeObj.personalization_storage != "not set" ||
+					consenTypeObj.security_storage != "not set"
+				);
 					
 				serviceSetting = {
 					serviceId: serviceName,
 					serviceConsent: serviceIsTypeOfConsentMode,
-					ad_storage: consenTypeObj.ad_storage || 'not set',
-					analytics_storage: consenTypeObj.analytics_storage || 'not set',
-					ad_user_data: consenTypeObj.ad_user_data || 'not set',
-					ad_personalization: consenTypeObj.ad_personalization || 'not set',
-					personalization_storage: consenTypeObj.personalization_storage || 'not set',
-					functionality_storage: consenTypeObj.functionality_storage || 'not set'
+					ad_storage: consenTypeObj.ad_storage,
+					analytics_storage: consenTypeObj.analytics_storage,
+					ad_user_data: consenTypeObj.ad_user_data,
+					ad_personalization: consenTypeObj.ad_personalization,
+					functionality_storage: consenTypeObj.functionality_storage,
+					personalization_storage: consenTypeObj.personalization_storage,
+					security_storage: consenTypeObj.security_storage
 				};
-				
-				// Hinzufügen des serviceSetting Objekts zum allServiceSettings Array
+
+				// Add the serviceSetting object to the allServiceSettings array
 				allServiceSettings.push(serviceSetting);
-				
 			</script>
 			
 			<f:if condition="{settings.klaro.consentModev2}">
 				<script>
-					if({service.adStorage} != 0 || {service.analyticsStorage} != 0 || {service.adUserData} != 0 || {service.adPersonalization} != 0 || {service.functionalityStorage} != 0 || {service.personalizationStorage} != 0 || {service.securityStorage} != 0) {
+					if(serviceIsTypeOfConsentMode) {
 						gtag('js', new Date());
 						gtag('config', '<f:format.raw>{service.apiKey}</f:format.raw>');
 					}
