@@ -2,6 +2,12 @@
 All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
+## [4.0.7] - 2024-08-21 - RL
+### Fixed
+- Adaptation of the functions in ConsentController.js to correctly determine the ConsentTypes for several Google Services
+### Changed
+- Simplification and reduction of the ConsentType codes in the partials google-tagmanager, google-tagmanager-service, google-analytics, google-analytics-universal
+
 ## [4.0.6] - 2024-06-04 - GF, AS, RL
 - Change changelog and description to add new cookie icon
 - Configuration GF
