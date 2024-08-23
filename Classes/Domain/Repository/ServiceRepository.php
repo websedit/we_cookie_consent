@@ -2,6 +2,10 @@
 
 namespace Websedit\WeCookieConsent\Domain\Repository;
 
+use TYPO3\CMS\Core\Database\ConnectionPool;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Persistence\QueryInterface;
+use TYPO3\CMS\Extbase\Persistence\Repository;
 
 /***
  *
@@ -17,12 +21,38 @@ namespace Websedit\WeCookieConsent\Domain\Repository;
 /**
  * The repository for Services
  */
-class ServiceRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
+class ServiceRepository extends Repository
 {
     /**
      * @var array
      */
     protected $defaultOrderings = [
-        'sorting' => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_ASCENDING
+        'sorting' => QueryInterface::ORDER_ASCENDING
     ];
+
+
+    /**
+     * Get the sorting value of a category by its UID.
+     *
+     * @param int $uid The UID of the category
+     * @return int|null The sorting value or null if not found
+     */
+    public function getCategorySortingByUid(int $uid): ?int
+    {
+        // Get the query builder for the sys_category table
+        $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)
+            ->getQueryBuilderForTable('sys_category');
+
+        // Build the query to fetch the sorting value
+        $sorting = $queryBuilder
+            ->select('sorting')
+            ->from('sys_category')
+            ->where(
+                $queryBuilder->expr()->eq('uid', $queryBuilder->createNamedParameter($uid, \PDO::PARAM_INT))
+            )
+            ->executeQuery()
+            ->fetchOne();
+
+        return $sorting !== false ? (int)$sorting : null;
+    }
 }
