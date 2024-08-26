@@ -3,6 +3,7 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [2.3.8] - 2024-08-26 - RL
+- Changed sorting from the categories to the sorting in the backend - AS
 - GTM-Service Partial - Tag loading - RL
 
 ## [2.3.7] - 2024-08-21 - RL

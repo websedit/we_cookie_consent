@@ -220,22 +220,23 @@ class ConsentController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
         ];
 
         foreach ($services as $service) {
-            foreach ($service->getCategories() as $category) {
-                $klaroConfig['translations']['en']['purposes'][strtolower($category->getTitle())]['title'] = $category->getTitle();
-                $klaroConfig['translations']['en']['purposes'][strtolower($category->getTitle())]['description'] = $category->getDescription();
+            if ($service->getCategories()->count()) {
+                foreach ($service->getCategories() as $category) {
+                    $klaroConfig['translations']['en']['purposes'][strtolower($category->getTitle())]['title'] = $category->getTitle();
+                    $klaroConfig['translations']['en']['purposes'][strtolower($category->getTitle())]['description'] = $category->getDescription();
 
-                // Sorting the sys_categories
-                $klaroConfig['purposeOrder'][$category->getUid()] = strtolower($category->getTitle());
+                    // Sorting the sys_categories
+                    $klaroConfig['purposeOrder'][$this->serviceRepository->getCategorySortingByUid($category->getUid())] = strtolower($category->getTitle());
+                }
             }
         }
 
         // Sort the sys_categories alphabetically and add a last category 'unknown' for uncategorized services.
         // Only relevant if option 'groupByPurpose' is set to true.
+        ksort($klaroConfig['purposeOrder']);
+        $result = array_values($klaroConfig['purposeOrder']);
+        $klaroConfig['purposeOrder'] = $result;
         $klaroConfig['purposeOrder'][] = 'unknown';
-        sort($klaroConfig['purposeOrder']);
-
-        // Backwards compatibility
-        $klaroConfig = $this->backwardsCompatibility($klaroConfig);
 
         return $klaroConfig;
     }
