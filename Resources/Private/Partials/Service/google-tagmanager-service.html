@@ -43,11 +43,7 @@
 			</script>
 			
 			<f:if condition="{settings.klaro.consentModev2}">
-				<script>
-					if(serviceIsTypeOfConsentMode) {
-						gtag('js', new Date());
-						gtag('config', '<f:format.raw>{service.apiKey}</f:format.raw>');
-					}
+				<script type="opt-in" data-type="text/javascript" data-name="{service.provider}-{service.uid}">
 				</script>
 			</f:if>
 			<f:if condition="{settings.klaro.consentMode}">
