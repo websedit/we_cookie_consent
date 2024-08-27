@@ -2,6 +2,10 @@
 All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
+## [4.0.9] - 2024-08-27 - RL
+### Fixed
+- Undo: GTM-Service Partial - Tag loading from v4.0.8
+
 ## [4.0.8] - 2024-08-26 - AS, RL
 ### Changed
 - Changed sorting from the categories to the sorting in the backend - AS
