@@ -171,8 +171,8 @@ class ConsentController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
             'storageName' => $this->settings['klaro']['storageName'],
             'stylePrefix' => $this->settings['klaro']['stylePrefix'],
             'testing' => $this->settings['klaro']['testing'] === '1',
-			'consentMode' => $this->settings['klaro']['consentMode'] === '1',
-			'consentModev2' => $this->settings['klaro']['consentModev2'] === '1',
+            'consentMode' => $this->settings['klaro']['consentMode'] === '1',
+            'consentModev2' => $this->settings['klaro']['consentModev2'] === '1',
             'translations' => [
                 'en' => [
                     'consentModal' => [
@@ -244,12 +244,14 @@ class ConsentController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
             }
         }
 
-        // Sort the sys_categories alphabetically and add a last category 'unknown' for uncategorized services.
-        // Only relevant if option 'groupByPurpose' is set to true.
-        ksort($klaroConfig['purposeOrder']);
-        $result = array_values($klaroConfig['purposeOrder']);
-        $klaroConfig['purposeOrder'] = $result;
-        $klaroConfig['purposeOrder'][] = 'unknown';
+        if($klaroConfig['purposeOrder']) {
+            // Sort the sys_categories alphabetically and add a last category 'unknown' for uncategorized services.
+            // Only relevant if option 'groupByPurpose' is set to true.
+            ksort($klaroConfig['purposeOrder']);
+            $result = array_values($klaroConfig['purposeOrder']);
+            $klaroConfig['purposeOrder'] = $result;
+            $klaroConfig['purposeOrder'][] = 'unknown';
+        }
 
         return $klaroConfig;
     }
