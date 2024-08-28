@@ -231,12 +231,14 @@ class ConsentController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
             }
         }
 
-        // Sort the sys_categories alphabetically and add a last category 'unknown' for uncategorized services.
-        // Only relevant if option 'groupByPurpose' is set to true.
-        ksort($klaroConfig['purposeOrder']);
-        $result = array_values($klaroConfig['purposeOrder']);
-        $klaroConfig['purposeOrder'] = $result;
-        $klaroConfig['purposeOrder'][] = 'unknown';
+        if($klaroConfig['purposeOrder']) {
+            // Sort the sys_categories alphabetically and add a last category 'unknown' for uncategorized services.
+            // Only relevant if option 'groupByPurpose' is set to true.
+            ksort($klaroConfig['purposeOrder']);
+            $result = array_values($klaroConfig['purposeOrder']);
+            $klaroConfig['purposeOrder'] = $result;
+            $klaroConfig['purposeOrder'][] = 'unknown';
+        }
 
         return $klaroConfig;
     }

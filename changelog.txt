@@ -2,6 +2,10 @@
 All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
+## [2.4.0] - 2024-08-28 - AS
+### Fixed
+- Bugfix, when no categories are assigned to services
+
 ## [2.3.9] - 2024-08-27 - RL
 ### Fixed
 - Undo: GTM-Service Partial - Tag loading from v2.3.8
