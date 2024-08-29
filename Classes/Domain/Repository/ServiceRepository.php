@@ -45,8 +45,7 @@ class ServiceRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
             ->where(
                 $queryBuilder->expr()->eq('uid', $queryBuilder->createNamedParameter($uid, \PDO::PARAM_INT))
             )
-            ->executeQuery()
-            ->fetchOne();
+            ->execute();
 
         return $sorting !== false ? (int)$sorting : null;
     }

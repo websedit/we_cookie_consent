@@ -2,6 +2,10 @@
 All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
+## [2.4.1] - 2024-08-29 - AS
+### Fixed
+- Bugfix, changed method executeQuery to execute in ServiceRepository
+
 ## [2.4.0] - 2024-08-28 - AS
 ### Fixed
 - Bugfix, when no categories are assigned to services
