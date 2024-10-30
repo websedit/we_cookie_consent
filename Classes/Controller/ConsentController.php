@@ -167,6 +167,7 @@ class ConsentController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
             'mustConsent' => $this->settings['klaro']['mustConsent'] === '1',
             'poweredBy' => $poweredByPage,
             'privacyPolicy' => $privacyPage,
+            'purposeOrder' => [],
             'storageMethod' => $this->settings['klaro']['storageMethod'],
             'storageName' => $this->settings['klaro']['storageName'],
             'stylePrefix' => $this->settings['klaro']['stylePrefix'],
