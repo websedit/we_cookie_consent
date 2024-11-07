@@ -26,11 +26,15 @@
         {
             "name": "Erwin Steinbinder",
             "role": "Developer"
+        },
+        {
+            "name": "Stefan Sofka",
+            "role": "Developer"
         }
     ],
     "license": "GPL-2.0-or-later",
     "require": {
-        "typo3/cms-core": "^10.4 || ^11.1 || ^12.4"
+        "typo3/cms-core": "^10.4 || ^11.1 || ^12.4 || ^13.4"
     },
     "autoload": {
         "psr-4": {
