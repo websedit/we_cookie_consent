@@ -5,6 +5,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 ## [5.0.0] - 2024-11-07 - SS
 ### Changed
 - Update the Extension to TYPO3 V13 compatibility
+- Remove Typo3 v10 Support
 
 ## [4.1.0] - 2024-08-28 - AS
 ### Fixed

@@ -92,25 +92,6 @@ module.tx_wecookieconsent_web_wecookieconsentmod1 {
     }
 }
 
-// For compatibility with TYPO3 V10
-[typo3.branch == "10.4"]
-    module.tx_wecookieconsent_web_wecookieconsentmod1 {
-        view {
-            templateRootPaths {
-                1 = EXT:we_cookie_consent/Resources/Private/Backend/Templates-T3V10/
-            }
-
-            partialRootPaths {
-                1 = EXT:we_cookie_consent/Resources/Private/Backend/Partials-T3V10/
-            }
-
-            layoutRootPaths {
-                1 = EXT:we_cookie_consent/Resources/Private/Backend/Layouts-T3V10/
-            }
-        }
-    }
-[END]
-
 page {
     #Include Cookie Consent on every page
     525304800 < tt_content.list.20.wecookieconsent_pi1

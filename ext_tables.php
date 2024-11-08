@@ -10,7 +10,7 @@ call_user_func(
         );
 
         if ($typo3VersionNumber < 12000000) {
-            // If TYPO3 version is previous version 12. Can be removed when TYPO3 V10 and V11 support is dropped.
+            // If TYPO3 version is previous version 12. Can be removed when TYPO3 V11 support is dropped.
 
             // @extensionScannerIgnoreLine
             \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerModule(

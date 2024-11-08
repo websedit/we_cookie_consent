@@ -1,6 +1,7 @@
 {
     "name": "websedit/we-cookie-consent",
     "type": "typo3-cms-extension",
+    "version": "v6.0.0",
     "description": "Cookie Consent Panel (Optin) with DSGVO/GDPR compliant use of cookies. Preconfigured modules for Google Analytics, Facebook and other frequently used services. Arbitrary expandability with tracking scripts that generate cookies on your website. Support for Google Tag Manager incl. Google Consent Mode and Google Consent Mode v2. Easy export for Google Tag Manager. Third-party cookies and scripts are only loaded when active consent is given. Website visitors can edit their privacy settings at any time. Automatic update of cookie information when new cookies/scripts are inserted with secure consent procedure. Cookies can be automatically added to the privacy policy via a plugin. Multilingual and full support for desktop, tablet and mobile. Four standard modes for displaying the content solution. Based on Klaro!.",
     "homepage": "https://consent.websedit.de/",
     "keywords": [
@@ -34,15 +35,12 @@
     ],
     "license": "GPL-2.0-or-later",
     "require": {
-        "typo3/cms-core": "^10.4 || ^11.1 || ^12.4 || ^13.4"
+        "typo3/cms-core": "^11.1 || ^12.4 || ^13.4"
     },
     "autoload": {
         "psr-4": {
             "Websedit\\WeCookieConsent\\": "Classes"
         }
-    },
-    "replace": {
-        "typo3-ter/we-cookie-consent": "self.version"
     },
     "extra": {
         "typo3/cms": {

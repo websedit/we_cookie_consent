@@ -48,22 +48,26 @@ class BackendController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
      *
      * @return void
      */
-    protected function initializeAction()
+    public function initializeAction(): void
     {
-        // @extensionScannerIgnoreLine
-        $pageId = (int)\TYPO3\CMS\Core\Utility\GeneralUtility::_GP('id');
-        // Use this, when support for V10 is dropped
-        # $pageUid = (int)($this->request->getQueryParams()['id'] ?? $this->request->getParsedBody()['id'] ?? 0);
-        $frameworkConfiguration = $this->configurationManager->getConfiguration(\TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface::CONFIGURATION_TYPE_FRAMEWORK);
-        $persistenceConfiguration = array('persistence' => array('storagePid' => $pageId));
+        $pageId = 0;
+
+        // Check if the request has the 'id' argument (works in TYPO3 v10)
+        if (method_exists($this->request, 'hasArgument') && $this->request->hasArgument('id')) {
+            $pageId = (int)$this->request->getArgument('id');
+        }
+        // For TYPO3 v11 and above, use getQueryParams()
+        elseif (method_exists($this->request, 'getQueryParams')) {
+            $pageId = (int)($this->request->getQueryParams()['id'] ?? $this->request->getParsedBody()['id'] ?? 0);
+        }
+
+        $frameworkConfiguration = $this->configurationManager->getConfiguration(
+            \TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface::CONFIGURATION_TYPE_FRAMEWORK
+        );
+        $persistenceConfiguration = ['persistence' => ['storagePid' => $pageId]];
         $this->configurationManager->setConfiguration(array_merge($frameworkConfiguration, $persistenceConfiguration));
     }
 
-    /**
-     * Preview the config
-     *
-     * @return \Psr\Http\Message\ResponseInterface
-     */
     public function gtmWizardAction()
     {
         $services = $this->serviceRepository->findByProvider('google-tagmanager-service');
@@ -75,13 +79,23 @@ class BackendController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
             'gtmArray' => $this->createGtmArray($services, $blocks)
         ]);
 
-        if (GeneralUtility::makeInstance(Typo3Version::class)->getMajorVersion() > 10) {
-            $moduleTemplateFactory = GeneralUtility::makeInstance(ModuleTemplateFactory::class);
-            $moduleTemplate = $moduleTemplateFactory->create($this->request);
-            $moduleTemplate->setContent($this->view->render());
-            return $this->htmlResponse($moduleTemplate->renderContent());
+        $moduleTemplateFactory = GeneralUtility::makeInstance(ModuleTemplateFactory::class);
+        $moduleTemplate = $moduleTemplateFactory->create($this->request);
+        $content = $this->view->render();
+
+        if (method_exists($moduleTemplate, 'setBodyContent')) {
+            // For TYPO3 v12 and above
+            $moduleTemplate->setBodyContent($content);
+            $renderedContent = $moduleTemplate->render();
+        } else {
+            // For TYPO3 v11
+            $moduleTemplate->setContent($content);
+            $renderedContent = $moduleTemplate->renderContent();
         }
+
+        return $this->htmlResponse($renderedContent);
     }
+
 
     /**
      * Download the config as JSON File
