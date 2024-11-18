@@ -2,29 +2,25 @@
     <sheets>
         <sDEF>
             <ROOT>
-                <TCEforms>
-                    <sheetTitle>Function</sheetTitle>
-                </TCEforms>
+                <sheetTitle>Function</sheetTitle>
                 <type>array</type>
                 <el>
                     <settings.flexforms.services>
-                        <TCEforms>
-                            <label>LLL:EXT:we_cookie_consent/Resources/Private/Language/locallang_db.xlf:tx_we_cookie_consent_pi2.flexform.services.label</label>
-                            <config>
-                                <type>group</type>
-                                <internal_type>db</internal_type>
-                                <allowed>tx_wecookieconsent_domain_model_service</allowed>
-                                <size>5</size>
-                                <minitems>1</minitems>
-                                <maxitems>999</maxitems>
-                                <show_thumbs>1</show_thumbs>
-                                <wizards>
-                                    <suggest>
-                                        <type>suggest</type>
-                                    </suggest>
-                                </wizards>
-                            </config>
-                        </TCEforms>
+                        <label>LLL:EXT:we_cookie_consent/Resources/Private/Language/locallang_db.xlf:tx_we_cookie_consent_pi2.flexform.services.label</label>
+                        <config>
+                            <type>group</type>
+                            <internal_type>db</internal_type>
+                            <allowed>tx_wecookieconsent_domain_model_service</allowed>
+                            <size>5</size>
+                            <minitems>1</minitems>
+                            <maxitems>999</maxitems>
+                            <show_thumbs>1</show_thumbs>
+                            <wizards>
+                                <suggest>
+                                    <type>suggest</type>
+                                </suggest>
+                            </wizards>
+                        </config>
                     </settings.flexforms.services>
                 </el>
             </ROOT>
