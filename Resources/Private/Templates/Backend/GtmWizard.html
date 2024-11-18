@@ -1,5 +1,9 @@
-<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" xmlns:we="http://typo3.org/ns/Websedit/WeCookieConsent/ViewHelpers" data-namespace-typo3-fluid="true">
-<f:layout name="Default"/>
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      xmlns:we="http://typo3.org/ns/Websedit/WeCookieConsent/ViewHelpers"
+      data-namespace-typo3-fluid="true"
+>
+
+<f:layout name="Backend/Default"/>
 <f:section name="Content">
     <h1>Google Tag Manager Export Wizard</h1>
     <f:if condition="{services}">
@@ -17,7 +21,7 @@
                 </thead>
                 <tbody>
                 <f:for each="{services}" as="service">
-                    <f:render partial="Service/Table" arguments="{service:service}"/>
+                    <f:render partial="Backend/Service/Table" arguments="{service:service}"/>
                 </f:for>
                 </tbody>
             </table>
