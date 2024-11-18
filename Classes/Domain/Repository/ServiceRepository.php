@@ -2,6 +2,7 @@
 
 namespace Websedit\WeCookieConsent\Domain\Repository;
 
+use Doctrine\DBAL\ParameterType;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Persistence\QueryInterface;
@@ -17,10 +18,6 @@ use TYPO3\CMS\Extbase\Persistence\Repository;
  *  (c) 2024 websedit AG <extensions@websedit.de>
  *
  ***/
-
-/**
- * The repository for Services
- */
 class ServiceRepository extends Repository
 {
     /**
@@ -48,7 +45,7 @@ class ServiceRepository extends Repository
             ->select('sorting')
             ->from('sys_category')
             ->where(
-                $queryBuilder->expr()->eq('uid', $queryBuilder->createNamedParameter($uid, \PDO::PARAM_INT))
+                $queryBuilder->expr()->eq('uid', $queryBuilder->createNamedParameter($uid, ParameterType::INTEGER))
             )
             ->executeQuery()
             ->fetchOne();

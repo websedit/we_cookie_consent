@@ -5,6 +5,22 @@
 
 <f:layout name="Backend/Default"/>
 <f:section name="Content">
+    <f:asset.css identifier="weCookieConsentBackendCss">
+        <f:spaceless>
+        .scrollable-code {
+            max-height: 400px;
+            max-width: 100%;
+            overflow: auto;
+            background-color: #262626;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-family: monospace;
+            white-space: pre;
+        }
+        </f:spaceless>
+    </f:asset.css>
+
     <h1>Google Tag Manager Export Wizard</h1>
     <f:if condition="{services}">
         <f:then>
@@ -25,9 +41,11 @@
                 </f:for>
                 </tbody>
             </table>
-
-            <pre><we:format.json forceObject="true">{gtmArray}</we:format.json></pre>
-
+            <div class="scrollable-code">
+                <code>
+                    <pre><we:format.json forceObject="true">{gtmArray}</we:format.json></pre>
+                </code>
+            </div>
             <br/>
             <h2>Download JSON File</h2>
             <f:link.action action="jsonDownload" arguments="{blocks:'{tags:1, triggers:1, variables:1}'}" class="btn btn-success"><f:translate key="LLL:EXT:we_cookie_consent/Resources/Private/Language/locallang_mod1.xlf:download_json_all" /></f:link.action>

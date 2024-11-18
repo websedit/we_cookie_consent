@@ -218,19 +218,19 @@
                 <target>Bspw.: 365 Tage, Session-Cookie, etc.</target>
             </trans-unit>
 
-            <trans-unit id="tx_we_cookie_consent_pi1.name">
+            <trans-unit id="tx_we_cookie_consent_pi2.name">
                 <target>Cookie Liste</target>
             </trans-unit>
-            <trans-unit id="tx_we_cookie_consent_pi1.description">
+            <trans-unit id="tx_we_cookie_consent_pi2.description">
                 <target>Ausgabe der angegebenen Cookies in einer Tabelle</target>
             </trans-unit>
-            <trans-unit id="tx_we_cookie_consent_pi1.flexform.switchableControllerActions.label">
+            <trans-unit id="tx_we_cookie_consent_pi2.flexform.switchableControllerActions.label">
                 <target>Ansicht</target>
             </trans-unit>
-            <trans-unit id="tx_we_cookie_consent_pi1.flexform.switchableControllerActions.0">
+            <trans-unit id="tx_we_cookie_consent_pi2.flexform.switchableControllerActions.0">
                 <target>Cookie Liste</target>
             </trans-unit>
-            <trans-unit id="tx_we_cookie_consent_pi1.flexform.services.label">
+            <trans-unit id="tx_we_cookie_consent_pi2.flexform.services.label">
                 <target>Services <![CDATA[&]]> Skripts</target>
             </trans-unit>
 

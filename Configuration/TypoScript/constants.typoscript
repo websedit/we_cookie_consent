@@ -75,11 +75,11 @@ plugin.tx_wecookieconsent_pi1 {
 module.tx_wecookieconsent_mod1 {
     view {
         # cat=module.tx_wecookieconsent_mod1/file; type=string; label=Path to template root (BE)
-        templateRootPath = EXT:we_cookie_consent/Resources/Private/Backend/Templates/
+        templateRootPath = EXT:we_cookie_consent/Resources/Private/Templates/Backend/
         # cat=module.tx_wecookieconsent_mod1/file; type=string; label=Path to template partials (BE)
-        partialRootPath = EXT:we_cookie_consent/Resources/Private/Backend/Partials/
+        partialRootPath = EXT:we_cookie_consent/Resources/Private/Partials/Backend/
         # cat=module.tx_wecookieconsent_mod1/file; type=string; label=Path to template layouts (BE)
-        layoutRootPath = EXT:we_cookie_consent/Resources/Private/Backend/Layouts/
+        layoutRootPath = EXT:we_cookie_consent/Resources/Private/Layouts/Backend/
     }
 
     persistence {

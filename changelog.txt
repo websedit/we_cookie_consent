@@ -6,6 +6,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 ### Changed
 - Update the Extension to TYPO3 V13 compatibility
 - Remove Typo3 v10 Support
+- Remove Typo3 v11 Support
 
 ## [4.1.0] - 2024-08-28 - AS
 ### Fixed

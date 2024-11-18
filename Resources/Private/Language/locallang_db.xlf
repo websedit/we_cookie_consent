@@ -217,20 +217,20 @@
             <trans-unit id="tx_wecookieconsent_domain_model_cookie.max_age.description">
                 <source>For example: 365 days, session cookie, etc.</source>
             </trans-unit>
-			
-            <trans-unit id="tx_we_cookie_consent_pi1.name">
+
+            <trans-unit id="tx_we_cookie_consent_pi2.name">
                 <source>Cookie list</source>
             </trans-unit>
-            <trans-unit id="tx_we_cookie_consent_pi1.description">
+            <trans-unit id="tx_we_cookie_consent_pi2.description">
                 <source>Output of the specified cookies in a table</source>
             </trans-unit>
-            <trans-unit id="tx_we_cookie_consent_pi1.flexform.switchableControllerActions.label">
+            <trans-unit id="tx_we_cookie_consent_pi2.flexform.switchableControllerActions.label">
                 <source>View</source>
             </trans-unit>
-            <trans-unit id="tx_we_cookie_consent_pi1.flexform.switchableControllerActions.0">
+            <trans-unit id="tx_we_cookie_consent_pi2.flexform.switchableControllerActions.0">
                 <source>Cookie list</source>
             </trans-unit>
-            <trans-unit id="tx_we_cookie_consent_pi1.flexform.services.label">
+            <trans-unit id="tx_we_cookie_consent_pi2.flexform.services.label">
                 <source>Services <![CDATA[&]]> Scripts</source>
             </trans-unit>
 
