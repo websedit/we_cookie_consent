@@ -235,7 +235,7 @@ class ConsentController extends ActionController
             }
         }
 
-        if($klaroConfig['purposeOrder']) {
+        if(array_key_exists('purposeOrder', $klaroConfig) && is_array($klaroConfig['purposeOrder'])) {
             // Sort the sys_categories alphabetically and add a last category 'unknown' for uncategorized services.
             // Only relevant if option 'groupByPurpose' is set to true.
             ksort($klaroConfig['purposeOrder']);
