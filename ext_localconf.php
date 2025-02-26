@@ -44,13 +44,6 @@ call_user_func(
          */
         $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['t3lib/class.t3lib_tcemain.php']['processDatamapClass'][] = AfterSaveHook::class;
 
-        /**
-         * ContentElementWizard for Pi1
-         */
-        ExtensionManagementUtility::addPageTSConfig(
-            '<INCLUDE_TYPOSCRIPT: source="FILE:EXT:we_cookie_consent/Configuration/TSConfig/ContentElementWizard.typoscript">'
-        );
-
         // Workaround to define custom subcategories in constants editor. Doesn't work in constants.ts
         ExtensionManagementUtility::addTypoScriptConstants('
             # customcategory=plugin.tx_wecookieconsent_pi1=Websedit Cookie Consent
