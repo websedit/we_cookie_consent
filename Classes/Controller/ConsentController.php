@@ -2,9 +2,14 @@
 
 namespace Websedit\WeCookieConsent\Controller;
 
-use TYPO3\CMS\Core\Information\Typo3Version;
+use Psr\Http\Message\ResponseInterface;
+use TYPO3\CMS\Core\Page\PageRenderer;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
+use TYPO3\CMS\Extbase\Mvc\RequestInterface;
+use TYPO3\CMS\Extbase\Persistence\Generic\QueryResult;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
+use Websedit\WeCookieConsent\Domain\Repository\ServiceRepository;
 
 /***
  *
@@ -16,27 +21,23 @@ use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
  *  (c) 2024 websedit AG <extensions@websedit.de>
  *
  ***/
-
-/**
- * ConsentController
- */
-class ConsentController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
+class ConsentController extends ActionController
 {
     const EXTKEY = 'we_cookie_consent';
 
     /**
      * serviceRepository
      *
-     * @var \Websedit\WeCookieConsent\Domain\Repository\ServiceRepository
+     * @var ServiceRepository
      */
     protected $serviceRepository = null;
 
     /**
      * Inject a service repository
      *
-     * @param \Websedit\WeCookieConsent\Domain\Repository\ServiceRepository $serviceRepository
+     * @param ServiceRepository $serviceRepository
      */
-    public function injectServiceRepository(\Websedit\WeCookieConsent\Domain\Repository\ServiceRepository $serviceRepository)
+    public function injectServiceRepository(ServiceRepository $serviceRepository)
     {
         $this->serviceRepository = $serviceRepository;
     }
@@ -44,33 +45,17 @@ class ConsentController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
     /**
      * Generate JSON data for the consent Modal
      *
-     * @param Websedit\WeCookieConsent\Domain\Model\Service
-     * @return \Psr\Http\Message\ResponseInterface
+     * @return ResponseInterface
      */
-    public function consentAction()
+    public function consentAction(): ResponseInterface
     {
-//        $services = $this->serviceRepository->findAll();
-//
-//        // These two lines are only required for TYPO3 7 backwards compatibility. in TYPO3 >=8 renderAssetsForRequest is used
-//        $klaroConfig = $this->klaroConfigBuild($services);
-//        $typo3Version = \TYPO3\CMS\Core\Utility\VersionNumberUtility::convertVersionNumberToInteger(\TYPO3\CMS\Core\Information\Typo3Version::getVersion());
-//
-//        $this->view->assignMultiple([
-//            'services' => $services,
-//            'klaroConfig' => $klaroConfig,
-//            'typo3Version' => $typo3Version
-//        ]);
-        // Backwards compatibility for TYPO3 V10
-        if (GeneralUtility::makeInstance(Typo3Version::class)->getMajorVersion() > 10) {
-            return $this->htmlResponse();
-        }
+        return $this->htmlResponse();
     }
 
     /**
      * Show used cookies at the data privacy page
      *
-     * @param Websedit\WeCookieConsent\Domain\Model\Service
-     * @return \Psr\Http\Message\ResponseInterface
+     * @return ResponseInterface
      */
     public function listAction()
     {
@@ -78,7 +63,6 @@ class ConsentController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
 
         $services = [];
         foreach ($servicesUids as $uid) {
-            // No custom findByUids function to keep the sorting
             $services[] = $this->serviceRepository->findByUid($uid);
         }
 
@@ -86,51 +70,58 @@ class ConsentController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
             'services' => $services
         ]);
 
-        // Backwards compatibility for TYPO3 V10
-        if (GeneralUtility::makeInstance(Typo3Version::class)->getMajorVersion() > 10) {
-            return $this->htmlResponse();
-        }
+        return $this->htmlResponse();
     }
 
     /**
-     * @param \TYPO3\CMS\Extbase\Mvc\RequestInterface $request
+     * @param RequestInterface $request
      */
     protected function renderAssetsForRequest($request): void
     {
-        if (!$this->view instanceof \TYPO3\CMS\Fluid\View\TemplateView) {
-            return;
+        if (!method_exists($this->view, 'renderSection')) {
+            throw new \RuntimeException('The view does not support rendering sections.', 1678972450);
         }
 
         $services = $this->serviceRepository->findAll();
         $klaroConfig = $this->klaroConfigBuild($services);
 
-        $pageRenderer = GeneralUtility::makeInstance(\TYPO3\CMS\Core\Page\PageRenderer::class);
-
         $variables = [
             'request' => $request,
             'arguments' => $this->arguments,
             'services' => $services,
-            'klaroConfig' => $klaroConfig
+            'klaroConfig' => $klaroConfig,
         ];
 
         $headerAssets = $this->view->renderSection('HeaderAssets', $variables, true);
         $footerAssets = $this->view->renderSection('FooterAssets', $variables, true);
 
         if (!empty(trim($headerAssets))) {
-            $pageRenderer->addHeaderData($headerAssets);
+            $this->addAssetsToPageRenderer('header', $headerAssets);
         }
         if (!empty(trim($footerAssets))) {
-            $pageRenderer->addFooterData($footerAssets);
+            $this->addAssetsToPageRenderer('footer', $footerAssets);
+        }
+    }
+
+    protected function addAssetsToPageRenderer(string $position, string $assets): void
+    {
+        $pageRenderer = GeneralUtility::makeInstance(PageRenderer::class);
+        /* @var $pageRenderer PageRenderer */
+
+        if ($position === 'header') {
+            $pageRenderer->addHeaderData($assets);
+        } elseif ($position === 'footer') {
+            $pageRenderer->addFooterData($assets);
         }
     }
 
     /**
      * Build the klaro config object used in frontend
      *
-     * @param \TYPO3\CMS\Extbase\Persistence\Generic\QueryResult $services
+     * @param QueryResult $services
      * @return array
      */
-    private function klaroConfigBuild(\TYPO3\CMS\Extbase\Persistence\Generic\QueryResult $services)
+    private function klaroConfigBuild(QueryResult $services)
     {
         if (is_numeric($this->settings['klaro']['privacyPolicy'])) {
             $privacyPage = $this->uriBuilder
@@ -244,7 +235,7 @@ class ConsentController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
             }
         }
 
-        if($klaroConfig['purposeOrder']) {
+        if(array_key_exists('purposeOrder', $klaroConfig) && is_array($klaroConfig['purposeOrder'])) {
             // Sort the sys_categories alphabetically and add a last category 'unknown' for uncategorized services.
             // Only relevant if option 'groupByPurpose' is set to true.
             ksort($klaroConfig['purposeOrder']);

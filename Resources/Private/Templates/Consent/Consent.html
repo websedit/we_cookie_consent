@@ -4,8 +4,8 @@
 	<f:section name="content" ></f:section>
 
 	<f:section name="HeaderAssets">
-		<f:spaceless>
-			<script>
+		<f:asset.script identifier="weCookieConsentHeaderScriptDefinition" priority="true">
+			<f:spaceless>
 				const storageName = '{settings.klaro.storageName}';
 				const translatedButtonTextCookieSettings = '{klaroConfig.translations.en.openConsent}';
 				const cookieSettingsImgPathDefault = '<f:uri.image src="{settings.klaro.cookieSettingsImgPathDefault}"/>';
@@ -17,11 +17,11 @@
 				let serviceSetting = {};
 				let serviceName = {};
 				let serviceIsTypeOfConsentMode = false;
-			</script>
-			<f:for each="{services}" as="service">
-				<f:render partial="Service/{service.provider}" section="Header" arguments="{service:service}" optional="1"/>
-			</f:for>
-		</f:spaceless>
+			</f:spaceless>
+		</f:asset.script>
+		<f:for each="{services}" as="service">
+			<f:render partial="Service/{service.provider}" section="Header" arguments="{service:service}" optional="1"/>
+		</f:for>
 	</f:section>
 
 	<f:section name="FooterAssets">

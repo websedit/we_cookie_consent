@@ -2,12 +2,14 @@
 
 namespace Websedit\WeCookieConsent\Hook;
 
+use TYPO3\CMS\Core\DataHandling\DataHandler;
+
 /**
  * Prefill values after save
  */
 class AfterSaveHook
 {
-    public function processDatamap_preProcessFieldArray(&$fieldArray, $table, $id, \TYPO3\CMS\Core\DataHandling\DataHandler &$dataHandler)
+    public function processDatamap_preProcessFieldArray(&$fieldArray, $table, $id, DataHandler &$dataHandler): void
     {
         if ($table === 'tx_wecookieconsent_domain_model_service' && $fieldArray['provider'] === 'google-tagmanager-service') {
             if (isset($fieldArray['title'])) {

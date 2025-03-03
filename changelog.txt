@@ -2,9 +2,11 @@
 All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
-## [4.1.1] - 2024-11-19 - GF
-### Fixed
-- Bugfix: (don't) show cookie icon from the beginning if (de-)activated via backend
+## [5.0.0] - 2024-11-07 - SS
+### Changed
+- Update the Extension to TYPO3 V13 compatibility
+- Remove Typo3 v10 Support
+- Remove Typo3 v11 Support
 
 ## [4.1.0] - 2024-08-28 - AS
 ### Fixed

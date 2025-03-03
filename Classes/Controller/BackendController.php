@@ -2,10 +2,13 @@
 
 namespace Websedit\WeCookieConsent\Controller;
 
-use TYPO3\CMS\Backend\Attribute\Controller;
+use Psr\Http\Message\ResponseInterface;
+use TYPO3\CMS\Backend\Attribute\AsController;
 use TYPO3\CMS\Backend\Template\ModuleTemplateFactory;
-use TYPO3\CMS\Core\Information\Typo3Version;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
+use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
+use TYPO3\CMS\Extbase\Persistence\Generic\QueryResult;
+use Websedit\WeCookieConsent\Domain\Repository\ServiceRepository;
 
 /***
  *
@@ -17,70 +20,58 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
  *  (c) 2024 websedit AG <extensions@websedit.de>
  *
  ***/
-
-/**
- * ServiceController
- */
-class BackendController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
+#[AsController]
+final class BackendController extends ActionController
 {
     /**
-     * serviceRepository
-     *
-     * @var \Websedit\WeCookieConsent\Domain\Repository\ServiceRepository
+     * @var ServiceRepository
      */
     protected $serviceRepository = null;
 
     /**
      * Inject a service repository
      *
-     * @param \Websedit\WeCookieConsent\Domain\Repository\ServiceRepository $serviceRepository
+     * @param ServiceRepository $serviceRepository
      */
-    public function injectServiceRepository(\Websedit\WeCookieConsent\Domain\Repository\ServiceRepository $serviceRepository)
+    public function injectServiceRepository(ServiceRepository $serviceRepository)
     {
         $this->serviceRepository = $serviceRepository;
     }
 
-    // Prepared for TYPO3 12 compatibility
-    #public function __construct(protected readonly ModuleTemplateFactory $moduleTemplateFactory){}
+    public function __construct(protected readonly ModuleTemplateFactory $moduleTemplateFactory)
+    {
+    }
 
     /**
      * Action initializer
      *
      * @return void
      */
-    protected function initializeAction()
+    public function initializeAction(): void
     {
-        // @extensionScannerIgnoreLine
-        $pageId = (int)\TYPO3\CMS\Core\Utility\GeneralUtility::_GP('id');
-        // Use this, when support for V10 is dropped
-        # $pageUid = (int)($this->request->getQueryParams()['id'] ?? $this->request->getParsedBody()['id'] ?? 0);
-        $frameworkConfiguration = $this->configurationManager->getConfiguration(\TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface::CONFIGURATION_TYPE_FRAMEWORK);
-        $persistenceConfiguration = array('persistence' => array('storagePid' => $pageId));
+        $pageUid = (int)($this->request->getQueryParams()['id'] ?? $this->request->getParsedBody()['id'] ?? 0);
+        $frameworkConfiguration = $this->configurationManager->getConfiguration(ConfigurationManagerInterface::CONFIGURATION_TYPE_FRAMEWORK);
+        $persistenceConfiguration = array('persistence' => array('storagePid' => $pageUid));
         $this->configurationManager->setConfiguration(array_merge($frameworkConfiguration, $persistenceConfiguration));
     }
 
     /**
      * Preview the config
      *
-     * @return \Psr\Http\Message\ResponseInterface
+     * @return ResponseInterface
      */
     public function gtmWizardAction()
     {
         $services = $this->serviceRepository->findByProvider('google-tagmanager-service');
-
         $blocks = ['tags' => 1, 'triggers' => 1, 'variables' => 1];
 
-        $this->view->assignMultiple([
+        $moduleTemplate = $this->moduleTemplateFactory->create($this->request);
+        $moduleTemplate->assignMultiple([
             'services' => $services,
             'gtmArray' => $this->createGtmArray($services, $blocks)
         ]);
 
-        if (GeneralUtility::makeInstance(Typo3Version::class)->getMajorVersion() > 10) {
-            $moduleTemplateFactory = GeneralUtility::makeInstance(ModuleTemplateFactory::class);
-            $moduleTemplate = $moduleTemplateFactory->create($this->request);
-            $moduleTemplate->setContent($this->view->render());
-            return $this->htmlResponse($moduleTemplate->renderContent());
-        }
+        return $moduleTemplate->renderResponse('Backend/GtmWizard');
     }
 
     /**
@@ -88,34 +79,25 @@ class BackendController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
      *
      * @param array $blocks
      *
-     * @return \Psr\Http\Message\ResponseInterface
+     * @return ResponseInterface
      */
     public function jsonDownloadAction($blocks)
     {
-        if ($this->response) {
-            $this->response->setHeader('Content-type', 'application/json');
-            $this->response->setHeader('Content-Disposition', 'attachment; filename=import-this-to-gtm.json');
-        } else {
-            //$this->response is empty in TYPO3 11.1. Maybe a change? Can't find further infos about it at the moment.
-            header('Content-type: application/json');
-            header('Content-Disposition: attachment; filename=import-this-to-gtm.json');
-        }
+        header('Content-type: application/json');
+        header('Content-Disposition: attachment; filename=import-this-to-gtm.json');
 
         $services = $this->serviceRepository->findByProvider('google-tagmanager-service');
         $this->view->assignMultiple([
             'gtmArray' => $this->createGtmArray($services, $blocks)
         ]);
 
-        // Backwards compatibility for TYPO3 V10
-        if (GeneralUtility::makeInstance(Typo3Version::class)->getMajorVersion() > 10) {
-            return $this->htmlResponse();
-        }
+        return $this->htmlResponse();
     }
 
     /**
      * Process the JSON for the Google Tag Manager
      *
-     * @param \TYPO3\CMS\Extbase\Persistence\Generic\QueryResult $services
+     * @param QueryResult $services
      * @param array $blocks
      * @return array
      */

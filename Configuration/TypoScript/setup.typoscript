@@ -73,43 +73,21 @@ module.tx_wecookieconsent_web_wecookieconsentmod1 {
 
     view {
         templateRootPaths {
-            0 = EXT:we_cookie_consent/Resources/Private/Backend/Templates/
-            10 = EXT:we_template/Resources/Private/Templates/Backend/we_cookie_consent/
+            0 = EXT:we_cookie_consent/Resources/Private/Templates/Backend/
             20 = {$module.tx_wecookieconsent_mod1.view.templateRootPath}
         }
 
         partialRootPaths {
-            0 = EXT:we_cookie_consent/Resources/Private/Backend/Partials/
-            10 = EXT:we_template/Resources/Private/Partials/Backend/we_cookie_consent/
+            0 = EXT:we_cookie_consent/Resources/Private/Partials/Backend/
             20 = {$module.tx_wecookieconsent_mod1.view.partialRootPath}
         }
 
         layoutRootPaths {
-            0 = EXT:we_cookie_consent/Resources/Private/Backend/Layouts/
-            10 = EXT:we_template/Resources/Private/Layouts/Backend/we_cookie_consent/
+            0 = EXT:we_cookie_consent/Resources/Private/Layouts/Backend/
             20 = {$module.tx_wecookieconsent_mod1.view.layoutRootPath}
         }
     }
 }
-
-// For compatibility with TYPO3 V10
-[typo3.branch == "10.4"]
-    module.tx_wecookieconsent_web_wecookieconsentmod1 {
-        view {
-            templateRootPaths {
-                1 = EXT:we_cookie_consent/Resources/Private/Backend/Templates-T3V10/
-            }
-
-            partialRootPaths {
-                1 = EXT:we_cookie_consent/Resources/Private/Backend/Partials-T3V10/
-            }
-
-            layoutRootPaths {
-                1 = EXT:we_cookie_consent/Resources/Private/Backend/Layouts-T3V10/
-            }
-        }
-    }
-[END]
 
 page {
     #Include Cookie Consent on every page
