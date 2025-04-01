@@ -235,11 +235,11 @@ class ConsentController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
         foreach ($services as $service) {
             if ($service->getCategories()->count()) {
                 foreach ($service->getCategories() as $category) {
-                    $klaroConfig['translations']['en']['purposes'][strtolower($category->getTitle())]['title'] = $category->getTitle();
-                    $klaroConfig['translations']['en']['purposes'][strtolower($category->getTitle())]['description'] = $category->getDescription();
+                    $klaroConfig['translations']['en']['purposes'][mb_strtolower($category->getTitle(), 'UTF-8')]['title'] = $category->getTitle();
+                    $klaroConfig['translations']['en']['purposes'][mb_strtolower($category->getTitle(), 'UTF-8')]['description'] = $category->getDescription();
 
                     // Sorting the sys_categories
-                    $klaroConfig['purposeOrder'][$this->serviceRepository->getCategorySortingByUid($category->getUid())] = strtolower($category->getTitle());
+                    $klaroConfig['purposeOrder'][$this->serviceRepository->getCategorySortingByUid($category->getUid())] = mb_strtolower($category->getTitle(), 'UTF-8');
                 }
             }
         }
