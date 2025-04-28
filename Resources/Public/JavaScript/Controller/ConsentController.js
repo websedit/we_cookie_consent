@@ -69,9 +69,31 @@ function updateCookieWithFinalConsent(name, daysToExpire, allServiceSettings) {
 		var updatedValue = JSON.stringify(obj);
 		var encodedValue = encodeURIComponent(updatedValue);
 		setCookie(name, encodedValue, daysToExpire);
+		pushTriggerAfterConsentChanged(obj);
 	} else {
 		console.log("Cookie with the name '" + name + "' does not exist.");
 	}
+}
+
+// Function to push the trigger for gtm after consent changed
+function pushTriggerAfterConsentChanged(changes) {
+	(function() {
+		if (!window.dataLayer) {
+			window.dataLayer = [];
+		}
+	})();
+	window.dataLayer.push({
+		event: 'cmp_we_cookie_consent_changed',          // Custom-Event-Name
+		we_consent_state: {                       // Add all final states 
+			ad_storage             : changes.ad_storage,
+			analytics_storage      : changes.analytics_storage,
+			ad_user_data           : changes.ad_user_data,
+			ad_personalization     : changes.ad_personalization,
+			personalization_storage: changes.personalization_storage,
+			functionality_storage  : changes.functionality_storage,
+			security_storage       : changes.security_storage
+		}
+	});
 }
 
 // Debug function to log all stored service settings
@@ -141,8 +163,8 @@ let ConsentApp = new function ConsentController() {
 			})();
 			window.dataLayer.push(tempObj);
 		}
-
-        //Check if the own callback function is allready defined
+			
+		//Check if the own callback function is allready defined
         if (typeof window[service.ownCallback] === "function") {
             window[service.ownCallback](state, service);
         } else if (service.ownCallback !== '') {
@@ -161,7 +183,7 @@ let ConsentApp = new function ConsentController() {
         });
     })();
 
-    const isSafari = navigator.vendor &&
+    const isSafari = navigator.vendor && 
         navigator.vendor.indexOf('Apple') > -1 &&
         navigator.userAgent &&
         navigator.userAgent.indexOf('CriOS') == -1 &&
@@ -190,36 +212,36 @@ if(optOutLink) {
 }
 
 //--- Functions after window.load(): ---
-$(function () {
-    if ($('iframe').length > 0) {
-        var counterOfIframe = 0;
-        var attrDataSrc;
-        $('iframe').each(function () {
-            attrDataSrc = $(this).attr('src');
-            if (!attrDataSrc) {
+$(function() {
+	if ($('iframe').length > 0) {
+		var counterOfIframe = 0;
+		var attrDataSrc;
+		$('iframe').each(function() {
+			attrDataSrc = $(this).attr('src');
+			if (!attrDataSrc) {
                 attrDataSrc = $(this).attr('data-src');
             }
-            if (attrDataSrc && (attrDataSrc.indexOf("youtube") > -1 || attrDataSrc.indexOf("vimeo") > -1)) {
-                /* Adjust measures for videoOverlay similar to iframe: */
-                $(this).parent().find('.klaro.cm-as-context-notice').css({'width': $(this).width()});
-                // $(this).parent().find('.klaro.cm-as-context-notice').css({'height':'100%'});  // Activate if height isn't set to 100% by css.
-                if ($(this).height() < $(this).parent().find('.klaro.cm-as-context-notice').height()) {
-                    $(this).parent().find('.klaro.cm-as-context-notice .cm-buttons').css('margin-top', '1em');
-                }
-            }
-            counterOfIframe++;
-        });
-    }
+			if (attrDataSrc && ( attrDataSrc.indexOf("youtube") > -1 || attrDataSrc.indexOf("vimeo") > -1 )) {
+				/* Adjust measures for videoOverlay similar to iframe: */
+				$(this).parent().find('.klaro.cm-as-context-notice').css({'width':$(this).width()});
+				// $(this).parent().find('.klaro.cm-as-context-notice').css({'height':'100%'});  // Activate if height isn't set to 100% by css.
+				if ($(this).height() < $(this).parent().find('.klaro.cm-as-context-notice').height()) {
+					$(this).parent().find('.klaro.cm-as-context-notice .cm-buttons').css('margin-top','1em');
+				}
+			}
+			counterOfIframe++;
+		});
+	}
 
     /**   Add class for small context-notice box  gf20211115 **/
-    $('.klaro.we_cookie_consent.cm-as-context-notice').each(function () {
-        if ($(this).width() <= 300) {
-            $(this).addClass('notice--minified');
-        }
-    });
-
+	$('.klaro.we_cookie_consent.cm-as-context-notice').each(function() {
+		if ($(this).width() <= 300) {
+			$(this).addClass('notice--minified');
+		}
+	});
+    
     /** Add class to avoid Google to crawl consent info text  gf20220623 **/
-    $('.klaro.we_cookie_consent .cn-body').each(function () {
-        $(this).attr('data-nosnippet', 'data-nosnippet');
+    $('.klaro.we_cookie_consent .cn-body').each(function() {
+		$(this).attr('data-nosnippet','data-nosnippet');
     });
 });
