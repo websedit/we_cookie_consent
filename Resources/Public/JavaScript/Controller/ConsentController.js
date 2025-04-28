@@ -65,13 +65,35 @@ function updateCookieWithFinalConsent(name, daysToExpire, allServiceSettings) {
 		obj.personalization_storage = evaluateFinalValue(allServiceSettings, 'personalization_storage');
 		obj.functionality_storage = evaluateFinalValue(allServiceSettings, 'functionality_storage');
 		obj.security_storage = evaluateFinalValue(allServiceSettings, 'security_storage');
-	
+		
 		var updatedValue = JSON.stringify(obj);
 		var encodedValue = encodeURIComponent(updatedValue);
 		setCookie(name, encodedValue, daysToExpire);
+		pushTriggerAfterConsentChanged(obj);
 	} else {
 		console.log("Cookie with the name '" + name + "' does not exist.");
 	}
+}
+
+// Function to push the trigger for gtm after consent changed
+function pushTriggerAfterConsentChanged(changes) {
+	(function() {
+		if (!window.dataLayer) {
+			window.dataLayer = [];
+		}
+	})();
+	window.dataLayer.push({
+		event: 'cmp_we_cookie_consent_changed',          // Custom-Event-Name
+		we_consent_state: {                       // Add all final states 
+			ad_storage             : changes.ad_storage,
+			analytics_storage      : changes.analytics_storage,
+			ad_user_data           : changes.ad_user_data,
+			ad_personalization     : changes.ad_personalization,
+			personalization_storage: changes.personalization_storage,
+			functionality_storage  : changes.functionality_storage,
+			security_storage       : changes.security_storage
+		}
+	});
 }
 
 // Debug function to log all stored service settings
@@ -181,14 +203,14 @@ let ConsentApp = new function ConsentController() {
 
 //--- Functions after window.load(): ---
 $(function() {
-	if($('iframe').length>0) {
+	if ($('iframe').length > 0) {
 		var counterOfIframe = 0;
 		var attrDataSrc;
 		$('iframe').each(function() {
-			attrDataSrc=$(this).attr('src'); 
+			attrDataSrc = $(this).attr('src');
 			if (!attrDataSrc) {
-				attrDataSrc=$(this).attr('data-src'); 
-			}
+                attrDataSrc = $(this).attr('data-src');
+            }
 			if (attrDataSrc && ( attrDataSrc.indexOf("youtube") > -1 || attrDataSrc.indexOf("vimeo") > -1 )) {
 				/* Adjust measures for videoOverlay similar to iframe: */
 				$(this).parent().find('.klaro.cm-as-context-notice').css({'width':$(this).width()});
