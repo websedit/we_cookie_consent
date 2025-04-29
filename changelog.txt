@@ -10,6 +10,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 ### Fixed
 - Bugfix, transfer of the withdrawn consent to GTM adjusted
 - Adding an empty container to ensure the import functionality in GTM
+### Changed
+- Change strtolower with mb_strtolower to fix encoding issues
 
 ## [2.4.1] - 2024-08-29 - AS
 ### Fixed
