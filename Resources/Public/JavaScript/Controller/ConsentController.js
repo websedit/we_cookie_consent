@@ -26,26 +26,26 @@ function setCookie(name, value, daysToExpire) {
 function evaluateFinalValue(serviceSettings, settingKey) {
 	let hasGranted = false;
 	let hasDenied = false;
-	
+
 	// Iterate through all services and check their consent settings
 	serviceSettings.forEach(settings => {
 		if (settings[settingKey] === 'granted') {
-		hasGranted = true;
+			hasGranted = true;
 		} else if (settings[settingKey] === 'denied') {
-		hasDenied = true;
+			hasDenied = true;
 		}
 	});
-	
+
 	// If there is at least one "denied" value, return "denied"
 	if (hasDenied) {
 		return 'denied';
 	}
-	
+
 	// If there is at least one "granted" value, return "granted"
 	if (hasGranted) {
 		return 'granted';
 	}
-	
+
 	// If all values are "not set" or there are no explicit "granted"/"denied" values, return "denied"
 	return 'denied';
 }
@@ -56,7 +56,7 @@ function updateCookieWithFinalConsent(name, daysToExpire, allServiceSettings) {
 	if (cookieValue !== null) {
 		var decodedValue = decodeURIComponent(cookieValue);
 		var obj = JSON.parse(decodedValue);
-    
+
 		// Evaluate and set the final values for each consent setting
 		obj.ad_storage = evaluateFinalValue(allServiceSettings, 'ad_storage');
 		obj.analytics_storage = evaluateFinalValue(allServiceSettings, 'analytics_storage');
@@ -65,13 +65,35 @@ function updateCookieWithFinalConsent(name, daysToExpire, allServiceSettings) {
 		obj.personalization_storage = evaluateFinalValue(allServiceSettings, 'personalization_storage');
 		obj.functionality_storage = evaluateFinalValue(allServiceSettings, 'functionality_storage');
 		obj.security_storage = evaluateFinalValue(allServiceSettings, 'security_storage');
-	
+
 		var updatedValue = JSON.stringify(obj);
 		var encodedValue = encodeURIComponent(updatedValue);
 		setCookie(name, encodedValue, daysToExpire);
+		pushTriggerAfterConsentChanged(obj);
 	} else {
 		console.log("Cookie with the name '" + name + "' does not exist.");
 	}
+}
+
+// Function to push the trigger for gtm after consent changed
+function pushTriggerAfterConsentChanged(changes) {
+	(function() {
+		if (!window.dataLayer) {
+			window.dataLayer = [];
+		}
+	})();
+	window.dataLayer.push({
+		event: 'cmp_we_cookie_consent_changed',          // Custom-Event-Name
+		we_consent_state: {                       // Add all final states
+			ad_storage             : changes.ad_storage,
+			analytics_storage      : changes.analytics_storage,
+			ad_user_data           : changes.ad_user_data,
+			ad_personalization     : changes.ad_personalization,
+			personalization_storage: changes.personalization_storage,
+			functionality_storage  : changes.functionality_storage,
+			security_storage       : changes.security_storage
+		}
+	});
 }
 
 // Debug function to log all stored service settings
@@ -83,21 +105,21 @@ function getAllServiceSettings() {
 }
 
 let ConsentApp = new function ConsentController() {
-    //--- public functions ---
-    /**
-     * Callback function for GoogleTagManager Script to handle consent state changes and fire the dataLayer trigger
-     * @param bool state
-     * @param object service
-     */
-    this.consentChanged = function (state, service) {
+	//--- public functions ---
+	/**
+	 * Callback function for GoogleTagManager Script to handle consent state changes and fire the dataLayer trigger
+	 * @param bool state
+	 * @param object service
+	 */
+	this.consentChanged = function (state, service) {
 		// Check if the service is related to Google Tag Manager
-        if (service.name.indexOf('google-tagmanager-service') !== -1) {
+		if (service.name.indexOf('google-tagmanager-service') !== -1) {
 			if (allServiceSettings.length > 0) {
 				let tempSettings = JSON.parse(JSON.stringify(allServiceSettings)); // Create a deep copy of the service settings
 
 				// First, apply denied values if state = false
-                tempSettings.forEach(tempSetting => {
-                    if (tempSetting.serviceId === service.name && !state) {  // If consent is denied
+				tempSettings.forEach(tempSetting => {
+					if (tempSetting.serviceId === service.name && !state) {  // If consent is denied
 						Object.keys(tempSetting).forEach(key => {
 							if (key !== 'serviceId' && key !== 'serviceConsent' && tempSetting[key] === 'granted') {
 								tempSetting[key] = 'denied'; // Temporarily set all granted values to denied
@@ -106,7 +128,7 @@ let ConsentApp = new function ConsentController() {
 					}
 				});
 
-                // Then, ensure that granted values for services with consent are not overwritten
+				// Then, ensure that granted values for services with consent are not overwritten
 				tempSettings.forEach(tempSetting => {
 					if (tempSetting.serviceId === service.name && state) {  // If consent is granted
 						Object.keys(tempSetting).forEach(key => {
@@ -119,17 +141,17 @@ let ConsentApp = new function ConsentController() {
 
 				// Save the processed tempSettings back to allServiceSettings
 				allServiceSettings = tempSettings;
-				
+
 				// Filter tempSettings to include only services with serviceConsent = true
 				let relevantSettings = tempSettings.filter(setting => setting.serviceConsent === true);
-				
+
 				// Use evaluateFinalValue and updateCookieWithFinalConsent with the relevant settings
 				if (relevantSettings.length > 0) {
 					// Update the cookie with the final consent values
 					updateCookieWithFinalConsent(storageName, cookieExpiresAfterDays, relevantSettings);
 				}
 			}
-            // Update window.dataLayer based on the state
+			// Update window.dataLayer based on the state
 			let tempObj = {
 				event: service.gtm.trigger,
 				[service.gtm.variable]: state
@@ -142,84 +164,83 @@ let ConsentApp = new function ConsentController() {
 			window.dataLayer.push(tempObj);
 		}
 
-        //Check if the own callback function is allready defined
-        if (typeof window[service.ownCallback] === "function") {
-            window[service.ownCallback](state, service);
-        } else if (service.ownCallback !== '') {
-            console.error('The Callback function ' + service.ownCallback + ' is not yet defined. Please create it first.');
-        }
+		//Check if the own callback function is allready defined
+		if (typeof window[service.ownCallback] === "function") {
+			window[service.ownCallback](state, service);
+		} else if (service.ownCallback !== '') {
+			console.error('The Callback function ' + service.ownCallback + ' is not yet defined. Please create it first.');
+		}
 	};
 
-    //--- constructor ---
-    (function contruct() {
-        $(document).ready(function () {
-            //Listener for the button on the privacy page, to edit the consent
-            $(document).on('click', '.js-showConsentModal', function (event) {
-                event.preventDefault();
-                klaro.show();
-            });
-        });
-    })();
+	const isSafari = navigator.vendor &&
+		navigator.vendor.indexOf('Apple') > -1 &&
+		navigator.userAgent &&
+		navigator.userAgent.indexOf('CriOS') == -1 &&
+		navigator.userAgent.indexOf('FxiOS') == -1;
 
-    const isSafari = navigator.vendor &&
-        navigator.vendor.indexOf('Apple') > -1 &&
-        navigator.userAgent &&
-        navigator.userAgent.indexOf('CriOS') == -1 &&
-        navigator.userAgent.indexOf('FxiOS') == -1;
+	document.addEventListener('DOMContentLoaded', function() {
+		setTimeout(function() {
+			if (isSafari!==true) {
+				document.getElementById('klaro').classList.remove('safari');
+			} else {
+				document.getElementById('klaro').classList.add('safari');
+			}
+		})
+	});
 
-    document.addEventListener('DOMContentLoaded', function() {
-        setTimeout(function() {
-            if (isSafari!==true) {
-                document.getElementById('klaro').classList.remove('safari');
-            } else {
-                document.getElementById('klaro').classList.add('safari');
-            }
-        })
-    });
-	
 };
 
 var optOutLink = document.getElementById("ga-opt-out");
 
 if(optOutLink) {
-    optOutLink.onclick = function() {
-        document.cookie = 'ga-opt-out=true; expires=Thu, 31 Dec 2099 23:59:59 UTC; path=/';
-        this.innerHTML = "Google Analytics opt-out successful";
-        return false;
-    }
+	optOutLink.onclick = function() {
+		document.cookie = 'ga-opt-out=true; expires=Thu, 31 Dec 2099 23:59:59 UTC; path=/';
+		this.innerHTML = "Google Analytics opt-out successful";
+		return false;
+	}
 }
 
-//--- Functions after window.load(): ---
-$(function () {
-    if ($('iframe').length > 0) {
-        var counterOfIframe = 0;
-        var attrDataSrc;
-        $('iframe').each(function () {
-            attrDataSrc = $(this).attr('src');
-            if (!attrDataSrc) {
-                attrDataSrc = $(this).attr('data-src');
-            }
-            if (attrDataSrc && (attrDataSrc.indexOf("youtube") > -1 || attrDataSrc.indexOf("vimeo") > -1)) {
-                /* Adjust measures for videoOverlay similar to iframe: */
-                $(this).parent().find('.klaro.cm-as-context-notice').css({'width': $(this).width()});
-                // $(this).parent().find('.klaro.cm-as-context-notice').css({'height':'100%'});  // Activate if height isn't set to 100% by css.
-                if ($(this).height() < $(this).parent().find('.klaro.cm-as-context-notice').height()) {
-                    $(this).parent().find('.klaro.cm-as-context-notice .cm-buttons').css('margin-top', '1em');
-                }
-            }
-            counterOfIframe++;
-        });
-    }
+window.addEventListener('load', function () {
+	const iframes = document.querySelectorAll('iframe');
 
-    /**   Add class for small context-notice box  gf20211115 **/
-    $('.klaro.we_cookie_consent.cm-as-context-notice').each(function () {
-        if ($(this).width() <= 300) {
-            $(this).addClass('notice--minified');
-        }
-    });
+	if (iframes.length > 0) {
+		iframes.forEach(function (iframe) {
+			let attrDataSrc = iframe.getAttribute('src');
+			if (!attrDataSrc) {
+				attrDataSrc = iframe.getAttribute('data-src');
+			}
 
-    /** Add class to avoid Google to crawl consent info text  gf20220623 **/
-    $('.klaro.we_cookie_consent .cn-body').each(function () {
-        $(this).attr('data-nosnippet', 'data-nosnippet');
-    });
+			if (attrDataSrc && (attrDataSrc.includes('youtube') || attrDataSrc.includes('vimeo'))) {
+				// Adjust measures for videoOverlay similar to iframe:
+				const parent = iframe.parentElement;
+				const contextNotice = parent.querySelector('.klaro.cm-as-context-notice');
+
+				if (contextNotice) {
+					iframe.style.display = 'block';
+
+					// Set the width of .klaro.cm-as-context-notice to the iframe's width
+					contextNotice.style.width = iframe.offsetWidth + 'px';
+
+					if (iframe.offsetHeight < contextNotice.offsetHeight) {
+						const cmButtons = contextNotice.querySelector('.cm-buttons');
+						if (cmButtons) {
+							cmButtons.style.marginTop = '1em';
+						}
+					}
+				}
+			}
+		});
+	}
+
+	/**   Add class for small context-notice box: if video integration within small iframes (width < 300px) **/
+	document.querySelectorAll('.klaro.we_cookie_consent.cm-as-context-notice').forEach(function (element) {
+		if (element.offsetWidth <= 300) {
+			element.classList.add('notice--minified');
+		}
+	});
+
+	/** Add class to avoid Google to crawl consent info text **/
+	document.querySelectorAll('.klaro.we_cookie_consent .cn-body').forEach(function (element) {
+		element.setAttribute('data-nosnippet', 'data-nosnippet');
+	});
 });

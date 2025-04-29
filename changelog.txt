@@ -2,6 +2,19 @@
 All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
+## [5.0.3] - 2025-04-28 - RL/AS
+### Added
+- Added new trigger cmp_we_cookie_consent_changed to BackendController.php to control the CMP via GTM
+- Added new variable we_consent_state to BackendController.php to control the CMP via GTM
+- Added function pushTriggerAfterConsentChanged to ConsentController.js to call the new trigger after each consent change
+### Fixed
+- Bugfix, transfer of the withdrawn consent to GTM adjusted
+- Adding an empty container to ensure the import functionality in GTM
+### Changed
+- Removed jQuery
+- Added backwards compatibility for v12
+- Change strtolower with mb_strtolower to fix encoding issues
+
 ## [5.0.2] - 2024-11-07 - AS
 ### Changed
 - Changed version in ext_emconf
