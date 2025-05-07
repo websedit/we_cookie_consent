@@ -2,6 +2,12 @@
 All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
+## [4.1.3] - 2025-05-07 - RL
+### Fixed
+- Bugfix, if all consent types in a service defined to "denied"
+### Changed
+- Change structure of ConsentController.js
+
 ## [4.1.2] - 2025-04-28 - RL
 ### Added
 - Added new trigger cmp_we_cookie_consent_changed to BackendController.php to control the CMP via GTM
