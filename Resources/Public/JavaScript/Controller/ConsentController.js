@@ -1,4 +1,6 @@
 // Consent class
+const serviceConfigs = JSON.parse(JSON.stringify(allServiceSettings));
+
 // Function to retrieve a cookie by its name
 function getCookie(name) {
 	var nameEQ = name + "=";
@@ -29,61 +31,46 @@ function evaluateFinalValue(serviceSettings, settingKey) {
 	
 	// Iterate through all services and check their consent settings
 	serviceSettings.forEach(settings => {
-		if (settings[settingKey] === 'granted') {
-		hasGranted = true;
-		} else if (settings[settingKey] === 'denied') {
-		hasDenied = true;
-		}
+		if (settings[settingKey] === 'granted')
+		if (settings[settingKey] === 'granted') hasGranted = true;
+		else if (settings[settingKey] === 'denied') hasDenied = true;
 	});
 	
 	// If there is at least one "denied" value, return "denied"
-	if (hasDenied) {
-		return 'denied';
-	}
+	if (hasDenied)  return 'denied';
 	
-	// If there is at least one "granted" value, return "granted"
-	if (hasGranted) {
-		return 'granted';
-	}
+	// If there is only one "granted" value, return "granted"
+	if (hasGranted) return 'granted';
 	
 	// If all values are "not set" or there are no explicit "granted"/"denied" values, return "denied"
 	return 'denied';
 }
 
 // Function to update the cookie with the final consent values
-function updateCookieWithFinalConsent(name, daysToExpire, allServiceSettings) {
-	var cookieValue = getCookie(name);
+function updateCookieWithFinalConsent(name, daysToExpire, services) {
+	const cookieValue = getCookie(name);
 	if (cookieValue !== null) {
-		var decodedValue = decodeURIComponent(cookieValue);
-		var obj = JSON.parse(decodedValue);
+		const obj = JSON.parse(decodeURIComponent(cookieValue));
     
 		// Evaluate and set the final values for each consent setting
-		obj.ad_storage = evaluateFinalValue(allServiceSettings, 'ad_storage');
-		obj.analytics_storage = evaluateFinalValue(allServiceSettings, 'analytics_storage');
-		obj.ad_user_data = evaluateFinalValue(allServiceSettings, 'ad_user_data');
-		obj.ad_personalization = evaluateFinalValue(allServiceSettings, 'ad_personalization');
-		obj.personalization_storage = evaluateFinalValue(allServiceSettings, 'personalization_storage');
-		obj.functionality_storage = evaluateFinalValue(allServiceSettings, 'functionality_storage');
-		obj.security_storage = evaluateFinalValue(allServiceSettings, 'security_storage');
+		['ad_storage','analytics_storage','ad_user_data','ad_personalization',
+		 'personalization_storage','functionality_storage','security_storage']
+		  .forEach(key => {
+			obj[key] = evaluateFinalValue(services, key);
+		  });
 		
-		var updatedValue = JSON.stringify(obj);
-		var encodedValue = encodeURIComponent(updatedValue);
-		setCookie(name, encodedValue, daysToExpire);
+		setCookie(name, encodeURIComponent(JSON.stringify(obj)), daysToExpire);
 		pushTriggerAfterConsentChanged(obj);
 	} else {
-		console.log("Cookie with the name '" + name + "' does not exist.");
+		console.log("Cookie name '" + name + "' does not exist.");
 	}
 }
 
 // Function to push the trigger for gtm after consent changed
 function pushTriggerAfterConsentChanged(changes) {
-	(function() {
-		if (!window.dataLayer) {
-			window.dataLayer = [];
-		}
-	})();
+	window.dataLayer = window.dataLayer || [];
 	window.dataLayer.push({
-		event: 'cmp_we_cookie_consent_changed',          // Custom-Event-Name
+		event: 'cmp_we_cookie_consent_changed',   // Custom-Event-Name
 		we_consent_state: {                       // Add all final states 
 			ad_storage             : changes.ad_storage,
 			analytics_storage      : changes.analytics_storage,
@@ -104,78 +91,79 @@ function getAllServiceSettings() {
 	// return allServiceSettings;
 }
 
+// main controller
 let ConsentApp = new function ConsentController() {
-	//--- public functions ---
+	// public functions
 	/**
      * Callback function for GoogleTagManager Script to handle consent state changes and fire the dataLayer trigger
      * @param bool state
      * @param object service
      */
-    this.consentChanged = function (state, service) {
+    this.consentChanged = function(state, service) {
 		// Check if the service is related to Google Tag Manager
-		if (service.name.indexOf('google-tagmanager-service') !== -1) {
-			if (allServiceSettings.length > 0) {
-				let tempSettings = JSON.parse(JSON.stringify(allServiceSettings)); // Create a deep copy of the service settings
-
-				// First, apply denied values if state = false
-				tempSettings.forEach(tempSetting => {
-					if (tempSetting.serviceId === service.name && !state) {  // If consent is denied
-						Object.keys(tempSetting).forEach(key => {
-							if (key !== 'serviceId' && key !== 'serviceConsent' && tempSetting[key] === 'granted') {
-								tempSetting[key] = 'denied'; // Temporarily set all granted values to denied
-							}
-						});
-					}
-				});
-
-				// Then, ensure that granted values for services with consent are not overwritten
-				tempSettings.forEach(tempSetting => {
-					if (tempSetting.serviceId === service.name && state) {  // If consent is granted
-						Object.keys(tempSetting).forEach(key => {
-							if (key !== 'serviceId' && key !== 'serviceConsent' && tempSetting[key] === 'denied') {
-								tempSetting[key] = 'granted'; // Set all denied values to granted if consent is granted
-							}
-						});
-					}
-				});
-
-				// Save the processed tempSettings back to allServiceSettings
-				allServiceSettings = tempSettings;
-				
-				// Filter tempSettings to include only services with serviceConsent = true
-				let relevantSettings = tempSettings.filter(setting => setting.serviceConsent === true);
-				
-				// Use evaluateFinalValue and updateCookieWithFinalConsent with the relevant settings
-				if (relevantSettings.length > 0) {
-					// Update the cookie with the final consent values
-					updateCookieWithFinalConsent(storageName, cookieExpiresAfterDays, relevantSettings);
+		const isGTM = service.name.indexOf('google-tagmanager-service') !== -1;
+		if (isGTM) {
+			// A) Remap all services - only the service that has just been changed receives either its config values (if state=true) or "denied" all-over.
+			allServiceSettings = allServiceSettings.map(tempSettings => {
+				if (tempSettings.serviceId !== service.name) {
+					// Unmodified copy
+					return { 
+						serviceId:               tempSettings.serviceId,
+						serviceConsent:          tempSettings.serviceConsent,
+						ad_storage:              tempSettings.ad_storage,
+						analytics_storage:       tempSettings.analytics_storage,
+						ad_user_data:            tempSettings.ad_user_data,
+						ad_personalization:      tempSettings.ad_personalization,
+						functionality_storage:   tempSettings.functionality_storage,
+						personalization_storage: tempSettings.personalization_storage,
+						security_storage:        tempSettings.security_storage
+					};
 				}
-			}
-			// Update window.dataLayer based on the state
-			let tempObj = {
+				
+				// Get the original config
+				const originalConfig = serviceConfigs.find(original => original.serviceId === tempSettings.serviceId);
+				const updated = { serviceId: tempSettings.serviceId, serviceConsent: state };
+				
+				// For every consent type
+				['ad_storage','analytics_storage','ad_user_data','ad_personalization',
+			     'personalization_storage','functionality_storage','security_storage']
+				  .forEach(key => {
+					// if consent is granted: accept from config
+					// if consent is denied: always 'denied'
+					updated[key] = state ? originalConfig[key] : 'denied';
+				});
+
+				return updated;
+			});
+			
+			// B) Evaluate only the granted services
+			// Filter allServiceSettings to include only services with serviceConsent = true
+			// Update cookie
+			const relevantServices = allServiceSettings.filter(relevant => relevant.serviceConsent);
+			updateCookieWithFinalConsent(storageName, cookieExpiresAfterDays, relevantServices);
+			
+			// C) dataLayer-Push based on the state
+			window.dataLayer = window.dataLayer || [];
+			window.dataLayer.push({
 				event: service.gtm.trigger,
 				[service.gtm.variable]: state
-			};
-			(function() {
-				if (!window.dataLayer) {
-					window.dataLayer = [];
-				}
-			})();
-			window.dataLayer.push(tempObj);
+			});
 		}
-			
-		//Check if the own callback function is allready defined
-        if (typeof window[service.ownCallback] === "function") {
-            window[service.ownCallback](state, service);
-        } else if (service.ownCallback !== '') {
-            console.error('The Callback function ' + service.ownCallback + ' is not yet defined. Please create it first.');
+				
+		// D) Check if the own callback function is allready defined
+		if (service.ownCallback) {
+			if (typeof window[service.ownCallback] === 'function') {
+				window[service.ownCallback](state, service);
+            } else {
+				console.error('The Callback function ' + service.ownCallback + ' is not yet defined. Please create it first.');
+            }
         }
 	};
-
-    //--- constructor ---
+	
+    // constructor (modal and safari)
     (function contruct() {
         $(document).ready(function () {
-            //Listener for the button on the privacy page, to edit the consent
+            // Listener for the button on the privacy page, to edit the consent
             $(document).on('click', '.js-showConsentModal', function (event) {
                 event.preventDefault();
                 klaro.show();
@@ -198,10 +186,10 @@ let ConsentApp = new function ConsentController() {
 			}
 		})
     });
-	
 };
+// End main controller
 
-//--- Functions after window.load(): ---
+// Functions after window.load():
 $(function() {
 	if ($('iframe').length > 0) {
 		var counterOfIframe = 0;
@@ -212,7 +200,7 @@ $(function() {
                 attrDataSrc = $(this).attr('data-src');
             }
 			if (attrDataSrc && ( attrDataSrc.indexOf("youtube") > -1 || attrDataSrc.indexOf("vimeo") > -1 )) {
-				/* Adjust measures for videoOverlay similar to iframe: */
+				// Adjust measures for videoOverlay similar to iframe:
 				$(this).parent().find('.klaro.cm-as-context-notice').css({'width':$(this).width()});
 				// $(this).parent().find('.klaro.cm-as-context-notice').css({'height':'100%'});  // Activate if height isn't set to 100% by css.
 				if ($(this).height() < $(this).parent().find('.klaro.cm-as-context-notice').height()) {
@@ -223,14 +211,14 @@ $(function() {
 		});
 	}
 
-    /**   Add class for small context-notice box  gf20211115 **/
+    // Add class for small context-notice box
 	$('.klaro.we_cookie_consent.cm-as-context-notice').each(function() {
 		if ($(this).width() <= 300) {
 			$(this).addClass('notice--minified');
 		}
 	});
     
-    /** Add class to avoid Google to crawl consent info text  gf20220623 **/
+    // Add class to avoid Google to crawl consent info text
     $('.klaro.we_cookie_consent .cn-body').each(function() {
 		$(this).attr('data-nosnippet','data-nosnippet');
     });
