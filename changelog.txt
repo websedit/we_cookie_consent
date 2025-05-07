@@ -2,6 +2,13 @@
 All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
+## [5.0.5] - 2025-05-07 - RL
+### Fixed
+- Bugfix, if all consent types in a service defined to "denied"
+- Bugfix for permanently available cookie icon
+### Changed
+- Change structure of ConsentController.js
+
 ## [5.0.4] - 2025-04-28 - AS
 ### Fixed
 - added required typo3/cms-core version 12.4
