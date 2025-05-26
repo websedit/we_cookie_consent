@@ -17,7 +17,7 @@ use Websedit\WeCookieConsent\Domain\Repository\ServiceRepository;
  * For the full copyright and license information, please read the
  * LICENSE.txt file that was distributed with this source code.
  *
- *  (c) 2024 websedit AG <extensions@websedit.de>
+ *  (c) 2025 websedit AG <extensions@websedit.de>
  *
  ***/
 #[AsController]
@@ -103,6 +103,13 @@ final class BackendController extends ActionController
      */
     private function createGtmArray($services, $blocks)
     {
+        /* --------------------------------------------------------------------
+         *  ID constants for the global CMP objects
+		 * - deliberately very high values (> 900k) to avoid collisions
+         * ------------------------------------------------------------------ */
+        $CONSENT_TRIGGER_ID  = 990001;
+        $CONSENT_VARIABLE_ID = 990002;
+
         $gtmArray = [
             "exportFormatVersion" => 2,
             "containerVersion" => [
@@ -218,6 +225,55 @@ final class BackendController extends ActionController
                 ];
             }
         }
+
+        /* ---------------------------------------------------------------
+         *  Global CMP objects (trigger + variable)
+         * ------------------------------------------------------------- */
+        if ($blocks['triggers']) {
+            $gtmArray['containerVersion']['trigger'][] = [
+                'accountId'         => '0',
+                'containerId'       => '0',
+                'triggerId'         => $CONSENT_TRIGGER_ID,
+                'name'              => 'cmp_we_cookie_consent_changed',
+                'type'              => 'CUSTOM_EVENT',
+                'customEventFilter' => [[
+                    'type'      => 'EQUALS',
+                    'parameter' => [
+                        ['type' => 'TEMPLATE', 'key' => 'arg0', 'value' => '{{_event}}'],
+                        ['type' => 'TEMPLATE', 'key' => 'arg1', 'value' => 'cmp_we_cookie_consent_changed'],
+                    ],
+                ]],
+                'parentFolderId' => '0',
+            ];
+        }
+
+        if ($blocks['variables']) {
+            $gtmArray['containerVersion']['variable'][] = [
+                'accountId'   => '0',
+                'containerId' => '0',
+                'variableId'  => $CONSENT_VARIABLE_ID,
+                'name'        => 'we_consent_state',
+                'type'        => 'v',  // Data-Layer Variable
+                'parameter'   => [
+                    ['type' => 'INTEGER', 'key' => 'dataLayerVersion', 'value' => '2'],
+                    ['type' => 'BOOLEAN', 'key' => 'setDefaultValue',  'value' => 'false'],
+                    ['type' => 'TEMPLATE','key' => 'name',             'value' => 'we_consent_state'],
+                ],
+                'parentFolderId' => '0',
+            ];
+        }
+
+        /* ---------------------------------------------------------------
+         *  Add empty container
+         * ------------------------------------------------------------- */
+        $gtmArray['containerVersion']['container'] = [
+            'accountId'   => '0',
+            'containerId' => '0',
+            'name'        => 'we_cookie_consent (Import)',
+            'publicId'    => 'GTM-XXXXXXX',
+            'usageContext'=> ['WEB'],
+        ];
+        $gtmArray['containerVersion']['fingerprint'] = '';
 
         return $gtmArray;
     }
