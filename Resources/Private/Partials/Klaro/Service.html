@@ -9,18 +9,18 @@
 </f:if>
 <script type="text/javascript">
     klaroConfig.services.push({
-<f:if condition="{service.provider} == youtube">
-<f:then>		name: '<f:format.raw>{service.provider}</f:format.raw>',</f:then><f:else><f:if condition="{service.provider} == vimeo"><f:then>		name: '<f:format.raw>{service.provider}</f:format.raw>',</f:then><f:else>		name: '<f:format.raw>{service.provider}-{service.uid}</f:format.raw>',</f:else>
-</f:if></f:else>
-</f:if>
-		title: '<f:format.raw><we:format.escape>{service.title}</we:format.escape></f:format.raw>',
-        description: '<f:spaceless><f:format.stripTags><we:format.escape>{service.description}</we:format.escape></f:format.stripTags></f:spaceless>',
-        default: {f:if(condition: '{service.required}', then: 'true', else: '{f:if(condition: \'{service.preselected}\', then: \'true\', else: \'false\')}')},
-        defaultIfNoConsent: {f:if(condition: '{service.state}', then: 'true', else: 'false')},
-        required: {f:if(condition: '{service.required}', then: 'true', else: 'false')},
-        optOut: {f:if(condition: '{service.optOut}', then: 'true', else: 'false')},
-        translations: {'en':{'title':'<f:format.raw><we:format.escape>{service.title}</we:format.escape></f:format.raw>'}}, <f:comment>// Required for Bug https://github.com/kiprotect/klaro/issues/330</f:comment>
-        purposes: [<f:format.raw>{purposes}</f:format.raw>],
+    <f:if condition="{service.provider} == youtube">
+        <f:then>		name: '<f:format.raw>{service.provider}</f:format.raw>',</f:then><f:else><f:if condition="{service.provider} == vimeo"><f:then>		name: '<f:format.raw>{service.provider}</f:format.raw>',</f:then><f:else>		name: '<f:format.raw>{service.provider}-{service.uid}</f:format.raw>',</f:else>
+    </f:if></f:else>
+    </f:if>
+    title: '<f:format.raw><we:format.escape>{service.title}</we:format.escape></f:format.raw>',
+    description: '<f:format.raw><f:spaceless><we:format.escape>{service.description}</we:format.escape></f:spaceless></f:format.raw>',
+    default: {f:if(condition: '{service.required}', then: 'true', else: '{f:if(condition: \'{service.preselected}\', then: \'true\', else: \'false\')}')},
+    defaultIfNoConsent: {f:if(condition: '{service.state}', then: 'true', else: 'false')},
+    required: {f:if(condition: '{service.required}', then: 'true', else: 'false')},
+    optOut: {f:if(condition: '{service.optOut}', then: 'true', else: 'false')},
+    translations: {'en':{'title':'<f:format.raw><we:format.escape>{service.title}</we:format.escape></f:format.raw>'}}, <f:comment>// Required for Bug https://github.com/kiprotect/klaro/issues/330</f:comment>
+    purposes: [<f:format.raw>{purposes}</f:format.raw>],
         cookies: [<f:format.raw>{cookies}</f:format.raw>],
         callback: ConsentApp.consentChanged,
         ownCallback:'<f:format.raw>{service.callback}</f:format.raw>',
