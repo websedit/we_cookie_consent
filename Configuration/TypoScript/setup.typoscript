@@ -65,6 +65,7 @@ plugin.tx_wecookieconsent_pi1 {
         }
     }
 }
+plugin.tx_wecookieconsent_pi2 < plugin.tx_wecookieconsent_pi1
 
 module.tx_wecookieconsent_web_wecookieconsentmod1 {
     persistence {
