@@ -14,7 +14,7 @@
 </f:if></f:else>
 </f:if>
 		title: '<f:format.raw><we:format.escape>{service.title}</we:format.escape></f:format.raw>',
-        description: '<f:spaceless><f:format.stripTags><we:format.escape>{service.description}</we:format.escape></f:format.stripTags></f:spaceless>',
+        description: '<f:format.raw><f:spaceless><we:format.escape>{service.description}</we:format.escape></f:spaceless></f:format.raw>',
         default: {f:if(condition: '{service.required}', then: 'true', else: '{f:if(condition: \'{service.preselected}\', then: \'true\', else: \'false\')}')},
         defaultIfNoConsent: {f:if(condition: '{service.state}', then: 'true', else: 'false')},
         required: {f:if(condition: '{service.required}', then: 'true', else: 'false')},
