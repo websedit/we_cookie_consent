@@ -161,15 +161,17 @@ let ConsentApp = new function ConsentController() {
 	};
 
     // constructor (modal and safari)
-    (function contruct() {
-        $(document).ready(function () {
-            // Listener for the button on the privacy page, to edit the consent
-            $(document).on('click', '.js-showConsentModal', function (event) {
-                event.preventDefault();
-                klaro.show();
-            });
-        });
-    })();
+	(function contruct() {
+		document.addEventListener('DOMContentLoaded', function () {
+			// Listener for the button on the privacy page, to edit the consent
+			document.addEventListener('click', function (event) {
+				if (event.target.closest('.js-showConsentModal')) {
+					event.preventDefault();
+					klaro.show();
+				}
+			});
+		});
+	})();
 
     const isSafari = navigator.vendor && 
         navigator.vendor.indexOf('Apple') > -1 &&
