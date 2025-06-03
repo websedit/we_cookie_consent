@@ -2,6 +2,11 @@
 All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
+## [4.1.4] - 2025-06-03 - SS/AS
+### Fixed
+- Add format raw for service description
+- Copy TypoScript settings from plugin tx_wecookieconsent_pi1 to tx_wecookieconsent_pi2
+
 ## [4.1.3] - 2025-05-07 - RL
 ### Fixed
 - Bugfix, if all consent types in a service defined to "denied"
