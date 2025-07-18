@@ -2,6 +2,12 @@
 All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
+## [5.0.8] - 2025-07-18 - GF/AS
+### Fixed
+- Set bottom margin p-tag
+- Adjust margin between p and ul tag
+- check if array key provider isset
+
 ## [5.0.7] - 2025-06-03 - AS
 ### Fixed
 - Removed jQuery finally

@@ -36,6 +36,10 @@
   color: #161f57;
   font-size: 1em;
 }
+.klaro.we_cookie_consent .cookie-notice p,
+.klaro.we_cookie_consent .cookie-modal p {
+  margin-bottom: 1em !important;
+}
 .klaro.we_cookie_consent .cookie-notice a,
 .klaro.we_cookie_consent .cookie-modal a {
   font-weight: 700;
@@ -626,6 +630,19 @@
 }
 .klaro.we_cookie_consent .cookie-modal .cm-modal .cm-body ul.cm-services li.cm-toggle-all .cm-list-label, .klaro.we_cookie_consent .cookie-modal .cm-modal .cm-body ul.cm-purposes li.cm-toggle-all .cm-list-label {
   display: none;
+}
+.klaro.we_cookie_consent .cookie-modal .cm-modal .cm-body ul.cm-services li .cm-list-description ul, .klaro.we_cookie_consent .cookie-modal .cm-modal .cm-body ul.cm-purposes li .cm-list-description ul {
+  margin: 0 0 0.5rem;
+  padding: 0 0 0 1em;
+}
+.klaro.we_cookie_consent .cookie-modal .cm-modal .cm-body ul.cm-services li .cm-list-description ul li, .klaro.we_cookie_consent .cookie-modal .cm-modal .cm-body ul.cm-purposes li .cm-list-description ul li {
+  display: list-item;
+  list-style-type: disc;
+  margin: 0;
+  padding-left: 0;
+}
+.klaro.we_cookie_consent .cookie-modal .cm-modal .cm-body ul.cm-services li .cm-list-description p + ul, .klaro.we_cookie_consent .cookie-modal .cm-modal .cm-body ul.cm-purposes li .cm-list-description p + ul {
+  margin-top: -1em;
 }
 .klaro.we_cookie_consent .cookie-modal .cm-modal .cm-body ul.cm-services li.cm-purpose .cm-services .cm-content, .klaro.we_cookie_consent .cookie-modal .cm-modal .cm-body ul.cm-purposes li.cm-purpose .cm-services .cm-content {
   margin-left: -72px;
