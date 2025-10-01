@@ -2,9 +2,13 @@
 All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
+## [4.1.5] - 2025-10-01 - RL
+### Added
+- Added Accessibility to Modal, Icon, Service and others
+
 ## [4.1.4] - 2025-06-03 - SS/AS
 ### Fixed
-- Add format raw for service description
+- Added format raw for service description
 - Copy TypoScript settings from plugin tx_wecookieconsent_pi1 to tx_wecookieconsent_pi2
 
 ## [4.1.3] - 2025-05-07 - RL
@@ -20,7 +24,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - Added function pushTriggerAfterConsentChanged to ConsentController.js to call the new trigger after each consent change
 ### Fixed
 - Bugfix, transfer of the withdrawn consent to GTM adjusted
-- Adding an empty container to ensure the import functionality in GTM
+- Added an empty container to ensure the import functionality in GTM
 - Bugfix, when no categories are assigned to services
 ### Changed
 - Change strtolower with mb_strtolower to fix encoding issues

@@ -63,34 +63,50 @@ function checkCookieExists(cookieName) {
 
 function createTooltip() {
     if (cookieIconPermanentlyAvailable === '1') {
-        let tooltip = document.createElement('div');
-        let imgTag = document.createElement('img');
+        let iconTooltip = document.createElement('div');
+        let iconImgTag = document.createElement('img');
+		let iconBtn = document.createElement('button');
         let iconContainer = document.createElement('div');
 
-        imgTag.src = cookieSettingsImgPathDefault;
-        imgTag.className = 'consent-img js-showConsentModal';
-        imgTag.style.cssText = 'margin-right:0px;width:85px;height:85px;'; //Distance to the text
-        imgTag.onmouseover = function () {
-            this.src = cookieSettingsImgPathHover;
-            tooltip.style.display = 'block'; //Show tooltip when hovering over
-        };
-        imgTag.onmouseout = function () {
-            this.src = cookieSettingsImgPathDefault;
-            tooltip.style.display = 'none'; //Hide tooltip when hovering over
-        };
-
-        tooltip.textContent = translatedButtonTextCookieSettings;
-        tooltip.classList.add('consent-cookie-text');
-        tooltip.style.cssText = 'display:none;';
-
-        iconContainer.classList.add('consent-cookie')
-        iconContainer.style.cssText = 'display:block;';
-        iconContainer.style.display = 'flex';
-
-        // Add the image and the tooltip to the container
-        iconContainer.appendChild(imgTag);
-        iconContainer.appendChild(tooltip);
-
-        document.body.appendChild(iconContainer);
+		// Button
+		iconBtn.type = 'button';
+		iconBtn.className = 'consent-trigger js-showConsentModal';
+		iconBtn.setAttribute('aria-label', translatedButtonTextCookieSettings);
+		iconBtn.setAttribute('aria-haspopup', 'dialog');
+		
+		// Image
+		iconImgTag.src = cookieSettingsImgPathDefault;
+		iconImgTag.alt = '';
+		iconImgTag.setAttribute('aria-hidden', 'true');
+		iconImgTag.width = 85; iconImgTag.height = 85;
+		iconImgTag.style.cssText = 'margin-right:0px;width:85px;height:85px;';
+		
+		// Hover/Fokus (Image & Tooltip)
+		function showTip(){ iconTooltip.style.display = 'block'; iconImgTag.src = cookieSettingsImgPathHover; }
+		function hideTip(){ iconTooltip.style.display = 'none';  iconImgTag.src = cookieSettingsImgPathDefault; }
+		
+		iconBtn.addEventListener('mouseover', showTip);
+		iconBtn.addEventListener('mouseout',  hideTip);
+		iconBtn.addEventListener('focusin',   showTip);
+		iconBtn.addEventListener('focusout',  hideTip);
+		
+		// Tooltip
+		iconTooltip.textContent = translatedButtonTextCookieSettings;
+		iconTooltip.classList.add('consent-cookie-text');
+		iconTooltip.style.cssText = 'display:none;';
+		// (optional ARIA)
+		// tooltip.id = 'consent-tooltip';
+		// tooltip.setAttribute('role', 'tooltip');
+		// btn.setAttribute('aria-describedby', 'consent-tooltip');
+		
+		// Container
+		iconContainer.classList.add('consent-cookie');
+		iconContainer.style.cssText = 'display:flex;';
+		
+		// DOM
+		iconBtn.appendChild(iconImgTag);
+		iconContainer.appendChild(iconBtn);
+		iconContainer.appendChild(iconTooltip);
+		document.body.appendChild(iconContainer);
     }
 }

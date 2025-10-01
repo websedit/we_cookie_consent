@@ -1,5 +1,9 @@
 <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
-<div class="tx-we-cookie-consent">
-    <f:render section="content" optional="1"/>
+<div class="tx-we-cookie-consent"
+     role="dialog"
+     aria-modal="true"
+     aria-label="<f:translate key="klaro.consentModal.title" />">
+		<div id="klaro"></div>
+		<f:render section="content" optional="1"/>
 </div>
 </html>
