@@ -183,6 +183,12 @@ let ConsentApp = new function ConsentController() {
 			setServiceSuccessVarBtn();
 
 			document.addEventListener('click', function (event) {
+				if (event.target.matches('.cn-decline')) {
+					setServiceSuccessVarBtn();
+				}
+			});
+
+			document.addEventListener('click', function (event) {
 				if (event.target.matches('.cm-btn-accept')) {
 					setServiceSuccessVarBtn();
 				}
@@ -193,7 +199,7 @@ let ConsentApp = new function ConsentController() {
 					setServiceSuccessVarBtn();
 				}
 			});
-
+			
 			if (isSafari!==true) {
 				document.getElementById('klaro').classList.remove('safari');
 			} else {
