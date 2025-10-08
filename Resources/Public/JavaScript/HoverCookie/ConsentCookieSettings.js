@@ -36,6 +36,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
                 if (document.querySelector('.cm-btn-accept-all')) {
                     document.querySelector('.cm-btn-accept-all').addEventListener('click', function () {
+                        alert("huhu")
                         createTooltip();
                     });
                 }

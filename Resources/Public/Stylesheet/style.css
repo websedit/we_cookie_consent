@@ -1409,3 +1409,7 @@
           box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2666666667);
   padding: 5px 10px;
 }
+
+.cm-btn-success-var {
+  display: none !important;
+}
