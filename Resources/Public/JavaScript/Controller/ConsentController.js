@@ -199,7 +199,7 @@ let ConsentApp = new function ConsentController() {
 					setServiceSuccessVarBtn();
 				}
 			});
-			
+
 			if (isSafari!==true) {
 				document.getElementById('klaro').classList.remove('safari');
 			} else {

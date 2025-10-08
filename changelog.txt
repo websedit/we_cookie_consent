@@ -2,9 +2,10 @@
 All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
-## [4.1.5] - 2025-10-01 - RL
+## [4.1.5] - 2025-10-08 - RL, AS
 ### Added
 - Added Accessibility to Modal, Icon, Service and others
+- Added Workaround: Show "Always" Button for overlay (for example youtube videos) only when the klaro cookie is set
 
 ## [4.1.4] - 2025-06-03 - SS/AS
 ### Fixed
