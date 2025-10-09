@@ -181,6 +181,27 @@ let ConsentApp = new function ConsentController() {
 
 	document.addEventListener('DOMContentLoaded', function() {
 		setTimeout(function() {
+
+			setServiceSuccessVarBtn();
+
+			document.addEventListener('click', function (event) {
+				if (event.target.matches('.cn-decline')) {
+					setServiceSuccessVarBtn();
+				}
+			});
+
+			document.addEventListener('click', function (event) {
+				if (event.target.matches('.cm-btn-accept')) {
+					setServiceSuccessVarBtn();
+				}
+			});
+
+			document.addEventListener('click', function (event) {
+				if (event.target.matches('.cm-btn-decline')) {
+					setServiceSuccessVarBtn();
+				}
+			});
+
 			if (isSafari!==true) {
 				document.getElementById('klaro').classList.remove('safari');
 			} else {
@@ -246,3 +267,19 @@ window.addEventListener('load', function () {
 		element.setAttribute('data-nosnippet', 'data-nosnippet');
 	});
 });
+
+// Workaround: Show "Always" Button for overlay (for example youtube videos) only when the klaro cookie is set
+function setServiceSuccessVarBtn()
+{
+	const klaroCookie = getCookie('klaro');
+
+	if (klaroCookie) {
+		const allServiceSuccessVarBtn = document.querySelectorAll('.cm-btn-success-var');
+		if (allServiceSuccessVarBtn.length > 0) {
+			allServiceSuccessVarBtn.forEach((serviceSuccessVarBtn) => {
+					serviceSuccessVarBtn.style.setProperty('display', 'block', 'important');
+				}
+			)
+		}
+	}
+}
