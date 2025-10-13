@@ -2,6 +2,10 @@
 All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
+## [5.1.1] - 2025-10-13 - AS
+### Added
+- Added Workaround: Precompile SCSS
+
 ## [5.1.0] - 2025-10-13 - AS
 ### Added
 - Added Workaround: Show "Always" Button for overlay (added SCSS)
