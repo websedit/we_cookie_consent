@@ -58,7 +58,7 @@
   border-radius: 4px;
   bottom: 0;
   -webkit-box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.2), 5px 5px 10px 0 rgba(0, 0, 0, 0.19);
-  box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.2), 5px 5px 10px 0 rgba(0, 0, 0, 0.19);
+          box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.2), 5px 5px 10px 0 rgba(0, 0, 0, 0.19);
   max-height: 100vh;
   max-width: 100%;
   overflow-y: auto;
@@ -88,25 +88,25 @@
   display: -ms-flexbox;
   display: flex;
   -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
+      flex-wrap: wrap;
   padding-top: 0.5em;
   width: 100%;
 }
 .klaro.we_cookie_consent .cookie-notice:not(.cookie-modal-notice) .cn-body .cn-ok > * {
   -webkit-box-flex: 0;
-  -ms-flex: 0 0 100%;
-  flex: 0 0 100%;
+      -ms-flex: 0 0 100%;
+          flex: 0 0 100%;
 }
 .klaro.we_cookie_consent .cookie-notice:not(.cookie-modal-notice) .cn-body .cn-buttons {
   -webkit-box-ordinal-group: 2;
-  -ms-flex-order: 1;
-  order: 1;
+      -ms-flex-order: 1;
+          order: 1;
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 @media screen and (max-width: 384px) {
   .klaro.we_cookie_consent .cookie-notice:not(.cookie-modal-notice) .cn-body .cn-buttons button.cm-btn {
@@ -119,8 +119,8 @@
 }
 .klaro.we_cookie_consent .cookie-notice:not(.cookie-modal-notice) .cm-link {
   -webkit-box-ordinal-group: 3;
-  -ms-flex-order: 2;
-  order: 2;
+      -ms-flex-order: 2;
+          order: 2;
   color: #161f57;
   font-weight: normal;
   text-align: center;
@@ -133,7 +133,7 @@
   background: #EFEFEF;
   border-radius: 4px;
   -webkit-box-shadow: none;
-  box-shadow: none;
+          box-shadow: none;
   color: #161f57;
   margin: 0.5em 0;
   min-height: 40px;
@@ -149,8 +149,8 @@
   background: #FFF;
   color: #161f57;
   -webkit-box-ordinal-group: 0;
-  -ms-flex-order: -1;
-  order: -1;
+      -ms-flex-order: -1;
+          order: -1;
 }
 .klaro.we_cookie_consent .cookie-notice:not(.cookie-modal-notice) .cm-btn.cm-btn-info {
   color: #00AFCB;
@@ -158,8 +158,8 @@
   font-weight: normal;
   background: transparent;
   -webkit-box-ordinal-group: 4;
-  -ms-flex-order: 3;
-  order: 3;
+      -ms-flex-order: 3;
+          order: 3;
   padding: 1em 0;
   text-align: center;
   width: 100%;
@@ -171,8 +171,8 @@
   font-weight: normal;
   background: transparent;
   -webkit-box-ordinal-group: 4;
-  -ms-flex-order: 3;
-  order: 3;
+      -ms-flex-order: 3;
+          order: 3;
   padding: 1em 0;
   text-align: center;
   width: 100%;
@@ -180,8 +180,8 @@
 @media screen and (min-width: 768px) {
   .klaro.we_cookie_consent .cookie-notice:not(.cookie-modal-notice) .cn-body .cn-ok > * {
     -webkit-box-flex: 0;
-    -ms-flex: 0 0 auto;
-    flex: 0 0 auto;
+        -ms-flex: 0 0 auto;
+            flex: 0 0 auto;
     width: auto;
     min-width: auto;
   }
@@ -202,8 +202,8 @@
     text-align: center;
     width: calc(50% - 40px);
     -webkit-box-ordinal-group: 3;
-    -ms-flex-order: 2;
-    order: 2;
+        -ms-flex-order: 2;
+            order: 2;
   }
   .klaro.we_cookie_consent .cookie-notice:not(.cookie-modal-notice) .cm-btn.cm-btn-info {
     text-align: right;
@@ -214,7 +214,7 @@
     text-align: left;
   }
   .klaro.we_cookie_consent .cookie-notice:not(.cookie-modal-notice) .cm-link,
-  .klaro.we_cookie_consent .cookie-notice:not(.cookie-modal-notice) .cm-learn-more {
+.klaro.we_cookie_consent .cookie-notice:not(.cookie-modal-notice) .cm-learn-more {
     padding: 1.5em 0;
     margin: 0 0 0 auto;
     width: auto;
@@ -224,8 +224,8 @@
   background: #FFF;
   color: #161f57;
   -webkit-box-ordinal-group: 0;
-  -ms-flex-order: -1;
-  order: -1;
+      -ms-flex-order: -1;
+          order: -1;
 }
 .klaro.we_cookie_consent .cookie-notice .cm-btn.cm-btn-info {
   color: #00AFCB;
@@ -233,8 +233,8 @@
   font-weight: normal;
   background: transparent;
   -webkit-box-ordinal-group: 4;
-  -ms-flex-order: 3;
-  order: 3;
+      -ms-flex-order: 3;
+          order: 3;
   padding: 1em 0;
   text-align: center;
   width: 100%;
@@ -266,12 +266,12 @@
 @media screen and (min-width: 768px) {
   .klaro.we_cookie_consent.notice--center .cookie-notice:not(.cookie-modal-notice), .klaro.we_cookie_consent.notice--center-floated .cookie-notice:not(.cookie-modal-notice) {
     -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
+        -ms-flex-align: center;
+            align-items: center;
     background: transparent;
     bottom: unset;
     -webkit-box-shadow: none;
-    box-shadow: none;
+            box-shadow: none;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -288,7 +288,7 @@
   }
   .klaro.we_cookie_consent.notice--center .cookie-notice:not(.cookie-modal-notice) .cn-body, .klaro.we_cookie_consent.notice--center-floated .cookie-notice:not(.cookie-modal-notice) .cn-body {
     -webkit-box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.2);
-    box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.2);
+            box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.2);
     display: block;
     margin: 0 auto;
     max-height: 100vh;
@@ -312,8 +312,8 @@
     border-color: #00AFCB;
     margin: 0.5em 0;
     -webkit-box-ordinal-group: 0;
-    -ms-flex-order: -1;
-    order: -1;
+        -ms-flex-order: -1;
+            order: -1;
     width: 100%;
   }
   .klaro.we_cookie_consent.notice--center .cookie-notice:not(.cookie-modal-notice) .cn-body .cn-ok .cm-btn.cm-btn-success:hover, .klaro.we_cookie_consent.notice--center-floated .cookie-notice:not(.cookie-modal-notice) .cn-body .cn-ok .cm-btn.cm-btn-success:hover {
@@ -321,7 +321,7 @@
     opacity: 0.7;
   }
   .klaro.we_cookie_consent.notice--center .cookie-notice .cn-body .cn-ok .cm-btn.cm-btn-info,
-  .klaro.we_cookie_consent.notice--center .cookie-notice .cn-body .cn-ok .cm-link.cm-learn-more {
+.klaro.we_cookie_consent.notice--center .cookie-notice .cn-body .cn-ok .cm-link.cm-learn-more {
     background: transparent;
   }
   .klaro.we_cookie_consent.notice--center .cookie-notice .cn-body .cn-ok .cm-link {
@@ -332,13 +332,13 @@
     width: 50%;
   }
   .klaro.we_cookie_consent.notice--center-floated .cookie-notice .cn-body .cn-ok .cm-btn.cm-btn-info,
-  .klaro.we_cookie_consent.notice--center-floated .cookie-notice .cn-body .cn-ok .cm-link.cm-learn-more {
+.klaro.we_cookie_consent.notice--center-floated .cookie-notice .cn-body .cn-ok .cm-link.cm-learn-more {
     background: transparent;
   }
   .klaro.we_cookie_consent.notice--top .cookie-notice .cm-btn.cm-btn-success {
     -webkit-box-ordinal-group: 3;
-    -ms-flex-order: 2;
-    order: 2;
+        -ms-flex-order: 2;
+            order: 2;
   }
 }
 
@@ -423,8 +423,8 @@
   font-weight: 500;
   background: transparent;
   -webkit-box-ordinal-group: 4;
-  -ms-flex-order: 3;
-  order: 3;
+      -ms-flex-order: 3;
+          order: 3;
   padding: 0.5em 0;
   text-align: center;
   width: 100%;
@@ -432,7 +432,7 @@
 }
 @media screen and (min-width: 768px) {
   #klaro .klaro.we_cookie_consent .cookie-notice:not(.cookie-modal-notice) .cm-link,
-  #klaro .klaro.we_cookie_consent .cookie-notice:not(.cookie-modal-notice) .cm-learn-more {
+#klaro .klaro.we_cookie_consent .cookie-notice:not(.cookie-modal-notice) .cm-learn-more {
     padding: 1em 0;
   }
 }
@@ -442,8 +442,8 @@
   }
   #klaro .klaro.we_cookie_consent .cookie-notice:not(.cookie-modal-notice) .cn-body .cn-ok > * {
     -webkit-box-flex: 0;
-    -ms-flex: 0 0 auto;
-    flex: 0 0 auto;
+        -ms-flex: 0 0 auto;
+            flex: 0 0 auto;
     min-width: auto;
     max-width: 33.333333%;
   }
@@ -466,8 +466,8 @@
     margin: 0.5em 0 0.5em 10px;
     text-align: center;
     -webkit-box-ordinal-group: 3;
-    -ms-flex-order: 2;
-    order: 2;
+        -ms-flex-order: 2;
+            order: 2;
     max-width: calc(33.33333% - 20px);
     position: absolute;
     right: 0;
@@ -481,7 +481,7 @@
     text-align: center;
   }
   #klaro .klaro.we_cookie_consent .cookie-notice:not(.cookie-modal-notice) .cm-link,
-  #klaro .klaro.we_cookie_consent .cookie-notice:not(.cookie-modal-notice) .cm-learn-more {
+#klaro .klaro.we_cookie_consent .cookie-notice:not(.cookie-modal-notice) .cm-learn-more {
     padding: 1em 0;
     position: absolute;
     margin: 0.5em 33.333333%;
@@ -498,8 +498,8 @@
 @media screen and (min-width: 576px) {
   #klaro .klaro.we_cookie_consent.notice--center-floated .cookie-notice:not(.cookie-modal-notice) .cn-body .cn-ok .cn-buttons {
     -webkit-box-pack: justify;
-    -ms-flex-pack: justify;
-    justify-content: space-between;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
   }
   #klaro .klaro.we_cookie_consent.notice--center-floated .cookie-notice:not(.cookie-modal-notice) .cn-body .cn-ok .cm-btn {
     height: 50px;
@@ -515,8 +515,8 @@
   }
   #klaro .klaro.we_cookie_consent.notice--center-floated .cookie-notice:not(.cookie-modal-notice) .cn-body .cn-ok .cm-btn-success {
     -webkit-box-ordinal-group: 2;
-    -ms-flex-order: 1;
-    order: 1;
+        -ms-flex-order: 1;
+            order: 1;
   }
 }
 @media screen and (min-width: 768px) {
@@ -542,7 +542,7 @@
     max-width: 100%;
   }
   #klaro .klaro.we_cookie_consent.notice--center .cookie-notice .cn-body .cn-ok .cm-btn.cm-btn-info,
-  #klaro .klaro.we_cookie_consent.notice--center .cookie-notice .cn-body .cn-ok .cm-link.cm-learn-more {
+#klaro .klaro.we_cookie_consent.notice--center .cookie-notice .cn-body .cn-ok .cm-link.cm-learn-more {
     background: transparent;
     border: none;
   }
@@ -567,12 +567,12 @@
   #klaro .klaro.we_cookie_consent.notice--center-floated .cookie-notice:not(.cookie-modal-notice) .cn-body .cn-ok .cm-btn.cm-btn-success {
     max-width: calc(50% - 10px);
     -webkit-box-ordinal-group: 2;
-    -ms-flex-order: 1;
-    order: 1;
+        -ms-flex-order: 1;
+            order: 1;
     position: relative;
   }
   #klaro .klaro.we_cookie_consent.notice--center-floated .cookie-notice:not(.cookie-modal-notice) .cn-body .cn-ok .cm-btn.cm-btn-info,
-  #klaro .klaro.we_cookie_consent.notice--center-floated .cookie-notice:not(.cookie-modal-notice) .cn-body .cn-ok .cm-link {
+#klaro .klaro.we_cookie_consent.notice--center-floated .cookie-notice:not(.cookie-modal-notice) .cn-body .cn-ok .cm-link {
     background: transparent;
     position: relative;
     margin: 70px 0 0;
@@ -585,7 +585,7 @@
 /* Ver 3.1.1 -gf20231121 */
 @media screen and (min-width: 1520px) {
   #klaro .klaro.we_cookie_consent .cm-link::before,
-  #klaro .klaro.we_cookie_consent .cm-btn::before {
+#klaro .klaro.we_cookie_consent .cm-btn::before {
     margin-top: 0.25em;
   }
   #klaro .klaro.we_cookie_consent.notice--center .cookie-notice:not(.cookie-modal-notice) .cn-body .cn-ok .cm-link {
@@ -606,7 +606,7 @@
 }
 .klaro.we_cookie_consent .cookie-modal {
   -webkit-box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.2);
-  box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.2);
+          box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.2);
   z-index: 9999;
 }
 .klaro.we_cookie_consent .cookie-modal a:hover {
@@ -614,7 +614,7 @@
 }
 .klaro.we_cookie_consent .cookie-modal .slider {
   -webkit-box-shadow: none;
-  box-shadow: none;
+          box-shadow: none;
 }
 .klaro.we_cookie_consent .cookie-modal .cm-bg {
   background: rgba(0, 0, 0, 0.7);
@@ -681,12 +681,12 @@
 .klaro.we_cookie_consent .cookie-modal .cm-purpose > .cm-list-input.only-required + .cm-list-label .slider::before {
   background-color: #63ADD1;
   -webkit-transform: translateX(100%);
-  transform: translateX(100%);
+          transform: translateX(100%);
 }
 .klaro.we_cookie_consent .cookie-modal .cm-purpose > .cm-list-input:checked + .cm-list-label .slider::before {
   background-color: #008000;
   -webkit-transform: translateX(calc(100% + 20px));
-  transform: translateX(calc(100% + 20px));
+          transform: translateX(calc(100% + 20px));
 }
 .klaro.we_cookie_consent .cookie-modal .cm-purpose > .cm-list-input + .cm-list-label .disabled .slider::before,
 .klaro.we_cookie_consent .cookie-modal .cm-purpose > .cm-list-input:checked + .cm-list-label .disabled .slider::before,
@@ -728,7 +728,7 @@
 }
 .klaro.we_cookie_consent .cookie-modal .cm-purpose .cm-switch::before {
   -webkit-animation: flipYesNo 0.3s ease 0s normal forwards;
-  animation: flipYesNo 0.3s ease 0s normal forwards;
+          animation: flipYesNo 0.3s ease 0s normal forwards;
 }
 .klaro.we_cookie_consent .cookie-modal .cm-service > div > .cm-list-label .slider,
 .klaro.we_cookie_consent .cookie-modal .cm-service > div > .cm-list-input:checked + .cm-list-label .slider,
@@ -756,16 +756,16 @@
 .klaro.we_cookie_consent .cookie-modal .cm-service > div > .cm-list-input.only-required:checked + .cm-list-label .slider::before {
   background-color: #63ADD1;
   -webkit-transform: translateX(100%);
-  transform: translateX(100%);
+          transform: translateX(100%);
 }
 .klaro.we_cookie_consent .cookie-modal .cm-service > div > .cm-list-input.only-required + .cm-list-label .slider::before {
   -webkit-transform: translateX(50%);
-  transform: translateX(50%);
+          transform: translateX(50%);
 }
 .klaro.we_cookie_consent .cookie-modal .cm-service > div > .cm-list-input:checked + .cm-list-label .slider::before {
   background-color: #008000;
   -webkit-transform: translateX(100%);
-  transform: translateX(100%);
+          transform: translateX(100%);
 }
 .klaro.we_cookie_consent .cookie-modal .cm-service > div > .cm-list-input + .cm-list-label .disabled .slider::before,
 .klaro.we_cookie_consent .cookie-modal .cm-service > div > .cm-list-input:checked + .cm-list-label .disabled .slider::before,
@@ -812,7 +812,7 @@
   position: absolute;
   top: auto;
   -webkit-transform: inherit;
-  transform: inherit;
+          transform: inherit;
   -webkit-transition: unset;
   transition: unset;
   width: 100%;
@@ -865,16 +865,16 @@
 }
 .klaro.we_cookie_consent .cookie-modal .cm-modal.cm-klaro .cm-footer > * {
   -ms-flex-line-pack: end;
-  align-content: flex-end;
+      align-content: flex-end;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
+      flex-wrap: wrap;
   height: calc(100% - 2em);
   -webkit-box-pack: end;
-  -ms-flex-pack: end;
-  justify-content: end;
+      -ms-flex-pack: end;
+          justify-content: end;
   margin: 0;
   width: 100%;
   max-width: 100%;
@@ -895,7 +895,7 @@
   border-radius: 4px;
   border: 2px solid #00AFCB;
   -webkit-box-shadow: none;
-  box-shadow: none;
+          box-shadow: none;
   color: #161f57;
   margin: 0.5em auto;
   opacity: 1;
@@ -908,16 +908,16 @@
 }
 .klaro.we_cookie_consent .cookie-modal .cm-btn-danger {
   -webkit-box-ordinal-group: 3;
-  -ms-flex-order: 2;
-  order: 2;
+      -ms-flex-order: 2;
+          order: 2;
 }
 .klaro.we_cookie_consent .cookie-modal .cm-btn.cm-btn-info.cm-btn-accept {
   background: #FFF;
   color: #161f57;
   display: block;
   -webkit-box-ordinal-group: 2;
-  -ms-flex-order: 1;
-  order: 1;
+      -ms-flex-order: 1;
+          order: 1;
   text-decoration: none;
   width: 100%;
 }
@@ -927,8 +927,8 @@
 .klaro.we_cookie_consent .cookie-modal .cm-btn.cm-btn-accept-all {
   background: #EFEFEF;
   -webkit-box-ordinal-group: 4;
-  -ms-flex-order: 3;
-  order: 3;
+      -ms-flex-order: 3;
+          order: 3;
 }
 .klaro.we_cookie_consent .cookie-modal .cm-btn.cm-btn-sm {
   padding: 0.5em 1.5em;
@@ -947,7 +947,7 @@
   }
   .klaro.we_cookie_consent .cookie-modal .cm-modal.cm-klaro .cm-footer > * {
     -ms-flex-wrap: unset;
-    flex-wrap: unset;
+        flex-wrap: unset;
     height: auto;
     margin: 0.5em -10px;
     max-width: calc(100% + 20px);
@@ -982,8 +982,8 @@
   }
   .klaro.we_cookie_consent .cookie-modal .cm-modal .cm-footer > * {
     -webkit-box-pack: end;
-    -ms-flex-pack: end;
-    justify-content: end;
+        -ms-flex-pack: end;
+            justify-content: end;
   }
   .klaro.we_cookie_consent .cookie-modal .cm-modal .cm-header {
     padding: 20px 30px;
@@ -1012,8 +1012,8 @@
   }
   .klaro.we_cookie_consent .cookie-modal .cm-modal.cm-klaro .cm-footer > * {
     -webkit-box-pack: left;
-    -ms-flex-pack: left;
-    justify-content: left;
+        -ms-flex-pack: left;
+            justify-content: left;
     margin: 0.5em 0;
     max-width: 75%;
     position: absolute;
@@ -1041,8 +1041,8 @@
 @media screen and (min-width: 768px) {
   .klaro.we_cookie_consent.notice--center .cookie-modal, .klaro.we_cookie_consent.notice--center-floated .cookie-modal {
     -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
+        -ms-flex-align: center;
+            align-items: center;
     background: unset;
     bottom: unset;
     display: -webkit-box;
@@ -1050,11 +1050,11 @@
     display: flex;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
-    -ms-flex-direction: column;
-    flex-direction: column;
+        -ms-flex-direction: column;
+            flex-direction: column;
     -webkit-box-pack: center;
-    -ms-flex-pack: center;
-    justify-content: center;
+        -ms-flex-pack: center;
+            justify-content: center;
     max-height: unset;
     max-width: unset;
     padding: unset;
@@ -1063,11 +1063,11 @@
     top: 0;
   }
   .klaro.we_cookie_consent.notice--center .cookie-modal .cm-modal,
-  .klaro.we_cookie_consent.notice--center .cookie-modal .cm-modal.cm-klaro, .klaro.we_cookie_consent.notice--center-floated .cookie-modal .cm-modal,
-  .klaro.we_cookie_consent.notice--center-floated .cookie-modal .cm-modal.cm-klaro {
+.klaro.we_cookie_consent.notice--center .cookie-modal .cm-modal.cm-klaro, .klaro.we_cookie_consent.notice--center-floated .cookie-modal .cm-modal,
+.klaro.we_cookie_consent.notice--center-floated .cookie-modal .cm-modal.cm-klaro {
     bottom: auto;
     -webkit-box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.2);
-    box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.2);
+            box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.2);
     height: auto;
     max-height: 100vh;
     max-width: 768px;
@@ -1078,8 +1078,8 @@
     width: 100%;
   }
   .klaro.we_cookie_consent.notice--center .cookie-modal .cm-modal .cm-footer,
-  .klaro.we_cookie_consent.notice--center .cookie-modal .cm-modal.cm-klaro .cm-footer, .klaro.we_cookie_consent.notice--center-floated .cookie-modal .cm-modal .cm-footer,
-  .klaro.we_cookie_consent.notice--center-floated .cookie-modal .cm-modal.cm-klaro .cm-footer {
+.klaro.we_cookie_consent.notice--center .cookie-modal .cm-modal.cm-klaro .cm-footer, .klaro.we_cookie_consent.notice--center-floated .cookie-modal .cm-modal .cm-footer,
+.klaro.we_cookie_consent.notice--center-floated .cookie-modal .cm-modal.cm-klaro .cm-footer {
     margin: 0 -20px -20px -20px;
     position: relative;
     width: calc(100% + 40px);
@@ -1087,14 +1087,14 @@
 }
 @media screen and (min-width: 1024px) {
   .klaro.we_cookie_consent.notice--center .cookie-modal .cm-modal,
-  .klaro.we_cookie_consent.notice--center .cookie-modal .cm-modal.cm-klaro, .klaro.we_cookie_consent.notice--center-floated .cookie-modal .cm-modal,
-  .klaro.we_cookie_consent.notice--center-floated .cookie-modal .cm-modal.cm-klaro {
+.klaro.we_cookie_consent.notice--center .cookie-modal .cm-modal.cm-klaro, .klaro.we_cookie_consent.notice--center-floated .cookie-modal .cm-modal,
+.klaro.we_cookie_consent.notice--center-floated .cookie-modal .cm-modal.cm-klaro {
     bottom: auto;
     max-height: calc(100vh - 150px);
   }
   .klaro.we_cookie_consent.notice--center .cookie-modal .cm-modal .cm-footer,
-  .klaro.we_cookie_consent.notice--center .cookie-modal .cm-modal.cm-klaro .cm-footer, .klaro.we_cookie_consent.notice--center-floated .cookie-modal .cm-modal .cm-footer,
-  .klaro.we_cookie_consent.notice--center-floated .cookie-modal .cm-modal.cm-klaro .cm-footer {
+.klaro.we_cookie_consent.notice--center .cookie-modal .cm-modal.cm-klaro .cm-footer, .klaro.we_cookie_consent.notice--center-floated .cookie-modal .cm-modal .cm-footer,
+.klaro.we_cookie_consent.notice--center-floated .cookie-modal .cm-modal.cm-klaro .cm-footer {
     height: 150px;
     margin: 0 -20px -20px;
     max-width: calc(100% + 40px);
@@ -1102,8 +1102,8 @@
     width: calc(100% + 40px);
   }
   .klaro.we_cookie_consent.notice--center .cookie-modal .cm-modal .cm-footer > *,
-  .klaro.we_cookie_consent.notice--center .cookie-modal .cm-modal.cm-klaro .cm-footer > *, .klaro.we_cookie_consent.notice--center-floated .cookie-modal .cm-modal .cm-footer > *,
-  .klaro.we_cookie_consent.notice--center-floated .cookie-modal .cm-modal.cm-klaro .cm-footer > * {
+.klaro.we_cookie_consent.notice--center .cookie-modal .cm-modal.cm-klaro .cm-footer > *, .klaro.we_cookie_consent.notice--center-floated .cookie-modal .cm-modal .cm-footer > *,
+.klaro.we_cookie_consent.notice--center-floated .cookie-modal .cm-modal.cm-klaro .cm-footer > * {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -1113,14 +1113,14 @@
     width: auto;
   }
   .klaro.we_cookie_consent.notice--center .cookie-modal .cm-modal .cm-footer .cm-btn,
-  .klaro.we_cookie_consent.notice--center .cookie-modal .cm-modal.cm-klaro .cm-footer .cm-btn, .klaro.we_cookie_consent.notice--center-floated .cookie-modal .cm-modal .cm-footer .cm-btn,
-  .klaro.we_cookie_consent.notice--center-floated .cookie-modal .cm-modal.cm-klaro .cm-footer .cm-btn {
+.klaro.we_cookie_consent.notice--center .cookie-modal .cm-modal.cm-klaro .cm-footer .cm-btn, .klaro.we_cookie_consent.notice--center-floated .cookie-modal .cm-modal .cm-footer .cm-btn,
+.klaro.we_cookie_consent.notice--center-floated .cookie-modal .cm-modal.cm-klaro .cm-footer .cm-btn {
     width: 100%;
     min-width: auto;
   }
   .klaro.we_cookie_consent.notice--center .cookie-modal .cm-modal .cm-footer .cm-btn:first-child:last-child,
-  .klaro.we_cookie_consent.notice--center .cookie-modal .cm-modal.cm-klaro .cm-footer .cm-btn:first-child:last-child, .klaro.we_cookie_consent.notice--center-floated .cookie-modal .cm-modal .cm-footer .cm-btn:first-child:last-child,
-  .klaro.we_cookie_consent.notice--center-floated .cookie-modal .cm-modal.cm-klaro .cm-footer .cm-btn:first-child:last-child {
+.klaro.we_cookie_consent.notice--center .cookie-modal .cm-modal.cm-klaro .cm-footer .cm-btn:first-child:last-child, .klaro.we_cookie_consent.notice--center-floated .cookie-modal .cm-modal .cm-footer .cm-btn:first-child:last-child,
+.klaro.we_cookie_consent.notice--center-floated .cookie-modal .cm-modal.cm-klaro .cm-footer .cm-btn:first-child:last-child {
     width: calc(100% - 20px);
     position: relative;
   }
@@ -1239,7 +1239,7 @@
   display: -ms-flexbox;
   display: flex;
   -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
+      flex-wrap: wrap;
   margin-top: 2em;
   width: 100%;
 }
@@ -1248,7 +1248,7 @@
   display: block;
   -webkit-box-flex: 0;
   -ms-flex: 0 0 50%;
-  flex: 0 0 50%;
+      flex: 0 0 50%;
   max-width: calc(50% - 20px);
   margin: 0 auto;
   padding: 1em 1.5em;
@@ -1319,23 +1319,23 @@
 }
 @media (max-width: 575px) {
   .frame.frame-type-media .video .klaro.we_cookie_consent.cm-as-context-notice .context-notice, .frame.frame-type-textmedia .video .klaro.we_cookie_consent.cm-as-context-notice .context-notice,
-  .frame .textmedia-gallery .video .klaro.we_cookie_consent.cm-as-context-notice .context-notice {
+.frame .textmedia-gallery .video .klaro.we_cookie_consent.cm-as-context-notice .context-notice {
     -webkit-box-orient: unset;
     -webkit-box-direction: unset;
-    -ms-flex-direction: unset;
-    flex-direction: unset;
+        -ms-flex-direction: unset;
+            flex-direction: unset;
   }
   .frame.frame-type-media .video .klaro.we_cookie_consent.cm-as-context-notice .context-notice .cm-buttons, .frame.frame-type-textmedia .video .klaro.we_cookie_consent.cm-as-context-notice .context-notice .cm-buttons,
-  .frame .textmedia-gallery .video .klaro.we_cookie_consent.cm-as-context-notice .context-notice .cm-buttons {
+.frame .textmedia-gallery .video .klaro.we_cookie_consent.cm-as-context-notice .context-notice .cm-buttons {
     margin-top: 1vw;
     padding: 0.5em;
     width: 100%;
   }
   .frame.frame-type-media .video .klaro.we_cookie_consent.cm-as-context-notice .context-notice .cm-buttons .cm-btn, .frame.frame-type-textmedia .video .klaro.we_cookie_consent.cm-as-context-notice .context-notice .cm-buttons .cm-btn,
-  .frame .textmedia-gallery .video .klaro.we_cookie_consent.cm-as-context-notice .context-notice .cm-buttons .cm-btn {
+.frame .textmedia-gallery .video .klaro.we_cookie_consent.cm-as-context-notice .context-notice .cm-buttons .cm-btn {
     -webkit-box-flex: 0;
-    -ms-flex: 0 0 100%;
-    flex: 0 0 100%;
+        -ms-flex: 0 0 100%;
+            flex: 0 0 100%;
     margin: 5px auto;
     max-width: 100%;
   }
@@ -1384,7 +1384,7 @@
 .tx-we-cookie-consent .btn-primary:not(:disabled):not(.disabled).active:focus,
 .tx-we-cookie-consent .show > .btn-primary.dropdown-toggle:focus {
   -webkit-box-shadow: none;
-  box-shadow: none;
+          box-shadow: none;
 }
 .tx-we-cookie-consent .btn-primary:hover,
 .tx-we-cookie-consent .btn-primary:not(:disabled):not(.disabled):active,
@@ -1414,8 +1414,8 @@
 
 .consent-cookie {
   -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
   bottom: 10px;
   cursor: pointer;
   font-size: 0.875rem;
@@ -1423,10 +1423,14 @@
   position: fixed;
   z-index: 1000;
 }
+.consent-cookie .consent-trigger {
+  background-color: transparent;
+  border: none;
+}
 
 .consent-cookie-text {
   background-color: #fff;
   -webkit-box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2666666667);
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2666666667);
+          box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2666666667);
   padding: 5px 10px;
 }

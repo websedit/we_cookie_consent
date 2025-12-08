@@ -6,6 +6,11 @@
   left:10px;
   position:fixed;
   z-index:1000;
+  .consent-trigger {
+    background-color: transparent;
+    border: none;
+  }
+
 }
 .consent-cookie-text {
   background-color:#fff;
