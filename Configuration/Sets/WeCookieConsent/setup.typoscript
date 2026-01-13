@@ -1,0 +1,59 @@
+########################################
+### websedit/we-cookie-consent (Set) ###
+########################################
+
+# Base TypoScript of the extension
+@import 'EXT:we_cookie_consent/Configuration/TypoScript/setup.typoscript'
+
+# --- Optional overrides via Site Settings (TYPO3 v13+) ---
+# This does not affect TYPO3 v12, because this Set is only used when Site Sets are configured.
+
+# Master toggle (if you want to keep the Set active but disable output on a specific site)
+[site("settings").get("websedit.we_cookie_consent.enabled") == 0]
+page.525304800 >
+page.includeCSS.we_cookie_consent_style >
+page.includeJSFooter.we_cookie_consent_controller >
+page.includeJSFooter.we_cookie_consent_hovercookie >
+[END]
+
+# Storage PID
+plugin.tx_wecookieconsent_pi1.persistence.storagePid.data = site:settings:websedit.we_cookie_consent.storagePid
+plugin.tx_wecookieconsent_pi1.persistence.storagePid.ifEmpty = {$plugin.tx_wecookieconsent_pi1.persistence.storagePid}
+
+# Klaro settings (defaults come from the Set's settings.yaml; override per site only when needed)
+plugin.tx_wecookieconsent_pi1.settings.klaro.cookieDomain.data = site:settings:websedit.we_cookie_consent.klaro.cookieDomain
+plugin.tx_wecookieconsent_pi1.settings.klaro.lang.data = site:settings:websedit.we_cookie_consent.klaro.lang
+plugin.tx_wecookieconsent_pi1.settings.klaro.testing.data = site:settings:websedit.we_cookie_consent.klaro.testing
+
+# Privacy Policy PID (used for mustConsent override)
+plugin.tx_wecookieconsent_pi1.settings.klaro.privacyPolicy.data = site:settings:websedit.we_cookie_consent.privacyPolicyPid
+plugin.tx_wecookieconsent_pi1.settings.klaro.privacyPolicy.ifEmpty = {$plugin.tx_wecookieconsent_pi1.settings.klaro.privacyPolicy}
+
+# Additional Klaro options
+plugin.tx_wecookieconsent_pi1.settings.klaro.poweredBy.data = site:settings:websedit.we_cookie_consent.klaro.poweredBy
+plugin.tx_wecookieconsent_pi1.settings.klaro.stylePrefix.data = site:settings:websedit.we_cookie_consent.klaro.stylePrefix
+plugin.tx_wecookieconsent_pi1.settings.klaro.additionalClass.data = site:settings:websedit.we_cookie_consent.klaro.additionalClass
+plugin.tx_wecookieconsent_pi1.settings.klaro.elementID.data = site:settings:websedit.we_cookie_consent.klaro.elementID
+
+plugin.tx_wecookieconsent_pi1.settings.klaro.mustConsent.data = site:settings:websedit.we_cookie_consent.klaro.mustConsent
+plugin.tx_wecookieconsent_pi1.settings.klaro.groupByPurpose.data = site:settings:websedit.we_cookie_consent.klaro.groupByPurpose
+plugin.tx_wecookieconsent_pi1.settings.klaro.acceptAll.data = site:settings:websedit.we_cookie_consent.klaro.acceptAll
+plugin.tx_wecookieconsent_pi1.settings.klaro.hideDeclineAll.data = site:settings:websedit.we_cookie_consent.klaro.hideDeclineAll
+plugin.tx_wecookieconsent_pi1.settings.klaro.hideLearnMore.data = site:settings:websedit.we_cookie_consent.klaro.hideLearnMore
+plugin.tx_wecookieconsent_pi1.settings.klaro.default.data = site:settings:websedit.we_cookie_consent.klaro.default
+
+plugin.tx_wecookieconsent_pi1.settings.klaro.cookieExpiresAfterDays.data = site:settings:websedit.we_cookie_consent.klaro.cookieExpiresAfterDays
+plugin.tx_wecookieconsent_pi1.settings.klaro.storageMethod.data = site:settings:websedit.we_cookie_consent.klaro.storageMethod
+plugin.tx_wecookieconsent_pi1.settings.klaro.storageName.data = site:settings:websedit.we_cookie_consent.klaro.storageName
+
+plugin.tx_wecookieconsent_pi1.settings.klaro.consentMode.data = site:settings:websedit.we_cookie_consent.klaro.consentMode
+plugin.tx_wecookieconsent_pi1.settings.klaro.consentModev2.data = site:settings:websedit.we_cookie_consent.klaro.consentModev2
+
+plugin.tx_wecookieconsent_pi1.settings.klaro.cookieSettingsImgPathDefault.data = site:settings:websedit.we_cookie_consent.klaro.cookieSettingsImgPathDefault
+plugin.tx_wecookieconsent_pi1.settings.klaro.cookieSettingsImgPathHover.data = site:settings:websedit.we_cookie_consent.klaro.cookieSettingsImgPathHover
+plugin.tx_wecookieconsent_pi1.settings.klaro.cookieIconPermanentlyAvailable.data = site:settings:websedit.we_cookie_consent.klaro.cookieIconPermanentlyAvailable
+
+# Ensure privacy page stays readable (Site Settings based)
+[site("settings").get("websedit.we_cookie_consent.privacyPolicyPid") > 0 && traverse(page, "uid") == site("settings").get("websedit.we_cookie_consent.privacyPolicyPid")]
+plugin.tx_wecookieconsent_pi1.settings.klaro.mustConsent = 0
+[END]

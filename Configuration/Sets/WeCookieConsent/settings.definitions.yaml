@@ -1,0 +1,154 @@
+categories:
+  websedit:
+    label: 'websedit'
+  websedit.cookieconsent:
+    label: 'Cookie Consent'
+    parent: websedit
+  websedit.cookieconsent.klaro:
+    label: 'Klaro'
+    parent: websedit.cookieconsent
+
+settings:
+  websedit.we_cookie_consent.enabled:
+    label: 'Cookie Consent aktiv'
+    category: websedit.cookieconsent
+    type: bool
+    default: true
+
+  websedit.we_cookie_consent.storagePid:
+    label: 'Storage PID'
+    category: websedit.cookieconsent
+    type: int
+    default: 0
+
+  websedit.we_cookie_consent.privacyPolicyPid:
+    label: 'Privacy Policy PID'
+    category: websedit.cookieconsent
+    type: int
+    default: 0
+
+  websedit.we_cookie_consent.klaro.cookieDomain:
+    label: 'Klaro cookie domain'
+    category: websedit.cookieconsent.klaro
+    type: string
+    default: ''
+
+  websedit.we_cookie_consent.klaro.lang:
+    label: 'Klaro language'
+    category: websedit.cookieconsent.klaro
+    type: string
+    default: ''
+
+  websedit.we_cookie_consent.klaro.testing:
+    label: 'Klaro testing mode'
+    category: websedit.cookieconsent.klaro
+    type: int
+    default: 0
+
+  websedit.we_cookie_consent.klaro.poweredBy:
+    label: 'Powered-By Link (PID oder URL)'
+    category: websedit.cookieconsent.klaro
+    type: string
+    default: 'https://consent.websedit.de'
+
+  websedit.we_cookie_consent.klaro.stylePrefix:
+    label: 'Style Prefix (CSS Klassen)'
+    category: websedit.cookieconsent.klaro
+    type: string
+    default: 'klaro we_cookie_consent'
+
+  websedit.we_cookie_consent.klaro.additionalClass:
+    label: 'Additional class(es)'
+    category: websedit.cookieconsent.klaro
+    type: string
+    default: ''
+
+  websedit.we_cookie_consent.klaro.elementID:
+    label: 'DOM Element ID'
+    category: websedit.cookieconsent.klaro
+    type: string
+    default: 'klaro'
+
+  websedit.we_cookie_consent.klaro.mustConsent:
+    label: 'Must consent (Modal erzwingen)'
+    category: websedit.cookieconsent.klaro
+    type: bool
+    default: false
+
+  websedit.we_cookie_consent.klaro.groupByPurpose:
+    label: 'Services nach Zweck gruppieren'
+    category: websedit.cookieconsent.klaro
+    type: bool
+    default: false
+
+  websedit.we_cookie_consent.klaro.acceptAll:
+    label: 'Accept all aktiv'
+    category: websedit.cookieconsent.klaro
+    type: bool
+    default: true
+
+  websedit.we_cookie_consent.klaro.hideDeclineAll:
+    label: 'Decline-All Button verstecken'
+    category: websedit.cookieconsent.klaro
+    type: bool
+    default: false
+
+  websedit.we_cookie_consent.klaro.hideLearnMore:
+    label: 'Learn-More/Customize Button verstecken'
+    category: websedit.cookieconsent.klaro
+    type: bool
+    default: false
+
+  websedit.we_cookie_consent.klaro.default:
+    label: 'Default state für Services'
+    category: websedit.cookieconsent.klaro
+    type: bool
+    default: false
+
+  websedit.we_cookie_consent.klaro.cookieExpiresAfterDays:
+    label: 'Cookie Ablauf (Tage)'
+    category: websedit.cookieconsent.klaro
+    type: int
+    default: 365
+
+  websedit.we_cookie_consent.klaro.storageMethod:
+    label: 'Storage Method (cookie|localStorage)'
+    category: websedit.cookieconsent.klaro
+    type: string
+    default: 'cookie'
+
+  websedit.we_cookie_consent.klaro.storageName:
+    label: 'Storage Name'
+    category: websedit.cookieconsent.klaro
+    type: string
+    default: 'klaro'
+
+  websedit.we_cookie_consent.klaro.consentMode:
+    label: 'Google Consent Mode (Basic)'
+    category: websedit.cookieconsent.klaro
+    type: bool
+    default: false
+
+  websedit.we_cookie_consent.klaro.consentModev2:
+    label: 'Google Consent Mode (Advanced / v2)'
+    category: websedit.cookieconsent.klaro
+    type: bool
+    default: false
+
+  websedit.we_cookie_consent.klaro.cookieSettingsImgPathDefault:
+    label: 'Cookie Icon (Default)'
+    category: websedit.cookieconsent.klaro
+    type: string
+    default: 'EXT:we_cookie_consent/Resources/Public/Icons/icon_cookie_settings.svg'
+
+  websedit.we_cookie_consent.klaro.cookieSettingsImgPathHover:
+    label: 'Cookie Icon (Hover)'
+    category: websedit.cookieconsent.klaro
+    type: string
+    default: 'EXT:we_cookie_consent/Resources/Public/Icons/icon_cookie_settings-hover.svg'
+
+  websedit.we_cookie_consent.klaro.cookieIconPermanentlyAvailable:
+    label: 'Cookie Icon permanent anzeigen'
+    category: websedit.cookieconsent.klaro
+    type: bool
+    default: false

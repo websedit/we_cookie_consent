@@ -1,0 +1,31 @@
+# Default values when the Set is active
+websedit.we_cookie_consent.enabled: true
+websedit.we_cookie_consent.storagePid: 0
+websedit.we_cookie_consent.privacyPolicyPid: 0
+websedit.we_cookie_consent.klaro.cookieDomain: ''
+websedit.we_cookie_consent.klaro.lang: ''
+websedit.we_cookie_consent.klaro.testing: 0
+
+# Additional Klaro options (defaults mirror EXT:we_cookie_consent constants)
+websedit.we_cookie_consent.klaro.poweredBy: 'https://consent.websedit.de'
+websedit.we_cookie_consent.klaro.stylePrefix: 'klaro we_cookie_consent'
+websedit.we_cookie_consent.klaro.additionalClass: ''
+websedit.we_cookie_consent.klaro.elementID: 'klaro'
+
+websedit.we_cookie_consent.klaro.mustConsent: 0
+websedit.we_cookie_consent.klaro.groupByPurpose: 0
+websedit.we_cookie_consent.klaro.acceptAll: 1
+websedit.we_cookie_consent.klaro.hideDeclineAll: 0
+websedit.we_cookie_consent.klaro.hideLearnMore: 0
+websedit.we_cookie_consent.klaro.default: 0
+
+websedit.we_cookie_consent.klaro.storageMethod: 'cookie'
+websedit.we_cookie_consent.klaro.storageName: 'klaro'
+websedit.we_cookie_consent.klaro.cookieExpiresAfterDays: 365
+
+websedit.we_cookie_consent.klaro.consentMode: 0
+websedit.we_cookie_consent.klaro.consentModev2: 0
+
+websedit.we_cookie_consent.klaro.cookieSettingsImgPathDefault: 'EXT:we_cookie_consent/Resources/Public/Icons/icon_cookie_settings.svg'
+websedit.we_cookie_consent.klaro.cookieSettingsImgPathHover: 'EXT:we_cookie_consent/Resources/Public/Icons/icon_cookie_settings-hover.svg'
+websedit.we_cookie_consent.klaro.cookieIconPermanentlyAvailable: 0
