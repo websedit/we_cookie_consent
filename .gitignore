@@ -1,0 +1,12 @@
+# OS specific files
+._*
+.DS_Store
+.Spotlight-V100
+.Trashes
+Thumbs.db
+.rnd
+
+# Editor spezifische Dateien
+/.idea/*
+/.vscode/*
+nbproject
