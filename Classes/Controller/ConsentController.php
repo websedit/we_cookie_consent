@@ -9,6 +9,7 @@ use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 use TYPO3\CMS\Extbase\Mvc\RequestInterface;
 use TYPO3\CMS\Extbase\Persistence\Generic\QueryResult;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
+use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
 use Websedit\WeCookieConsent\Domain\Repository\ServiceRepository;
 
 /***
@@ -42,7 +43,43 @@ class ConsentController extends ActionController
         $this->serviceRepository = $serviceRepository;
     }
 
-    /**
+    
+
+/**
+ * Normalize Extbase plugin settings.
+ *
+ * Site Sets often assign settings via TypoScript stdWrap (e.g. ".data = site:settings:...").
+ * Extbase does NOT evaluate stdWrap automatically and would deliver arrays instead of scalar values.
+ * We resolve such stdWrap arrays to their final scalar value here to keep controller logic stable.
+ */
+public function initializeAction(): void
+{
+    if (isset($this->settings['klaro']) && is_array($this->settings['klaro'])) {
+        $this->settings['klaro'] = $this->resolveStdWrapSettingsArray($this->settings['klaro']);
+    }
+}
+
+/**
+ * Resolve a flat settings array where values may be stdWrap configuration arrays.
+ *
+ * @param array<string, mixed> $settings
+ * @return array<string, mixed>
+ */
+private function resolveStdWrapSettingsArray(array $settings): array
+{
+    $cObj = GeneralUtility::makeInstance(ContentObjectRenderer::class);
+
+    foreach ($settings as $key => $value) {
+        if (is_array($value)) {
+            // Evaluate stdWrap config array to a scalar string
+            $settings[$key] = (string)$cObj->stdWrap('', $value);
+        }
+    }
+
+    return $settings;
+}
+
+/**
      * Generate JSON data for the consent Modal
      *
      * @return ResponseInterface
