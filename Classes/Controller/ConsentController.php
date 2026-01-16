@@ -56,6 +56,41 @@ public function initializeAction(): void
 {
     if (isset($this->settings['klaro']) && is_array($this->settings['klaro'])) {
         $this->settings['klaro'] = $this->resolveStdWrapSettingsArray($this->settings['klaro']);
+
+// Ensure critical Klaro values are safe scalars for template / JS output
+if (isset($this->settings['klaro']) && is_array($this->settings['klaro'])) {
+    $klaro =& $this->settings['klaro'];
+
+    // cookieExpiresAfterDays is used unquoted in JS templates -> must never be empty
+    $cookieExpires = (string)($klaro['cookieExpiresAfterDays'] ?? '');
+    if (trim($cookieExpires) === '') {
+        $klaro['cookieExpiresAfterDays'] = '365';
+    } else {
+        $klaro['cookieExpiresAfterDays'] = $cookieExpires;
+    }
+
+    // Provide sane defaults if empty (site settings may override to empty string)
+    $storageMethod = (string)($klaro['storageMethod'] ?? '');
+    if (trim($storageMethod) === '') {
+        $klaro['storageMethod'] = 'cookie';
+    } else {
+        $klaro['storageMethod'] = $storageMethod;
+    }
+
+    $storageName = (string)($klaro['storageName'] ?? '');
+    if (trim($storageName) === '') {
+        $klaro['storageName'] = 'klaro';
+    } else {
+        $klaro['storageName'] = $storageName;
+    }
+
+    $cookieIconPermanent = (string)($klaro['cookieIconPermanentlyAvailable'] ?? '');
+    if (trim($cookieIconPermanent) === '') {
+        $klaro['cookieIconPermanentlyAvailable'] = '0';
+    } else {
+        $klaro['cookieIconPermanentlyAvailable'] = $cookieIconPermanent;
+    }
+}
     }
 }
 

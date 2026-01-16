@@ -8,10 +8,10 @@
 			<f:spaceless>
 				const storageName = '{settings.klaro.storageName}';
 				const translatedButtonTextCookieSettings = '{klaroConfig.translations.en.openConsent}';
-				const cookieSettingsImgPathDefault = '<f:uri.image src="{settings.klaro.cookieSettingsImgPathDefault}"/>';
-				const cookieSettingsImgPathHover = '<f:uri.image src="{settings.klaro.cookieSettingsImgPathHover}"/>';
+				const cookieSettingsImgPathDefault = '<f:if condition="{settings.klaro.cookieSettingsImgPathDefault}"><f:then><f:uri.image src="{settings.klaro.cookieSettingsImgPathDefault}"/></f:then><f:else></f:else></f:if>';
+				const cookieSettingsImgPathHover = '<f:if condition="{settings.klaro.cookieSettingsImgPathHover}"><f:then><f:uri.image src="{settings.klaro.cookieSettingsImgPathHover}"/></f:then><f:else></f:else></f:if>';
 				const cookieIconPermanentlyAvailable = '{settings.klaro.cookieIconPermanentlyAvailable}';
-				const cookieExpiresAfterDays = {settings.klaro.cookieExpiresAfterDays};
+				const cookieExpiresAfterDays = parseInt('{settings.klaro.cookieExpiresAfterDays}', 10) || 365;
 				let allServiceSettings = [];
 				let consenTypeObj = {};
 				let serviceSetting = {};
