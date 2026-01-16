@@ -9,6 +9,7 @@ use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 use TYPO3\CMS\Extbase\Mvc\RequestInterface;
 use TYPO3\CMS\Extbase\Persistence\Generic\QueryResult;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
+use TYPO3\CMS\Extbase\Mvc\View\ViewInterface;
 use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
 use Websedit\WeCookieConsent\Domain\Repository\ServiceRepository;
 
@@ -54,48 +55,40 @@ class ConsentController extends ActionController
  */
 public function initializeAction(): void
 {
+    // Normalize Extbase plugin settings.
+    // Site Sets often assign settings via TypoScript stdWrap (e.g. ".data = site:settings:...").
+    // Extbase does NOT evaluate stdWrap automatically and would deliver arrays instead of scalar values.
     if (isset($this->settings['klaro']) && is_array($this->settings['klaro'])) {
         $this->settings['klaro'] = $this->resolveStdWrapSettingsArray($this->settings['klaro']);
 
-// Ensure critical Klaro values are safe scalars for template / JS output
-if (isset($this->settings['klaro']) && is_array($this->settings['klaro'])) {
-    $klaro =& $this->settings['klaro'];
+        $klaro =& $this->settings['klaro'];
 
-    // cookieExpiresAfterDays is used unquoted in JS templates -> must never be empty
-    $cookieExpires = (string)($klaro['cookieExpiresAfterDays'] ?? '');
-    if (trim($cookieExpires) === '') {
-        $klaro['cookieExpiresAfterDays'] = '365';
-    } else {
-        $klaro['cookieExpiresAfterDays'] = $cookieExpires;
-    }
+        // cookieExpiresAfterDays is used in JS templates -> must never be empty
+        $cookieExpires = trim((string)($klaro['cookieExpiresAfterDays'] ?? ''));
+        $klaro['cookieExpiresAfterDays'] = $cookieExpires !== '' ? $cookieExpires : '365';
 
-    // Provide sane defaults if empty (site settings may override to empty string)
-    $storageMethod = (string)($klaro['storageMethod'] ?? '');
-    if (trim($storageMethod) === '') {
-        $klaro['storageMethod'] = 'cookie';
-    } else {
-        $klaro['storageMethod'] = $storageMethod;
-    }
+        // Provide sane defaults if empty (site settings may override to empty string)
+        $storageMethod = trim((string)($klaro['storageMethod'] ?? ''));
+        $klaro['storageMethod'] = $storageMethod !== '' ? $storageMethod : 'cookie';
 
-    $storageName = (string)($klaro['storageName'] ?? '');
-    if (trim($storageName) === '') {
-        $klaro['storageName'] = 'klaro';
-    } else {
-        $klaro['storageName'] = $storageName;
-    }
+        $storageName = trim((string)($klaro['storageName'] ?? ''));
+        $klaro['storageName'] = $storageName !== '' ? $storageName : 'klaro';
 
-    $cookieIconPermanent = (string)($klaro['cookieIconPermanentlyAvailable'] ?? '');
-    if (trim($cookieIconPermanent) === '') {
-        $klaro['cookieIconPermanentlyAvailable'] = '0';
-    } else {
-        $klaro['cookieIconPermanentlyAvailable'] = $cookieIconPermanent;
+        $cookieIconPermanent = trim((string)($klaro['cookieIconPermanentlyAvailable'] ?? ''));
+        $klaro['cookieIconPermanentlyAvailable'] = $cookieIconPermanent !== '' ? $cookieIconPermanent : '0';
     }
 }
-    }
+
+public function initializeView(ViewInterface $view): void
+{
+    parent::initializeView($view);
+
+    // Inject header/footer assets for the current request
+    $this->renderAssetsForRequest($this->request);
 }
 
 /**
- * Resolve a flat settings array where values may be stdWrap configuration arrays.
+ * Resolve a flat settings array where values may be stdWrap configuration arrays. where values may be stdWrap configuration arrays.
  *
  * @param array<string, mixed> $settings
  * @return array<string, mixed>
@@ -112,6 +105,67 @@ private function resolveStdWrapSettingsArray(array $settings): array
     }
 
     return $settings;
+}
+
+/**
+ * Convert mixed values from TypoScript / Site Settings to a boolean.
+ *
+ * Accepts: true/false, 1/0, "1"/"0", "true"/"false", "yes"/"no", "on"/"off".
+ */
+private function toBool(mixed $value): bool
+{
+    if (is_bool($value)) {
+        return $value;
+    }
+    if (is_int($value) || is_float($value)) {
+        return (int)$value === 1;
+    }
+
+    $str = strtolower(trim((string)$value));
+    if ($str === '') {
+        return false;
+    }
+    if (in_array($str, ['1', 'true', 'yes', 'on'], true)) {
+        return true;
+    }
+    if (in_array($str, ['0', 'false', 'no', 'off'], true)) {
+        return false;
+    }
+
+    // Fallback: non-empty string treated as true
+    return true;
+}
+
+/**
+ * Convert mixed values to an integer with a default.
+ */
+private function toInt(mixed $value, int $default = 0): int
+{
+    if ($value === null) {
+        return $default;
+    }
+    if (is_int($value)) {
+        return $value;
+    }
+    if (is_float($value)) {
+        return (int)$value;
+    }
+    $str = trim((string)$value);
+    if ($str === '' || !is_numeric($str)) {
+        return $default;
+    }
+    return (int)$str;
+}
+
+/**
+ * Convert mixed values to a string.
+ */
+private function toString(mixed $value): string
+{
+    if (is_array($value)) {
+        return '';
+    }
+    return (string)$value;
 }
 
 /**
@@ -195,47 +249,49 @@ private function resolveStdWrapSettingsArray(array $settings): array
      */
     private function klaroConfigBuild(QueryResult $services)
     {
-        if (is_numeric($this->settings['klaro']['privacyPolicy'])) {
+        $privacyPolicySetting = $this->toString($this->settings['klaro']['privacyPolicy'] ?? '');
+        if (is_numeric($privacyPolicySetting)) {
             $privacyPage = $this->uriBuilder
                 ->reset()
-                ->setTargetPageUid((int)$this->settings['klaro']['privacyPolicy'])
+                ->setTargetPageUid((int)$privacyPolicySetting)
                 ->setCreateAbsoluteUri(true)
                 ->build();
         } else {
-            $privacyPage = $this->settings['klaro']['privacyPolicy'];
+            $privacyPage = $privacyPolicySetting;
         }
 
-        if (is_numeric($this->settings['klaro']['poweredBy'])) {
+        $poweredBySetting = $this->toString($this->settings['klaro']['poweredBy'] ?? '');
+        if (is_numeric($poweredBySetting)) {
             $poweredByPage = $this->uriBuilder
                 ->reset()
-                ->setTargetPageUid((int)$this->settings['klaro']['poweredBy'])
+                ->setTargetPageUid((int)$poweredBySetting)
                 ->setCreateAbsoluteUri(true)
                 ->build();
         } else {
-            $poweredByPage = $this->settings['klaro']['poweredBy'];
+            $poweredByPage = $poweredBySetting;
         }
 
         $klaroConfig = [
-            'acceptAll' => $this->settings['klaro']['acceptAll'] === '1',
-            'additionalClass' => $this->settings['klaro']['additionalClass'],
-            'cookieDomain' => trim($this->settings['klaro']['cookieDomain']),
-            'cookieExpiresAfterDays' => $this->settings['klaro']['cookieExpiresAfterDays'],
-            'default' => $this->settings['klaro']['default'] === '1',
-            'elementID' => $this->settings['klaro']['elementID'],
-            'groupByPurpose' => $this->settings['klaro']['groupByPurpose'] === '1',
-            'hideDeclineAll' => $this->settings['klaro']['hideDeclineAll'] === '1',
-            'hideLearnMore' => $this->settings['klaro']['hideLearnMore'] === '1',
+            'acceptAll' => $this->toBool($this->settings['klaro']['acceptAll'] ?? false),
+            'additionalClass' => $this->toString($this->settings['klaro']['additionalClass'] ?? ''),
+            'cookieDomain' => trim($this->toString($this->settings['klaro']['cookieDomain'] ?? '')),
+            'cookieExpiresAfterDays' => $this->toInt($this->settings['klaro']['cookieExpiresAfterDays'] ?? null, 365),
+            'default' => $this->toBool($this->settings['klaro']['default'] ?? false),
+            'elementID' => $this->toString($this->settings['klaro']['elementID'] ?? ''),
+            'groupByPurpose' => $this->toBool($this->settings['klaro']['groupByPurpose'] ?? false),
+            'hideDeclineAll' => $this->toBool($this->settings['klaro']['hideDeclineAll'] ?? false),
+            'hideLearnMore' => $this->toBool($this->settings['klaro']['hideLearnMore'] ?? false),
             'htmlTexts' => true,
             'lang' => 'en', //Don't change this, else locallang translation didn't work
-            'mustConsent' => $this->settings['klaro']['mustConsent'] === '1',
+            'mustConsent' => $this->toBool($this->settings['klaro']['mustConsent'] ?? false),
             'poweredBy' => $poweredByPage,
             'privacyPolicy' => $privacyPage,
-            'storageMethod' => $this->settings['klaro']['storageMethod'],
-            'storageName' => $this->settings['klaro']['storageName'],
-            'stylePrefix' => $this->settings['klaro']['stylePrefix'],
-            'testing' => $this->settings['klaro']['testing'] === '1',
-            'consentMode' => $this->settings['klaro']['consentMode'] === '1',
-            'consentModev2' => $this->settings['klaro']['consentModev2'] === '1',
+            'storageMethod' => $this->toString($this->settings['klaro']['storageMethod'] ?? 'cookie') ?: 'cookie',
+            'storageName' => $this->toString($this->settings['klaro']['storageName'] ?? 'klaro') ?: 'klaro',
+            'stylePrefix' => $this->toString($this->settings['klaro']['stylePrefix'] ?? ''),
+            'testing' => $this->toBool($this->settings['klaro']['testing'] ?? false),
+            'consentMode' => $this->toBool($this->settings['klaro']['consentMode'] ?? false),
+            'consentModev2' => $this->toBool($this->settings['klaro']['consentModev2'] ?? false),
             'translations' => [
                 'en' => [
                     'consentModal' => [
