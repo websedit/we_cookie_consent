@@ -294,7 +294,7 @@ private function toString(mixed $value): string
         if (!method_exists($this->view, 'renderSection')) {
             throw new \RuntimeException('The view does not support rendering sections.', 1678972450);
         }
-		wedebug('test');
+
         $services = $this->serviceRepository->findAll();
         $klaroConfig = $this->klaroConfigBuild($services);
 
