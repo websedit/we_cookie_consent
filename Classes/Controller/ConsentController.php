@@ -37,6 +37,11 @@ class ConsentController extends ActionController
     protected $serviceRepository = null;
 
     /**
+     * @var bool
+     */
+    private bool $assetsInjected = false;
+
+    /**
      * Inject a service repository
      *
      * @param ServiceRepository $serviceRepository
@@ -45,8 +50,6 @@ class ConsentController extends ActionController
     {
         $this->serviceRepository = $serviceRepository;
     }
-
-    
 
     /**
      * Normalize Extbase plugin settings and merge optional Site Settings.
@@ -80,25 +83,25 @@ class ConsentController extends ActionController
         }
     }
 
-/**
- * Resolve a flat settings array where values may be stdWrap configuration arrays. where values may be stdWrap configuration arrays.
- *
- * @param array<string, mixed> $settings
- * @return array<string, mixed>
- */
-private function resolveStdWrapSettingsArray(array $settings): array
-{
-    $cObj = GeneralUtility::makeInstance(ContentObjectRenderer::class);
+    /**
+     * Resolve a flat settings array where values may be stdWrap configuration arrays. where values may be stdWrap configuration arrays.
+     *
+     * @param array<string, mixed> $settings
+     * @return array<string, mixed>
+     */
+    private function resolveStdWrapSettingsArray(array $settings): array
+    {
+        $cObj = GeneralUtility::makeInstance(ContentObjectRenderer::class);
 
-    foreach ($settings as $key => $value) {
-        if (is_array($value)) {
-            // Evaluate stdWrap config array to a scalar string
-            $settings[$key] = (string)$cObj->stdWrap('', $value);
+        foreach ($settings as $key => $value) {
+            if (is_array($value)) {
+                // Evaluate stdWrap config array to a scalar string
+                $settings[$key] = (string)$cObj->stdWrap('', $value);
+            }
         }
-    }
 
-    return $settings;
-}
+        return $settings;
+    }
 
     /**
      * Apply per-site overrides from Site Settings.
@@ -111,137 +114,137 @@ private function resolveStdWrapSettingsArray(array $settings): array
 
         // Enabled toggle (if explicitly set)
         if ($this->siteSettingIsExplicitlySet($site, 'websedit.we_cookie_consent.enabled')) {
-			$this->settings['enabled'] = $siteSettings->get('websedit.we_cookie_consent.enabled');
-		}
+            $this->settings['enabled'] = $siteSettings->get('websedit.we_cookie_consent.enabled');
+        }
 
         // storagePid (nur wenn explizit gesetzt UND > 0)
-		if ($this->siteSettingIsExplicitlySet($site, 'websedit.we_cookie_consent.storagePid')) {
-			$storagePid = (int)$siteSettings->get('websedit.we_cookie_consent.storagePid');
-			if ($storagePid > 0) {
-				$this->settings['persistence']['storagePid'] = (string)$storagePid;
-				$this->settings['storagePid'] = (string)$storagePid;
-			} else {
-				// explizit 0 => NICHT auf pid 0 zwingen (würde Services killen)
-				unset($this->settings['persistence']['storagePid'], $this->settings['storagePid']);
-			}
-		}
+        if ($this->siteSettingIsExplicitlySet($site, 'websedit.we_cookie_consent.storagePid')) {
+            $storagePid = (int)$siteSettings->get('websedit.we_cookie_consent.storagePid');
+            if ($storagePid > 0) {
+                $this->settings['persistence']['storagePid'] = (string)$storagePid;
+                $this->settings['storagePid'] = (string)$storagePid;
+            } else {
+                // explizit 0 => NICHT auf pid 0 zwingen (würde Services killen)
+                unset($this->settings['persistence']['storagePid'], $this->settings['storagePid']);
+            }
+        }
 
         // privacyPolicyPid -> klaro.privacyPolicy
-		if ($this->siteSettingIsExplicitlySet($site, 'websedit.we_cookie_consent.privacyPolicyPid')) {
-			$privacyPid = (int)$siteSettings->get('websedit.we_cookie_consent.privacyPolicyPid');
-			if ($privacyPid > 0) {
-				$this->settings['klaro']['privacyPolicy'] = (string)$privacyPid;
-			}
-		}
+        if ($this->siteSettingIsExplicitlySet($site, 'websedit.we_cookie_consent.privacyPolicyPid')) {
+            $privacyPid = (int)$siteSettings->get('websedit.we_cookie_consent.privacyPolicyPid');
+            if ($privacyPid > 0) {
+                $this->settings['klaro']['privacyPolicy'] = (string)$privacyPid;
+            }
+        }
 
         // Klaro subtree
         $klaroMap = [
-			'cookieDomain' => 'websedit.we_cookie_consent.klaro.cookieDomain',
-			'lang' => 'websedit.we_cookie_consent.klaro.lang',
-			'testing' => 'websedit.we_cookie_consent.klaro.testing',
-			'stylePrefix' => 'websedit.we_cookie_consent.klaro.stylePrefix',
-			'additionalClass' => 'websedit.we_cookie_consent.klaro.additionalClass',
-			'elementID' => 'websedit.we_cookie_consent.klaro.elementID',
-			'mustConsent' => 'websedit.we_cookie_consent.klaro.mustConsent',
-			'groupByPurpose' => 'websedit.we_cookie_consent.klaro.groupByPurpose',
-			'acceptAll' => 'websedit.we_cookie_consent.klaro.acceptAll',
-			'hideDeclineAll' => 'websedit.we_cookie_consent.klaro.hideDeclineAll',
-			'hideLearnMore' => 'websedit.we_cookie_consent.klaro.hideLearnMore',
-			'default' => 'websedit.we_cookie_consent.klaro.default',
-			'cookieExpiresAfterDays' => 'websedit.we_cookie_consent.klaro.cookieExpiresAfterDays',
-			'storageMethod' => 'websedit.we_cookie_consent.klaro.storageMethod',
-			'storageName' => 'websedit.we_cookie_consent.klaro.storageName',
-			'consentMode' => 'websedit.we_cookie_consent.klaro.consentMode',
-			'consentModev2' => 'websedit.we_cookie_consent.klaro.consentModev2',
-			'cookieSettingsImgPathDefault' => 'websedit.we_cookie_consent.klaro.cookieSettingsImgPathDefault',
-			'cookieSettingsImgPathHover' => 'websedit.we_cookie_consent.klaro.cookieSettingsImgPathHover',
-			'cookieIconPermanentlyAvailable' => 'websedit.we_cookie_consent.klaro.cookieIconPermanentlyAvailable',
-		];
-		
-		// --- Special handling: poweredBy ---
-		$poweredByKey = 'websedit.we_cookie_consent.klaro.poweredBy';
-		if ($this->siteSettingIsExplicitlySet($site, $poweredByKey)) {
-			// explizit gesetzt (auch leer) -> respektieren
-			$this->settings['klaro']['poweredBy'] = $siteSettings->get($poweredByKey);
-		} else {
-			// nicht explizit gesetzt -> Default erzwingen, falls aktuell leer
-			$current = trim($this->toString($this->settings['klaro']['poweredBy'] ?? ''));
-			if ($current === '') {
-				// Default aus euren Definitions
-				$this->settings['klaro']['poweredBy'] = 'https://consent.websedit.de';
-			}
-		}
+            'cookieDomain' => 'websedit.we_cookie_consent.klaro.cookieDomain',
+            'lang' => 'websedit.we_cookie_consent.klaro.lang',
+            'testing' => 'websedit.we_cookie_consent.klaro.testing',
+            'stylePrefix' => 'websedit.we_cookie_consent.klaro.stylePrefix',
+            'additionalClass' => 'websedit.we_cookie_consent.klaro.additionalClass',
+            'elementID' => 'websedit.we_cookie_consent.klaro.elementID',
+            'mustConsent' => 'websedit.we_cookie_consent.klaro.mustConsent',
+            'groupByPurpose' => 'websedit.we_cookie_consent.klaro.groupByPurpose',
+            'acceptAll' => 'websedit.we_cookie_consent.klaro.acceptAll',
+            'hideDeclineAll' => 'websedit.we_cookie_consent.klaro.hideDeclineAll',
+            'hideLearnMore' => 'websedit.we_cookie_consent.klaro.hideLearnMore',
+            'default' => 'websedit.we_cookie_consent.klaro.default',
+            'cookieExpiresAfterDays' => 'websedit.we_cookie_consent.klaro.cookieExpiresAfterDays',
+            'storageMethod' => 'websedit.we_cookie_consent.klaro.storageMethod',
+            'storageName' => 'websedit.we_cookie_consent.klaro.storageName',
+            'consentMode' => 'websedit.we_cookie_consent.klaro.consentMode',
+            'consentModev2' => 'websedit.we_cookie_consent.klaro.consentModev2',
+            'cookieSettingsImgPathDefault' => 'websedit.we_cookie_consent.klaro.cookieSettingsImgPathDefault',
+            'cookieSettingsImgPathHover' => 'websedit.we_cookie_consent.klaro.cookieSettingsImgPathHover',
+            'cookieIconPermanentlyAvailable' => 'websedit.we_cookie_consent.klaro.cookieIconPermanentlyAvailable',
+        ];
+
+        // --- Special handling: poweredBy ---
+        $poweredByKey = 'websedit.we_cookie_consent.klaro.poweredBy';
+        if ($this->siteSettingIsExplicitlySet($site, $poweredByKey)) {
+            // explizit gesetzt (auch leer) -> respektieren
+            $this->settings['klaro']['poweredBy'] = $siteSettings->get($poweredByKey);
+        } else {
+            // nicht explizit gesetzt -> Default erzwingen, falls aktuell leer
+            $current = trim($this->toString($this->settings['klaro']['poweredBy'] ?? ''));
+            if ($current === '') {
+                // Default aus euren Definitions
+                $this->settings['klaro']['poweredBy'] = 'https://consent.websedit.de';
+            }
+        }
 
         foreach ($klaroMap as $klaroKey => $path) {
-			$value = $siteSettings->get($path);
-			if ($value !== null) {
-				$this->settings['klaro'][$klaroKey] = $value;
-			}
-		}
+            $value = $siteSettings->get($path);
+            if ($value !== null) {
+                $this->settings['klaro'][$klaroKey] = $value;
+            }
+        }
     }
 
-/**
- * Convert mixed values from TypoScript / Site Settings to a boolean.
- *
- * Accepts: true/false, 1/0, "1"/"0", "true"/"false", "yes"/"no", "on"/"off".
- */
-private function toBool(mixed $value): bool
-{
-    if (is_bool($value)) {
-        return $value;
-    }
-    if (is_int($value) || is_float($value)) {
-        return (int)$value === 1;
-    }
+    /**
+     * Convert mixed values from TypoScript / Site Settings to a boolean.
+     *
+     * Accepts: true/false, 1/0, "1"/"0", "true"/"false", "yes"/"no", "on"/"off".
+     */
+    private function toBool(mixed $value): bool
+    {
+        if (is_bool($value)) {
+            return $value;
+        }
+        if (is_int($value) || is_float($value)) {
+            return (int)$value === 1;
+        }
 
-    $str = strtolower(trim((string)$value));
-    if ($str === '') {
-        return false;
-    }
-    if (in_array($str, ['1', 'true', 'yes', 'on'], true)) {
+        $str = strtolower(trim((string)$value));
+        if ($str === '') {
+            return false;
+        }
+        if (in_array($str, ['1', 'true', 'yes', 'on'], true)) {
+            return true;
+        }
+        if (in_array($str, ['0', 'false', 'no', 'off'], true)) {
+            return false;
+        }
+
+        // Fallback: non-empty string treated as true
         return true;
     }
-    if (in_array($str, ['0', 'false', 'no', 'off'], true)) {
-        return false;
+
+    /**
+     * Convert mixed values to an integer with a default.
+     */
+    private function toInt(mixed $value, int $default = 0): int
+    {
+        if ($value === null) {
+            return $default;
+        }
+        if (is_int($value)) {
+            return $value;
+        }
+        if (is_float($value)) {
+            return (int)$value;
+        }
+        $str = trim((string)$value);
+        if ($str === '' || !is_numeric($str)) {
+            return $default;
+        }
+        return (int)$str;
     }
 
-    // Fallback: non-empty string treated as true
-    return true;
-}
+    /**
+     * Convert mixed values to a string.
+     */
+    private function toString(mixed $value): string
+    {
+        if (is_array($value)) {
+            return '';
+        }
+        return (string)$value;
+    }
 
-/**
- * Convert mixed values to an integer with a default.
- */
-private function toInt(mixed $value, int $default = 0): int
-{
-    if ($value === null) {
-        return $default;
-    }
-    if (is_int($value)) {
-        return $value;
-    }
-    if (is_float($value)) {
-        return (int)$value;
-    }
-    $str = trim((string)$value);
-    if ($str === '' || !is_numeric($str)) {
-        return $default;
-    }
-    return (int)$str;
-}
-
-/**
- * Convert mixed values to a string.
- */
-private function toString(mixed $value): string
-{
-    if (is_array($value)) {
-        return '';
-    }
-    return (string)$value;
-}
-
-/**
+    /**
      * Generate JSON data for the consent Modal
      *
      * @return ResponseInterface
@@ -254,7 +257,7 @@ private function toString(mixed $value): string
         }
 
         // Ensure all required JS/CSS snippets are injected (Klaro config, service definitions, etc.)
-        //$this->renderAssetsForRequest($this->request);
+        $this->renderAssetsForRequest($this->request);
 
         return $this->htmlResponse();
     }
@@ -280,7 +283,7 @@ private function toString(mixed $value): string
         // The list view may be used on privacy pages where consent assets are still required
         // (e.g. cookie icon / open settings). Inject them as well.
         if (!array_key_exists('enabled', $this->settings) || $this->toBool($this->settings['enabled'])) {
-            //$this->renderAssetsForRequest($this->request);
+            $this->renderAssetsForRequest($this->request);
         }
 
         return $this->htmlResponse();
@@ -291,6 +294,12 @@ private function toString(mixed $value): string
      */
     protected function renderAssetsForRequest($request): void
     {
+        // Prevent duplicate injection within the same HTTP request
+        if ($this->assetsInjected) {
+            return;
+        }
+        $this->assetsInjected = true;
+
         if (!method_exists($this->view, 'renderSection')) {
             throw new \RuntimeException('The view does not support rendering sections.', 1678972450);
         }
@@ -357,21 +366,21 @@ private function toString(mixed $value): string
         } else {
             $poweredByPage = $poweredBySetting;
         }
-		
-		// Disable mustConsent on the privacy policy page to keep it readable
-		$privacyPolicySetting = $this->toString($this->settings['klaro']['privacyPolicy'] ?? '');
-		$privacyPid = is_numeric($privacyPolicySetting) ? (int)$privacyPolicySetting : 0;
 
-		$currentPid = 0;
-		$pageArguments = $this->request->getAttribute('routing');
-		if (is_object($pageArguments) && method_exists($pageArguments, 'getPageId')) {
-			$currentPid = (int)$pageArguments->getPageId(); // TYPO3 12/13
-		}
+        // Disable mustConsent on the privacy policy page to keep it readable
+        $privacyPolicySetting = $this->toString($this->settings['klaro']['privacyPolicy'] ?? '');
+        $privacyPid = is_numeric($privacyPolicySetting) ? (int)$privacyPolicySetting : 0;
 
-		$mustConsent = $this->toBool($this->settings['klaro']['mustConsent'] ?? false);
-		if ($privacyPid > 0 && $currentPid > 0 && $privacyPid === $currentPid) {
-			$mustConsent = false;
-		}
+        $currentPid = 0;
+        $pageArguments = $this->request->getAttribute('routing');
+        if (is_object($pageArguments) && method_exists($pageArguments, 'getPageId')) {
+            $currentPid = (int)$pageArguments->getPageId(); // TYPO3 12/13
+        }
+
+        $mustConsent = $this->toBool($this->settings['klaro']['mustConsent'] ?? false);
+        if ($privacyPid > 0 && $currentPid > 0 && $privacyPid === $currentPid) {
+            $mustConsent = false;
+        }
 
         $klaroConfig = [
             'acceptAll' => $this->toBool($this->settings['klaro']['acceptAll'] ?? false),
@@ -465,7 +474,7 @@ private function toString(mixed $value): string
             }
         }
 
-        if(array_key_exists('purposeOrder', $klaroConfig) && is_array($klaroConfig['purposeOrder'])) {
+        if (array_key_exists('purposeOrder', $klaroConfig) && is_array($klaroConfig['purposeOrder'])) {
             // Sort the sys_categories alphabetically and add a last category 'unknown' for uncategorized services.
             // Only relevant if option 'groupByPurpose' is set to true.
             ksort($klaroConfig['purposeOrder']);
@@ -476,25 +485,25 @@ private function toString(mixed $value): string
 
         return $klaroConfig;
     }
-	
-	private function siteSettingIsExplicitlySet(Site $site, string $path): bool
-	{
-		$settings = $site->getConfiguration()['settings'] ?? [];
 
-		// Flat key?
-		if (is_array($settings) && array_key_exists($path, $settings)) {
-			return true;
-		}
+    private function siteSettingIsExplicitlySet(Site $site, string $path): bool
+    {
+        $settings = $site->getConfiguration()['settings'] ?? [];
 
-		// Nested map?
-		$segments = explode('.', $path);
-		$current = $settings;
-		foreach ($segments as $segment) {
-			if (!is_array($current) || !array_key_exists($segment, $current)) {
-				return false;
-			}
-			$current = $current[$segment];
-		}
-		return true;
-	}
+        // Flat key?
+        if (is_array($settings) && array_key_exists($path, $settings)) {
+            return true;
+        }
+
+        // Nested map?
+        $segments = explode('.', $path);
+        $current = $settings;
+        foreach ($segments as $segment) {
+            if (!is_array($current) || !array_key_exists($segment, $current)) {
+                return false;
+            }
+            $current = $current[$segment];
+        }
+        return true;
+    }
 }
