@@ -19,5 +19,5 @@ page.includeJSFooter.we_cookie_consent_hovercookie >
 [END]
 
 # Storage PID can safely be taken from Site Settings because it is NOT part of Extbase "settings".
-plugin.tx_wecookieconsent_pi1.persistence.storagePid.data = site:settings:websedit.we_cookie_consent.storagePid
-plugin.tx_wecookieconsent_pi1.persistence.storagePid.ifEmpty = {$plugin.tx_wecookieconsent_pi1.persistence.storagePid}
+plugin.tx_wecookieconsent_pi1.persistence.storagePid = {$websedit.we_cookie_consent.storagePid}
+plugin.tx_wecookieconsent_pi1.persistence.storagePid.if.isTrue = {$websedit.we_cookie_consent.storagePid}

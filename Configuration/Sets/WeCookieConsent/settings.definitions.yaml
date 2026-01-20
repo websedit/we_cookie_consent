@@ -37,7 +37,7 @@ settings:
     label: 'Klaro language'
     category: websedit.cookieconsent.klaro
     type: string
-    default: 'en'
+    default: ''
 
   websedit.we_cookie_consent.klaro.testing:
     label: 'Klaro testing mode'
