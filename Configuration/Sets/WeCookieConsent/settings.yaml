@@ -7,7 +7,6 @@ websedit.we_cookie_consent.klaro.lang: ''
 websedit.we_cookie_consent.klaro.testing: 0
 
 # Additional Klaro options (defaults mirror EXT:we_cookie_consent constants)
-websedit.we_cookie_consent.klaro.poweredBy: 'https://consent.websedit.de'
 websedit.we_cookie_consent.klaro.stylePrefix: 'klaro we_cookie_consent'
 websedit.we_cookie_consent.klaro.additionalClass: ''
 websedit.we_cookie_consent.klaro.elementID: 'klaro'
