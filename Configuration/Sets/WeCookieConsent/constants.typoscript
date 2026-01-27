@@ -1,5 +1,5 @@
 ########################################
-### websedit/we-cookie-consent (Set) ###
+### websedit/cookie-consent (Set) ###
 ########################################
 
 @import 'EXT:we_cookie_consent/Configuration/TypoScript/constants.typoscript'
