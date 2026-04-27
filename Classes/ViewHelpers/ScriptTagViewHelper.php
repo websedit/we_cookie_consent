@@ -9,7 +9,7 @@ class ScriptTagViewHelper extends AbstractViewHelper
     /**
      * Initialize arguments
      */
-    public function initializeArguments()
+    public function initializeArguments(): void
     {
         $this->registerArgument('snippet', 'string', 'The snippets to make valide', true);
         $this->registerArgument('name', 'string', 'The snippets name to active', true);
