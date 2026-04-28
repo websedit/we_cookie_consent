@@ -62,7 +62,9 @@ final class BackendController extends ActionController
      */
     public function gtmWizardAction()
     {
-        $services = $this->serviceRepository->findByProvider('google-tagmanager-service');
+        $services = $this->serviceRepository->findBy([
+            'provider' => 'google-tagmanager-service',
+        ]);
         $blocks = ['tags' => 1, 'triggers' => 1, 'variables' => 1];
 
         $moduleTemplate = $this->moduleTemplateFactory->create($this->request);
@@ -86,7 +88,9 @@ final class BackendController extends ActionController
         header('Content-type: application/json');
         header('Content-Disposition: attachment; filename=import-this-to-gtm.json');
 
-        $services = $this->serviceRepository->findByProvider('google-tagmanager-service');
+        $services = $this->serviceRepository->findBy([
+            'provider' => 'google-tagmanager-service',
+        ]);
         $this->view->assignMultiple([
             'gtmArray' => $this->createGtmArray($services, $blocks)
         ]);

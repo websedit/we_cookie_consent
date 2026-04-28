@@ -90,9 +90,15 @@ module.tx_wecookieconsent_web_wecookieconsentmod1 {
     }
 }
 
+lib.weCookieConsent = EXTBASEPLUGIN
+lib.weCookieConsent {
+    extensionName = WeCookieConsent
+    pluginName = Pi1
+}
+
 page {
     #Include Cookie Consent on every page
-    525304800 < tt_content.list.20.wecookieconsent_pi1
+    525304800 < lib.weCookieConsent
 
     includeCSS {
         we_cookie_consent_style = EXT:we_cookie_consent/Resources/Public/Stylesheet/style.css

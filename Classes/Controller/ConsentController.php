@@ -269,11 +269,20 @@ class ConsentController extends ActionController
      */
     public function listAction()
     {
-        $servicesUids = explode(',', $this->settings['flexforms']['services']);
-
         $services = [];
-        foreach ($servicesUids as $uid) {
-            $services[] = $this->serviceRepository->findByUid($uid);
+        $servicesConfiguration = trim((string)($this->settings['flexforms']['services'] ?? ''));
+        if ($servicesConfiguration === '') {
+            foreach ($this->serviceRepository->findAll() as $service) {
+                $services[] = $service;
+            }
+        } else {
+            $servicesUids = GeneralUtility::trimExplode(',', $servicesConfiguration, true);
+            foreach ($servicesUids as $uid) {
+                $service = $this->serviceRepository->findByUid((int)$uid);
+                if ($service !== null) {
+                    $services[] = $service;
+                }
+            }
         }
 
         $this->view->assignMultiple([
