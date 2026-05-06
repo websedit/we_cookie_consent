@@ -50,9 +50,8 @@ plugin.tx_wecookieconsent_pi1 {
             storageName = {$plugin.tx_wecookieconsent_pi1.settings.klaro.storageName}
             stylePrefix = {$plugin.tx_wecookieconsent_pi1.settings.klaro.stylePrefix}
             testing = {$plugin.tx_wecookieconsent_pi1.settings.klaro.testing}
-			consentMode = {$plugin.tx_wecookieconsent_pi1.settings.klaro.consentMode}
-			consentModev2 = {$plugin.tx_wecookieconsent_pi1.settings.klaro.consentModev2}
-            googleTagManagerServiceGtagConfig = {$plugin.tx_wecookieconsent_pi1.settings.klaro.googleTagManagerServiceGtagConfig}
+            consentMode = {$plugin.tx_wecookieconsent_pi1.settings.klaro.consentMode}
+            consentModev2 = {$plugin.tx_wecookieconsent_pi1.settings.klaro.consentModev2}
             cookieSettingsImgPathDefault = {$plugin.tx_wecookieconsent_pi1.settings.klaro.cookieSettingsImgPathDefault}
             cookieSettingsImgPathHover = {$plugin.tx_wecookieconsent_pi1.settings.klaro.cookieSettingsImgPathHover}
             cookieIconPermanentlyAvailable = {$plugin.tx_wecookieconsent_pi1.settings.klaro.cookieIconPermanentlyAvailable}
@@ -113,13 +112,13 @@ page {
 
 #Disable mustConsent feature on the privacy page, else the privacy policy can't be read.
 [traverse(page, "uid") == {$plugin.tx_wecookieconsent_pi1.settings.klaro.privacyPolicy}]
-plugin.tx_wecookieconsent_pi1 {
-    settings {
-        klaro {
-            mustConsent = 0
+    plugin.tx_wecookieconsent_pi1 {
+        settings {
+            klaro {
+                mustConsent = 0
+            }
         }
     }
-}
 [END]
 
 #Override locallang.xlf Labels

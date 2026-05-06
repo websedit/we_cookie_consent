@@ -80,12 +80,6 @@ class ConsentController extends ActionController
             $klaro['storageName'] = $this->toString($klaro['storageName'] ?? '') ?: 'klaro';
             $klaro['elementID'] = $this->toString($klaro['elementID'] ?? '') ?: 'klaro';
             $klaro['cookieIconPermanentlyAvailable'] = $this->toString($klaro['cookieIconPermanentlyAvailable'] ?? '') ?: '0';
-            if (!array_key_exists('googleTagManagerServiceGtagConfig', $klaro)
-                || $klaro['googleTagManagerServiceGtagConfig'] === null
-                || $klaro['googleTagManagerServiceGtagConfig'] === ''
-            ) {
-                $klaro['googleTagManagerServiceGtagConfig'] = '0';
-            }
         }
     }
 
@@ -162,7 +156,6 @@ class ConsentController extends ActionController
             'storageName' => 'websedit.we_cookie_consent.klaro.storageName',
             'consentMode' => 'websedit.we_cookie_consent.klaro.consentMode',
             'consentModev2' => 'websedit.we_cookie_consent.klaro.consentModev2',
-            'googleTagManagerServiceGtagConfig' => 'websedit.we_cookie_consent.klaro.googleTagManagerServiceGtagConfig',
             'cookieSettingsImgPathDefault' => 'websedit.we_cookie_consent.klaro.cookieSettingsImgPathDefault',
             'cookieSettingsImgPathHover' => 'websedit.we_cookie_consent.klaro.cookieSettingsImgPathHover',
             'cookieIconPermanentlyAvailable' => 'websedit.we_cookie_consent.klaro.cookieIconPermanentlyAvailable',

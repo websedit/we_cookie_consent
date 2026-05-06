@@ -135,12 +135,6 @@ settings:
     type: bool
     default: false
 
-  websedit.we_cookie_consent.klaro.googleTagManagerServiceGtagConfig:
-    label: 'Google Tag Manager Service gtag config'
-    category: websedit.cookieconsent.klaro
-    type: bool
-    default: false
-
   websedit.we_cookie_consent.klaro.cookieSettingsImgPathDefault:
     label: 'Cookie Icon (Default)'
     category: websedit.cookieconsent.klaro

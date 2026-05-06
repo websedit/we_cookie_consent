@@ -1,4 +1,4 @@
-<f:section name="Header"> 
+<f:section name="Header">
 	<f:if condition="{settings.klaro.consentMode} || {settings.klaro.consentModev2}">
 		<f:then>
 			<script>
@@ -14,18 +14,18 @@
 					personalization_storage: {service.personalizationStorage} != 0 ? "{f:if(condition: '{service.personalizationStorage} == 1', then: 'granted', else: 'denied')}" : "not set",
 					security_storage: {service.securityStorage} != 0 ? "{f:if(condition: '{service.securityStorage} == 1', then: 'granted', else: 'denied')}" : "granted"
 				};
-				
+
 				// Check if any of the services are active
 				serviceIsTypeOfConsentMode = (
-					consenTypeObj.ad_storage != "not set" ||
-					consenTypeObj.analytics_storage != "not set" ||
-					consenTypeObj.ad_user_data != "not set" ||
-					consenTypeObj.ad_personalization != "not set" ||
-					consenTypeObj.functionality_storage != "not set" ||
-					consenTypeObj.personalization_storage != "not set" ||
-					consenTypeObj.security_storage != "not set"
+						consenTypeObj.ad_storage != "not set" ||
+						consenTypeObj.analytics_storage != "not set" ||
+						consenTypeObj.ad_user_data != "not set" ||
+						consenTypeObj.ad_personalization != "not set" ||
+						consenTypeObj.functionality_storage != "not set" ||
+						consenTypeObj.personalization_storage != "not set" ||
+						consenTypeObj.security_storage != "not set"
 				);
-					
+
 				serviceSetting = {
 					serviceId: serviceName,
 					serviceConsent: serviceIsTypeOfConsentMode,
@@ -41,19 +41,12 @@
 				// Add the serviceSetting object to the allServiceSettings array
 				allServiceSettings.push(serviceSetting);
 			</script>
-			
-			<f:if condition="{settings.klaro.consentModev2} && {settings.klaro.googleTagManagerServiceGtagConfig}">
+
+			<f:if condition="{settings.klaro.consentModev2}">
 				<script>
-					var googleTagId = '<f:format.raw>{service.apiKey}</f:format.raw>';
-
-					if(serviceIsTypeOfConsentMode && googleTagId !== '') {
-						window.weCookieConsentConfiguredGoogleTags = window.weCookieConsentConfiguredGoogleTags || {};
-
-						if(!window.weCookieConsentConfiguredGoogleTags[googleTagId]) {
-							window.weCookieConsentConfiguredGoogleTags[googleTagId] = true;
-							gtag('js', new Date());
-							gtag('config', googleTagId);
-						}
+					if(serviceIsTypeOfConsentMode) {
+						gtag('js', new Date());
+						gtag('config', '<f:format.raw>{service.apiKey}</f:format.raw>');
 					}
 				</script>
 			</f:if>
