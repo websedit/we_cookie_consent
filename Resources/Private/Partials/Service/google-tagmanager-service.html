@@ -44,16 +44,13 @@
 
 			<f:if condition="{settings.klaro.consentModev2}">
 				<script>
-					var googleTagId = '<f:format.raw>{service.apiKey}</f:format.raw>';
+					var googleTagManagerIsActive = Array.isArray(window.dataLayer) && window.dataLayer.some(function(dataLayerItem) {
+						return dataLayerItem && dataLayerItem.event === 'gtm.js';
+					});
 
-					if(serviceIsTypeOfConsentMode && googleTagId !== '') {
-						window.weCookieConsentConfiguredGoogleTags = window.weCookieConsentConfiguredGoogleTags || {};
-
-						if(!window.weCookieConsentConfiguredGoogleTags[googleTagId]) {
-							window.weCookieConsentConfiguredGoogleTags[googleTagId] = true;
-							gtag('js', new Date());
-							gtag('config', googleTagId);
-						}
+					if(serviceIsTypeOfConsentMode && !googleTagManagerIsActive && typeof gtag === 'function') {
+						gtag('js', new Date());
+						gtag('config', '<f:format.raw>{service.apiKey}</f:format.raw>');
 					}
 				</script>
 			</f:if>
