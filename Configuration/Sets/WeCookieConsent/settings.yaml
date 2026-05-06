@@ -24,6 +24,7 @@ websedit.we_cookie_consent.klaro.cookieExpiresAfterDays: 365
 
 websedit.we_cookie_consent.klaro.consentMode: 0
 websedit.we_cookie_consent.klaro.consentModev2: 0
+websedit.we_cookie_consent.klaro.googleTagManagerServiceGtagConfig: 0
 
 websedit.we_cookie_consent.klaro.cookieSettingsImgPathDefault: 'EXT:we_cookie_consent/Resources/Public/Icons/icon_cookie_settings.svg'
 websedit.we_cookie_consent.klaro.cookieSettingsImgPathHover: 'EXT:we_cookie_consent/Resources/Public/Icons/icon_cookie_settings-hover.svg'

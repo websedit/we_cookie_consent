@@ -42,7 +42,7 @@
 				allServiceSettings.push(serviceSetting);
 			</script>
 			
-			<f:if condition="{settings.klaro.consentModev2}">
+			<f:if condition="{settings.klaro.consentModev2} && {settings.klaro.googleTagManagerServiceGtagConfig}">
 				<script>
 					if(serviceIsTypeOfConsentMode) {
 						gtag('js', new Date());

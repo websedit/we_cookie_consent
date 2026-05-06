@@ -54,6 +54,8 @@ plugin.tx_wecookieconsent_pi1 {
             consentMode = 0
             # cat=plugin.tx_wecookieconsent_pi1/80_WECONSENTMODE/810; type=boolean; label=Consent Mode v2:Enable Google Consent Mode - Advanced implementation
             consentModev2 = 0
+            # cat=plugin.tx_wecookieconsent_pi1/80_WECONSENTMODE/820; type=boolean; label=Google Tag Manager Service gtag config:Render direct gtag config calls for Google Tag Manager Service entries in Consent Mode v2. Keep disabled if GA4 is configured inside Google Tag Manager.
+            googleTagManagerServiceGtagConfig = 0
             # cat=plugin.tx_wecookieconsent_pi1/70_WEOTHER/900; type=string; label=Icon field default
             cookieSettingsImgPathDefault = EXT:we_cookie_consent/Resources/Public/Icons/icon_cookie_settings.svg
             # cat=plugin.tx_wecookieconsent_pi1/70_WEOTHER/910; type=string; label=Icon field hover
