@@ -2,6 +2,12 @@
 All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
+## [7.0.1] - 2026-06-17 - SS
+### Fixed
+- Add missing `target-language="de"` attributes to German XLIFF files so TYPO3 v14 resolves translated labels correctly.
+- Pass the current Extbase request to `LocalizationUtility::translate()` when building the Klaro configuration, enabling TypoScript `_LOCAL_LANG` overrides in TYPO3 v14.
+- Update `_LOCAL_LANG` TypoScript override example from `config.tx_extbase._LOCAL_LANG` to `plugin.tx_wecookieconsent_pi1._LOCAL_LANG`.
+
 ## [7.0.0] - 2026-04-28 - SS
 ### Added
 - Update the Extension to TYPO3 V14 compatibility

@@ -122,7 +122,7 @@ page {
 [END]
 
 #Override locallang.xlf Labels
-#config.tx_extbase._LOCAL_LANG {
+#plugin.tx_wecookieconsent_pi1._LOCAL_LANG {
 #    default {
 #        klaro\.poweredBy = EXT:we_cookie_consent
 #        klaro\.consentNotice\.description = My custom message

@@ -346,6 +346,11 @@ class ConsentController extends ActionController
         }
     }
 
+    private function translateLabel(string $key, ?array $arguments = null): ?string
+    {
+        return LocalizationUtility::translate($key, self::EXTKEY, $arguments, null, $this->request);
+    }
+
     /**
      * Build the klaro config object used in frontend
      *
@@ -415,50 +420,50 @@ class ConsentController extends ActionController
             'translations' => [
                 'en' => [
                     'consentModal' => [
-                        'title' => LocalizationUtility::translate('klaro.consentModal.title', self::EXTKEY),
-                        'description' => LocalizationUtility::translate('klaro.consentModal.description', self::EXTKEY)
+                        'title' => $this->translateLabel('klaro.consentModal.title'),
+                        'description' => $this->translateLabel('klaro.consentModal.description')
                     ],
                     'privacyPolicy' => [
-                        'text' => LocalizationUtility::translate('klaro.consentModal.privacyPolicy.text', self::EXTKEY),
-                        'name' => LocalizationUtility::translate('klaro.consentModal.privacyPolicy.name', self::EXTKEY)
+                        'text' => $this->translateLabel('klaro.consentModal.privacyPolicy.text'),
+                        'name' => $this->translateLabel('klaro.consentModal.privacyPolicy.name')
                     ],
                     'consentNotice' => [
-                        'description' => LocalizationUtility::translate('klaro.consentNotice.description', self::EXTKEY, [$privacyPage]),
-                        'changeDescription' => LocalizationUtility::translate('klaro.consentNotice.changeDescription', self::EXTKEY),
-                        'learnMore' => LocalizationUtility::translate('klaro.consentNotice.learnMore', self::EXTKEY)
+                        'description' => $this->translateLabel('klaro.consentNotice.description', [$privacyPage]),
+                        'changeDescription' => $this->translateLabel('klaro.consentNotice.changeDescription'),
+                        'learnMore' => $this->translateLabel('klaro.consentNotice.learnMore')
                     ],
                     'contextualConsent' => [
-                        'acceptOnce' => LocalizationUtility::translate('klaro.contextualConsent.acceptOnce', self::EXTKEY),
-                        'acceptAlways' => LocalizationUtility::translate('klaro.contextualConsent.acceptAlways', self::EXTKEY),
-                        'description' => LocalizationUtility::translate('klaro.contextualConsent.description', self::EXTKEY),
+                        'acceptOnce' => $this->translateLabel('klaro.contextualConsent.acceptOnce'),
+                        'acceptAlways' => $this->translateLabel('klaro.contextualConsent.acceptAlways'),
+                        'description' => $this->translateLabel('klaro.contextualConsent.description'),
                     ],
                     'service' => [
                         'disableAll' => [
-                            'title' => LocalizationUtility::translate('klaro.service.disableAll.title', self::EXTKEY),
-                            'description' => LocalizationUtility::translate('klaro.service.disableAll.description', self::EXTKEY)
+                            'title' => $this->translateLabel('klaro.service.disableAll.title'),
+                            'description' => $this->translateLabel('klaro.service.disableAll.description')
                         ],
                         'optOut' => [
-                            'title' => LocalizationUtility::translate('klaro.service.optOut.title', self::EXTKEY),
-                            'description' => LocalizationUtility::translate('klaro.service.optOut.description', self::EXTKEY)
+                            'title' => $this->translateLabel('klaro.service.optOut.title'),
+                            'description' => $this->translateLabel('klaro.service.optOut.description')
                         ],
                         'required' => [
-                            'title' => LocalizationUtility::translate('klaro.service.required.title', self::EXTKEY),
-                            'description' => LocalizationUtility::translate('klaro.service.required.description', self::EXTKEY)
+                            'title' => $this->translateLabel('klaro.service.required.title'),
+                            'description' => $this->translateLabel('klaro.service.required.description')
                         ],
-                        'purpose' => LocalizationUtility::translate('klaro.service.purpose', self::EXTKEY),
-                        'purposes' => LocalizationUtility::translate('klaro.service.purposes', self::EXTKEY)
+                        'purpose' => $this->translateLabel('klaro.service.purpose'),
+                        'purposes' => $this->translateLabel('klaro.service.purposes')
                     ],
                     'purposes' => [
-                        'unknown' => LocalizationUtility::translate('klaro.purposes.unknown', self::EXTKEY)
+                        'unknown' => $this->translateLabel('klaro.purposes.unknown')
                     ],
-                    'ok' => LocalizationUtility::translate('klaro.ok', self::EXTKEY),
-                    'save' => LocalizationUtility::translate('klaro.save', self::EXTKEY),
-                    'acceptAll' => LocalizationUtility::translate('klaro.acceptAll', self::EXTKEY),
-                    'acceptSelected' => LocalizationUtility::translate('klaro.acceptSelected', self::EXTKEY),
-                    'decline' => LocalizationUtility::translate('klaro.decline', self::EXTKEY),
-                    'close' => LocalizationUtility::translate('klaro.close', self::EXTKEY),
-                    'openConsent' => LocalizationUtility::translate('list.button.openConsent', self::EXTKEY),
-                    'poweredBy' => LocalizationUtility::translate('klaro.poweredBy', self::EXTKEY) ?: ' '
+                    'ok' => $this->translateLabel('klaro.ok'),
+                    'save' => $this->translateLabel('klaro.save'),
+                    'acceptAll' => $this->translateLabel('klaro.acceptAll'),
+                    'acceptSelected' => $this->translateLabel('klaro.acceptSelected'),
+                    'decline' => $this->translateLabel('klaro.decline'),
+                    'close' => $this->translateLabel('klaro.close'),
+                    'openConsent' => $this->translateLabel('list.button.openConsent'),
+                    'poweredBy' => $this->translateLabel('klaro.poweredBy') ?: ' '
                 ]
             ],
             'services' => []
